@@ -23,9 +23,8 @@ The same can also be done on a terminal in VS Code.
 -![image](https://user-images.githubusercontent.com/41529190/149932452-195b1e3a-ca7a-47f4-8e29-aa989d881894.png) 
 8.	Example of a success response:
 -![image](https://user-images.githubusercontent.com/41529190/149932474-0e5c8eab-1cc1-4252-8ec6-ce85ca3ccfcb.png)
-9.	Import the processed collection which will have the following format : <API Name> processed.json back into postman and verify the requests.
-o	Example of a successful creation:
--![image](https://user-images.githubusercontent.com/41529190/149932498-b2136900-0b48-477f-bad9-f4eb1948770a.png)
+9.	Import the processed collection which will have the following format : <API Name> processed.json back into postman and verify the requests.Example of a successful creation:
+- ![image](https://user-images.githubusercontent.com/41529190/149932498-b2136900-0b48-477f-bad9-f4eb1948770a.png)
 
 ### B.	For APIs with already existing collections:
 
