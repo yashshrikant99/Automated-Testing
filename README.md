@@ -7,9 +7,7 @@ And then type
 The same can also be done on a terminal in VS Code.
 
 ## Updated Testing Strategy
-
-![image](https://user-images.githubusercontent.com/41529190/149931776-e91a4287-3bed-4156-8d02-f6b8af8bbd5d.png)
-
+![image](https://user-images.githubusercontent.com/41529190/149934689-bb2ef8da-c481-455a-b72e-44f301094070.png)
 ## Process
 ### A.	For New APIs which are being tested:
 
