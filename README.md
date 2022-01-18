@@ -8,6 +8,8 @@ The same can also be done on a terminal in VS Code.
 
 ## Updated Testing Strategy
 ![image](https://user-images.githubusercontent.com/41529190/149934689-bb2ef8da-c481-455a-b72e-44f301094070.png)
+
+- Sample test logs can be found [here](https://github.com/yashshrikant99/Automated-Testing/blob/master/Sample%20Test%20Logs%20-%20New.xlsx)
 ## Process
 ### A.	For New APIs which are being tested:
 
