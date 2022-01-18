@@ -42,6 +42,7 @@ o	Example of a successful creation:
 1.	Check if spec has no issues- usual ones are ‘application/jsin’ or ‘application/Json’ instead of ‘application/json’
 2.	Check if the description for each method match the ones present in the collection- sometimes methods may not have any summary present , in those cases a manual summary may need to be added. For ex:-
 - Before adding:![image](https://user-images.githubusercontent.com/41529190/149933155-e1e61617-a9ec-4ba2-b8fb-9cbe9026128b.png)
+
 - After adding:![image](https://user-images.githubusercontent.com/41529190/149933256-445079a1-98b0-43a8-9a6c-5435b7d4e840.png)
 
 The script is very dependent on the validity of the spec file. If there are any issues kindly reach me out at yash.shrikant@se.com .
