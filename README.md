@@ -43,4 +43,8 @@ The same can also be done on a terminal in VS Code.
 - After adding:![image](https://user-images.githubusercontent.com/41529190/149933256-445079a1-98b0-43a8-9a6c-5435b7d4e840.png)
 
 The script is very dependent on the validity of the spec file. If there are any issues kindly reach me out at yash.shrikant@se.com .
+  
+# To-Do
+- [ ] In case of errors create a collection for the rest of the methods which dont have error 
+- [ ] Automatic testing for mandatory parameters
 
