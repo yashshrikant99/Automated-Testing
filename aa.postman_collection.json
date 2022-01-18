@@ -1,0 +1,3132 @@
+{
+	"info": {
+		"_postman_id": "3f368d3e-fec8-4378-a3ec-e8974b91af0f",
+		"name": "aa",
+		"description": "This specification defines the structure of the consulting model (Assessment, Recommendations, Corrective Actions, Observations, Technical Risks, Recommendation Installed Products, Recommendation Locations)\n\nContact Support:\n Name: Mohamed Abousteit\n Email: mohamed.abousteit@se.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "assessments",
+			"item": [
+				{
+					"name": "Retrieve assessments based on Site IDs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "X-BFO-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "X-PING-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW\",\n        \"a2L12000002RCeRKZN\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime\"\n    ],\n    \"assessmentDateMin\": \"2020-03-30\",\n    \"assessmentDateMax\": \"2020-03-31\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/assessments/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=reprehenderit ullamco ad est",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"assessments",
+								"search"
+							],
+							"query": [
+								{
+									"key": "sorting-by",
+									"value": "reprehenderit ullamco ad est",
+									"description": "Field on which the sorting is done (Default : locationName)"
+								},
+								{
+									"key": "sorting-order",
+									"value": "reprehenderit ullamco ad est",
+									"description": "ASC or DESC"
+								},
+								{
+									"key": "page-size",
+									"value": "reprehenderit ullamco ad est",
+									"description": "for pagination on assemssent list"
+								},
+								{
+									"key": "page",
+									"value": "reprehenderit ullamco ad est",
+									"description": "for pagination on assessment list"
+								},
+								{
+									"key": "reporting",
+									"value": "reprehenderit ullamco ad est",
+									"description": "If true, then the response will be a count of assessment records"
+								}
+							]
+						},
+						"description": "Fetch assessment information to show in a list view based on a list of Site Ids"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW\",\n        \"a2L12000002RCeRKZN\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime\"\n    ],\n    \"assessmentDateMin\": \"2020-03-30\",\n    \"assessmentDateMax\": \"2020-03-31\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"assessmentId\": \"aA67b0000005aSXCAY\",\n  \"assessmentType\": \"MPS Prime\",\n  \"site\": {\n   \"locationId\": \"aA67b0000005aSXCAY\",\n   \"locationName\": \"Nestle Site\",\n   \"siteId\": \"aA67b0000005aSXCAY\",\n   \"accountId\": \"aA67b0000005aSXCAY\",\n   \"siteLocation\": true\n  },\n  \"assessmentDate\": \"2020-03-30\",\n  \"ongoingRecommendations\": 17,\n  \"totalRecommendations\": 25,\n  \"workOrderId\": \"a2H7b000000iL1vEAE\",\n  \"hasDeliverables\": true\n }\n]"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW\",\n        \"a2L12000002RCeRKZN\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime\"\n    ],\n    \"assessmentDateMin\": \"2020-03-30\",\n    \"assessmentDateMax\": \"2020-03-31\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW\",\n        \"a2L12000002RCeRKZN\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime\"\n    ],\n    \"assessmentDateMin\": \"2020-03-30\",\n    \"assessmentDateMax\": \"2020-03-31\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW\",\n        \"a2L12000002RCeRKZN\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime\"\n    ],\n    \"assessmentDateMin\": \"2020-03-30\",\n    \"assessmentDateMax\": \"2020-03-31\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW\",\n        \"a2L12000002RCeRKZN\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime\"\n    ],\n    \"assessmentDateMin\": \"2020-03-30\",\n    \"assessmentDateMax\": \"2020-03-31\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW\",\n        \"a2L12000002RCeRKZN\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime\"\n    ],\n    \"assessmentDateMin\": \"2020-03-30\",\n    \"assessmentDateMax\": \"2020-03-31\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW\",\n        \"a2L12000002RCeRKZN\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime\"\n    ],\n    \"assessmentDateMin\": \"2020-03-30\",\n    \"assessmentDateMax\": \"2020-03-31\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Attach a file",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BFO-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "X-PING-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/octet-stream"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/assessments/uploadfile?firstPublishLocationId=reprehenderit ullamco ad est&fileName=reprehenderit ullamco ad est&title=reprehenderit ullamco ad est",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"assessments",
+								"uploadfile"
+							],
+							"query": [
+								{
+									"key": "firstPublishLocationId",
+									"value": "reprehenderit ullamco ad est",
+									"description": "(Required) Id of the parent record"
+								},
+								{
+									"key": "fileName",
+									"value": "reprehenderit ullamco ad est",
+									"description": "(Required) File name "
+								},
+								{
+									"key": "title",
+									"value": "reprehenderit ullamco ad est",
+									"description": "File title "
+								}
+							]
+						},
+						"description": "attach a file on a record"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/uploadfile?firstPublishLocationId=reprehenderit ullamco ad est&fileName=reprehenderit ullamco ad est&title=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"uploadfile"
+									],
+									"query": [
+										{
+											"key": "firstPublishLocationId",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "fileName",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "title",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"fileId\": \"0697b000001ZJQqAAO\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/uploadfile?firstPublishLocationId=reprehenderit ullamco ad est&fileName=reprehenderit ullamco ad est&title=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"uploadfile"
+									],
+									"query": [
+										{
+											"key": "firstPublishLocationId",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "fileName",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "title",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/uploadfile?firstPublishLocationId=reprehenderit ullamco ad est&fileName=reprehenderit ullamco ad est&title=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"uploadfile"
+									],
+									"query": [
+										{
+											"key": "firstPublishLocationId",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "fileName",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "title",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/uploadfile?firstPublishLocationId=reprehenderit ullamco ad est&fileName=reprehenderit ullamco ad est&title=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"uploadfile"
+									],
+									"query": [
+										{
+											"key": "firstPublishLocationId",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "fileName",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "title",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/uploadfile?firstPublishLocationId=reprehenderit ullamco ad est&fileName=reprehenderit ullamco ad est&title=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"uploadfile"
+									],
+									"query": [
+										{
+											"key": "firstPublishLocationId",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "fileName",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "title",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/uploadfile?firstPublishLocationId=reprehenderit ullamco ad est&fileName=reprehenderit ullamco ad est&title=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"uploadfile"
+									],
+									"query": [
+										{
+											"key": "firstPublishLocationId",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "fileName",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "title",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assessments/uploadfile?firstPublishLocationId=reprehenderit ullamco ad est&fileName=reprehenderit ullamco ad est&title=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"uploadfile"
+									],
+									"query": [
+										{
+											"key": "firstPublishLocationId",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "fileName",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "title",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve list of deliverables",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "X-BFO-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "X-PING-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/assessments/deliverables?assessment-id=reprehenderit ullamco ad est",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"assessments",
+								"deliverables"
+							],
+							"query": [
+								{
+									"key": "assessment-id",
+									"value": "reprehenderit ullamco ad est",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "list of an assessment deliverables\nIf the assessment is linked to a work order the result is a list of files attached to the assessment and work order"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/assessments/deliverables?assessment-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"deliverables"
+									],
+									"query": [
+										{
+											"key": "assessment-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"parentId\": \"a2H1H000006SJWIUA4\",\n  \"fileSize\": 500,\n  \"fileName\": \"MPS Report\",\n  \"fileId\": \"0687b00000140SMAAY\",\n  \"fileExtension\": \"pdf\",\n  \"createdDate\": \"2021-07-06\",\n  \"downloadLink\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n }\n]"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/assessments/deliverables?assessment-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"deliverables"
+									],
+									"query": [
+										{
+											"key": "assessment-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/assessments/deliverables?assessment-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"deliverables"
+									],
+									"query": [
+										{
+											"key": "assessment-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/assessments/deliverables?assessment-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"deliverables"
+									],
+									"query": [
+										{
+											"key": "assessment-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/assessments/deliverables?assessment-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"deliverables"
+									],
+									"query": [
+										{
+											"key": "assessment-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/assessments/deliverables?assessment-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"deliverables"
+									],
+									"query": [
+										{
+											"key": "assessment-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/assessments/deliverables?assessment-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assessments",
+										"deliverables"
+									],
+									"query": [
+										{
+											"key": "assessment-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "recommendations",
+			"item": [
+				{
+					"name": "Retrieve recommendation details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "X-BFO-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "X-PING-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/recommendations?recommendation-id=reprehenderit ullamco ad est",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recommendations"
+							],
+							"query": [
+								{
+									"key": "recommendation-id",
+									"value": "reprehenderit ullamco ad est",
+									"description": "recommendation bFO id"
+								}
+							]
+						},
+						"description": "Retrieve recommendation details and related records"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?recommendation-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "recommendation-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"recommendationId\": \"aAB7b0000004eIzGAI\",\n  \"recommendationRef\": \"REC-00001\",\n  \"recommendationName\": \"MV Power Cable earth faulty\",\n  \"riskCategory\": \"High\",\n  \"findingCategory\": \"Maintenance Issue\",\n  \"dueDate\": \"2023-03-01\",\n  \"avoidedRisk\": \"Safety\",\n  \"recommendationStatus\": \"In progress\",\n  \"concernedAssetsLocations\": \"Asset number 1, Asset number 2 , Asset number 3, Location 1\",\n  \"healthSafetyStatus\": \"In progress\",\n  \"healthSafetyComment\": \"On going actions\",\n  \"facilityMaintenanceStatus\": \"In progress\",\n  \"facilityMaintenanceComment\": \"cable changed, waiting for security actions\",\n  \"correctiveAction\": [\n   {\n    \"correctiveActionId\": \"2F0051H00000Bzi05QAB\",\n    \"correctiveActionName\": \"Change cables\",\n    \"correctiveActionCode\": \"CORR01\",\n    \"relatedFiles\": [\n     {\n      \"fileId\": \"string\",\n      \"fileName\": \"MPS Report\",\n      \"fileSize\": 500,\n      \"fileExtension\": \"pdf\"\n     }\n    ]\n   }\n  ],\n  \"technicalRisk\": [\n   {\n    \"technicalRiskId\": \"2F0051H00000Azi05QCF\",\n    \"technicalRiskName\": \"Security risk\",\n    \"technicalRiskIdCode\": \"TEC001\",\n    \"relatedFiles\": [\n     {\n      \"fileId\": \"string\",\n      \"fileName\": \"MPS Report\",\n      \"fileSize\": 500,\n      \"fileExtension\": \"pdf\"\n     }\n    ]\n   }\n  ],\n  \"observation\": [\n   {\n    \"observationId\": \"2F0051H00000Azi05QAB\",\n    \"observationName\": \"Observation 1 \",\n    \"observationCode\": \"OB-001\",\n    \"relatedFiles\": [\n     {\n      \"fileId\": \"string\",\n      \"fileName\": \"MPS Report\",\n      \"fileSize\": 500,\n      \"fileExtension\": \"pdf\"\n     }\n    ]\n   }\n  ],\n  \"relatedFiles\": [\n   {\n    \"fileId\": \"string\",\n    \"fileName\": \"MPS Report\",\n    \"fileSize\": 500,\n    \"fileExtension\": \"pdf\"\n   }\n  ],\n  \"coveredLocations\": [\n   {\n    \"recoCoveredLocationId\": \"string\",\n    \"location\": {\n     \"locationId\": \"string\",\n     \"locationName\": \"string\"\n    }\n   }\n  ],\n  \"coveredAssets\": [\n   {\n    \"recoCoveredProductId\": \"string\",\n    \"asset\": {\n     \"serialNumber\": \"ZA0735003884\",\n     \"name\": \"string\",\n     \"assetId\": \"string\"\n    }\n   }\n  ],\n  \"assessment\": {\n   \"assessmentId\": \"aA67b0000005aSXCAY\",\n   \"assessmentType\": \"MPS Prime\",\n   \"site\": {\n    \"locationId\": \"string\",\n    \"locationName\": \"string\",\n    \"siteLocation\": true\n   },\n   \"assessmentDate\": \"2020-03-30\",\n   \"ongoingRecommendations\": 17,\n   \"totalRecommendations\": 25,\n   \"workOrderId\": \"a2H7b000000iL1vEAE\"\n  },\n  \"History\": [\n   {\n    \"fieldName\": \"RecommendationStatus\",\n    \"oldValue\": \"In Progress\",\n    \"newValue\": \"Closed\",\n    \"lastModifiedBy\": {\n     \"userId\": \"2F0051H00000Azi05QAB\",\n     \"fullName\": \"Jack Jones\"\n    },\n    \"lastModifiedDate\": \"2020-04-15\"\n   }\n  ]\n }\n]"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?recommendation-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "recommendation-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?recommendation-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "recommendation-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?recommendation-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "recommendation-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?recommendation-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "recommendation-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?recommendation-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "recommendation-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?recommendation-id=reprehenderit ullamco ad est&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "recommendation-id",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update recommendations with  customer inputs",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "X-BFO-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "X-PING-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"recommendationList\": [\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        },\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recommendations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recommendations"
+							]
+						},
+						"description": "Update recommendation customer inputs attributes."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recommendationList\": [\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        },\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"recommendationId\": \"aAB7b0000004eIzGAI\",\n  \"healthSafetyStatus\": \"Closed\",\n  \"healthSafetyComment\": \"Please close recommendation\",\n  \"facilityMaintenanceStatus\": \"Closed\",\n  \"facilityMaintenanceComment\": \"Actions done\",\n  \"result\": {\n   \"success\": true,\n   \"errorCode\": \"string\",\n   \"errorMessage\": \"string\"\n  }\n }\n]"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recommendationList\": [\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        },\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recommendationList\": [\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        },\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recommendationList\": [\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        },\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recommendationList\": [\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        },\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recommendationList\": [\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        },\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"recommendationList\": [\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        },\n        {\n            \"recommendationId\": \"aAB7b0000004eIzGAI\",\n            \"level1Status\": \"Closed\",\n            \"level1Comment\": \"Close recommendation please\",\n            \"level2Status\": \"Closed\",\n            \"level2Comment\": \"Actions done\",\n            \"recommendationStatus\": \"Closed\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create recommendations and related records",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "X-BFO-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "X-PING-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"assessmentDate\": \"2021-09-03\",\n        \"assessmentType\": \"MPS Prime\",\n        \"siteID\": \"a2L7b000004O4JwEAK\",\n        \"workOrderId\": \"a2H7b0000011Vj2EAE\",\n        \"recommendationList\": [\n            {\n                \"recommendationName\": \"IP not maintained correctly\",\n                \"recommendationStatus\": \"In progress\",\n                \"findingCategory\": \"Maintenance Issue\",\n                \"repetitivefinding\": \"False\",\n                \"riskCategory\": \"Medium\",\n                \"dueDate\": \"2019-08-24\",\n                \"concernedAssetsAndLocations\": \"Asset 1; Asset 2\",\n                \"solutionBudgetAmount\": 10000,\n                \"solutionBudgetComment\": \"No comment\",\n                \"solutionBudgetType\": \"Amount\",\n                \"avoidedRiskAmount\": 100,\n                \"avoidedRiskComment\": \"No comment\",\n                \"avoidedRiskType\": \"Safety\",\n                \"currencyType\": \"EUR\",\n                \"localId\": \"EUR\",\n                \"correctiveActionList\": [\n                    {\n                        \"correctiveActionName\": \"Change battery\",\n                        \"correctiveActionNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"technicalRiskList\": [\n                    {\n                        \"technicalRiskName\": \"Fire\",\n                        \"technicalRiskNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"observationList\": [\n                    {\n                        \"observationName\": \"IP not maintained\",\n                        \"observationNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"recommendationCoveredLocations\": [\n                    {\n                        \"locationID\": \"a2L7b000004O4JwEAK\"\n                    }\n                ],\n                \"recommendationCoveredAssets\": [\n                    {\n                        \"assetId\": \"a1a7b000001VwP7AAK\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recommendations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recommendations"
+							]
+						},
+						"description": "Create assessment, recommendation and related records (Corrective Actions,Observations, Technical Risk,Recommendation Installed products, Recommendation Locations)"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"assessmentDate\": \"2021-09-03\",\n        \"assessmentType\": \"MPS Prime\",\n        \"siteID\": \"a2L7b000004O4JwEAK\",\n        \"workOrderId\": \"a2H7b0000011Vj2EAE\",\n        \"recommendationList\": [\n            {\n                \"recommendationName\": \"IP not maintained correctly\",\n                \"recommendationStatus\": \"In progress\",\n                \"findingCategory\": \"Maintenance Issue\",\n                \"repetitivefinding\": \"False\",\n                \"riskCategory\": \"Medium\",\n                \"dueDate\": \"2019-08-24\",\n                \"concernedAssetsAndLocations\": \"Asset 1; Asset 2\",\n                \"solutionBudgetAmount\": 10000,\n                \"solutionBudgetComment\": \"No comment\",\n                \"solutionBudgetType\": \"Amount\",\n                \"avoidedRiskAmount\": 100,\n                \"avoidedRiskComment\": \"No comment\",\n                \"avoidedRiskType\": \"Safety\",\n                \"currencyType\": \"EUR\",\n                \"localId\": \"EUR\",\n                \"correctiveActionList\": [\n                    {\n                        \"correctiveActionName\": \"Change battery\",\n                        \"correctiveActionNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"technicalRiskList\": [\n                    {\n                        \"technicalRiskName\": \"Fire\",\n                        \"technicalRiskNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"observationList\": [\n                    {\n                        \"observationName\": \"IP not maintained\",\n                        \"observationNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"recommendationCoveredLocations\": [\n                    {\n                        \"locationID\": \"a2L7b000004O4JwEAK\"\n                    }\n                ],\n                \"recommendationCoveredAssets\": [\n                    {\n                        \"assetId\": \"a1a7b000001VwP7AAK\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"assessmentId\": \"string\",\n  \"localId\": \"string\",\n  \"recommendationList\": [\n   {\n    \"recommendationName\": \"string\",\n    \"recommendationId\": \"string\",\n    \"localId\": \"string\",\n    \"technicalRiskList\": [\n     {\n      \"technicalRiskId\": \"string\",\n      \"localId\": \"string\"\n     }\n    ],\n    \"correctiveActionList\": [\n     {\n      \"correctiveActionId\": \"string\",\n      \"localId\": \"string\"\n     }\n    ],\n    \"observationList\": [\n     {\n      \"observationId\": \"string\",\n      \"localId\": \"string\"\n     }\n    ],\n    \"recommendationCoveredLocations\": [\n     {\n      \"recommendationCoveredLocationId\": \"string\"\n     }\n    ],\n    \"recommendationCoveredAssets\": [\n     {\n      \"recommendationCoveredAssetId\": \"string\"\n     }\n    ]\n   }\n  ]\n }\n]"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"assessmentDate\": \"2021-09-03\",\n        \"assessmentType\": \"MPS Prime\",\n        \"siteID\": \"a2L7b000004O4JwEAK\",\n        \"workOrderId\": \"a2H7b0000011Vj2EAE\",\n        \"recommendationList\": [\n            {\n                \"recommendationName\": \"IP not maintained correctly\",\n                \"recommendationStatus\": \"In progress\",\n                \"findingCategory\": \"Maintenance Issue\",\n                \"repetitivefinding\": \"False\",\n                \"riskCategory\": \"Medium\",\n                \"dueDate\": \"2019-08-24\",\n                \"concernedAssetsAndLocations\": \"Asset 1; Asset 2\",\n                \"solutionBudgetAmount\": 10000,\n                \"solutionBudgetComment\": \"No comment\",\n                \"solutionBudgetType\": \"Amount\",\n                \"avoidedRiskAmount\": 100,\n                \"avoidedRiskComment\": \"No comment\",\n                \"avoidedRiskType\": \"Safety\",\n                \"currencyType\": \"EUR\",\n                \"localId\": \"EUR\",\n                \"correctiveActionList\": [\n                    {\n                        \"correctiveActionName\": \"Change battery\",\n                        \"correctiveActionNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"technicalRiskList\": [\n                    {\n                        \"technicalRiskName\": \"Fire\",\n                        \"technicalRiskNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"observationList\": [\n                    {\n                        \"observationName\": \"IP not maintained\",\n                        \"observationNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"recommendationCoveredLocations\": [\n                    {\n                        \"locationID\": \"a2L7b000004O4JwEAK\"\n                    }\n                ],\n                \"recommendationCoveredAssets\": [\n                    {\n                        \"assetId\": \"a1a7b000001VwP7AAK\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"assessmentDate\": \"2021-09-03\",\n        \"assessmentType\": \"MPS Prime\",\n        \"siteID\": \"a2L7b000004O4JwEAK\",\n        \"workOrderId\": \"a2H7b0000011Vj2EAE\",\n        \"recommendationList\": [\n            {\n                \"recommendationName\": \"IP not maintained correctly\",\n                \"recommendationStatus\": \"In progress\",\n                \"findingCategory\": \"Maintenance Issue\",\n                \"repetitivefinding\": \"False\",\n                \"riskCategory\": \"Medium\",\n                \"dueDate\": \"2019-08-24\",\n                \"concernedAssetsAndLocations\": \"Asset 1; Asset 2\",\n                \"solutionBudgetAmount\": 10000,\n                \"solutionBudgetComment\": \"No comment\",\n                \"solutionBudgetType\": \"Amount\",\n                \"avoidedRiskAmount\": 100,\n                \"avoidedRiskComment\": \"No comment\",\n                \"avoidedRiskType\": \"Safety\",\n                \"currencyType\": \"EUR\",\n                \"localId\": \"EUR\",\n                \"correctiveActionList\": [\n                    {\n                        \"correctiveActionName\": \"Change battery\",\n                        \"correctiveActionNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"technicalRiskList\": [\n                    {\n                        \"technicalRiskName\": \"Fire\",\n                        \"technicalRiskNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"observationList\": [\n                    {\n                        \"observationName\": \"IP not maintained\",\n                        \"observationNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"recommendationCoveredLocations\": [\n                    {\n                        \"locationID\": \"a2L7b000004O4JwEAK\"\n                    }\n                ],\n                \"recommendationCoveredAssets\": [\n                    {\n                        \"assetId\": \"a1a7b000001VwP7AAK\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"assessmentDate\": \"2021-09-03\",\n        \"assessmentType\": \"MPS Prime\",\n        \"siteID\": \"a2L7b000004O4JwEAK\",\n        \"workOrderId\": \"a2H7b0000011Vj2EAE\",\n        \"recommendationList\": [\n            {\n                \"recommendationName\": \"IP not maintained correctly\",\n                \"recommendationStatus\": \"In progress\",\n                \"findingCategory\": \"Maintenance Issue\",\n                \"repetitivefinding\": \"False\",\n                \"riskCategory\": \"Medium\",\n                \"dueDate\": \"2019-08-24\",\n                \"concernedAssetsAndLocations\": \"Asset 1; Asset 2\",\n                \"solutionBudgetAmount\": 10000,\n                \"solutionBudgetComment\": \"No comment\",\n                \"solutionBudgetType\": \"Amount\",\n                \"avoidedRiskAmount\": 100,\n                \"avoidedRiskComment\": \"No comment\",\n                \"avoidedRiskType\": \"Safety\",\n                \"currencyType\": \"EUR\",\n                \"localId\": \"EUR\",\n                \"correctiveActionList\": [\n                    {\n                        \"correctiveActionName\": \"Change battery\",\n                        \"correctiveActionNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"technicalRiskList\": [\n                    {\n                        \"technicalRiskName\": \"Fire\",\n                        \"technicalRiskNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"observationList\": [\n                    {\n                        \"observationName\": \"IP not maintained\",\n                        \"observationNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"recommendationCoveredLocations\": [\n                    {\n                        \"locationID\": \"a2L7b000004O4JwEAK\"\n                    }\n                ],\n                \"recommendationCoveredAssets\": [\n                    {\n                        \"assetId\": \"a1a7b000001VwP7AAK\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"assessmentDate\": \"2021-09-03\",\n        \"assessmentType\": \"MPS Prime\",\n        \"siteID\": \"a2L7b000004O4JwEAK\",\n        \"workOrderId\": \"a2H7b0000011Vj2EAE\",\n        \"recommendationList\": [\n            {\n                \"recommendationName\": \"IP not maintained correctly\",\n                \"recommendationStatus\": \"In progress\",\n                \"findingCategory\": \"Maintenance Issue\",\n                \"repetitivefinding\": \"False\",\n                \"riskCategory\": \"Medium\",\n                \"dueDate\": \"2019-08-24\",\n                \"concernedAssetsAndLocations\": \"Asset 1; Asset 2\",\n                \"solutionBudgetAmount\": 10000,\n                \"solutionBudgetComment\": \"No comment\",\n                \"solutionBudgetType\": \"Amount\",\n                \"avoidedRiskAmount\": 100,\n                \"avoidedRiskComment\": \"No comment\",\n                \"avoidedRiskType\": \"Safety\",\n                \"currencyType\": \"EUR\",\n                \"localId\": \"EUR\",\n                \"correctiveActionList\": [\n                    {\n                        \"correctiveActionName\": \"Change battery\",\n                        \"correctiveActionNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"technicalRiskList\": [\n                    {\n                        \"technicalRiskName\": \"Fire\",\n                        \"technicalRiskNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"observationList\": [\n                    {\n                        \"observationName\": \"IP not maintained\",\n                        \"observationNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"recommendationCoveredLocations\": [\n                    {\n                        \"locationID\": \"a2L7b000004O4JwEAK\"\n                    }\n                ],\n                \"recommendationCoveredAssets\": [\n                    {\n                        \"assetId\": \"a1a7b000001VwP7AAK\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"assessmentDate\": \"2021-09-03\",\n        \"assessmentType\": \"MPS Prime\",\n        \"siteID\": \"a2L7b000004O4JwEAK\",\n        \"workOrderId\": \"a2H7b0000011Vj2EAE\",\n        \"recommendationList\": [\n            {\n                \"recommendationName\": \"IP not maintained correctly\",\n                \"recommendationStatus\": \"In progress\",\n                \"findingCategory\": \"Maintenance Issue\",\n                \"repetitivefinding\": \"False\",\n                \"riskCategory\": \"Medium\",\n                \"dueDate\": \"2019-08-24\",\n                \"concernedAssetsAndLocations\": \"Asset 1; Asset 2\",\n                \"solutionBudgetAmount\": 10000,\n                \"solutionBudgetComment\": \"No comment\",\n                \"solutionBudgetType\": \"Amount\",\n                \"avoidedRiskAmount\": 100,\n                \"avoidedRiskComment\": \"No comment\",\n                \"avoidedRiskType\": \"Safety\",\n                \"currencyType\": \"EUR\",\n                \"localId\": \"EUR\",\n                \"correctiveActionList\": [\n                    {\n                        \"correctiveActionName\": \"Change battery\",\n                        \"correctiveActionNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"technicalRiskList\": [\n                    {\n                        \"technicalRiskName\": \"Fire\",\n                        \"technicalRiskNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"observationList\": [\n                    {\n                        \"observationName\": \"IP not maintained\",\n                        \"observationNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"recommendationCoveredLocations\": [\n                    {\n                        \"locationID\": \"a2L7b000004O4JwEAK\"\n                    }\n                ],\n                \"recommendationCoveredAssets\": [\n                    {\n                        \"assetId\": \"a1a7b000001VwP7AAK\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"assessmentDate\": \"2021-09-03\",\n        \"assessmentType\": \"MPS Prime\",\n        \"siteID\": \"a2L7b000004O4JwEAK\",\n        \"workOrderId\": \"a2H7b0000011Vj2EAE\",\n        \"recommendationList\": [\n            {\n                \"recommendationName\": \"IP not maintained correctly\",\n                \"recommendationStatus\": \"In progress\",\n                \"findingCategory\": \"Maintenance Issue\",\n                \"repetitivefinding\": \"False\",\n                \"riskCategory\": \"Medium\",\n                \"dueDate\": \"2019-08-24\",\n                \"concernedAssetsAndLocations\": \"Asset 1; Asset 2\",\n                \"solutionBudgetAmount\": 10000,\n                \"solutionBudgetComment\": \"No comment\",\n                \"solutionBudgetType\": \"Amount\",\n                \"avoidedRiskAmount\": 100,\n                \"avoidedRiskComment\": \"No comment\",\n                \"avoidedRiskType\": \"Safety\",\n                \"currencyType\": \"EUR\",\n                \"localId\": \"EUR\",\n                \"correctiveActionList\": [\n                    {\n                        \"correctiveActionName\": \"Change battery\",\n                        \"correctiveActionNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"technicalRiskList\": [\n                    {\n                        \"technicalRiskName\": \"Fire\",\n                        \"technicalRiskNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"observationList\": [\n                    {\n                        \"observationName\": \"IP not maintained\",\n                        \"observationNameTranslated\": \"string\",\n                        \"language\": \"string\",\n                        \"reference\": \"string\",\n                        \"localId\": \"string\"\n                    }\n                ],\n                \"recommendationCoveredLocations\": [\n                    {\n                        \"locationID\": \"a2L7b000004O4JwEAK\"\n                    }\n                ],\n                \"recommendationCoveredAssets\": [\n                    {\n                        \"assetId\": \"a1a7b000001VwP7AAK\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations?API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations"
+									],
+									"query": [
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve recommendation list based on Assessment / Site",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) ",
+								"key": "X-BFO-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "X-PING-Authorization",
+								"value": "reprehenderit ullamco ad est"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW,a2L12000002RCeREAW\"\n    ],\n    \"assessmentID\": [\n        \"aA67b0000005aSXCAY\"\n    ],\n    \"recommendationStatus\": [\n        \"Open,In progress\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime,MPS Entreprise\"\n    ],\n    \"dueDateMin\": \"2020-03-30\",\n    \"dueDateMax\": \"2020-03-30\",\n    \"riskCategory\": [\n        \"High,Medium\"\n    ],\n    \"keyWord\": \"string\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recommendations/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=true&key-word=reprehenderit ullamco ad est&download=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recommendations",
+								"search"
+							],
+							"query": [
+								{
+									"key": "sorting-by",
+									"value": "reprehenderit ullamco ad est",
+									"description": "Field on which the sorting is done."
+								},
+								{
+									"key": "sorting-order",
+									"value": "reprehenderit ullamco ad est",
+									"description": "ASC or DESC"
+								},
+								{
+									"key": "page-size",
+									"value": "reprehenderit ullamco ad est",
+									"description": "pagination"
+								},
+								{
+									"key": "page",
+									"value": "reprehenderit ullamco ad est",
+									"description": "pagination"
+								},
+								{
+									"key": "reporting",
+									"value": "true",
+									"description": "If true, then the response will be a count of recommendation by status and due date"
+								},
+								{
+									"key": "key-word",
+									"value": "reprehenderit ullamco ad est",
+									"description": "search keywords"
+								},
+								{
+									"key": "download",
+									"value": "true",
+									"description": "If true, the response will be a detailed list of recommendation to download."
+								}
+							]
+						},
+						"description": "Retrieve list of recommendation in summary view"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW,a2L12000002RCeREAW\"\n    ],\n    \"assessmentID\": [\n        \"aA67b0000005aSXCAY\"\n    ],\n    \"recommendationStatus\": [\n        \"Open,In progress\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime,MPS Entreprise\"\n    ],\n    \"dueDateMin\": \"2020-03-30\",\n    \"dueDateMax\": \"2020-03-30\",\n    \"riskCategory\": [\n        \"High,Medium\"\n    ],\n    \"keyWord\": \"string\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=true&key-word=reprehenderit ullamco ad est&download=true&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "true"
+										},
+										{
+											"key": "key-word",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "download",
+											"value": "true"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"totalCount\": 35,\n \"countOverdue\": 7,\n \"countCritical\": 10,\n \"countHigh\": 6,\n \"countMedium\": 4,\n \"countLow\": 15\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW,a2L12000002RCeREAW\"\n    ],\n    \"assessmentID\": [\n        \"aA67b0000005aSXCAY\"\n    ],\n    \"recommendationStatus\": [\n        \"Open,In progress\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime,MPS Entreprise\"\n    ],\n    \"dueDateMin\": \"2020-03-30\",\n    \"dueDateMax\": \"2020-03-30\",\n    \"riskCategory\": [\n        \"High,Medium\"\n    ],\n    \"keyWord\": \"string\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=true&key-word=reprehenderit ullamco ad est&download=true&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "true"
+										},
+										{
+											"key": "key-word",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "download",
+											"value": "true"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW,a2L12000002RCeREAW\"\n    ],\n    \"assessmentID\": [\n        \"aA67b0000005aSXCAY\"\n    ],\n    \"recommendationStatus\": [\n        \"Open,In progress\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime,MPS Entreprise\"\n    ],\n    \"dueDateMin\": \"2020-03-30\",\n    \"dueDateMax\": \"2020-03-30\",\n    \"riskCategory\": [\n        \"High,Medium\"\n    ],\n    \"keyWord\": \"string\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=true&key-word=reprehenderit ullamco ad est&download=true&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "true"
+										},
+										{
+											"key": "key-word",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "download",
+											"value": "true"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW,a2L12000002RCeREAW\"\n    ],\n    \"assessmentID\": [\n        \"aA67b0000005aSXCAY\"\n    ],\n    \"recommendationStatus\": [\n        \"Open,In progress\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime,MPS Entreprise\"\n    ],\n    \"dueDateMin\": \"2020-03-30\",\n    \"dueDateMax\": \"2020-03-30\",\n    \"riskCategory\": [\n        \"High,Medium\"\n    ],\n    \"keyWord\": \"string\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=true&key-word=reprehenderit ullamco ad est&download=true&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "true"
+										},
+										{
+											"key": "key-word",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "download",
+											"value": "true"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW,a2L12000002RCeREAW\"\n    ],\n    \"assessmentID\": [\n        \"aA67b0000005aSXCAY\"\n    ],\n    \"recommendationStatus\": [\n        \"Open,In progress\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime,MPS Entreprise\"\n    ],\n    \"dueDateMin\": \"2020-03-30\",\n    \"dueDateMax\": \"2020-03-30\",\n    \"riskCategory\": [\n        \"High,Medium\"\n    ],\n    \"keyWord\": \"string\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=true&key-word=reprehenderit ullamco ad est&download=true&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "true"
+										},
+										{
+											"key": "key-word",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "download",
+											"value": "true"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW,a2L12000002RCeREAW\"\n    ],\n    \"assessmentID\": [\n        \"aA67b0000005aSXCAY\"\n    ],\n    \"recommendationStatus\": [\n        \"Open,In progress\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime,MPS Entreprise\"\n    ],\n    \"dueDateMin\": \"2020-03-30\",\n    \"dueDateMax\": \"2020-03-30\",\n    \"riskCategory\": [\n        \"High,Medium\"\n    ],\n    \"keyWord\": \"string\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=true&key-word=reprehenderit ullamco ad est&download=true&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "true"
+										},
+										{
+											"key": "key-word",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "download",
+											"value": "true"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) ",
+										"key": "X-BFO-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									},
+									{
+										"key": "X-PING-Authorization",
+										"value": "reprehenderit ullamco ad est"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"siteIds\": [\n        \"a2L12000002RCeREAW,a2L12000002RCeREAW\"\n    ],\n    \"assessmentID\": [\n        \"aA67b0000005aSXCAY\"\n    ],\n    \"recommendationStatus\": [\n        \"Open,In progress\"\n    ],\n    \"assessmentType\": [\n        \"MPS Prime,MPS Entreprise\"\n    ],\n    \"dueDateMin\": \"2020-03-30\",\n    \"dueDateMax\": \"2020-03-30\",\n    \"riskCategory\": [\n        \"High,Medium\"\n    ],\n    \"keyWord\": \"string\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/recommendations/search?sorting-by=reprehenderit ullamco ad est&sorting-order=reprehenderit ullamco ad est&page-size=reprehenderit ullamco ad est&page=reprehenderit ullamco ad est&reporting=true&key-word=reprehenderit ullamco ad est&download=true&API Key=<API Key>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"recommendations",
+										"search"
+									],
+									"query": [
+										{
+											"key": "sorting-by",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "sorting-order",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page-size",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "page",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "reporting",
+											"value": "true"
+										},
+										{
+											"key": "key-word",
+											"value": "reprehenderit ullamco ad est"
+										},
+										{
+											"key": "download",
+											"value": "true"
+										},
+										{
+											"key": "API Key",
+											"value": "<API Key>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Required field is missing: productSku\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "API Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "<API Key>",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation",
+			"type": "string"
+		}
+	]
+}

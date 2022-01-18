@@ -1,0 +1,2202 @@
+-->>>the schema for method get /characteristics 200 response is-->>>
+{
+ "title": "getCharacteristicDetailsResponse1",
+ "required": [
+  "getCharacteristicDetailsResponse"
+ ],
+ "type": "object",
+ "properties": {
+  "getCharacteristicDetailsResponse": {
+   "title": "getCharacteristicDetailsResponse",
+   "type": "object",
+   "properties": {
+    "Characteristic": {
+     "title": "baseCharacteristicBean",
+     "type": "object",
+     "description": "",
+     "properties": {
+      "charId": {
+       "type": "string"
+      },
+      "charKey": {
+       "type": "string"
+      },
+      "defaultLongDescription": {
+       "type": "string"
+      },
+      "defaultShortDescription": {
+       "type": "string"
+      },
+      "sourceSystem": {
+       "type": "string"
+      },
+      "translations": {
+       "title": "translations",
+       "type": "object",
+       "properties": {
+        "translation": {
+         "type": "array",
+         "items": {
+          "title": "baseCharacteristicTranslationBean",
+          "type": "object",
+          "properties": {
+           "locale": {
+            "type": "string"
+           },
+           "longDescription": {
+            "type": "string"
+           },
+           "shortDescription": {
+            "type": "string"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      }
+     }
+    }
+   },
+   "description": ""
+  }
+ }
+}
+
+
+-->>>the schema for method post /products/search 200 response is-->>>
+{
+ "title": "getProductDetailByCommercialRefResponse1",
+ "required": [
+  "getProductDetailByCommercialRefResponse"
+ ],
+ "type": "object",
+ "properties": {
+  "getProductDetailByCommercialRefResponse": {
+   "title": "getProductDetailByCommercialRefResponse",
+   "type": "object",
+   "properties": {
+    "ProductBean": {
+     "title": "productBean",
+     "type": "object",
+     "description": "",
+     "properties": {
+      "globalStatus": {
+       "type": "string"
+      },
+      "oid": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "productId": {
+       "type": "string"
+      },
+      "characteristicCategories": {
+       "title": "characteristicCategories",
+       "type": "object",
+       "properties": {
+        "category": {
+         "type": "array",
+         "items": {
+          "title": "characteristicCategoryBean",
+          "type": "object",
+          "properties": {
+           "name": {
+            "type": "string"
+           },
+           "oid": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "characteristics": {
+            "title": "characteristics",
+            "type": "object",
+            "properties": {
+             "characteristic": {
+              "type": "array",
+              "items": {
+               "title": "characteristicBean",
+               "type": "object",
+               "properties": {
+                "charId": {
+                 "type": "string"
+                },
+                "charKey": {
+                 "type": "string"
+                },
+                "name": {
+                 "type": "string"
+                },
+                "oid": {
+                 "type": "integer",
+                 "format": "int64"
+                },
+                "shownInProductDetails": {
+                 "type": "boolean"
+                },
+                "showInProductList": {
+                 "type": "boolean"
+                },
+                "displayName": {
+                 "type": "string"
+                },
+                "tag": {
+                 "title": "tag",
+                 "type": "object",
+                 "properties": {
+                  "value": {
+                   "type": "array",
+                   "items": {
+                    "title": "characteristicTagBean",
+                    "type": "object",
+                    "properties": {
+                     "value": {
+                      "type": "string"
+                     }
+                    },
+                    "description": ""
+                   },
+                   "description": ""
+                  }
+                 },
+                 "description": ""
+                },
+                "description": {
+                 "type": "string"
+                },
+                "values": {
+                 "title": "values",
+                 "type": "object",
+                 "properties": {
+                  "value": {
+                   "type": "array",
+                   "items": {
+                    "title": "valueBean",
+                    "type": "object",
+                    "properties": {
+                     "charKey": {
+                      "type": "string"
+                     },
+                     "countryIso": {
+                      "type": "string"
+                     },
+                     "countryName": {
+                      "type": "string"
+                     },
+                     "countryOid": {
+                      "type": "integer",
+                      "format": "int64"
+                     },
+                     "lockCase": {
+                      "type": "boolean"
+                     },
+                     "oid": {
+                      "type": "integer",
+                      "format": "int64"
+                     },
+                     "unity": {
+                      "type": "string"
+                     },
+                     "unityId": {
+                      "type": "string"
+                     },
+                     "value": {
+                      "type": "string"
+                     },
+                     "valueId": {
+                      "type": "string"
+                     },
+                     "valueRendition": {
+                      "type": "string"
+                     },
+                     "visible": {
+                      "type": "boolean"
+                     },
+                     "externetUrl": {
+                      "type": "string"
+                     },
+                     "internaldocOid": {
+                      "type": "integer",
+                      "format": "int64"
+                     },
+                     "labelUrl": {
+                      "type": "string"
+                     },
+                     "valueLines": {
+                      "title": "valueLines",
+                      "type": "object",
+                      "properties": {
+                       "valueLine": {
+                        "type": "array",
+                        "items": {
+                         "title": "valueLine",
+                         "type": "object",
+                         "properties": {
+                          "charId": {
+                           "type": "string"
+                          },
+                          "displayOrder": {
+                           "type": "integer",
+                           "format": "int32"
+                          },
+                          "lockCase": {
+                           "type": "boolean"
+                          },
+                          "valuationId": {
+                           "type": "string"
+                          },
+                          "valuationLabel": {
+                           "type": "string"
+                          },
+                          "valueLineItems": {
+                           "title": "valueLineItems",
+                           "type": "object",
+                           "properties": {
+                            "valueLineItem": {
+                             "type": "array",
+                             "items": {
+                              "title": "valueLineItem",
+                              "type": "object",
+                              "properties": {
+                               "charId": {
+                                "type": "string"
+                               },
+                               "charKey": {
+                                "type": "string"
+                               },
+                               "name": {
+                                "type": "string"
+                               },
+                               "valueKey": {
+                                "type": "string"
+                               },
+                               "displayOrder": {
+                                "type": "integer",
+                                "format": "int32"
+                               },
+                               "valuationId": {
+                                "type": "string"
+                               },
+                               "valuationLabel": {
+                                "type": "string"
+                               }
+                              },
+                              "description": ""
+                             },
+                             "description": ""
+                            }
+                           },
+                           "description": ""
+                          }
+                         },
+                         "description": ""
+                        },
+                        "description": ""
+                       }
+                      },
+                      "description": ""
+                     },
+                     "keepValue": {
+                      "type": "boolean"
+                     },
+                     "symbolicToBeDisplayed": {
+                      "type": "string"
+                     },
+                     "textAfter": {
+                      "type": "string"
+                     },
+                     "textBefore": {
+                      "type": "string"
+                     }
+                    },
+                    "description": ""
+                   },
+                   "description": ""
+                  }
+                 },
+                 "description": ""
+                }
+               },
+               "description": ""
+              },
+              "description": ""
+             }
+            },
+            "description": ""
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "commercialReference": {
+       "type": "string"
+      },
+      "commercializedProduct": {
+       "title": "commercializedProductBean",
+       "type": "object",
+       "properties": {
+        "oid": {
+         "type": "integer",
+         "format": "int64"
+        },
+        "brand": {
+         "type": "string"
+        },
+        "commStatus": {
+         "type": "string"
+        },
+        "commercialisationDate": {
+         "type": "string",
+         "format": "date-time"
+        },
+        "commercialized": {
+         "type": "boolean"
+        },
+        "deliveryTime": {
+         "type": "string"
+        },
+        "description": {
+         "type": "string"
+        },
+        "endOfCommercialisationDate": {
+         "type": "string",
+         "format": "date-time"
+        },
+        "endOfServiceDate": {
+         "type": "string",
+         "format": "date-time"
+        },
+        "localeDistributorCode": {
+         "type": "string"
+        },
+        "localeSaleStatus": {
+         "type": "string"
+        },
+        "localeStockStatus": {
+         "type": "string"
+        },
+        "nbDeliveryDays": {
+         "type": "integer",
+         "format": "int32"
+        },
+        "price": {
+         "title": "priceBean",
+         "type": "object",
+         "properties": {
+          "oid": {
+           "type": "integer",
+           "format": "int64"
+          },
+          "comments": {
+           "type": "string"
+          },
+          "currency": {
+           "type": "string"
+          },
+          "price": {
+           "type": "string"
+          },
+          "validFrom": {
+           "type": "string",
+           "format": "date-time"
+          },
+          "validTo": {
+           "type": "string",
+           "format": "date-time"
+          },
+          "value": {
+           "type": "number"
+          }
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "description": {
+       "type": "string"
+      },
+      "documentOids": {
+       "title": "documentOids",
+       "type": "object",
+       "properties": {
+        "oid": {
+         "type": "array",
+         "items": {
+          "type": "integer",
+          "format": "int64"
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "eanCode": {
+       "type": "string"
+      },
+      "epdsDocumentOid": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "greenPremium": {
+       "type": "boolean"
+      },
+      "highligthedCharacteristics": {
+       "title": "highligthedCharacteristics",
+       "type": "object",
+       "properties": {
+        "characteristic": {
+         "type": "array",
+         "items": {
+          "title": "characteristicBean",
+          "type": "object",
+          "properties": {
+           "charId": {
+            "type": "string"
+           },
+           "charKey": {
+            "type": "string"
+           },
+           "name": {
+            "type": "string"
+           },
+           "oid": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "shownInProductDetails": {
+            "type": "boolean"
+           },
+           "showInProductList": {
+            "type": "boolean"
+           },
+           "displayName": {
+            "type": "string"
+           },
+           "tag": {
+            "title": "tag",
+            "type": "object",
+            "properties": {
+             "value": {
+              "type": "array",
+              "items": {
+               "title": "characteristicTagBean",
+               "type": "object",
+               "properties": {
+                "value": {
+                 "type": "string"
+                }
+               },
+               "description": ""
+              },
+              "description": ""
+             }
+            },
+            "description": ""
+           },
+           "description": {
+            "type": "string"
+           },
+           "values": {
+            "title": "values",
+            "type": "object",
+            "properties": {
+             "value": {
+              "type": "array",
+              "items": {
+               "title": "valueBean",
+               "type": "object",
+               "properties": {
+                "charKey": {
+                 "type": "string"
+                },
+                "countryIso": {
+                 "type": "string"
+                },
+                "countryName": {
+                 "type": "string"
+                },
+                "countryOid": {
+                 "type": "integer",
+                 "format": "int64"
+                },
+                "lockCase": {
+                 "type": "boolean"
+                },
+                "oid": {
+                 "type": "integer",
+                 "format": "int64"
+                },
+                "unity": {
+                 "type": "string"
+                },
+                "unityId": {
+                 "type": "string"
+                },
+                "value": {
+                 "type": "string"
+                },
+                "valueId": {
+                 "type": "string"
+                },
+                "valueRendition": {
+                 "type": "string"
+                },
+                "visible": {
+                 "type": "boolean"
+                },
+                "externetUrl": {
+                 "type": "string"
+                },
+                "internaldocOid": {
+                 "type": "integer",
+                 "format": "int64"
+                },
+                "labelUrl": {
+                 "type": "string"
+                },
+                "valueLines": {
+                 "title": "valueLines",
+                 "type": "object",
+                 "properties": {
+                  "valueLine": {
+                   "type": "array",
+                   "items": {
+                    "title": "valueLine",
+                    "type": "object",
+                    "properties": {
+                     "charId": {
+                      "type": "string"
+                     },
+                     "displayOrder": {
+                      "type": "integer",
+                      "format": "int32"
+                     },
+                     "lockCase": {
+                      "type": "boolean"
+                     },
+                     "valuationId": {
+                      "type": "string"
+                     },
+                     "valuationLabel": {
+                      "type": "string"
+                     },
+                     "valueLineItems": {
+                      "title": "valueLineItems",
+                      "type": "object",
+                      "properties": {
+                       "valueLineItem": {
+                        "type": "array",
+                        "items": {
+                         "title": "valueLineItem",
+                         "type": "object",
+                         "properties": {
+                          "charId": {
+                           "type": "string"
+                          },
+                          "charKey": {
+                           "type": "string"
+                          },
+                          "name": {
+                           "type": "string"
+                          },
+                          "valueKey": {
+                           "type": "string"
+                          },
+                          "displayOrder": {
+                           "type": "integer",
+                           "format": "int32"
+                          },
+                          "valuationId": {
+                           "type": "string"
+                          },
+                          "valuationLabel": {
+                           "type": "string"
+                          }
+                         },
+                         "description": ""
+                        },
+                        "description": ""
+                       }
+                      },
+                      "description": ""
+                     }
+                    },
+                    "description": ""
+                   },
+                   "description": ""
+                  }
+                 },
+                 "description": ""
+                },
+                "keepValue": {
+                 "type": "boolean"
+                },
+                "symbolicToBeDisplayed": {
+                 "type": "string"
+                },
+                "textAfter": {
+                 "type": "string"
+                },
+                "textBefore": {
+                 "type": "string"
+                }
+               },
+               "description": ""
+              },
+              "description": ""
+             }
+            },
+            "description": ""
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "logoDocumentOid": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "longDescription": {
+       "type": "string"
+      },
+      "parentNodeOid": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "parentRangeId": {
+       "type": "string"
+      },
+      "parentRangeOid": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "pictureDocumentOid": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "parents": {
+       "title": "parents",
+       "type": "object",
+       "properties": {
+        "parent": {
+         "type": "array",
+         "items": {
+          "title": "productParentBean",
+          "type": "object",
+          "properties": {
+           "nodeOid": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "rangeId": {
+            "type": "string"
+           },
+           "rangeOid": {
+            "type": "integer",
+            "format": "int64"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "ranges": {
+       "title": "ranges",
+       "type": "object",
+       "properties": {
+        "range": {
+         "type": "array",
+         "items": {
+          "title": "rangeLightBean",
+          "type": "object",
+          "properties": {
+           "id": {
+            "type": "string"
+           },
+           "oid": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "name": {
+            "type": "string"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "semanticCharacteristics": {
+       "title": "semanticCharacteristics",
+       "type": "object",
+       "properties": {
+        "characteristic": {
+         "type": "array",
+         "items": {
+          "title": "characteristicBean",
+          "type": "object",
+          "properties": {
+           "charId": {
+            "type": "string"
+           },
+           "charKey": {
+            "type": "string"
+           },
+           "name": {
+            "type": "string"
+           },
+           "oid": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "shownInProductDetails": {
+            "type": "boolean"
+           },
+           "showInProductList": {
+            "type": "boolean"
+           },
+           "displayName": {
+            "type": "string"
+           },
+           "tag": {
+            "title": "tag",
+            "type": "object",
+            "properties": {
+             "value": {
+              "type": "array",
+              "items": {
+               "title": "characteristicTagBean",
+               "type": "object",
+               "properties": {
+                "value": {
+                 "type": "string"
+                }
+               },
+               "description": ""
+              },
+              "description": ""
+             }
+            },
+            "description": ""
+           },
+           "description": {
+            "type": "string"
+           },
+           "values": {
+            "title": "values",
+            "type": "object",
+            "properties": {
+             "value": {
+              "type": "array",
+              "items": {
+               "title": "valueBean",
+               "type": "object",
+               "properties": {
+                "charKey": {
+                 "type": "string"
+                },
+                "countryIso": {
+                 "type": "string"
+                },
+                "countryName": {
+                 "type": "string"
+                },
+                "countryOid": {
+                 "type": "integer",
+                 "format": "int64"
+                },
+                "lockCase": {
+                 "type": "boolean"
+                },
+                "oid": {
+                 "type": "integer",
+                 "format": "int64"
+                },
+                "unity": {
+                 "type": "string"
+                },
+                "unityId": {
+                 "type": "string"
+                },
+                "value": {
+                 "type": "string"
+                },
+                "valueId": {
+                 "type": "string"
+                },
+                "valueRendition": {
+                 "type": "string"
+                },
+                "visible": {
+                 "type": "boolean"
+                },
+                "externetUrl": {
+                 "type": "string"
+                },
+                "internaldocOid": {
+                 "type": "integer",
+                 "format": "int64"
+                },
+                "labelUrl": {
+                 "type": "string"
+                },
+                "valueLines": {
+                 "title": "valueLines",
+                 "type": "object",
+                 "properties": {
+                  "valueLine": {
+                   "type": "array",
+                   "items": {
+                    "title": "valueLine",
+                    "type": "object",
+                    "properties": {
+                     "charId": {
+                      "type": "string"
+                     },
+                     "displayOrder": {
+                      "type": "integer",
+                      "format": "int32"
+                     },
+                     "lockCase": {
+                      "type": "boolean"
+                     },
+                     "valuationId": {
+                      "type": "string"
+                     },
+                     "valuationLabel": {
+                      "type": "string"
+                     },
+                     "valueLineItems": {
+                      "title": "valueLineItems",
+                      "type": "object",
+                      "properties": {
+                       "valueLineItem": {
+                        "type": "array",
+                        "items": {
+                         "title": "valueLineItem",
+                         "type": "object",
+                         "properties": {
+                          "charId": {
+                           "type": "string"
+                          },
+                          "charKey": {
+                           "type": "string"
+                          },
+                          "name": {
+                           "type": "string"
+                          },
+                          "valueKey": {
+                           "type": "string"
+                          },
+                          "displayOrder": {
+                           "type": "integer",
+                           "format": "int32"
+                          },
+                          "valuationId": {
+                           "type": "string"
+                          },
+                          "valuationLabel": {
+                           "type": "string"
+                          }
+                         },
+                         "description": ""
+                        },
+                        "description": ""
+                       }
+                      },
+                      "description": ""
+                     }
+                    },
+                    "description": ""
+                   },
+                   "description": ""
+                  }
+                 },
+                 "description": ""
+                },
+                "keepValue": {
+                 "type": "boolean"
+                },
+                "symbolicToBeDisplayed": {
+                 "type": "string"
+                },
+                "textAfter": {
+                 "type": "string"
+                },
+                "textBefore": {
+                 "type": "string"
+                }
+               },
+               "description": ""
+              },
+              "description": ""
+             }
+            },
+            "description": ""
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "shortDescription": {
+       "type": "string"
+      },
+      "documentReferences": {
+       "title": "documentReferences1",
+       "type": "object",
+       "properties": {
+        "reference": {
+         "type": "array",
+         "items": {
+          "title": "documentReferenceBean",
+          "type": "object",
+          "properties": {
+           "docType": {
+            "type": "string"
+           },
+           "docTypeOid": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "scoped": {
+            "type": "boolean"
+           },
+           "bannerURL": {
+            "type": "string"
+           },
+           "main": {
+            "type": "boolean"
+           },
+           "reference": {
+            "type": "string"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "pictureDocumentReference": {
+       "type": "string"
+      },
+      "pictures": {
+       "title": "pictures",
+       "type": "object",
+       "properties": {
+        "picture": {
+         "type": "array",
+         "items": {
+          "title": "pictureBean",
+          "type": "object",
+          "properties": {
+           "description": {
+            "type": "string"
+           },
+           "id": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "pictureDocumentOid": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "pictureDocumentReference": {
+            "type": "string"
+           },
+           "pictureType": {
+            "type": "string"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "type": {
+       "type": "string"
+      },
+      "subType": {
+       "type": "string"
+      },
+      "specificCountries": {
+       "title": "specificCountries",
+       "type": "object",
+       "properties": {
+        "country": {
+         "type": "array",
+         "items": {
+          "title": "specificCountriesBean",
+          "type": "object",
+          "properties": {
+           "isoCountry": {
+            "type": "string"
+           },
+           "publicationdate": {
+            "type": "string",
+            "format": "date-time"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "featureAndBenefitList": {
+       "title": "featureAndBenefitList",
+       "type": "object",
+       "properties": {
+        "featureAndBenefit": {
+         "type": "array",
+         "items": {
+          "title": "productFeatureBenefitBean",
+          "type": "object",
+          "properties": {
+           "categoryId": {
+            "type": "string"
+           },
+           "featureAndBenefitId": {
+            "type": "string"
+           },
+           "featureName": {
+            "type": "string"
+           },
+           "benefitValue": {
+            "type": "string"
+           },
+           "category": {
+            "type": "string"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "pimAssets": {
+       "title": "pimAssets",
+       "type": "object",
+       "properties": {
+        "pimAsset": {
+         "type": "array",
+         "items": {
+          "title": "productPimAssetBean",
+          "type": "object",
+          "properties": {
+           "assetId": {
+            "type": "string"
+           },
+           "displayOrder": {
+            "type": "integer",
+            "format": "int32"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "isEnergyStarCompliant": {
+       "type": "boolean"
+      },
+      "shoppable": {
+       "title": "shoppableBean",
+       "type": "object",
+       "properties": {
+        "consumers": {
+         "type": "boolean"
+        },
+        "professionals": {
+         "type": "boolean"
+        }
+       }
+      }
+     }
+    }
+   },
+   "description": ""
+  }
+ }
+}
+
+
+-->>>the schema for method post /nodes/search 200 response is-->>>
+{
+ "title": "getNodeDetailsResponse1",
+ "required": [
+  "getNodeDetailsResponse"
+ ],
+ "type": "object",
+ "properties": {
+  "getNodeDetailsResponse": {
+   "title": "getNodeDetailsResponse",
+   "type": "object",
+   "properties": {
+    "NodeBean": {
+     "title": "nodeBean",
+     "type": "object",
+     "description": "",
+     "properties": {
+      "displayOrder": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "id": {
+       "type": "string"
+      },
+      "name": {
+       "type": "string"
+      },
+      "oid": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "parentNodeId": {
+       "type": "string"
+      },
+      "parentNodeOid": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "parentRangeId": {
+       "type": "string"
+      },
+      "parentRangeOid": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "configurable": {
+       "title": "configurableBean",
+       "type": "object",
+       "properties": {
+        "comRef": {
+         "type": "string"
+        },
+        "oid": {
+         "type": "integer",
+         "format": "int64"
+        },
+        "configurationMode": {
+         "type": "string"
+        },
+        "description": {
+         "type": "string"
+        }
+       },
+       "description": ""
+      },
+      "description": {
+       "type": "string"
+      },
+      "nbProducts": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "pictureDocumentOid": {
+       "type": "integer",
+       "format": "int64"
+      },
+      "pictureDocumentReference": {
+       "type": "string"
+      },
+      "presentationPages": {
+       "title": "presentationPages",
+       "type": "object",
+       "properties": {
+        "presentationPage": {
+         "type": "array",
+         "items": {
+          "title": "presentationPageBean",
+          "type": "object",
+          "properties": {
+           "id": {
+            "type": "integer",
+            "format": "int32"
+           },
+           "richText": {
+            "type": "string"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "products": {
+       "title": "products1",
+       "type": "object",
+       "properties": {
+        "product": {
+         "type": "array",
+         "items": {
+          "title": "productReferenceBean",
+          "type": "object",
+          "properties": {
+           "commercialReference": {
+            "type": "string"
+           },
+           "oid": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "productId": {
+            "type": "string"
+           },
+           "visibleInNav": {
+            "type": "boolean"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "relatedCharBeans": {
+       "title": "relatedCharBeans",
+       "type": "object",
+       "properties": {
+        "relatedCharBean": {
+         "type": "array",
+         "items": {
+          "title": "relatedCharBean",
+          "type": "object",
+          "properties": {
+           "charId": {
+            "type": "string"
+           },
+           "charKey": {
+            "type": "string"
+           },
+           "displayName": {
+            "type": "string"
+           },
+           "displayOrder": {
+            "type": "integer",
+            "format": "int32"
+           },
+           "tabCharId": {
+            "type": "string"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "subNodeOids": {
+       "type": "array",
+       "description": "",
+       "nullable": true,
+       "items": {
+        "type": "integer",
+        "format": "int64"
+       }
+      },
+      "visible": {
+       "type": "boolean"
+      },
+      "documentReferences": {
+       "title": "documentReferences",
+       "type": "object",
+       "properties": {
+        "reference": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      }
+     }
+    }
+   },
+   "description": ""
+  }
+ }
+}
+
+
+-->>>the schema for method post /product-relationships/search 200 response is-->>>
+{
+ "title": "getProductRelationshipsDetailsResponse1",
+ "required": [
+  "getProductRelationshipsDetailsResponse"
+ ],
+ "type": "object",
+ "properties": {
+  "getProductRelationshipsDetailsResponse": {
+   "title": "getProductRelationshipsDetailsResponse",
+   "type": "object",
+   "properties": {
+    "ProductRelationshipBean": {
+     "title": "productRelationshipBean",
+     "type": "object",
+     "properties": {
+      "srcProductCommRef": {
+       "type": "string"
+      },
+      "relationships": {
+       "title": "relationships",
+       "type": "object",
+       "properties": {
+        "relationship": {
+         "type": "array",
+         "items": {
+          "title": "productRelationshipLinkBean",
+          "type": "object",
+          "properties": {
+           "category": {
+            "type": "string"
+           },
+           "closeOffPressure": {
+            "type": "integer",
+            "format": "int32"
+           },
+           "componentQuantity": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "componentTitle": {
+            "type": "string"
+           },
+           "destProductComRef": {
+            "type": "string"
+           },
+           "externalComment": {
+            "type": "string"
+           },
+           "lossOfPowerPosition": {
+            "type": "string"
+           },
+           "ranking": {
+            "type": "integer",
+            "format": "int64"
+           },
+           "requiredLinkage": {
+            "type": "string"
+           },
+           "temperatureAmbientOperatingMaximum": {
+            "type": "integer",
+            "format": "int32"
+           },
+           "type": {
+            "type": "string"
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "categoryTranslations": {
+       "title": "categoryTranslations",
+       "type": "object",
+       "properties": {
+        "category": {
+         "type": "array",
+         "items": {
+          "title": "productRelationshipCategoryTranslationBean",
+          "type": "object",
+          "properties": {
+           "name": {
+            "type": "string"
+           },
+           "translation": {
+            "type": "array",
+            "items": {
+             "title": "translationBean",
+             "type": "object",
+             "description": "",
+             "properties": {
+              "locale": {
+               "type": "string"
+              },
+              "translation": {
+               "type": "string"
+              }
+             }
+            },
+            "description": ""
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "componentTitleTranslations": {
+       "title": "componentTitleTranslations",
+       "type": "object",
+       "properties": {
+        "componentTitle": {
+         "type": "array",
+         "items": {
+          "title": "componentTitleTranslationBean",
+          "type": "object",
+          "properties": {
+           "id": {
+            "type": "string"
+           },
+           "translation": {
+            "type": "array",
+            "items": {
+             "title": "translationBean",
+             "type": "object",
+             "description": "",
+             "properties": {
+              "locale": {
+               "type": "string"
+              },
+              "translation": {
+               "type": "string"
+              }
+             }
+            },
+            "description": ""
+           }
+          },
+          "description": ""
+         },
+         "description": ""
+        }
+       },
+       "description": ""
+      },
+      "errorCode": {
+       "type": "integer",
+       "format": "int32"
+      },
+      "errorMessage": {
+       "type": "string"
+      }
+     },
+     "description": ""
+    }
+   },
+   "description": ""
+  }
+ }
+}
+
+
+-->>>the schema for method post /scoped-product-details/search 200 response is-->>>
+{
+ "type": "object",
+ "properties": {
+  "productId": {
+   "type": "string",
+   "description": "id of the product. its equal to commercial ref for all ops product. different for EncycloPedia product"
+  },
+  "commercialReference": {
+   "type": "string",
+   "description": "commercial reference of the product"
+  },
+  "eanNumber": {
+   "type": "string",
+   "description": "EAN number of the product"
+  },
+  "pictureDocumentOid": {
+   "type": "integer",
+   "format": "int64",
+   "description": "oid of the Document that hold the images of the product (deprecated use pictureDocumentReference)"
+  },
+  "isGreenPremium": {
+   "type": "boolean",
+   "description": "is the product is green premium"
+  },
+  "pictureDocumentReference": {
+   "type": "string",
+   "description": "reference of the Document that hold the images of the product"
+  },
+  "shortDescription": {
+   "type": "array",
+   "description": "translated short decription of the product. Can be filtred using the input parameter localeReferenceList",
+   "items": {
+    "type": "object",
+    "properties": {
+     "locale": {
+      "type": "string",
+      "description": "name of the locale en_GB,fr_FR"
+     },
+     "value": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "brand": {
+   "type": "array",
+   "description": "brand of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country",
+   "items": {
+    "type": "object",
+    "properties": {
+     "localization": {
+      "type": "string",
+      "description": "name of the localization FR,CA,DE"
+     },
+     "value": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "commercialStatus": {
+   "type": "array",
+   "description": "commercialStatus of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country",
+   "items": {
+    "type": "object",
+    "properties": {
+     "localization": {
+      "type": "string",
+      "description": "name of the localization FR,CA,DE"
+     },
+     "value": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "isCommercialized": {
+   "type": "array",
+   "description": "is the product commercialized in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country",
+   "items": {
+    "type": "object",
+    "properties": {
+     "localization": {
+      "type": "string",
+      "description": "name of the localization FR,CA,DE"
+     },
+     "value": {
+      "type": "boolean"
+     }
+    }
+   }
+  },
+  "partNumber": {
+   "type": "array",
+   "description": "partNumber of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country",
+   "items": {
+    "type": "object",
+    "properties": {
+     "localization": {
+      "type": "string",
+      "description": "name of the localization FR,CA,DE"
+     },
+     "value": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "price": {
+   "type": "array",
+   "description": "price of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country",
+   "items": {
+    "type": "object",
+    "properties": {
+     "localization": {
+      "type": "string",
+      "description": "name of the localization FR,CA,DE"
+     },
+     "value": {
+      "type": "number",
+      "format": "float"
+     }
+    }
+   }
+  },
+  "currency": {
+   "type": "array",
+   "description": "currency of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country",
+   "items": {
+    "type": "object",
+    "properties": {
+     "localization": {
+      "type": "string",
+      "description": "name of the localization FR,CA,DE"
+     },
+     "value": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "localeDistributorCode": {
+   "type": "array",
+   "description": "localeDistributorCode of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country",
+   "items": {
+    "type": "object",
+    "properties": {
+     "localization": {
+      "type": "string",
+      "description": "name of the localization FR,CA,DE"
+     },
+     "value": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "localeStockStatus": {
+   "type": "array",
+   "description": "localeStockStatus of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country",
+   "items": {
+    "type": "object",
+    "properties": {
+     "localization": {
+      "type": "string",
+      "description": "name of the localization FR,CA,DE"
+     },
+     "value": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "scopedData": {
+   "type": "array",
+   "description": "data that can change according to which target see them.",
+   "items": {
+    "type": "object",
+    "properties": {
+     "target": {
+      "type": "object",
+      "properties": {
+       "brand": {
+        "type": "string",
+        "description": "e.g \"Schneider Electric\" \"APC\" \"Pelco\""
+       },
+       "channel": {
+        "type": "string"
+       },
+       "country": {
+        "type": "string",
+        "description": "e.g \"WW\" \"US\" \"GB\" \"FR\""
+       },
+       "function": {
+        "type": "string"
+       },
+       "market": {
+        "type": "string"
+       },
+       "privacy": {
+        "type": "string"
+       },
+       "program": {
+        "type": "string"
+       },
+       "project": {
+        "type": "string"
+       }
+      }
+     },
+     "firstParentRangeId": {
+      "type": "string",
+      "description": "among all range attached to this product in this target, select the older created one"
+     },
+     "epdsDocumentReference": {
+      "type": "array",
+      "description": "available epdsDocument for this product and target in the locale given in input",
+      "items": {
+       "type": "object",
+       "properties": {
+        "locale": {
+         "type": "string",
+         "description": "name of the locale en_GB,fr_FR"
+        },
+        "value": {
+         "type": "string"
+        }
+       }
+      }
+     },
+     "epdsDocumentOid": {
+      "type": "array",
+      "description": "available epdsDocument for this product and target in the locale given in input",
+      "items": {
+       "type": "object",
+       "properties": {
+        "locale": {
+         "type": "string",
+         "description": "name of the locale en_GB,fr_FR"
+        },
+        "value": {
+         "type": "integer",
+         "format": "int64"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "epdsDocumentReferenceData": {
+   "type": "array",
+   "description": "translated epdsDocumentReferenceData of the product. Can be filtred using the input parameter localeReferenceList",
+   "items": {
+    "type": "object",
+    "properties": {
+     "locale": {
+      "type": "string",
+      "description": "name of the locale en_GB,fr_FR"
+     },
+     "value": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "longDescription": {
+   "type": "array",
+   "description": "translated long decription of the product. Can be filtred using the input parameter localeReferenceList",
+   "items": {
+    "type": "object",
+    "properties": {
+     "locale": {
+      "type": "string",
+      "description": "name of the locale en_GB,fr_FR"
+     },
+     "value": {
+      "type": "string"
+     },
+     "country": {
+      "type": "string",
+      "description": "e.g GB FR"
+     }
+    }
+   }
+  },
+  "type": {
+   "type": "array",
+   "description": "type.",
+   "items": {
+    "type": "object",
+    "properties": {
+     "locale": {
+      "type": "string",
+      "description": "name of the locale en_GB,fr_FR"
+     },
+     "value": {
+      "type": "string"
+     },
+     "country": {
+      "type": "string",
+      "description": "e.g GB FR"
+     }
+    }
+   }
+  },
+  "subType": {
+   "type": "array",
+   "description": "subType.",
+   "items": {
+    "type": "object",
+    "properties": {
+     "locale": {
+      "type": "string",
+      "description": "name of the locale en_GB,fr_FR"
+     },
+     "value": {
+      "type": "string"
+     },
+     "country": {
+      "type": "string",
+      "description": "e.g GB FR"
+     }
+    }
+   }
+  },
+  "stockCode": {
+   "type": "array",
+   "description": "stockCode of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country",
+   "items": {
+    "type": "object",
+    "properties": {
+     "localization": {
+      "type": "string",
+      "description": "name of the localization FR,CA,DE"
+     },
+     "value": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "isVisibleInNav": {
+   "type": "array",
+   "description": "available visibleInNav for this product and target",
+   "items": {
+    "type": "object",
+    "properties": {
+     "localization": {
+      "type": "string",
+      "description": "name of the localization FR,CA,DE"
+     },
+     "value": {
+      "type": "boolean"
+     }
+    }
+   }
+  },
+  "isEnergyStarCompliant": {
+   "type": "boolean",
+   "description": "is the product is energy star compliant",
+   "default": false
+  }
+ }
+}
+
+
+-->>>the schema for method post /scoped-product-values/search 200 response is-->>>
+{
+ "type": "object",
+ "properties": {
+  "commercialReference": {
+   "type": "string",
+   "description": "its equal to commercial ref for all ops product. different for EncycloPedia product"
+  },
+  "valueList": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "significant": {
+      "type": "boolean",
+      "description": "Is this product value is significant for at least one node of the offer navigation. usefull only if fetchSignificantValueListOnly=false"
+     },
+     "char": {
+      "type": "object",
+      "properties": {
+       "name": {
+        "type": "string",
+        "description": "Characteristic's user friendly name not final customer translation see transList"
+       },
+       "charId": {
+        "type": "string",
+        "description": "Characteristic's char_id"
+       },
+       "transList": {
+        "type": "array",
+        "description": "on demande",
+        "items": {
+         "type": "object",
+         "properties": {
+          "value": {
+           "type": "string",
+           "description": "translated value"
+          },
+          "locale": {
+           "type": "string",
+           "description": "official iso locale e.g en_GB fr_FR"
+          }
+         }
+        }
+       }
+      }
+     },
+     "subCharList": {
+      "type": "array",
+      "description": "the sub char data (ids and translation) in case of a tabular char",
+      "items": {
+       "type": "object",
+       "properties": {
+        "name": {
+         "type": "string",
+         "description": "Characteristic's user friendly name not final customer translation see transList"
+        },
+        "charId": {
+         "type": "string",
+         "description": "Characteristic's char_id"
+        },
+        "transList": {
+         "type": "array",
+         "description": "on demande",
+         "items": {
+          "type": "object",
+          "properties": {
+           "value": {
+            "type": "string",
+            "description": "translated value"
+           },
+           "locale": {
+            "type": "string",
+            "description": "official iso locale e.g en_GB fr_FR"
+           }
+          }
+         }
+        }
+       }
+      }
+     },
+     "lineList": {
+      "type": "array",
+      "description": "returned only in case fetchConf fetchLine=true.  line data.",
+      "items": {
+       "type": "object",
+       "properties": {
+        "transList": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "value": {
+            "type": "string",
+            "description": "translated value"
+           },
+           "locale": {
+            "type": "string",
+            "description": "official iso locale e.g en_GB fr_FR"
+           }
+          }
+         }
+        },
+        "itemList": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "charId": {
+            "type": "string",
+            "description": "id of the char described above in ProductValue char or subCharList"
+           },
+           "transList": {
+            "type": "array",
+            "items": {
+             "type": "object",
+             "properties": {
+              "value": {
+               "type": "string",
+               "description": "translated value"
+              },
+              "locale": {
+               "type": "string",
+               "description": "official iso locale e.g en_GB fr_FR"
+              }
+             }
+            }
+           }
+          },
+          "description": "contains details about value item, data of a simple char or sub char data in a tabluar case"
+         }
+        }
+       },
+       "description": "Its should contains details about value line. Not implemented yet"
+      }
+     },
+     "itemList": {
+      "type": "array",
+      "description": "returned only in case fetchConf fetchLine=false",
+      "items": {
+       "type": "object",
+       "properties": {
+        "charId": {
+         "type": "string",
+         "description": "id of the char described above in ProductValue char or subCharList"
+        },
+        "transList": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "value": {
+            "type": "string",
+            "description": "translated value"
+           },
+           "locale": {
+            "type": "string",
+            "description": "official iso locale e.g en_GB fr_FR"
+           }
+          }
+         }
+        }
+       },
+       "description": "contains details about value item, data of a simple char or sub char data in a tabluar case"
+      }
+     }
+    },
+    "description": "producValue is one element from the product datasheet it contains the charname and all the valuation simple or tabular, mono or multi valuatied"
+   }
+  }
+ }
+}
+
+
+-->>>the schema for method post /competitor-crs/search 200 response is-->>>
+{
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "description": "id of competitor"
+  },
+  "name": {
+   "type": "string",
+   "description": "name of competitor"
+  },
+  "manufacturer": {
+   "type": "string",
+   "description": "manufacturer of competitor"
+  },
+  "description": {
+   "type": "string",
+   "description": "description of competitor for the requested localization"
+  }
+ }
+}
+
+
+-->>>the schema for method get /product-listings 200 response is-->>>
+{
+ "type": "object",
+ "properties": {
+  "parentNodeId": {
+   "type": "string",
+   "description": "the product listing node id of its parent node"
+  },
+  "displayOrder": {
+   "type": "integer",
+   "format": "int64",
+   "description": "the display order of the requested node for the requested country (WW by default if no display order for the requested locale)"
+  },
+  "parentCategory": {
+   "type": "string",
+   "description": "the category key of the requested node"
+  },
+  "name": {
+   "type": "string",
+   "description": "the name of the requested node for the requested locale (en_GB by default if no translation for the requested locale)"
+  },
+  "facets": {
+   "type": "array",
+   "description": "the list of facets related to the requested node",
+   "items": {
+    "type": "object",
+    "properties": {
+     "facetId": {
+      "type": "string",
+      "description": "the id of the characteristic"
+     },
+     "displayOrder": {
+      "type": "integer",
+      "format": "int64",
+      "description": "facet's display order for the requested country"
+     }
+    }
+   }
+  },
+  "products": {
+   "type": "array",
+   "description": "the list of products related to the requested node",
+   "items": {
+    "type": "object",
+    "properties": {
+     "commRef": {
+      "type": "string",
+      "description": "product's commercial reference"
+     },
+     "displayOrder": {
+      "type": "integer",
+      "format": "int64",
+      "description": "product's display order for the requested country"
+     }
+    }
+   }
+  }
+ }
+}
+
+
+-->>>the schema for method post /competitor-crs/relationships/search 200 response is-->>>
+{
+ "type": "object",
+ "properties": {
+  "competitorId": {
+   "type": "string",
+   "description": "id of the competitorcr(the requested id)"
+  },
+  "relationships": {
+   "type": "array",
+   "description": "array of COMPETITOR_REL for the requested competitor_cr.",
+   "items": {
+    "type": "object",
+    "properties": {
+     "competitorQty": {
+      "type": "integer"
+     },
+     "targets": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "commRef": {
+         "type": "string"
+        },
+        "id": {
+         "type": "string"
+        },
+        "quantity": {
+         "type": "integer"
+        },
+        "ranking": {
+         "type": "integer",
+         "description": "RANKING for the requested target country"
+        },
+        "audience": {
+         "type": "string",
+         "description": "AUDIENCE name for the requested target country"
+        },
+        "comment": {
+         "type": "string",
+         "description": "COMMENT for the requested target country / locale"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+
+

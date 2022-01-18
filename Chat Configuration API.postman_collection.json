@@ -1,0 +1,1084 @@
+{
+	"info": {
+		"_postman_id": "6ce4436b-147a-445f-9091-91f4df180366",
+		"name": "Chat Configuration API",
+		"description": "This API supports share Chat configuration to facilitate chat integration across platforms, based on below : country, language, platform, optionally: Customer Classification, Contract (Eclipse user or not), Product Details (Category, Sub-category, Range) and Subject.\nThis API also allows customer facing applications to retrieve the case resolving agent associated to the case by providing a case number. This functionality is majorly consumed to know agent availability on chat.\n\nContact Support:\n Name: Pooja Thayil\n Email: pooja.suresh@se.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Chat configurations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text",
+						"description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+					},
+					{
+						"key": "X-BFO-Authorization",
+						"value": "{{bfo_token}}",
+						"type": "text",
+						"description": "Represents the bFO Access Token to access to Backend system"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/configurations?country=ES&language=es&application=Seamless&classL1=WD&includeTranslations=all",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"configurations"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "ES",
+							"description": "(Required) Represents the Country ISO Code"
+						},
+						{
+							"key": "language",
+							"value": "es",
+							"description": "(Required) Represents the Language ISO Code"
+						},
+						{
+							"key": "application",
+							"value": "Seamless",
+							"description": "(Required) Represents the source application (ex: PRM, Eclipse...)"
+						},
+						{
+							"key": "classL1",
+							"value": "WD",
+							"description": "Represents the list of primary account classifications separated by comma"
+						},
+						{
+							"key": "includeTranslations",
+							"value": "all",
+							"description": "Represents the context of the chat, it can be either case or product"
+						}
+					]
+				},
+				"description": "This API returns the configuration of the chat components according to input parameters (language, country code, application).\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response.\n"
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users",
+								"key": "X-IDMS-Authorization",
+								"value": " Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/configurations?country=minim nostrud quis&language=minim nostrud quis&application=minim nostrud quis&classL1=minim nostrud quis&context=minim nostrud quis&productCategory=minim nostrud quis&productSubCategory=minim nostrud quis&productRange=minim nostrud quis&includeTranslations=minim nostrud quis&contractId=minim nostrud quis&servicePlanIds=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"configurations"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "language",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "application",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "classL1",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "context",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productSubCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productRange",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "includeTranslations",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "contractId",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "servicePlanIds",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"userProfile\": {\n  \"lastName\": \"ut amet cupidatat labore\",\n  \"firstName\": \"Lorem\",\n  \"businessType\": \"laboris anim Lorem eiusmod\",\n  \"areaOfFocus\": \"in ut\",\n  \"accountId\": \"dolore mollit in\",\n  \"contactId\": \"officia ut voluptate\",\n  \"AIL\": \"mollit e\",\n  \"accountVIP\": false\n },\n \"translations\": [\n  {\n   \"tokens\": {\n    \"unavailableMessage\": \"commodo\",\n    \"unavailableContactPageLinkLabel\": \"officia\",\n    \"startChat\": \"voluptate aliquip incididunt magna\",\n    \"routingMenuChatAboutProduct\": \"laborum ad et\",\n    \"routingMenuUnavailableOptions\": \"adipisici\",\n    \"routingMenuOtherInquiries\": \"do minim qui veniam\",\n    \"routingMenuHeaderQuestion\": \"Excepteur mollit\",\n    \"routingMenuChatWithCaseResolvingAgent\": \"elit ut\",\n    \"proactiveChatStandardQuestion\": \"consectetur nostrud dolore minim\",\n    \"prechatWaitingMessage\": \"deserunt nostrud est sit\",\n    \"prechatEmail\": \"culpa ad deserunt eu\",\n    \"prechatEmailError\": \"aliqua elit pariatur\",\n    \"prechatFirstName\": \"sint\",\n    \"prechatLastName\": \"aliqua tempor\",\n    \"prechatGDPR\": \"enim\",\n    \"prechatPhone\": \"dolor cillum Duis\",\n    \"prechatPhoneError\": \"officia ea tempor\",\n    \"prechatErrorMessage\": \"velit\",\n    \"prechatDescription\": \"fugiat minim\",\n    \"prechatDescriptionLabel\": \"deserun\",\n    \"prechatDescriptionError\": \"sint incididunt aliqua mollit\",\n    \"prechatDescriptionCharactersLeft\": \"qui labore\",\n    \"prechatCaseNumber\": \"dolor dolor\",\n    \"prechatCaseNumberLabel\": \"esse amet\",\n    \"contactUsOnlineMessage\": \"in cillum laborum cupidatat\",\n    \"contactUsHeader\": \"dolor sunt\",\n    \"contactUsChatUnavailable\": \"pariatur qui\",\n    \"contactCenter\": \"pariatur\",\n    \"chatWithUs\": \"qui aliquip laborum veniam\",\n    \"browserAlert\": \"esse minim\",\n    \"back\": \"laborum anim\"\n   },\n   \"language\": \"dolore\"\n  }\n ],\n \"routingRules\": [\n  {\n   \"menu\": [\n    {\n     \"menu\": [\n      {\n       \"pocId\": \"ut Ut elit occaecat\",\n       \"label\": \"incididunt reprehenderit\",\n       \"id\": \"eiusmod laboris id dolore\"\n      }\n     ],\n     \"label\": \"elit cillum\",\n     \"id\": \"exercitation laborum ex\"\n    }\n   ],\n   \"pocId\": \"ad commodo consectetur consequat\",\n   \"label\": \"enim \",\n   \"id\": \"sit aute\",\n   \"chatButtonIds\": [\n    \"magna\",\n    \"eiusmod aute\"\n   ],\n   \"loginRequired\": false,\n   \"message\": \"ipsum ut\",\n   \"chatbotEnabled\": false,\n   \"caseCategory\": \"non tempor occaecat\",\n   \"isPremium\": true,\n   \"servicePlanId\": \"ipsum ut proident\",\n   \"index\": -94384996\n  },\n  {\n   \"menu\": [\n    {\n     \"menu\": [\n      {\n       \"pocId\": \"sunt esse veniam ex\",\n       \"label\": \"sed tempor\",\n       \"id\": \"consequat id\"\n      }\n     ],\n     \"label\": \"mollit aliqua deserun\",\n     \"id\": \"eiusmod\"\n    }\n   ],\n   \"pocId\": \"proident nisi in reprehenderit\",\n   \"label\": \"elit\",\n   \"id\": \"laboris laborum nulla mollit\",\n   \"chatButtonIds\": [\n    \"reprehenderit velit quis aliqua dolor\",\n    \"\"\n   ],\n   \"loginRequired\": false,\n   \"message\": \"ea eiusmod\",\n   \"chatbotEnabled\": false,\n   \"caseCategory\": \"Lorem\",\n   \"isPremium\": false,\n   \"servicePlanId\": \"elit\",\n   \"index\": 92396008\n  }\n ],\n \"country\": {\n  \"internationalPhoneCode\": \"enim nisi\",\n  \"countryId\": \"sint nisi ad\",\n  \"countryCode\": \"anim pariatur\"\n },\n \"cvcp\": {\n  \"id\": \"cupidatat proident laboris commodo\",\n  \"contractId\": \"ipsum\"\n }\n}"
+				},
+				{
+					"name": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users",
+								"key": "X-IDMS-Authorization",
+								"value": " Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/configurations?country=minim nostrud quis&language=minim nostrud quis&application=minim nostrud quis&classL1=minim nostrud quis&context=minim nostrud quis&productCategory=minim nostrud quis&productSubCategory=minim nostrud quis&productRange=minim nostrud quis&includeTranslations=minim nostrud quis&contractId=minim nostrud quis&servicePlanIds=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"configurations"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "language",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "application",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "classL1",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "context",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productSubCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productRange",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "includeTranslations",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "contractId",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "servicePlanIds",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				},
+				{
+					"name": "The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users",
+								"key": "X-IDMS-Authorization",
+								"value": " Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/configurations?country=minim nostrud quis&language=minim nostrud quis&application=minim nostrud quis&classL1=minim nostrud quis&context=minim nostrud quis&productCategory=minim nostrud quis&productSubCategory=minim nostrud quis&productRange=minim nostrud quis&includeTranslations=minim nostrud quis&contractId=minim nostrud quis&servicePlanIds=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"configurations"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "language",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "application",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "classL1",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "context",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productSubCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productRange",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "includeTranslations",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "contractId",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "servicePlanIds",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				},
+				{
+					"name": "The client does not have permission to perform the requested action e.g. POST or DELETE.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users",
+								"key": "X-IDMS-Authorization",
+								"value": " Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/configurations?country=minim nostrud quis&language=minim nostrud quis&application=minim nostrud quis&classL1=minim nostrud quis&context=minim nostrud quis&productCategory=minim nostrud quis&productSubCategory=minim nostrud quis&productRange=minim nostrud quis&includeTranslations=minim nostrud quis&contractId=minim nostrud quis&servicePlanIds=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"configurations"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "language",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "application",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "classL1",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "context",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productSubCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productRange",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "includeTranslations",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "contractId",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "servicePlanIds",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				},
+				{
+					"name": "Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users",
+								"key": "X-IDMS-Authorization",
+								"value": " Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/configurations?country=minim nostrud quis&language=minim nostrud quis&application=minim nostrud quis&classL1=minim nostrud quis&context=minim nostrud quis&productCategory=minim nostrud quis&productSubCategory=minim nostrud quis&productRange=minim nostrud quis&includeTranslations=minim nostrud quis&contractId=minim nostrud quis&servicePlanIds=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"configurations"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "language",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "application",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "classL1",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "context",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productSubCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productRange",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "includeTranslations",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "contractId",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "servicePlanIds",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				},
+				{
+					"name": "Number of requests has exceeded the client's rate limits.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users",
+								"key": "X-IDMS-Authorization",
+								"value": " Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/configurations?country=minim nostrud quis&language=minim nostrud quis&application=minim nostrud quis&classL1=minim nostrud quis&context=minim nostrud quis&productCategory=minim nostrud quis&productSubCategory=minim nostrud quis&productRange=minim nostrud quis&includeTranslations=minim nostrud quis&contractId=minim nostrud quis&servicePlanIds=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"configurations"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "language",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "application",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "classL1",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "context",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productSubCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productRange",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "includeTranslations",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "contractId",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "servicePlanIds",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Too Many Requests",
+					"code": 429,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				},
+				{
+					"name": "Requested operation encountered an unexpected server error.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users",
+								"key": "X-IDMS-Authorization",
+								"value": " Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/configurations?country=minim nostrud quis&language=minim nostrud quis&application=minim nostrud quis&classL1=minim nostrud quis&context=minim nostrud quis&productCategory=minim nostrud quis&productSubCategory=minim nostrud quis&productRange=minim nostrud quis&includeTranslations=minim nostrud quis&contractId=minim nostrud quis&servicePlanIds=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"configurations"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "language",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "application",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "classL1",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "context",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productSubCategory",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "productRange",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "includeTranslations",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "contractId",
+									"value": "minim nostrud quis"
+								},
+								{
+									"key": "servicePlanIds",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Case Experts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text",
+						"description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)"
+					},
+					{
+						"key": "X-BFO-Authorization",
+						"value": "{{bfo_token}}",
+						"type": "text",
+						"description": "Represents the IDMS Access Token to validate end user identity"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/case-experts?case-number=54655469",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"case-experts"
+					],
+					"query": [
+						{
+							"key": "case-number",
+							"value": "54655469",
+							"description": "(Required) Represents the case number"
+						}
+					]
+				},
+				"description": "By providing a case number, this API allows customer facing applications to retrieve the case resolving agent associated to the case. This functionality is majorly consumed to know agent availability on chat.  \n\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response."
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							},
+							{
+								"description": "Represents the IDMS Access Token to validate end user identity",
+								"key": "X-IDMS-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/case-experts?case-number=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"case-experts"
+							],
+							"query": [
+								{
+									"key": "case-number",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"id\": \"eni\",\n \"caseResolvingAgentId\": \"enim c\"\n}"
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							},
+							{
+								"description": "Represents the IDMS Access Token to validate end user identity",
+								"key": "X-IDMS-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/case-experts?case-number=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"case-experts"
+							],
+							"query": [
+								{
+									"key": "case-number",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				},
+				{
+					"name": "The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							},
+							{
+								"description": "Represents the IDMS Access Token to validate end user identity",
+								"key": "X-IDMS-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/case-experts?case-number=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"case-experts"
+							],
+							"query": [
+								{
+									"key": "case-number",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				},
+				{
+					"name": "The client does not have permission to perform the requested action e.g. POST or DELETE.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							},
+							{
+								"description": "Represents the IDMS Access Token to validate end user identity",
+								"key": "X-IDMS-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/case-experts?case-number=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"case-experts"
+							],
+							"query": [
+								{
+									"key": "case-number",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				},
+				{
+					"name": "Untitled Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							},
+							{
+								"description": "Represents the IDMS Access Token to validate end user identity",
+								"key": "X-IDMS-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/case-experts?case-number=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"case-experts"
+							],
+							"query": [
+								{
+									"key": "case-number",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				},
+				{
+					"name": "Number of requests has exceeded the client's rate limits.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							},
+							{
+								"description": "Represents the IDMS Access Token to validate end user identity",
+								"key": "X-IDMS-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/case-experts?case-number=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"case-experts"
+							],
+							"query": [
+								{
+									"key": "case-number",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Too Many Requests",
+					"code": 429,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				},
+				{
+					"name": "Requested operation encountered an unexpected server error.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							},
+							{
+								"description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)",
+								"key": "X-BFO-Authorization",
+								"value": "minim nostrud quis"
+							},
+							{
+								"description": "Represents the IDMS Access Token to validate end user identity",
+								"key": "X-IDMS-Authorization",
+								"value": "minim nostrud quis"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/case-experts?case-number=minim nostrud quis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"case-experts"
+							],
+							"query": [
+								{
+									"key": "case-number",
+									"value": "minim nostrud quis"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"MISSING_FIELD or 12345\",\n \"userMessage\": \"Required field is missing: productSku\",\n \"developerMessage\": \"Product master API ParseException: required tag <sku> expected\",\n \"moreInfo\": \"https://example.com/product-master/v1/error/12345\"\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.qa.se.com/v1/customer-support/chat-configuration",
+			"type": "string"
+		}
+	]
+}

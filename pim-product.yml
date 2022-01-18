@@ -1,0 +1,2591 @@
+openapi: 3.0.0
+info:
+  title: Pim-Product
+  contact:
+    url: 'https://se.com'
+    email: berangere.odin@se.com
+    name: Bérangère Odin
+  version: '3.2'
+  x-codegen-settings:
+    Nullify404: false
+    GenerateAsyncCode: true
+    UseMethodPrefix: false
+    UseModelPostfix: false
+    UseControllerPrefix: true
+    UseEnumPostfix: true
+    CollectParameters: false
+    UseConstructorsForConfig: false
+    UseCommonSDKLibrary: false
+    iOSUseAppInfoPlist: false
+    AndroidUseAppManifest: false
+    BodySerialization: 0
+    EnableAdditionalModelProperties: false
+    PreserveParameterOrder: true
+    AppendContentHeaders: true
+    iOSGenerateCoreData: false
+    GenerateInterfaces: false
+    NodeHttpClient: NODE_REQUEST
+    ValidateRequiredParameters: false
+    JavaUsePropertiesConfig: false
+    Timeout: 0
+    StoreTimezoneInformation: false
+    EnablePHPComposerVersionString: false
+    EnableLogging: false
+    ArraySerialization: Indexed
+    ModelSerializationScheme: Json
+    UseExceptionPrefix: true
+    RunscopeEnabled: false
+    AndroidHttpClient: ANDROID_OK
+    ObjCHttpClient: UNIREST
+    CSharpHttpClient: UNIREST
+    PHPHttpClient: UNIREST
+    JavaHttpClient: JAVA_OK
+    ParameterArrayFormat: ParamArrayWithIndex
+    SecurityProtocols:
+      - Ssl3
+      - Tls
+    GenerateTravisConfig: false
+    GenerateCircleConfig: false
+    GenerateAppveyorConfig: false
+    GenerateJenkinsConfig: false
+    EnableHttpCache: false
+    Retries: 0
+    RetryInterval: 1
+    GenerateAdvancedDocs: true
+    UnderscoreNumbers: true
+    UseSingletonPattern: true
+    DisableLinting: false
+    ApplyCustomizations: []
+    SortResources: false
+    AllowSkippingSSLCertVerification: false
+    DoNotSplitWords: []
+    EnableGlobalUserAgent: true
+    ReturnCompleteHttpResponse: false
+    GenerateModels: true
+    GenerateExceptions: true
+    IgnoreIfNullJson: false
+    DisableDocs: false
+    LiftParameterDescriptionFromCustomType: false
+    ThrowForHttpErrorStatusCodes: true
+    ResponseMapping:
+      Type: Simple
+    ForceKeywordArgsInRuby: false
+    SymbolizeHashKeysInRuby: false
+    UsageExampleEndpoint:
+      Description: ''
+      EndpointGroupName: ''
+      EndpointName: ''
+    IsLatestVersion: false
+    EnableImmutableModels: false
+    GenerateEnums: true
+    BackoffFactor: 2
+    StatusCodesToRetry:
+      - 408
+      - 413
+      - 429
+      - 500
+      - 502
+      - 503
+      - 504
+      - 521
+      - 522
+      - 524
+    RequestMethodsToRetry:
+      - GET
+      - PUT
+    UserConfigurableRetries: true
+    UseEndpointMethodName: false
+    EncodeTemplateParameters: true
+    GenerateExamplesForOptionalFields: false
+    MultitargetDotnetVersions: false
+    BackoffMax: 0
+    RetryOnTimeout: true
+  x-server-configuration:
+    default-environment: production
+    default-server: ProductServiceImplPort
+    environments:
+      - name: production
+        servers:
+          - name: ProductServiceImplPort
+            url: 'http://bsl.schneider-electric.com/bsl-fo-service/ProductService'
+    parameters: []
+  x-image-uri: ''
+  description: API which provides a set of services to get product related data
+servers:
+  - url: 'https://api.qa.se.com/v3/reference-data/product/pim-product'
+    variables: {}
+paths:
+  /characteristics:
+    get:
+      tags:
+        - ProductServiceSoapBinding
+      summary: characteristics
+      operationId: CharacteristicDetails
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: iso-country
+        - schema:
+            type: string
+          in: query
+          name: iso-language
+        - schema:
+            type: string
+            format: int64
+          in: query
+          name: characteristic-id
+        - schema:
+            type: string
+          in: query
+          name: characteristic-name
+        - schema:
+            type: integer
+            format: int64
+            default: 3
+            minimum: 3
+          in: query
+          name: version
+      responses:
+        '200':
+          description: Successfully retrieved the response
+          headers: {}
+          content:
+            application/Json:
+              schema:
+                $ref: '#/components/schemas/getCharacteristicDetailsResponse1'
+              examples:
+                'iso-country;: GB, iso-language:en, characteristic-id: 1171387':
+                  value:
+                    getCharacteristicDetailsResponse:
+                      Characteristic:
+                        id: '1171387'
+                        name: D_CONTROL_STATION_APPLICATION
+                        oid: 125438042
+                        sourceSystem: OPS
+                        translations:
+                          translation:
+                            - locale: en_GB
+                              longDescription: control station application
+                              shortDescription: control station application
+        '400':
+          $ref: '#/components/responses/Common_Oas3_400'
+        '401':
+          $ref: '#/components/responses/Common_Oas3_401'
+        '403':
+          $ref: '#/components/responses/Common_Oas3_403'
+        '404':
+          $ref: '#/components/responses/Common_Oas3_404'
+        '429':
+          $ref: '#/components/responses/Common_Oas3_429'
+        '500':
+          $ref: '#/components/responses/Common_Oas3_500'
+      deprecated: false
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-unitTests: []
+      description: Provides details of a characteristic in the requested locale
+    parameters: []
+  /products/search:
+    post:
+      tags:
+        - ProductServiceSoapBinding
+      summary: products
+      operationId: ProductDetailByCommercialRef
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getProductDetailByCommercialRef1'
+            examples:
+              example-1:
+                value:
+                  getProductDetailByCommercialRef:
+                    scope:
+                      brand: Schneider
+                      country: WW
+                      project: STEP
+                    locale:
+                      isoCountry: GB
+                      isoLanguage: en
+                    commercialRef: MYNEW_CRID1_39
+        required: true
+      responses:
+        '200':
+          description: Successfully retrieved the response
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getProductDetailByCommercialRefResponse1'
+              examples:
+                example-1:
+                  value:
+                    getProductDetailByCommercialRefResponse:
+                      ProductBean:
+                        globalStatus: Commercialised
+                        oid: 37023729141
+                        productId: MYNEW_CRID1_39
+                        characteristicCategories:
+                          category:
+                            - name: Offer Sustainability
+                              oid: 11687845244
+                              characteristics:
+                                characteristic:
+                                  - charId: ATS_CALIFORNIA_PROPOSITION_65
+                                    charKey: ATS_CALIFORNIA_PROPOSITION_65
+                                    name: California proposition 65
+                                    oid: 12391829371
+                                    description: California proposition 65
+                                    values:
+                                      value:
+                                        - countryIso: WW
+                                          countryName: Corporate
+                                          countryOid: 1556505
+                                          lockCase: false
+                                          oid: 41271460944
+                                          value: TEST GB
+                        commercialReference: MYNEW_CRID1_39
+                        commercializedProduct:
+                          brand: Schneider Electric
+                          commStatus: 08 - Commercialised
+                          commercialized: true
+                        eanCode: '1234507791000'
+                        longDescription: Med Short Desc in english for my product Global 3.9.1_AC1
+                        shortDescription: Med Short Desc in english for my product Global 3.9.1_AC1
+                        isEnergyStarCompliant: false
+        '400':
+          $ref: '#/components/responses/Common_Oas3_400'
+        '401':
+          $ref: '#/components/responses/Common_Oas3_401'
+        '403':
+          $ref: '#/components/responses/Common_Oas3_403'
+        '404':
+          $ref: '#/components/responses/Common_Oas3_404'
+        '429':
+          $ref: '#/components/responses/Common_Oas3_429'
+        '500':
+          $ref: '#/components/responses/Common_Oas3_500'
+      deprecated: false
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-unitTests: []
+      description: Provides details of a product in the requested locale. The product must be scoped for the requested target
+    parameters: []
+  /nodes/search:
+    post:
+      tags:
+        - ProductServiceSoapBinding
+      summary: nodes
+      operationId: NodeDetails
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getNodeDetails1'
+            examples:
+              example-1:
+                value:
+                  getNodeDetails:
+                    scope:
+                      brand: Schneider Electric
+                      country: WW
+                    locale:
+                      isoCountry: GB
+                      isoLanguage: en
+                    nodeId: CAT_CRG_324300
+        required: true
+      responses:
+        '200':
+          description: Successfully retrieved the response
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNodeDetailsResponse1'
+              examples:
+                example-1:
+                  value:
+                    getNodeDetailsResponse:
+                      NodeBean:
+                        name: SINGLE - STANDARD SIZE - HORIZONTAL MOUNT
+                        oid: 25318580912
+                        parentNodeOid: 25318580906
+                        nbProducts: 0
+                        visible: true
+        '400':
+          $ref: '#/components/responses/Common_Oas3_400'
+        '401':
+          $ref: '#/components/responses/Common_Oas3_401'
+        '403':
+          $ref: '#/components/responses/Common_Oas3_403'
+        '404':
+          $ref: '#/components/responses/Common_Oas3_404'
+        '429':
+          $ref: '#/components/responses/Common_Oas3_429'
+        '500':
+          $ref: '#/components/responses/Common_Oas3_500'
+      deprecated: false
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-unitTests: []
+      description: Provides details of a node in the requested locale along with related characteristics and related products if explicitely requested
+    parameters: []
+  /product-relationships/search:
+    post:
+      tags:
+        - ProductServiceSoapBinding
+      summary: product-relationships
+      operationId: ProductRelationshipsDetails
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getProductRelationshipsDetails1'
+            examples:
+              example-1:
+                value:
+                  getProductRelationshipsDetails:
+                    scope:
+                      brand: Schneider Electric
+                      country: WW
+                    locale:
+                      isoCountry: GB
+                      isoLanguage: en
+                    commercialRef: GV2ME32
+                    limitPerRelationshipTypeAndCategory: 1
+                    fetchCompatibleActuatorData: true
+        required: true
+      responses:
+        '200':
+          description: Successfully retrieved the response
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getProductRelationshipsDetailsResponse1'
+              examples:
+                example-1:
+                  value:
+                    getProductRelationshipsDetailsResponse:
+                      ProductRelationshipBean:
+                        srcProductCommRef: GV2ME32
+                        relationships:
+                          relationship:
+                            - category: frame
+                              closeOffPressure: 70
+                              destProductComRef: '04031'
+                              externalComment: NEW ADA Comment@s!@#$%^$%^*()_New5123123
+                              lossOfPowerPosition: Normally Open or Normally Closed; specify when ordered123123
+                              ranking: 7
+                              requiredLinkage: '9141071123123123'
+                              temperatureAmbientOperatingMaximum: 9991
+                              type: Kit PTO
+                            - category: ACTUATORS
+                              closeOffPressure: 10
+                              destProductComRef: QA_PAI_CR_WW_17
+                              externalComment: NEW PAI Comments!#$%^$%^*()
+                              lossOfPowerPosition: 3 Extend
+                              ranking: 1
+                              requiredLinkage: 1 AV-391
+                              temperatureAmbientOperatingMaximum: 35
+                              type: CompatibleActuator
+                            - category: Accessories
+                              destProductComRef: QA_PAI_CR_WW_17
+                              ranking: 1
+                              type: Compatible
+                            - category: Accessories
+                              destProductComRef: NSYSPCP
+                              ranking: 1
+                              type: CrossSell
+                            - category: Boxes
+                              destProductComRef: NSYSM10M5HP
+                              ranking: 3
+                              type: Spare part
+                        categoryTranslations:
+                          category:
+                            - name: frame
+                            - name: ACTUATORS
+                              translation:
+                                - locale: en_GB
+                                  translation: Actuators
+                            - name: Accessories
+                            - name: Boxes
+                              translation:
+                                - locale: en_GB
+                                  translation: TRNS_WWBSL4.15_AKL_TRANSLATION_GB
+        '400':
+          $ref: '#/components/responses/Common_Oas3_400'
+        '401':
+          $ref: '#/components/responses/Common_Oas3_401'
+        '403':
+          $ref: '#/components/responses/Common_Oas3_403'
+        '404':
+          $ref: '#/components/responses/Common_Oas3_404'
+        '429':
+          $ref: '#/components/responses/Common_Oas3_429'
+        '500':
+          $ref: '#/components/responses/Common_Oas3_500'
+      deprecated: false
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+      x-unitTests: []
+      description: Provides all relationships of the requested product. Both source and target products must be scoped for the requested target
+    parameters: []
+  /scoped-product-details/search:
+    post:
+      summary: ''
+      operationId: post-scoped-product-details-search
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDetailsAnswer'
+              examples:
+                example-1:
+                  value:
+                    commercialReference: QA_TNI1409193
+                    longDescription:
+                      - locale: en_GB
+                        value: testing NRT
+                      - locale: zh_CN
+                        value: testing NRT CN
+                    productId: QA_TNI1409193
+                    eanNumber: '163854964'
+                    isCommercialized:
+                      - localization: CN
+                        value: true
+                    shortDescription:
+                      - locale: en_GB
+                        value: testing NRT sd
+                      - locale: zh_CN
+                        value: testing NRT sd CN
+                    commercialStatus:
+                      - localization: CN
+                        value: 08 - Commercialised
+                    type: []
+                    stockCode: []
+                    isVisibleInNav:
+                      - localization: CN
+                        value: true
+                    isGreenPremium: true
+                    price: []
+                    scopedData:
+                      - epdsDocumentOid: []
+                        firstParentRangeId: '992499191'
+                        epdsDocumentReference: []
+                        target:
+                          market: PRODUCT-MARKET
+                          country: CN
+                          brand: Schneider Electric
+                    epdsDocumentReferenceData: []
+                    partNumber: []
+                    currency: []
+                    subType: []
+                    isEnergyStarCompliant: false
+                    brand:
+                      - localization: CN
+                        value: Schneider Electric
+        '400':
+          $ref: '#/components/responses/Common_Oas3_400'
+        '401':
+          $ref: '#/components/responses/Common_Oas3_401'
+        '403':
+          $ref: '#/components/responses/Common_Oas3_403'
+        '404':
+          $ref: '#/components/responses/Common_Oas3_404'
+        '429':
+          $ref: '#/components/responses/Common_Oas3_429'
+        '500':
+          $ref: '#/components/responses/Common_Oas3_500'
+      description: 'Return data about a given product.  Locale dependent data (also called translation),   localized data (actually localized by country e.g LocalizedString with FR,WW ), target specific data  can be retrieve all in one call'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductDetails'
+            examples:
+              example-1:
+                value:
+                  productId: QA_TNI1409193
+                  localeReferenceList:
+                    - language: zh
+                      country: CN
+                  bslContextList:
+                    - targetReference:
+                        brand: Schneider Electric
+                        country: CN
+                        market: PRODUCT-MARKET
+                      localeReferenceList:
+                        - language: zh
+                          country: CN
+        description: input
+  /scoped-product-values/search:
+    post:
+      summary: ''
+      operationId: post-scoped-product-values-search
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductValuesAnswer'
+              examples:
+                example-1:
+                  value:
+                    valueList:
+                      - subCharList: []
+                        lineList: []
+                        char:
+                          transList:
+                            - locale: en_GB
+                              value: D_QA_TNI_CHAR
+                          charId: '1175766'
+                          displayName: WW_SPEC_1
+                          name: D_QA_TNI_CHAR
+                          tag: []
+                        itemList:
+                          - transList:
+                              - locale: en_GB
+                                value: Test
+                            charId: '1175766'
+                            valuationId: '3733787'
+                        significant: true
+                      - subCharList:
+                          - transList:
+                              - locale: en_GB
+                                value: supply frequency
+                            charId: '1172969'
+                            displayName: supply frequency
+                            name: supply frequency
+                            tag: []
+                          - transList:
+                              - locale: en_GB
+                                value: tolerance
+                            charId: '1173118'
+                            displayName: tolerance
+                            name: tolerance
+                            tag: []
+                        lineList: []
+                        char:
+                          transList:
+                            - locale: en_GB
+                              value: supply frequency
+                          charId: '1170833'
+                          displayName: supply frequency
+                          name: supply frequency
+                          tag: []
+                        itemList:
+                          - transList:
+                              - locale: en_GB
+                                value: 20 Hz
+                            charId: '1172969'
+                            valuationId: '663219'
+                          - transList:
+                              - locale: en_GB
+                                value: '- 0 ms, + 300 ms'
+                            charId: '1173118'
+                            valuationId: '3708248'
+                        significant: true
+        '400':
+          $ref: '#/components/responses/Common_Oas3_400'
+        '401':
+          $ref: '#/components/responses/Common_Oas3_401'
+        '403':
+          $ref: '#/components/responses/Common_Oas3_403'
+        '404':
+          $ref: '#/components/responses/Common_Oas3_404'
+        '429':
+          $ref: '#/components/responses/Common_Oas3_429'
+        '500':
+          $ref: '#/components/responses/Common_Oas3_500'
+      description: Return product values (characteristics name and value) of a given product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductValues'
+            examples:
+              example-1:
+                value:
+                  productId: QA_TNI16092019
+                  localeList:
+                    - language: en
+                      country: GB
+        description: input
+  /competitor-crs/search:
+    post:
+      tags:
+        - ProductServiceRestBinding
+      description: |
+        'Return competitor details based on the requested competitor id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestCompetitorCRDetails'
+            examples:
+              Request sample:
+                value:
+                  scope:
+                    brand: Schneider
+                    country: WW
+                    markets: PRODUCT-MARKET
+                    project: STEP
+                  locale:
+                    isoCountry: FR
+                    isoLanguage: fr
+                  id: DQ_PDS_ID4981COPETITOR_ID1
+        description: input of competitor cr details
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompetitorCRDetailsResponse'
+              examples:
+                example-1:
+                  value:
+                    name: DQ_PDS_ID4981_NAME
+                    description: 'DESCRIPTION : WW/fr_FR'
+                    id: DQ_PDS_ID4981COPETITOR_ID1
+                    manufacturer: DQ_PDS_ID4981_MANUFACTURER
+        '400':
+          $ref: '#/components/responses/Common_Oas3_400'
+        '401':
+          $ref: '#/components/responses/Common_Oas3_401'
+        '403':
+          $ref: '#/components/responses/Common_Oas3_403'
+        '404':
+          $ref: '#/components/responses/Common_Oas3_404'
+        '429':
+          $ref: '#/components/responses/Common_Oas3_429'
+        '500':
+          $ref: '#/components/responses/Common_Oas3_500'
+      summary: competitor-cr-search
+      operationId: post-competitor-cr-details-search
+  /product-listings:
+    get:
+      summary: product-listing-details-search
+      operationId: get-product-listings-details-search
+      description: |
+        get product listing by its nodeId
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: node
+          required: true
+          description: node id of product Listing
+        - schema:
+            type: string
+          in: query
+          name: country
+          required: false
+          description: 'country iso of product Listing, e.g FR, WW, US'
+        - schema:
+            type: string
+          in: query
+          name: locale
+          required: false
+          description: 'locale full name e.g fr_FR, en_GB'
+      responses:
+        '200':
+          description: Successfull response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductListingNodeDetailsAnswer'
+              examples:
+                productListing:
+                  value:
+                    displayOrder: 1
+                    name: TRNS WW
+                    parentCategory: QA_PDS_335SC1
+                    parentNodeId: DQ_PDS_4810PARENT
+                    facets:
+                      - facetId: QA_PDS_SIMPLE3
+                        displayOrder: 1
+                      - facetId: QA_PDS_SIMPLE4
+                        displayOrder: 1
+                    products:
+                      - commRef: DQ_PDS_4810P4
+                        displayOrder: 1
+        '400':
+          $ref: '#/components/responses/Common_Oas3_400'
+        '401':
+          $ref: '#/components/responses/Common_Oas3_401'
+        '403':
+          $ref: '#/components/responses/Common_Oas3_403'
+        '404':
+          $ref: '#/components/responses/Common_Oas3_404'
+        '429':
+          $ref: '#/components/responses/Common_Oas3_429'
+        '500':
+          $ref: '#/components/responses/Common_Oas3_500'
+  /competitor-crs/relationships/search:
+    post:
+      description: |
+        Return relationship data of a given competitorcr.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestCompetitorRelationshipsDetails'
+            examples:
+              Request sample:
+                value:
+                  scope:
+                    brand: Schneider
+                    channel: '4'
+                    country: FR
+                    markets: PRODUCT-MARKET
+                  locale:
+                    isoLanguage: fr
+                    isoCountry: FR
+                  competitorId: QA_VSH_BSL21.21_BSL
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompetitorRelationshipsDetailsResponse'
+              examples:
+                example-1:
+                  value:
+                    competitorId: QA_VSH_BSL21.21_BSL-4983_S1
+                    relationships:
+                      - competitorQty: 100
+                        targets:
+                          - commRef: QA_VSH_BSL21.21_BSL-4983_S15
+                            audience: Public
+                            quantity: 20
+                            ranking: 1
+                            comment: test
+                            id: QA_VSH_BSL21.21_BSL-4983_S15
+        '400':
+          $ref: '#/components/responses/Common_Oas3_400'
+        '401':
+          $ref: '#/components/responses/Common_Oas3_401'
+        '403':
+          $ref: '#/components/responses/Common_Oas3_403'
+        '404':
+          $ref: '#/components/responses/Common_Oas3_404'
+        '429':
+          $ref: '#/components/responses/Common_Oas3_429'
+        '500':
+          $ref: '#/components/responses/Common_Oas3_500'
+      summary: competitor-cr-relationships-search
+      operationId: post-competitor-cr-relashionship-search
+components:
+  schemas:
+    LocalizationString:
+      type: object
+      properties:
+        locale:
+          type: string
+          description: 'name of the locale en_GB,fr_FR'
+        value:
+          type: string
+        country:
+          type: string
+          description: e.g GB FR
+    baseCharacteristicBean:
+      title: baseCharacteristicBean
+      type: object
+      description: ''
+      properties:
+        charId:
+          type: string
+        charKey:
+          type: string
+        defaultLongDescription:
+          type: string
+        defaultShortDescription:
+          type: string
+        sourceSystem:
+          type: string
+        translations:
+          $ref: '#/components/schemas/translations'
+    baseCharacteristicTranslationBean:
+      title: baseCharacteristicTranslationBean
+      type: object
+      properties:
+        locale:
+          type: string
+        longDescription:
+          type: string
+        shortDescription:
+          type: string
+      description: ''
+    relatedCharBean:
+      title: relatedCharBean
+      type: object
+      properties:
+        charId:
+          type: string
+        charKey:
+          type: string
+        displayName:
+          type: string
+        displayOrder:
+          type: integer
+          format: int32
+        tabCharId:
+          type: string
+      description: ''
+    cachableGenericObject:
+      title: cachableGenericObject
+      type: object
+      description: ''
+    productRelationshipCategoryTranslationBean:
+      title: productRelationshipCategoryTranslationBean
+      type: object
+      properties:
+        name:
+          type: string
+        translation:
+          type: array
+          items:
+            $ref: '#/components/schemas/translationBean'
+          description: ''
+      description: ''
+    componentTitleTranslationBean:
+      title: componentTitleTranslationBean
+      type: object
+      properties:
+        id:
+          type: string
+        translation:
+          type: array
+          items:
+            $ref: '#/components/schemas/translationBean'
+          description: ''
+      description: ''
+    configurableBean:
+      title: configurableBean
+      type: object
+      properties:
+        comRef:
+          type: string
+        oid:
+          type: integer
+          format: int64
+        configurationMode:
+          type: string
+        description:
+          type: string
+      description: ''
+    getCharacteristicDetailsResponse:
+      title: getCharacteristicDetailsResponse
+      type: object
+      properties:
+        Characteristic:
+          $ref: '#/components/schemas/baseCharacteristicBean'
+      description: ''
+    getNodeDetails:
+      title: getNodeDetails
+      type: object
+      description: ''
+      properties:
+        scope:
+          $ref: '#/components/schemas/scopeBean'
+        locale:
+          $ref: '#/components/schemas/localeBean'
+        nodeId:
+          type: string
+        fetchRelatedChars:
+          type: boolean
+        fetchProducts:
+          type: boolean
+        version:
+          type: integer
+          format: int64
+      required:
+        - scope
+        - locale
+        - nodeId
+    getNodeDetailsResponse:
+      title: getNodeDetailsResponse
+      type: object
+      properties:
+        NodeBean:
+          $ref: '#/components/schemas/nodeBean'
+      description: ''
+    getProductDetailByCommercialRef:
+      title: getProductDetailByCommercialRef
+      type: object
+      description: ''
+      properties:
+        scope:
+          $ref: '#/components/schemas/scopeBean'
+        locale:
+          $ref: '#/components/schemas/localeBean'
+        semanticCharacteristics:
+          type: boolean
+        commercialRef:
+          type: string
+        rangeId:
+          type: string
+        dataSource:
+          type: string
+        version:
+          type: integer
+          format: int64
+          minimum: 15
+          default: 15
+        showProductValueDetail:
+          type: boolean
+        scopeIndependant:
+          type: boolean
+        displayAllHighlightedChar:
+          type: boolean
+        fetchSpecificCountries:
+          type: boolean
+        fetchTaggedChars:
+          type: boolean
+        fetchFeatureAndBenefits:
+          type: boolean
+        fetchEtimCharacteristics:
+          type: boolean
+        fetchPIMAsset:
+          type: boolean
+        query:
+          $ref: '#/components/schemas/queryBean'
+      required:
+        - scope
+        - locale
+        - commercialRef
+    getProductDetailByCommercialRefResponse:
+      title: getProductDetailByCommercialRefResponse
+      type: object
+      properties:
+        ProductBean:
+          $ref: '#/components/schemas/productBean'
+      description: ''
+    getProductRelationshipsDetails:
+      title: getProductRelationshipsDetails
+      type: object
+      description: ''
+      properties:
+        scope:
+          $ref: '#/components/schemas/scopeBean'
+        locale:
+          $ref: '#/components/schemas/localeBean'
+        productId:
+          type: string
+        commercialRef:
+          type: string
+        limitPerRelationshipTypeAndCategory:
+          type: integer
+          format: int64
+        fetchCompatibleActuatorData:
+          type: boolean
+        clientToken:
+          type: string
+        version:
+          type: integer
+          format: int64
+      required:
+        - scope
+        - locale
+    getProductRelationshipsDetailsResponse:
+      title: getProductRelationshipsDetailsResponse
+      type: object
+      properties:
+        ProductRelationshipBean:
+          $ref: '#/components/schemas/productRelationshipBean'
+      description: ''
+    localeBean:
+      title: localeBean
+      required:
+        - isoCountry
+        - isoLanguage
+      type: object
+      properties:
+        isoCountry:
+          type: string
+        isoLanguage:
+          type: string
+      description: ''
+    nodeBean:
+      title: nodeBean
+      type: object
+      description: ''
+      properties:
+        displayOrder:
+          type: integer
+          format: int32
+        id:
+          type: string
+        name:
+          type: string
+        oid:
+          type: integer
+          format: int64
+        parentNodeId:
+          type: string
+        parentNodeOid:
+          type: integer
+          format: int64
+        parentRangeId:
+          type: string
+        parentRangeOid:
+          type: integer
+          format: int64
+        configurable:
+          $ref: '#/components/schemas/configurableBean'
+        description:
+          type: string
+        nbProducts:
+          type: integer
+          format: int32
+        pictureDocumentOid:
+          type: integer
+          format: int64
+        pictureDocumentReference:
+          type: string
+        presentationPages:
+          $ref: '#/components/schemas/presentationPages'
+        products:
+          $ref: '#/components/schemas/products1'
+        relatedCharBeans:
+          $ref: '#/components/schemas/relatedCharBeans'
+        subNodeOids:
+          type: array
+          description: ''
+          nullable: true
+          items:
+            type: integer
+            format: int64
+        visible:
+          type: boolean
+        documentReferences:
+          $ref: '#/components/schemas/documentReferences'
+    nodeTreeBean:
+      title: nodeTreeBean
+      allOf:
+        - $ref: '#/components/schemas/cachableGenericObject'
+        - type: object
+          properties:
+            description:
+              type: string
+            hasConfigurable:
+              type: boolean
+            hasDocument:
+              type: boolean
+            hasProduct:
+              type: boolean
+            hasRichText:
+              type: boolean
+            pictureDocumentOid:
+              type: integer
+              format: int64
+            commercialReferences:
+              $ref: '#/components/schemas/commercialReferences'
+            subNodes:
+              $ref: '#/components/schemas/subNodes'
+            visible:
+              type: boolean
+            pictureDocumentRef:
+              type: string
+            name:
+              type: string
+            oid:
+              type: integer
+              format: int64
+            nodeId:
+              type: string
+      description: ''
+    pictureBean:
+      title: pictureBean
+      type: object
+      properties:
+        description:
+          type: string
+        id:
+          type: integer
+          format: int64
+        pictureDocumentOid:
+          type: integer
+          format: int64
+        pictureDocumentReference:
+          type: string
+        pictureType:
+          type: string
+      description: ''
+    productBean:
+      title: productBean
+      type: object
+      description: ''
+      properties:
+        globalStatus:
+          type: string
+        oid:
+          type: integer
+          format: int64
+        productId:
+          type: string
+        characteristicCategories:
+          $ref: '#/components/schemas/characteristicCategories'
+        commercialReference:
+          type: string
+        commercializedProduct:
+          $ref: '#/components/schemas/commercializedProductBean'
+        description:
+          type: string
+        documentOids:
+          $ref: '#/components/schemas/documentOids'
+        eanCode:
+          type: string
+        epdsDocumentOid:
+          type: integer
+          format: int64
+        greenPremium:
+          type: boolean
+        highligthedCharacteristics:
+          $ref: '#/components/schemas/highligthedCharacteristics'
+        logoDocumentOid:
+          type: integer
+          format: int64
+        longDescription:
+          type: string
+        parentNodeOid:
+          type: integer
+          format: int64
+        parentRangeId:
+          type: string
+        parentRangeOid:
+          type: integer
+          format: int64
+        pictureDocumentOid:
+          type: integer
+          format: int64
+        parents:
+          $ref: '#/components/schemas/parents'
+        ranges:
+          $ref: '#/components/schemas/ranges'
+        semanticCharacteristics:
+          $ref: '#/components/schemas/semanticCharacteristics'
+        shortDescription:
+          type: string
+        documentReferences:
+          $ref: '#/components/schemas/documentReferences1'
+        pictureDocumentReference:
+          type: string
+        pictures:
+          $ref: '#/components/schemas/pictures'
+        type:
+          type: string
+        subType:
+          type: string
+        specificCountries:
+          $ref: '#/components/schemas/specificCountries'
+        featureAndBenefitList:
+          $ref: '#/components/schemas/featureAndBenefitList'
+        pimAssets:
+          $ref: '#/components/schemas/pimAssets'
+        isEnergyStarCompliant:
+          type: boolean
+        shoppable:
+          $ref: '#/components/schemas/shoppableBean'
+    productCountBean:
+      title: productCountBean
+      type: object
+      properties:
+        charKey:
+          type: string
+        characteristicId:
+          type: string
+        characteristicName:
+          type: string
+        displayName:
+          type: string
+        tabCharacteristicId:
+          type: string
+        subCounts:
+          $ref: '#/components/schemas/subCounts'
+        counts:
+          $ref: '#/components/schemas/counts'
+      description: ''
+    productPimAssetBean:
+      title: productPimAssetBean
+      type: object
+      properties:
+        assetId:
+          type: string
+        displayOrder:
+          type: integer
+          format: int32
+      description: ''
+    productRelationshipBean:
+      title: productRelationshipBean
+      type: object
+      properties:
+        srcProductCommRef:
+          type: string
+        relationships:
+          $ref: '#/components/schemas/relationships'
+        categoryTranslations:
+          $ref: '#/components/schemas/categoryTranslations'
+        componentTitleTranslations:
+          $ref: '#/components/schemas/componentTitleTranslations'
+        errorCode:
+          type: integer
+          format: int32
+        errorMessage:
+          type: string
+      description: ''
+    productRelationshipLinkBean:
+      title: productRelationshipLinkBean
+      type: object
+      properties:
+        category:
+          type: string
+        closeOffPressure:
+          type: integer
+          format: int32
+        componentQuantity:
+          type: integer
+          format: int64
+        componentTitle:
+          type: string
+        destProductComRef:
+          type: string
+        externalComment:
+          type: string
+        lossOfPowerPosition:
+          type: string
+        ranking:
+          type: integer
+          format: int64
+        requiredLinkage:
+          type: string
+        temperatureAmbientOperatingMaximum:
+          type: integer
+          format: int32
+        type:
+          type: string
+      description: ''
+    scopeBean:
+      title: scopeBean
+      type: object
+      description: ''
+      properties:
+        brand:
+          type: string
+        channel:
+          type: string
+        country:
+          type: string
+        function:
+          type: string
+        markets:
+          type: string
+        privacy:
+          type: string
+        program:
+          type: string
+        project:
+          type: string
+      required:
+        - brand
+        - country
+    translationBean:
+      title: translationBean
+      type: object
+      description: ''
+      properties:
+        locale:
+          type: string
+        translation:
+          type: string
+    valueCountBean:
+      title: valueCountBean
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
+        lockCase:
+          type: boolean
+        value:
+          type: string
+        valueId:
+          type: string
+        valueOid:
+          type: integer
+          format: int64
+        tabCharId:
+          type: string
+        charId:
+          type: string
+      description: ''
+    valueLine:
+      title: valueLine
+      type: object
+      properties:
+        charId:
+          type: string
+        displayOrder:
+          type: integer
+          format: int32
+        lockCase:
+          type: boolean
+        valuationId:
+          type: string
+        valuationLabel:
+          type: string
+        valueLineItems:
+          $ref: '#/components/schemas/valueLineItems'
+      description: ''
+    valueLineItem:
+      title: valueLineItem
+      type: object
+      properties:
+        charId:
+          type: string
+        charKey:
+          type: string
+        name:
+          type: string
+        valueKey:
+          type: string
+        displayOrder:
+          type: integer
+          format: int32
+        valuationId:
+          type: string
+        valuationLabel:
+          type: string
+      description: ''
+    characteristicCategoryBean:
+      title: characteristicCategoryBean
+      type: object
+      properties:
+        name:
+          type: string
+        oid:
+          type: integer
+          format: int64
+        characteristics:
+          $ref: '#/components/schemas/characteristics'
+      description: ''
+    characteristicBean:
+      title: characteristicBean
+      type: object
+      properties:
+        charId:
+          type: string
+        charKey:
+          type: string
+        name:
+          type: string
+        oid:
+          type: integer
+          format: int64
+        shownInProductDetails:
+          type: boolean
+        showInProductList:
+          type: boolean
+        displayName:
+          type: string
+        tag:
+          $ref: '#/components/schemas/tag'
+        description:
+          type: string
+        values:
+          $ref: '#/components/schemas/values'
+      description: ''
+    characteristicTagBean:
+      title: characteristicTagBean
+      type: object
+      properties:
+        value:
+          type: string
+      description: ''
+    valueBean:
+      title: valueBean
+      type: object
+      properties:
+        charKey:
+          type: string
+        countryIso:
+          type: string
+        countryName:
+          type: string
+        countryOid:
+          type: integer
+          format: int64
+        lockCase:
+          type: boolean
+        oid:
+          type: integer
+          format: int64
+        unity:
+          type: string
+        unityId:
+          type: string
+        value:
+          type: string
+        valueId:
+          type: string
+        valueRendition:
+          type: string
+        visible:
+          type: boolean
+        externetUrl:
+          type: string
+        internaldocOid:
+          type: integer
+          format: int64
+        labelUrl:
+          type: string
+        valueLines:
+          $ref: '#/components/schemas/valueLines'
+        keepValue:
+          type: boolean
+        symbolicToBeDisplayed:
+          type: string
+        textAfter:
+          type: string
+        textBefore:
+          type: string
+      description: ''
+    commercializedProductBean:
+      title: commercializedProductBean
+      type: object
+      properties:
+        oid:
+          type: integer
+          format: int64
+        brand:
+          type: string
+        commStatus:
+          type: string
+        commercialisationDate:
+          type: string
+          format: date-time
+        commercialized:
+          type: boolean
+        deliveryTime:
+          type: string
+        description:
+          type: string
+        endOfCommercialisationDate:
+          type: string
+          format: date-time
+        endOfServiceDate:
+          type: string
+          format: date-time
+        localeDistributorCode:
+          type: string
+        localeSaleStatus:
+          type: string
+        localeStockStatus:
+          type: string
+        nbDeliveryDays:
+          type: integer
+          format: int32
+        price:
+          $ref: '#/components/schemas/priceBean'
+      description: ''
+    priceBean:
+      title: priceBean
+      type: object
+      properties:
+        oid:
+          type: integer
+          format: int64
+        comments:
+          type: string
+        currency:
+          type: string
+        price:
+          type: string
+        validFrom:
+          type: string
+          format: date-time
+        validTo:
+          type: string
+          format: date-time
+        value:
+          type: number
+      description: ''
+    productParentBean:
+      title: productParentBean
+      type: object
+      properties:
+        nodeOid:
+          type: integer
+          format: int64
+        rangeId:
+          type: string
+        rangeOid:
+          type: integer
+          format: int64
+      description: ''
+    rangeLightBean:
+      title: rangeLightBean
+      type: object
+      properties:
+        id:
+          type: string
+        oid:
+          type: integer
+          format: int64
+        name:
+          type: string
+      description: ''
+    documentReferenceBean:
+      title: documentReferenceBean
+      type: object
+      properties:
+        docType:
+          type: string
+        docTypeOid:
+          type: integer
+          format: int64
+        scoped:
+          type: boolean
+        bannerURL:
+          type: string
+        main:
+          type: boolean
+        reference:
+          type: string
+      description: ''
+    specificCountriesBean:
+      title: specificCountriesBean
+      type: object
+      properties:
+        isoCountry:
+          type: string
+        publicationdate:
+          type: string
+          format: date-time
+      description: ''
+    productFeatureBenefitBean:
+      title: productFeatureBenefitBean
+      type: object
+      properties:
+        categoryId:
+          type: string
+        featureAndBenefitId:
+          type: string
+        featureName:
+          type: string
+        benefitValue:
+          type: string
+        category:
+          type: string
+      description: ''
+    queryBean:
+      title: queryBean
+      type: object
+      properties:
+        docType:
+          type: array
+          items:
+            type: string
+          description: ''
+      description: ''
+    presentationPageBean:
+      title: presentationPageBean
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        richText:
+          type: string
+      description: ''
+    productReferenceBean:
+      title: productReferenceBean
+      type: object
+      properties:
+        commercialReference:
+          type: string
+        oid:
+          type: integer
+          format: int64
+        productId:
+          type: string
+        visibleInNav:
+          type: boolean
+      description: ''
+    categoryTranslations:
+      title: categoryTranslations
+      type: object
+      properties:
+        category:
+          type: array
+          items:
+            $ref: '#/components/schemas/productRelationshipCategoryTranslationBean'
+          description: ''
+      description: ''
+    characteristicCategories:
+      title: characteristicCategories
+      type: object
+      properties:
+        category:
+          type: array
+          items:
+            $ref: '#/components/schemas/characteristicCategoryBean'
+          description: ''
+      description: ''
+    characteristics:
+      title: characteristics
+      type: object
+      properties:
+        characteristic:
+          type: array
+          items:
+            $ref: '#/components/schemas/characteristicBean'
+          description: ''
+      description: ''
+    commercialReferences:
+      title: commercialReferences
+      type: object
+      properties:
+        commercialReference:
+          type: array
+          items:
+            type: string
+          description: ''
+      description: ''
+    componentTitleTranslations:
+      title: componentTitleTranslations
+      type: object
+      properties:
+        componentTitle:
+          type: array
+          items:
+            $ref: '#/components/schemas/componentTitleTranslationBean'
+          description: ''
+      description: ''
+    counts:
+      title: counts
+      type: object
+      properties:
+        count:
+          type: array
+          items:
+            $ref: '#/components/schemas/valueCountBean'
+          description: ''
+      description: ''
+    documentOids:
+      title: documentOids
+      type: object
+      properties:
+        oid:
+          type: array
+          items:
+            type: integer
+            format: int64
+          description: ''
+      description: ''
+    documentReferences:
+      title: documentReferences
+      type: object
+      properties:
+        reference:
+          type: array
+          items:
+            type: string
+          description: ''
+      description: ''
+    documentReferences1:
+      title: documentReferences1
+      type: object
+      properties:
+        reference:
+          type: array
+          items:
+            $ref: '#/components/schemas/documentReferenceBean'
+          description: ''
+      description: ''
+    featureAndBenefitList:
+      title: featureAndBenefitList
+      type: object
+      properties:
+        featureAndBenefit:
+          type: array
+          items:
+            $ref: '#/components/schemas/productFeatureBenefitBean'
+          description: ''
+      description: ''
+    getCharacteristicDetailsResponse1:
+      title: getCharacteristicDetailsResponse1
+      required:
+        - getCharacteristicDetailsResponse
+      type: object
+      properties:
+        getCharacteristicDetailsResponse:
+          $ref: '#/components/schemas/getCharacteristicDetailsResponse'
+    getNodeDetails1:
+      title: getNodeDetails1
+      required:
+        - getNodeDetails
+      type: object
+      properties:
+        getNodeDetails:
+          $ref: '#/components/schemas/getNodeDetails'
+    getNodeDetailsResponse1:
+      title: getNodeDetailsResponse1
+      required:
+        - getNodeDetailsResponse
+      type: object
+      properties:
+        getNodeDetailsResponse:
+          $ref: '#/components/schemas/getNodeDetailsResponse'
+    getProductDetailByCommercialRef1:
+      title: getProductDetailByCommercialRef1
+      required:
+        - getProductDetailByCommercialRef
+      type: object
+      properties:
+        getProductDetailByCommercialRef:
+          $ref: '#/components/schemas/getProductDetailByCommercialRef'
+    getProductDetailByCommercialRefResponse1:
+      title: getProductDetailByCommercialRefResponse1
+      required:
+        - getProductDetailByCommercialRefResponse
+      type: object
+      properties:
+        getProductDetailByCommercialRefResponse:
+          $ref: '#/components/schemas/getProductDetailByCommercialRefResponse'
+    getProductRelationshipsDetails1:
+      title: getProductRelationshipsDetails1
+      required:
+        - getProductRelationshipsDetails
+      type: object
+      properties:
+        getProductRelationshipsDetails:
+          $ref: '#/components/schemas/getProductRelationshipsDetails'
+    getProductRelationshipsDetailsResponse1:
+      title: getProductRelationshipsDetailsResponse1
+      required:
+        - getProductRelationshipsDetailsResponse
+      type: object
+      properties:
+        getProductRelationshipsDetailsResponse:
+          $ref: '#/components/schemas/getProductRelationshipsDetailsResponse'
+    highligthedCharacteristics:
+      title: highligthedCharacteristics
+      type: object
+      properties:
+        characteristic:
+          type: array
+          items:
+            $ref: '#/components/schemas/characteristicBean'
+          description: ''
+      description: ''
+    parents:
+      title: parents
+      type: object
+      properties:
+        parent:
+          type: array
+          items:
+            $ref: '#/components/schemas/productParentBean'
+          description: ''
+      description: ''
+    pictures:
+      title: pictures
+      type: object
+      properties:
+        picture:
+          type: array
+          items:
+            $ref: '#/components/schemas/pictureBean'
+          description: ''
+      description: ''
+    pimAssets:
+      title: pimAssets
+      type: object
+      properties:
+        pimAsset:
+          type: array
+          items:
+            $ref: '#/components/schemas/productPimAssetBean'
+          description: ''
+      description: ''
+    presentationPages:
+      title: presentationPages
+      type: object
+      properties:
+        presentationPage:
+          type: array
+          items:
+            $ref: '#/components/schemas/presentationPageBean'
+          description: ''
+      description: ''
+    products1:
+      title: products1
+      type: object
+      properties:
+        product:
+          type: array
+          items:
+            $ref: '#/components/schemas/productReferenceBean'
+          description: ''
+      description: ''
+    ranges:
+      title: ranges
+      type: object
+      properties:
+        range:
+          type: array
+          items:
+            $ref: '#/components/schemas/rangeLightBean'
+          description: ''
+      description: ''
+    relatedCharBeans:
+      title: relatedCharBeans
+      type: object
+      properties:
+        relatedCharBean:
+          type: array
+          items:
+            $ref: '#/components/schemas/relatedCharBean'
+          description: ''
+      description: ''
+    relationships:
+      title: relationships
+      type: object
+      properties:
+        relationship:
+          type: array
+          items:
+            $ref: '#/components/schemas/productRelationshipLinkBean'
+          description: ''
+      description: ''
+    semanticCharacteristics:
+      title: semanticCharacteristics
+      type: object
+      properties:
+        characteristic:
+          type: array
+          items:
+            $ref: '#/components/schemas/characteristicBean'
+          description: ''
+      description: ''
+    specificCountries:
+      title: specificCountries
+      type: object
+      properties:
+        country:
+          type: array
+          items:
+            $ref: '#/components/schemas/specificCountriesBean'
+          description: ''
+      description: ''
+    subCounts:
+      title: subCounts
+      type: object
+      properties:
+        count:
+          type: array
+          items:
+            $ref: '#/components/schemas/productCountBean'
+          description: ''
+      description: ''
+    subNodes:
+      title: subNodes
+      type: object
+      properties:
+        node:
+          type: array
+          items:
+            $ref: '#/components/schemas/nodeTreeBean'
+          description: ''
+      description: ''
+    tag:
+      title: tag
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/characteristicTagBean'
+          description: ''
+      description: ''
+    translations:
+      title: translations
+      type: object
+      properties:
+        translation:
+          type: array
+          items:
+            $ref: '#/components/schemas/baseCharacteristicTranslationBean'
+          description: ''
+      description: ''
+    valueLineItems:
+      title: valueLineItems
+      type: object
+      properties:
+        valueLineItem:
+          type: array
+          items:
+            $ref: '#/components/schemas/valueLineItem'
+          description: ''
+      description: ''
+    valueLines:
+      title: valueLines
+      type: object
+      properties:
+        valueLine:
+          type: array
+          items:
+            $ref: '#/components/schemas/valueLine'
+          description: ''
+      description: ''
+    values:
+      title: values
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/valueBean'
+          description: ''
+      description: ''
+    ProductDetails:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: id of the product. its equal to commercial ref for all ops product. different for EncycloPedia product
+        origin:
+          type: string
+          description: origin of the product. For where the product gets contributed
+        version:
+          type: integer
+          format: int64
+        localeReferenceList:
+          type: array
+          description: language is which we want to retrieve translated data e.g product "shortDescription" ( e.g en_GB fr_FR)
+          items:
+            $ref: '#/components/schemas/LocaleReference'
+        bslContextList:
+          type: array
+          items:
+            $ref: '#/components/schemas/BslContext'
+      required:
+        - productId
+    BslContext:
+      type: object
+      required:
+        - targetReference
+      properties:
+        targetReference:
+          $ref: '#/components/schemas/TargetReference'
+        localeReferenceList:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocaleReference'
+      description: |
+        targetReference reference a BSL target. It is use to retrieve target dependent data (e.g parent range where this product belong to). localeReferenceList allow for a given target to filter between different some locales ( e.g retieve epdsDocument that are scoped and define for a given locale)
+    TargetReference:
+      type: object
+      properties:
+        brand:
+          type: string
+          description: e.g "Schneider Electric" "APC" "Pelco"
+        channel:
+          type: string
+        country:
+          type: string
+          description: e.g "WW" "US" "GB" "FR"
+        function:
+          type: string
+        market:
+          type: string
+        privacy:
+          type: string
+        program:
+          type: string
+        project:
+          type: string
+    LocaleReference:
+      type: object
+      properties:
+        language:
+          type: string
+        country:
+          type: string
+      description: |
+        Locale reference e.g en_GB fr_FR
+        where "en" Language and "GB" country
+        are provided in  separated fields
+    ProductDetailsAnswer:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: id of the product. its equal to commercial ref for all ops product. different for EncycloPedia product
+        commercialReference:
+          type: string
+          description: commercial reference of the product
+        eanNumber:
+          type: string
+          description: EAN number of the product
+        pictureDocumentOid:
+          type: integer
+          format: int64
+          description: oid of the Document that hold the images of the product (deprecated use pictureDocumentReference)
+        isGreenPremium:
+          type: boolean
+          description: is the product is green premium
+        pictureDocumentReference:
+          type: string
+          description: reference of the Document that hold the images of the product
+        shortDescription:
+          type: array
+          description: translated short decription of the product. Can be filtred using the input parameter localeReferenceList
+          items:
+            $ref: '#/components/schemas/TranslatedString'
+        brand:
+          type: array
+          description: brand of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+        commercialStatus:
+          type: array
+          description: commercialStatus of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+        isCommercialized:
+          type: array
+          description: is the product commercialized in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country
+          items:
+            $ref: '#/components/schemas/LocalizedBoolean'
+        partNumber:
+          type: array
+          description: partNumber of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+        price:
+          type: array
+          description: price of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country
+          items:
+            $ref: '#/components/schemas/LocalizedDouble'
+        currency:
+          type: array
+          description: currency of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+        localeDistributorCode:
+          type: array
+          description: localeDistributorCode of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+        localeStockStatus:
+          type: array
+          description: localeStockStatus of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+        scopedData:
+          type: array
+          description: data that can change according to which target see them.
+          items:
+            $ref: '#/components/schemas/ScopedData'
+        epdsDocumentReferenceData:
+          type: array
+          description: translated epdsDocumentReferenceData of the product. Can be filtred using the input parameter localeReferenceList
+          items:
+            $ref: '#/components/schemas/TranslatedString'
+        longDescription:
+          type: array
+          description: translated long decription of the product. Can be filtred using the input parameter localeReferenceList
+          items:
+            $ref: '#/components/schemas/LocalizationString'
+        type:
+          type: array
+          description: type.
+          items:
+            $ref: '#/components/schemas/LocalizationString'
+        subType:
+          type: array
+          description: subType.
+          items:
+            $ref: '#/components/schemas/LocalizationString'
+        stockCode:
+          type: array
+          description: stockCode of the product in a given localization (based on country). Can be filtred using the input parameter localeReferenceList/country
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+        isVisibleInNav:
+          type: array
+          description: available visibleInNav for this product and target
+          items:
+            $ref: '#/components/schemas/LocalizedBoolean'
+        isEnergyStarCompliant:
+          type: boolean
+          description: is the product is energy star compliant
+          default: false
+    TranslatedString:
+      type: object
+      properties:
+        locale:
+          type: string
+          description: 'name of the locale en_GB,fr_FR'
+        value:
+          type: string
+    TranslatedLong:
+      type: object
+      properties:
+        locale:
+          type: string
+          description: 'name of the locale en_GB,fr_FR'
+        value:
+          type: integer
+          format: int64
+    LocalizedString:
+      type: object
+      properties:
+        localization:
+          type: string
+          description: 'name of the localization FR,CA,DE'
+        value:
+          type: string
+    LocalizedDouble:
+      type: object
+      properties:
+        localization:
+          type: string
+          description: 'name of the localization FR,CA,DE'
+        value:
+          type: number
+          format: float
+    LocalizedBoolean:
+      type: object
+      properties:
+        localization:
+          type: string
+          description: 'name of the localization FR,CA,DE'
+        value:
+          type: boolean
+    ScopedData:
+      type: object
+      properties:
+        target:
+          $ref: '#/components/schemas/TargetReference'
+        firstParentRangeId:
+          type: string
+          description: 'among all range attached to this product in this target, select the older created one'
+        epdsDocumentReference:
+          type: array
+          description: available epdsDocument for this product and target in the locale given in input
+          items:
+            $ref: '#/components/schemas/TranslatedString'
+        epdsDocumentOid:
+          type: array
+          description: available epdsDocument for this product and target in the locale given in input
+          items:
+            $ref: '#/components/schemas/TranslatedLong'
+    ProductValues:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: id of the product. its equal to commercial ref for all ops product. different for EncycloPedia product
+        localeList:
+          type: array
+          description: 'locale of the translation we want retrieve. If one one locale is specicied, if the translation in this locale is not found the en_GB translation is return.'
+          items:
+            $ref: '#/components/schemas/LocaleReference'
+        fetchConf:
+          $ref: '#/components/schemas/FetchConf'
+    FetchConf:
+      type: object
+      properties:
+        fetchSignificantValueListOnly:
+          type: boolean
+          description: fetch only the value of product where its characteristic is significant for at least one node of the offer presentation (default true)
+        fetchLine:
+          type: boolean
+          description: fetch valueLine level in the scructure productValue-valueLine-valueLineItem. valueLine contains mainly the translated rendered value of a line. this data is used to display tabular characteristic count in all item joined way. If false the sructure productValue-valueLineItem is return bypassing the valueLine data (default false)
+    ProductValuesAnswer:
+      type: object
+      properties:
+        commercialReference:
+          type: string
+          description: its equal to commercial ref for all ops product. different for EncycloPedia product
+        valueList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductValue'
+    ProductValue:
+      type: object
+      properties:
+        significant:
+          type: boolean
+          description: Is this product value is significant for at least one node of the offer navigation. usefull only if fetchSignificantValueListOnly=false
+        char:
+          $ref: '#/components/schemas/Characteristic'
+        subCharList:
+          type: array
+          description: the sub char data (ids and translation) in case of a tabular char
+          items:
+            $ref: '#/components/schemas/Characteristic'
+        lineList:
+          type: array
+          description: returned only in case fetchConf fetchLine=true.  line data.
+          items:
+            $ref: '#/components/schemas/ValueLine'
+        itemList:
+          type: array
+          description: returned only in case fetchConf fetchLine=false
+          items:
+            $ref: '#/components/schemas/ValueLineItem'
+      description: 'producValue is one element from the product datasheet it contains the charname and all the valuation simple or tabular, mono or multi valuatied'
+    Characteristic:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Characteristic's user friendly name not final customer translation see transList
+        charId:
+          type: string
+          description: Characteristic's char_id
+        transList:
+          type: array
+          description: on demande
+          items:
+            $ref: '#/components/schemas/Translation'
+    ValueLine:
+      type: object
+      properties:
+        transList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Translation'
+        itemList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValueLineItem'
+      description: Its should contains details about value line. Not implemented yet
+    ValueLineItem:
+      type: object
+      properties:
+        charId:
+          type: string
+          description: id of the char described above in ProductValue char or subCharList
+        transList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Translation'
+      description: 'contains details about value item, data of a simple char or sub char data in a tabluar case'
+    Translation:
+      type: object
+      properties:
+        value:
+          type: string
+          description: translated value
+        locale:
+          type: string
+          description: official iso locale e.g en_GB fr_FR
+    shoppableBean:
+      title: shoppableBean
+      type: object
+      properties:
+        consumers:
+          type: boolean
+        professionals:
+          type: boolean
+    RequestCompetitorCRDetails:
+      type: object
+      required:
+        - scope
+        - locale
+        - id
+      properties:
+        scope:
+          $ref: '#/components/schemas/TargetReference'
+        locale:
+          $ref: '#/components/schemas/LocaleBean'
+        id:
+          type: string
+          description: id of competitor
+    CompetitorCRDetailsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: id of competitor
+        name:
+          type: string
+          description: name of competitor
+        manufacturer:
+          type: string
+          description: manufacturer of competitor
+        description:
+          type: string
+          description: description of competitor for the requested localization
+    LocaleBean:
+      type: object
+      properties:
+        isoLanguage:
+          type: string
+        isoCountry:
+          type: string
+      description: |
+        Locale reference e.g en_GB fr_FR
+        where "en" Language and "GB" country
+        are provided in  separated fields
+    ProductListingNodeDetailsAnswer:
+      type: object
+      properties:
+        parentNodeId:
+          type: string
+          description: the product listing node id of its parent node
+        displayOrder:
+          type: integer
+          format: int64
+          description: the display order of the requested node for the requested country (WW by default if no display order for the requested locale)
+        parentCategory:
+          type: string
+          description: the category key of the requested node
+        name:
+          type: string
+          description: the name of the requested node for the requested locale (en_GB by default if no translation for the requested locale)
+        facets:
+          type: array
+          description: the list of facets related to the requested node
+          items:
+            $ref: '#/components/schemas/FacetDisplayOrder'
+        products:
+          type: array
+          description: the list of products related to the requested node
+          items:
+            $ref: '#/components/schemas/ProductDisplayOrder'
+    FacetDisplayOrder:
+      type: object
+      properties:
+        facetId:
+          type: string
+          description: the id of the characteristic
+        displayOrder:
+          type: integer
+          format: int64
+          description: facet's display order for the requested country
+    ProductDisplayOrder:
+      type: object
+      properties:
+        commRef:
+          type: string
+          description: product's commercial reference
+        displayOrder:
+          type: integer
+          format: int64
+          description: product's display order for the requested country
+    RequestCompetitorRelationshipsDetails:
+      type: object
+      required:
+        - scope
+        - locale
+        - competitorId
+      properties:
+        scope:
+          $ref: '#/components/schemas/TargetReference'
+        locale:
+          $ref: '#/components/schemas/LocaleBean'
+        competitorId:
+          type: string
+          description: id of competitor
+    CompetitorRelationshipsDetailsResponse:
+      type: object
+      properties:
+        competitorId:
+          type: string
+          description: id of the competitorcr(the requested id)
+        relationships:
+          type: array
+          description: array of COMPETITOR_REL for the requested competitor_cr.
+          items:
+            $ref: '#/components/schemas/Relationship'
+    Relationship:
+      type: object
+      properties:
+        competitorQty:
+          type: integer
+        targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/RelationshipInfos'
+    RelationshipInfos:
+      type: object
+      properties:
+        commRef:
+          type: string
+        id:
+          type: string
+        quantity:
+          type: integer
+        ranking:
+          type: integer
+          description: RANKING for the requested target country
+        audience:
+          type: string
+          description: AUDIENCE name for the requested target country
+        comment:
+          type: string
+          description: COMMENT for the requested target country / locale
+    ErrorResponse:
+      type: object
+      title: Error Response - OAS3
+      description: Error response returned to the consumer when an HTTP error status has occurred.
+      properties:
+        code:
+          type: string
+          example: MISSING_FIELD or 12345
+          description: |-
+            Service-defined error code which may be numeric or a string.
+
+            Errors detected by the APIM platform result in the following codes.
+
+            BAD_REQUEST (for 400)
+            UNAUTHORIZED (for 401)
+            FORBIDDEN (for 403)
+            NOT_FOUND (for 404)
+            GONE (for 410)
+            PRECONDITION_FAILED (for 412)
+            TOO_MANY_REQUESTS (for 429)
+            INTERNAL_SERVER_ERROR (for 500)
+            NOT_IMPLEMENTED (for 501)
+
+            Any specific service validation errors would replace BAD_REQUEST.
+        userMessage:
+          type: string
+          example: 'Required field is missing: productSku'
+          description: Human-readable general description of the error.
+        developerMessage:
+          type: string
+          description: Optional human-readable description of the error details.
+          example: 'Product master API ParseException: required tag  expected'
+        moreInfo:
+          type: string
+          description: 'Optional link to error documentation, which has more information about the error.'
+          format: uri
+          example: 'https://example.com/product-master/v1/error/12345'
+      required:
+        - code
+        - userMessage
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: 'https://api.qa.se.com/token'
+          refreshUrl: ''
+          scopes: {}
+      description: ''
+  responses:
+    Common_Oas3_400:
+      description: 'Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                code: BAD_REQUEST
+                userMessage: 'Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.'
+                developerMessage: Request content is malformed or exceeded structural limits
+                moreInfo: 'https://example.com/error/123'
+    Common_Oas3_401:
+      description: 'The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                code: UNAUTHORIZED
+                userMessage: 'The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.'
+                developerMessage: Invalid Access Token
+                moreInfo: 'https://example.com/error/123'
+    Common_Oas3_403:
+      description: The client does not have permission to perform the requested action e.g. POST or DELETE.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                code: FORBIDDEN
+                userMessage: The client does not have permission to perform the requested action e.g. POST or DELETE.
+                developerMessage: Http verb DELETE is not supported for path suffix /installed-products/track
+                moreInfo: 'https://example.com/error/123'
+    Common_Oas3_404:
+      description: Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                code: NOT_FOUND
+                userMessage: Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.
+                developerMessage: Records not found
+                moreInfo: 'https://example.com/error/123'
+    Common_Oas3_429:
+      description: Number of requests has exceeded the client's rate limits.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                code: TOO_MANY_REQUESTS
+                userMessage: Number of requests has exceeded the client’s rate limits.
+                developerMessage: Spike arrest violation
+                moreInfo: 'https://example.com/error/123'
+    Common_Oas3_500:
+      description: Requested operation encountered an unexpected server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                code: INTERNAL_SERVER_ERROR
+                userMessage: Requested operation encountered an unexpected server error.
+                developerMessage: 'Target service is unavailable, please try again later.'
+                moreInfo: 'https://example.com/error/123'
+tags:
+  - name: ProductServiceSoapBinding
+    description: ''
+security:
+  - oauth2: []

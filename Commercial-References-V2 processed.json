@@ -1,0 +1,1860 @@
+{
+    "info": {
+        "_postman_id": "82dc5a9d-db4e-4859-b832-97e13255e406",
+        "name": "Commercial-References-V2 processed",
+        "description": "Commercial references upload\n\nContact Support:\n Name: Jose Maria Cerdeira\n Email: jose-maria.cerdeira@se.com",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "DT-A-01",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"commercialRef\": \"1603\",\r\n    \"mapAction\": \"N\"\r\n  },\r\n  {\r\n    \"line\": 2,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"170ADM35010C\",\r\n    \"commercialRef\": \"170ADM35010C\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/mappings",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "mappings"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-A-02",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.be.ok;\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"type\": \"array\",\n \"description\": \"\",\n \"minItems\": 1,\n \"uniqueItems\": true,\n \"items\": {\n  \"type\": \"object\",\n  \"properties\": {\n   \"CODE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"USER_MESSAGE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"DEVELOPER_MESSAGE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"MORE_INFO\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   }\n  },\n  \"required\": [\n   \"CODE\",\n   \"USER_MESSAGE\",\n   \"DEVELOPER_MESSAGE\",\n   \"MORE_INFO\"\n  ]\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in request\", () => {\r",
+                            "\r",
+                            "  pm.request.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+                            "\r",
+                            "  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"commercialRef\": \"1603\",\r\n    \"mapAction\": \"N\"\r\n  },\r\n  {\r\n    \"line\": 2,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"170ADM35010C\",\r\n    \"commercialRef\": \"170ADM35010C\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/mappings",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "mappings"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-A-03",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"commercialRef\": \"1603\",\r\n    \"mapAction\": \"N\"\r\n  },\r\n  {\r\n    \"line\": 2,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"170ADM35010C\",\r\n    \"commercialRef\": \"170ADM35010C\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/mappings",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "mappings"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-A-04",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"commercialRef\": \"1603\",\r\n    \"mapAction\": \"N\"\r\n  },\r\n  {\r\n    \"line\": 2,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"170ADM35010C\",\r\n    \"commercialRef\": \"170ADM35010C\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/mappings",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "mappings"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-A-05",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"commercialRef\": \"1603\",\r\n    \"mapAction\": \"N\"\r\n  },\r\n  {\r\n    \"line\": 2,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"170ADM35010C\",\r\n    \"commercialRef\": \"170ADM35010C\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/mappings",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "mappings"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-A-06",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"commercialRef\": \"1603\",\r\n    \"mapAction\": \"N\"\r\n  },\r\n  {\r\n    \"line\": 2,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"170ADM35010C\",\r\n    \"commercialRef\": \"170ADM35010C\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/mappings",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "mappings"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-B-01",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": \"3\",\r\n    \"commercialRef\": \"1603\",\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"reportingEntityBO\": \"DE3202\",\r\n    \"reportingEntityFO\": \"\",\r\n    \"cscPrice\": \"12\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": \"1\",\r\n    \"uom\": \"ST\",\r\n    \"validFrom\": \"20210209\",\r\n    \"cscOverwrite\": \"X\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/prices",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "prices"
+                    ]
+                }
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-B-02",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": \"3\",\r\n    \"commercialRef\": \"1603\",\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"reportingEntityBO\": \"DE3202\",\r\n    \"reportingEntityFO\": \"\",\r\n    \"cscPrice\": \"12\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": \"1\",\r\n    \"uom\": \"ST\",\r\n    \"validFrom\": \"20210209\",\r\n    \"cscOverwrite\": \"X\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/prices",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "prices"
+                    ]
+                }
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.be.ok;\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"type\": \"array\",\n \"description\": \"\",\n \"minItems\": 1,\n \"uniqueItems\": true,\n \"items\": {\n  \"type\": \"object\",\n  \"required\": [\n   \"CODE\",\n   \"USER_MESSAGE\",\n   \"DEVELOPER_MESSAGE\",\n   \"MORE_INFO\"\n  ],\n  \"properties\": {\n   \"CODE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"USER_MESSAGE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"DEVELOPER_MESSAGE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"MORE_INFO\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   }\n  }\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in request\", () => {\r",
+                            "\r",
+                            "  pm.request.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+                            "\r",
+                            "  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-B-03",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": \"3\",\r\n    \"commercialRef\": \"1603\",\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"reportingEntityBO\": \"DE3202\",\r\n    \"reportingEntityFO\": \"\",\r\n    \"cscPrice\": \"12\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": \"1\",\r\n    \"uom\": \"ST\",\r\n    \"validFrom\": \"20210209\",\r\n    \"cscOverwrite\": \"X\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/prices",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "prices"
+                    ]
+                }
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-B-04",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": \"3\",\r\n    \"commercialRef\": \"1603\",\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"reportingEntityBO\": \"DE3202\",\r\n    \"reportingEntityFO\": \"\",\r\n    \"cscPrice\": \"12\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": \"1\",\r\n    \"uom\": \"ST\",\r\n    \"validFrom\": \"20210209\",\r\n    \"cscOverwrite\": \"X\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/prices",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "prices"
+                    ]
+                }
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-B-05",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": \"3\",\r\n    \"commercialRef\": \"1603\",\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"reportingEntityBO\": \"DE3202\",\r\n    \"reportingEntityFO\": \"\",\r\n    \"cscPrice\": \"12\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": \"1\",\r\n    \"uom\": \"ST\",\r\n    \"validFrom\": \"20210209\",\r\n    \"cscOverwrite\": \"X\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/prices",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "prices"
+                    ]
+                }
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-B-06",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": \"3\",\r\n    \"commercialRef\": \"1603\",\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"reportingEntityBO\": \"DE3202\",\r\n    \"reportingEntityFO\": \"\",\r\n    \"cscPrice\": \"12\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": \"1\",\r\n    \"uom\": \"ST\",\r\n    \"validFrom\": \"20210209\",\r\n    \"cscOverwrite\": \"X\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/prices",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "prices"
+                    ]
+                }
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-C-01",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"MY0100\",\r\n    \"prefOriReportingEntity\": \"FR0277\",\r\n    \"validFrom\": \"20210101\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/pref-origin-entities",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "pref-origin-entities"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-C-02",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.be.ok;\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"type\": \"array\",\n \"description\": \"\",\n \"minItems\": 1,\n \"uniqueItems\": true,\n \"items\": {\n  \"type\": \"object\",\n  \"required\": [\n   \"CODE\",\n   \"USER_MESSAGE\",\n   \"DEVELOPER_MESSAGE\",\n   \"MORE_INFO\"\n  ],\n  \"properties\": {\n   \"CODE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"USER_MESSAGE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"DEVELOPER_MESSAGE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"MORE_INFO\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   }\n  }\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in request\", () => {\r",
+                            "\r",
+                            "  pm.request.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+                            "\r",
+                            "  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"MY0100\",\r\n    \"prefOriReportingEntity\": \"FR0277\",\r\n    \"validFrom\": \"20210101\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/pref-origin-entities",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "pref-origin-entities"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-C-03",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"MY0100\",\r\n    \"prefOriReportingEntity\": \"FR0277\",\r\n    \"validFrom\": \"20210101\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/pref-origin-entities",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "pref-origin-entities"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-C-04",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"MY0100\",\r\n    \"prefOriReportingEntity\": \"FR0277\",\r\n    \"validFrom\": \"20210101\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/pref-origin-entities",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "pref-origin-entities"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-C-05",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"MY0100\",\r\n    \"prefOriReportingEntity\": \"FR0277\",\r\n    \"validFrom\": \"20210101\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/pref-origin-entities",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "pref-origin-entities"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-C-06",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"MY0100\",\r\n    \"prefOriReportingEntity\": \"FR0277\",\r\n    \"validFrom\": \"20210101\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/pref-origin-entities",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "pref-origin-entities"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-01",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"FR0277\",\r\n    \"cscPrice\": \"52.72\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": 1,\r\n    \"uom\": \"PC\",\r\n    \"validFrom\": \"20210101\",\r\n    \"cscAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/derogations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "derogations"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-02",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.be.ok;\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"type\": \"array\",\n \"description\": \"\",\n \"minItems\": 1,\n \"uniqueItems\": true,\n \"items\": {\n  \"type\": \"object\",\n  \"required\": [\n   \"CODE\",\n   \"USER_MESSAGE\",\n   \"DEVELOPER_MESSAGE\",\n   \"MORE_INFO\"\n  ],\n  \"properties\": {\n   \"CODE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"USER_MESSAGE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"DEVELOPER_MESSAGE\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   },\n   \"MORE_INFO\": {\n    \"type\":[\"string\",\"null\"],\n    \"minLength\": 1\n   }\n  }\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in request\", () => {\r",
+                            "\r",
+                            "  pm.request.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+                            "\r",
+                            "  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"FR0277\",\r\n    \"cscPrice\": \"52.72\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": 1,\r\n    \"uom\": \"PC\",\r\n    \"validFrom\": \"20210101\",\r\n    \"cscAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/derogations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "derogations"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-03",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"FR0277\",\r\n    \"cscPrice\": \"52.72\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": 1,\r\n    \"uom\": \"PC\",\r\n    \"validFrom\": \"20210101\",\r\n    \"cscAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/derogations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "derogations"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-04",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"FR0277\",\r\n    \"cscPrice\": \"52.72\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": 1,\r\n    \"uom\": \"PC\",\r\n    \"validFrom\": \"20210101\",\r\n    \"cscAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/derogations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "derogations"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-05",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"FR0277\",\r\n    \"cscPrice\": \"52.72\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": 1,\r\n    \"uom\": \"PC\",\r\n    \"validFrom\": \"20210101\",\r\n    \"cscAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/derogations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "derogations"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-06",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "SESAUSER",
+                        "value": "SESA612288",
+                        "type": "text"
+                    },
+                    {
+                        "key": "APPID",
+                        "value": "959e6b619afb4cdb89495d9a3f125500",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"FR0277\",\r\n    \"cscPrice\": \"52.72\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": 1,\r\n    \"uom\": \"PC\",\r\n    \"validFrom\": \"20210101\",\r\n    \"cscAction\": \"N\"\r\n  }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/derogations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v2",
+                        "finance-legal",
+                        "finance",
+                        "commercial-references",
+                        "derogations"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "auth": {
+        "type": "oauth2"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references",
+            "type": "string"
+        }
+    ]
+}

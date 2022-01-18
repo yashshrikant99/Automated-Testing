@@ -1,0 +1,784 @@
+{
+    "info": {
+        "_postman_id": "6ce4436b-147a-445f-9091-91f4df180366",
+        "name": "Chat Configuration API processed",
+        "description": "This API supports share Chat configuration to facilitate chat integration across platforms, based on below : country, language, platform, optionally: Customer Classification, Contract (Eclipse user or not), Product Details (Category, Sub-category, Range) and Subject.\nThis API also allows customer facing applications to retrieve the case resolving agent associated to the case by providing a case number. This functionality is majorly consumed to know agent availability on chat.\n\nContact Support:\n Name: Pooja Thayil\n Email: pooja.suresh@se.com",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "DT-A-01",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text",
+                        "description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{bfo_token}}",
+                        "type": "text",
+                        "description": "Represents the bFO Access Token to access to Backend system"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/configurations?country=ES&language=es&application=Seamless&classL1=WD&includeTranslations=all",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "configurations"
+                    ],
+                    "query": [
+                        {
+                            "key": "country",
+                            "value": "ES",
+                            "description": "(Required) Represents the Country ISO Code"
+                        },
+                        {
+                            "key": "language",
+                            "value": "es",
+                            "description": "(Required) Represents the Language ISO Code"
+                        },
+                        {
+                            "key": "application",
+                            "value": "Seamless",
+                            "description": "(Required) Represents the source application (ex: PRM, Eclipse...)"
+                        },
+                        {
+                            "key": "classL1",
+                            "value": "WD",
+                            "description": "Represents the list of primary account classifications separated by comma"
+                        },
+                        {
+                            "key": "includeTranslations",
+                            "value": "all",
+                            "description": "Represents the context of the chat, it can be either case or product"
+                        }
+                    ]
+                },
+                "description": "This API returns the configuration of the chat components according to input parameters (language, country code, application).\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response.\n"
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-A-02",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text",
+                        "description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{bfo_token}}",
+                        "type": "text",
+                        "description": "Represents the bFO Access Token to access to Backend system"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/configurations?country=ES&language=es&application=Seamless&classL1=WD&includeTranslations=all",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "configurations"
+                    ],
+                    "query": [
+                        {
+                            "key": "country",
+                            "value": "ES",
+                            "description": "(Required) Represents the Country ISO Code"
+                        },
+                        {
+                            "key": "language",
+                            "value": "es",
+                            "description": "(Required) Represents the Language ISO Code"
+                        },
+                        {
+                            "key": "application",
+                            "value": "Seamless",
+                            "description": "(Required) Represents the source application (ex: PRM, Eclipse...)"
+                        },
+                        {
+                            "key": "classL1",
+                            "value": "WD",
+                            "description": "Represents the list of primary account classifications separated by comma"
+                        },
+                        {
+                            "key": "includeTranslations",
+                            "value": "all",
+                            "description": "Represents the context of the chat, it can be either case or product"
+                        }
+                    ]
+                },
+                "description": "This API returns the configuration of the chat components according to input parameters (language, country code, application).\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response.\n"
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.have.status('OK');\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"description\": \"This output data represents the chat configurations detailed informations returned by the get configurations method.\",\n \"type\": \"object\",\n \"properties\": {\n  \"userProfile\": {\n   \"type\": \"object\",\n   \"properties\": {\n    \"lastName\": {\n     \"type\":[\"string\",\"null\"],\n     \"minLength\": 1,\n     \"description\": \"Represents the Last Name from user object\"\n    },\n    \"firstName\": {\n     \"type\":[\"string\",\"null\"],\n     \"minLength\": 1,\n     \"description\": \"Represents the First Name from user object\"\n    },\n    \"businessType\": {\n     \"type\":[\"string\",\"null\"],\n     \"minLength\": 1\n    },\n    \"areaOfFocus\": {\n     \"type\":[\"string\",\"null\"],\n     \"minLength\": 1\n    },\n    \"accountId\": {\n     \"type\":[\"string\",\"null\"],\n     \"minLength\": 1,\n     \"description\": \"Represents the account id of the contact on the user object\"\n    },\n    \"contactId\": {\n     \"type\":[\"string\",\"null\"],\n     \"minLength\": 1,\n     \"description\": \"Represents the contactId of the user object\"\n    },\n    \"AIL\": {\n     \"type\":[\"string\",\"null\"],\n     \"minLength\": 1\n    },\n    \"accountVIP\": {\n     \"type\": \"boolean\",\n     \"description\": \"Represents the Boolean if Account VIP Status is not empty\"\n    }\n   }\n  },\n  \"translations\": {\n   \"type\": \"array\",\n   \"uniqueItems\": true,\n   \"minItems\": 1,\n   \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n     \"tokens\": {\n      \"type\": \"object\",\n      \"properties\": {\n       \"unavailableMessage\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"unavailableContactPageLinkLabel\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"startChat\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"routingMenuChatAboutProduct\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"routingMenuUnavailableOptions\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"routingMenuOtherInquiries\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"routingMenuHeaderQuestion\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"routingMenuChatWithCaseResolvingAgent\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"proactiveChatStandardQuestion\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatWaitingMessage\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatEmail\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatEmailError\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatFirstName\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatLastName\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatGDPR\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatPhone\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatPhoneError\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatErrorMessage\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatDescription\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatDescriptionLabel\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatDescriptionError\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"prechatDescriptionCharactersLeft\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1,\n        \"description\": \"Represents number of description characters left\"\n       },\n       \"prechatCaseNumber\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1,\n        \"description\": \"Represents pre chat Case Number\"\n       },\n       \"prechatCaseNumberLabel\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"contactUsOnlineMessage\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"contactUsHeader\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"contactUsChatUnavailable\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"contactCenter\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"chatWithUs\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"browserAlert\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       },\n       \"back\": {\n        \"type\":[\"string\",\"null\"],\n        \"minLength\": 1\n       }\n      }\n     },\n     \"language\": {\n      \"type\":[\"string\",\"null\"],\n      \"minLength\": 1,\n      \"description\": \"Represents the language code\"\n     }\n    }\n   }\n  },\n  \"routingRules\": {\n   \"type\": \"array\",\n   \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n     \"menu\": {\n      \"type\": \"array\",\n      \"uniqueItems\": true,\n      \"minItems\": 1,\n      \"description\": \"Represents the menu items of the chat\",\n      \"items\": {\n       \"type\": \"object\",\n       \"properties\": {\n        \"menu\": {\n         \"type\": \"array\",\n         \"uniqueItems\": true,\n         \"minItems\": 1,\n         \"description\": \"\",\n         \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n           \"pocId\": {\n            \"type\":[\"string\",\"null\"],\n            \"minLength\": 1\n           },\n           \"label\": {\n            \"type\":[\"string\",\"null\"],\n            \"minLength\": 1\n           },\n           \"id\": {\n            \"type\":[\"string\",\"null\"],\n            \"minLength\": 1\n           },\n           \"chatButtonIds\": {\n            \"type\": \"array\",\n            \"items\": {\n             \"type\": \"object\"\n            }\n           }\n          }\n         }\n        },\n        \"label\": {\n         \"type\":[\"string\",\"null\"],\n         \"minLength\": 1\n        },\n        \"id\": {\n         \"type\":[\"string\",\"null\"],\n         \"minLength\": 1\n        }\n       }\n      }\n     },\n     \"pocId\": {\n      \"type\":[\"string\",\"null\"],\n      \"minLength\": 1,\n      \"description\": \"Represents the point of contact Id\"\n     },\n     \"label\": {\n      \"type\":[\"string\",\"null\"],\n      \"minLength\": 1,\n      \"description\": \"Represents the label of customer facing category or tree item customer facing label\"\n     },\n     \"id\": {\n      \"type\":[\"string\",\"null\"],\n      \"minLength\": 1,\n      \"description\": \"Represents record unique Id\"\n     },\n     \"chatButtonIds\": {\n      \"type\": \"array\",\n      \"description\": \"Represents the IDs of the chat buttons\",\n      \"items\": {\n       \"type\":[\"string\",\"null\"]\n      }\n     },\n     \"loginRequired\": {\n      \"type\": \"boolean\",\n      \"description\": \"Represents if customer login to Application is required\"\n     },\n     \"message\": {\n      \"type\":[\"string\",\"null\"],\n      \"minLength\": 1,\n      \"description\": \"Represents the message requesting customer to Login to application\"\n     },\n     \"chatbotEnabled\": {\n      \"type\": \"boolean\",\n      \"description\": \"Represents the chat to be routed to a bot instead of agent\"\n     },\n     \"caseCategory\": {\n      \"type\":[\"string\",\"null\"],\n      \"minLength\": 1,\n      \"description\": \"Represetns the information to the chatbot of the category selected by customer\"\n     },\n     \"isPremium\": {\n      \"description\": \"Represents if it\\u00e2\\u20ac\\u2122s the Premium Categories\",\n      \"type\": \"boolean\"\n     },\n     \"servicePlanId\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Represents id of the service plan related to the rounting rule.\"\n     },\n     \"index\": {\n      \"description\": \"Represents the index of the routing rule.\",\n      \"type\":[\"integer\",\"null\"]\n     }\n    }\n   }\n  },\n  \"country\": {\n   \"type\": \"object\",\n   \"description\": \"Represents the Premium Categories\",\n   \"properties\": {\n    \"internationalPhoneCode\": {\n     \"type\":[\"string\",\"null\"],\n     \"minLength\": 1\n    },\n    \"countryId\": {\n     \"type\":[\"string\",\"null\"],\n     \"minLength\": 1\n    },\n    \"countryCode\": {\n     \"type\":[\"string\",\"null\"],\n     \"minLength\": 1,\n     \"description\": \"Represents 2-char country ISO code\"\n    }\n   }\n  },\n  \"cvcp\": {\n   \"type\": \"object\",\n   \"description\": \"Contains the CVCP details.\",\n   \"properties\": {\n    \"id\": {\n     \"type\":[\"string\",\"null\"],\n     \"description\": \"Represents Id of CVCP\"\n    },\n    \"contractId\": {\n     \"type\":[\"string\",\"null\"],\n     \"description\": \"Represents id of a contract.\"\n    }\n   }\n  }\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-A-03",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text",
+                        "description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{bfo_token}}",
+                        "type": "text",
+                        "description": "Represents the bFO Access Token to access to Backend system"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/configurations?country=ES&language=es&application=Seamless&classL1=WD&includeTranslations=all",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "configurations"
+                    ],
+                    "query": [
+                        {
+                            "key": "country",
+                            "value": "ES",
+                            "description": "(Required) Represents the Country ISO Code"
+                        },
+                        {
+                            "key": "language",
+                            "value": "es",
+                            "description": "(Required) Represents the Language ISO Code"
+                        },
+                        {
+                            "key": "application",
+                            "value": "Seamless",
+                            "description": "(Required) Represents the source application (ex: PRM, Eclipse...)"
+                        },
+                        {
+                            "key": "classL1",
+                            "value": "WD",
+                            "description": "Represents the list of primary account classifications separated by comma"
+                        },
+                        {
+                            "key": "includeTranslations",
+                            "value": "all",
+                            "description": "Represents the context of the chat, it can be either case or product"
+                        }
+                    ]
+                },
+                "description": "This API returns the configuration of the chat components according to input parameters (language, country code, application).\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response.\n"
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-A-04",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text",
+                        "description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{bfo_token}}",
+                        "type": "text",
+                        "description": "Represents the bFO Access Token to access to Backend system"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/configurations?country=ES&language=es&application=Seamless&classL1=WD&includeTranslations=all",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "configurations"
+                    ],
+                    "query": [
+                        {
+                            "key": "country",
+                            "value": "ES",
+                            "description": "(Required) Represents the Country ISO Code"
+                        },
+                        {
+                            "key": "language",
+                            "value": "es",
+                            "description": "(Required) Represents the Language ISO Code"
+                        },
+                        {
+                            "key": "application",
+                            "value": "Seamless",
+                            "description": "(Required) Represents the source application (ex: PRM, Eclipse...)"
+                        },
+                        {
+                            "key": "classL1",
+                            "value": "WD",
+                            "description": "Represents the list of primary account classifications separated by comma"
+                        },
+                        {
+                            "key": "includeTranslations",
+                            "value": "all",
+                            "description": "Represents the context of the chat, it can be either case or product"
+                        }
+                    ]
+                },
+                "description": "This API returns the configuration of the chat components according to input parameters (language, country code, application).\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response.\n"
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-A-05",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text",
+                        "description": "X-IDMS-Authorization for authenticated users: Allows to get the Customer Primary Classification L1, optionally L2, optionally the secondary classifcation, and the AIL for Eclipse users"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{bfo_token}}",
+                        "type": "text",
+                        "description": "Represents the bFO Access Token to access to Backend system"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/configurations?country=ES&language=es&application=Seamless&classL1=WD&includeTranslations=all",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "configurations"
+                    ],
+                    "query": [
+                        {
+                            "key": "country",
+                            "value": "ES",
+                            "description": "(Required) Represents the Country ISO Code"
+                        },
+                        {
+                            "key": "language",
+                            "value": "es",
+                            "description": "(Required) Represents the Language ISO Code"
+                        },
+                        {
+                            "key": "application",
+                            "value": "Seamless",
+                            "description": "(Required) Represents the source application (ex: PRM, Eclipse...)"
+                        },
+                        {
+                            "key": "classL1",
+                            "value": "WD",
+                            "description": "Represents the list of primary account classifications separated by comma"
+                        },
+                        {
+                            "key": "includeTranslations",
+                            "value": "all",
+                            "description": "Represents the context of the chat, it can be either case or product"
+                        }
+                    ]
+                },
+                "description": "This API returns the configuration of the chat components according to input parameters (language, country code, application).\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response.\n"
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-B-01",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text",
+                        "description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{bfo_token}}",
+                        "type": "text",
+                        "description": "Represents the IDMS Access Token to validate end user identity"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/case-experts?case-number=54655469",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "case-experts"
+                    ],
+                    "query": [
+                        {
+                            "key": "case-number",
+                            "value": "54655469",
+                            "description": "(Required) Represents the case number"
+                        }
+                    ]
+                },
+                "description": "By providing a case number, this API allows customer facing applications to retrieve the case resolving agent associated to the case. This functionality is majorly consumed to know agent availability on chat.  \n\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response."
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-B-02",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text",
+                        "description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{bfo_token}}",
+                        "type": "text",
+                        "description": "Represents the IDMS Access Token to validate end user identity"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/case-experts?case-number=54655469",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "case-experts"
+                    ],
+                    "query": [
+                        {
+                            "key": "case-number",
+                            "value": "54655469",
+                            "description": "(Required) Represents the case number"
+                        }
+                    ]
+                },
+                "description": "By providing a case number, this API allows customer facing applications to retrieve the case resolving agent associated to the case. This functionality is majorly consumed to know agent availability on chat.  \n\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response."
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.have.status('OK');\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"title\": \"CaseExpertsData\",\n \"type\": \"object\",\n \"description\": \"This output data represents the case detailed informations returned by the get case-experts method.\",\n \"properties\": {\n  \"id\": {\n   \"type\":[\"string\",\"null\"],\n   \"description\": \"Represents the case id\",\n   \"maxLength\": 18\n  },\n  \"caseResolvingAgentId\": {\n   \"type\":[\"string\",\"null\"],\n   \"description\": \"Represents the case resolving agent id associated to the case\",\n   \"maxLength\": 18\n  }\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-B-03",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text",
+                        "description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{bfo_token}}",
+                        "type": "text",
+                        "description": "Represents the IDMS Access Token to validate end user identity"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/case-experts?case-number=54655469",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "case-experts"
+                    ],
+                    "query": [
+                        {
+                            "key": "case-number",
+                            "value": "54655469",
+                            "description": "(Required) Represents the case number"
+                        }
+                    ]
+                },
+                "description": "By providing a case number, this API allows customer facing applications to retrieve the case resolving agent associated to the case. This functionality is majorly consumed to know agent availability on chat.  \n\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response."
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-B-04",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text",
+                        "description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{bfo_token}}",
+                        "type": "text",
+                        "description": "Represents the IDMS Access Token to validate end user identity"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/case-experts?case-number=54655469",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "case-experts"
+                    ],
+                    "query": [
+                        {
+                            "key": "case-number",
+                            "value": "54655469",
+                            "description": "(Required) Represents the case number"
+                        }
+                    ]
+                },
+                "description": "By providing a case number, this API allows customer facing applications to retrieve the case resolving agent associated to the case. This functionality is majorly consumed to know agent availability on chat.  \n\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response."
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DT-B-05",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text",
+                        "description": "Represents the bFO Access Token to access to Backend system ('tech apigee User' system token to be passed to grant access for public websites)"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{bfo_token}}",
+                        "type": "text",
+                        "description": "Represents the IDMS Access Token to validate end user identity"
+                    }
+                ],
+                "url": {
+                    "raw": "{{baseUrl}}/case-experts?case-number=54655469",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "case-experts"
+                    ],
+                    "query": [
+                        {
+                            "key": "case-number",
+                            "value": "54655469",
+                            "description": "(Required) Represents the case number"
+                        }
+                    ]
+                },
+                "description": "By providing a case number, this API allows customer facing applications to retrieve the case resolving agent associated to the case. This functionality is majorly consumed to know agent availability on chat.  \n\nIf either BFO token or IDMS token is passed, the API returns a response with user context.\nIf no token is passed (no user context for public sites), the API returns generic button info as response."
+            },
+            "response": [],
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "oauth2"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "https://api.qa.se.com/v1/customer-support/chat-configuration",
+            "type": "string"
+        }
+    ]
+}

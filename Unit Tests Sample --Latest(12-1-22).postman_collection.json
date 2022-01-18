@@ -1,0 +1,464 @@
+{
+	"info": {
+		"_postman_id": "99c5875a-56df-4971-97dd-4b2b840392cf",
+		"name": "Unit Tests Sample --Latest(12/1/22)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DT-A-01(M)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesDocumentType\": \"ZCV\",\r\n    \"salesOrganization\": \"DS10\",\r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  },\r\n\r\n  \"lineItem\": {\r\n    \"item\": [{\r\n      \"itemNumber\": \"100\",\r\n      \"materialNumber\": \"CONTRACT\",\r\n      \"amountField\": \"20000\"\r\n      }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DT-A-02(M)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"\r",
+							"     pm.response.to.be.ok;\r",
+							"\r",
+							"     pm.response.to.be.withBody;\r",
+							"\r",
+							"     pm.response.to.be.json;\r",
+							"\r",
+							"     pm.response.to.not.have.jsonBody(\"error\");\r",
+							"\r",
+							"     \r",
+							"\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"var schema = ;\r",
+							"\r",
+							"   \r",
+							"\r",
+							"   \r",
+							"\r",
+							"pm.test('Schema is valid', function() {\r",
+							"\r",
+							"  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+							"\r",
+							"  pm.response.to.have.jsonSchema(schema);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type header is present in request\", () => {\r",
+							"\r",
+							"  pm.request.to.have.header(\"Content-Type\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+							"\r",
+							"  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type header is present in response\", () => {\r",
+							"\r",
+							"  pm.response.to.have.header(\"Content-Type\");\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesDocumentType\": \"ZCV\",\r\n    \"salesOrganization\": \"DS10\",\r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  },\r\n\r\n  \"lineItem\": {\r\n    \"item\": [{\r\n      \"itemNumber\": \"100\",\r\n      \"materialNumber\": \"CONTRACT\",\r\n      \"amountField\": \"20000\"\r\n      }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DT-A-03(M)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesDocumentType\": \"ZCV\",\r\n    \"salesOrganization\": \"DS10\", \r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DT-A-04(M)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 55s\", function () { \r",
+							"\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+							"\r",
+							"    // Default APIGEE timeout is 55 sec\r",
+							"\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesDocumentType\": \"ZCV\",\r\n    \"salesOrganization\": \"DS10\", \r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DT-A-05(0)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Not failing\", function () {\r",
+							"    pm.expect(true).to.eql(false);\r",
+							"});\r",
+							"//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+							"\r",
+							"// remove mandatory fields -- error should come but is not.\r",
+							"//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+							"// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesOrganization\": \"DS10\",\r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  },\r\n\r\n  \"lineItem\": {\r\n    \"item\": [{\r\n      \"itemNumber\": \"100\",\r\n      \"materialNumber\": \"CONTRACT\",\r\n      \"amountField\": \"20000\"\r\n      }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DT-A-06(0)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Test - Expected Error code\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(400);\r",
+							"});\r",
+							"\r",
+							"//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+							"\r",
+							"//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"getNodeDetails\": {\r\n    \"scope\": {\r\n     \r\n      \"country\": \"WW\"\r\n    },\r\n    \"locale\": {\r\n      \"isoCountry\": \"GB\",\r\n      \"isoLanguage\": \"en\"\r\n    },\r\n    \"nodeId\": \"CAT_CRG_324300\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v3/reference-data/product/pim-product/nodes/search",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v3",
+						"reference-data",
+						"product",
+						"pim-product",
+						"nodes",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Apigee Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"access token is not empty\", function () {\r",
+							"    var jsonData = JSON.parse(responseBody);\r",
+							"    pm.expect(jsonData.access_token).not.eq('');\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"apigee-token\", jsonData.access_token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "RiWSi1vrBN5GGIii",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "0RGE53ju85jGqzgAbpZp8umUNSUezrMb",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/token",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

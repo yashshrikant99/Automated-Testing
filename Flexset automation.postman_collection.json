@@ -1,0 +1,916 @@
+{
+	"info": {
+		"_postman_id": "c6f360a0-ac79-4366-acf7-1905794db4f4",
+		"name": "Flexset automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PUT issues/{id}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ResolutionDetails",
+							"value": "bypassed by psp user",
+							"type": "text"
+						},
+						{
+							"key": "ResolvedBy",
+							"value": "2d47c171-6ebe-4cb2-ab4a-216ed61ffae3",
+							"type": "text"
+						},
+						{
+							"key": "ResolutionCode",
+							"value": "9313A3",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/SESA567002/Pictures/Screenshots/Screenshot (1).png"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/issues/6b04fafc-b7a0-412d-8260-4327ca4d6157",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"issues",
+						"6b04fafc-b7a0-412d-8260-4327ca4d6157"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /issues/open",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/issues/open?assemblyLocationId=60ececb0-c439-4d56-b966-1424a5f5e6fe",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"issues",
+						"open"
+					],
+					"query": [
+						{
+							"key": "assemblyLocationId",
+							"value": "60ececb0-c439-4d56-b966-1424a5f5e6fe"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /orders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx",
+						"type": "text"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders?assemblylocationid=60ececb0-c439-4d56-b966-1424a5f5e6fe",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "assemblylocationid",
+							"value": "60ececb0-c439-4d56-b966-1424a5f5e6fe"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /orders/{order-id}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/06ecbb0a-c757-4bd8-9912-597b1b0d1337",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"06ecbb0a-c757-4bd8-9912-597b1b0d1337"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH  /orders/{order-id}",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"shipping_date\": \"9-23-2021\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/70b83633-6d07-44f8-bcb2-2047296f9ed0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"70b83633-6d07-44f8-bcb2-2047296f9ed0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /orders/{order-id}/photos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"file\": \"iVBORw0KGgoAAAANSUhEUgAAAUcAAAF9CAYAAACXqKqgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAZXSURBVHhe7d3ZbVtXFEBRSnUE/g7cSOD/wAUEcgGiCogLiRuwVEDcgRogC5EKkE2JCZBo29bA4Q1rAQTfOQVsXAIPvCd33yxm6ubmZvH+/e+L9Xq93QA8ON1+z44wAj8yyzgKI/Azs4ujMAJPMas4CiPwVLOJozACzzGLOAoj8FyziOPHj38KI/Ask4/jcnm+uLq63E4ATzPpOAoj8FKTjaMwAq8xyTgKI/Bak4ujMAK7MKk4CiOwK5OJozACuzSJOAojsGujj+OnT38JI7Bzo/6z28vLz4uLi+V2Atid0Z4chRHYp1HGURiBfRtdHIUROIRRxVEYgUMZTRyFETikUcRRGIFDG3wchRE4hkG/5/jly9+LDx/OthPA4Qw2jqvV6v7el9vb2+0G4HAG+bNaGIFjG1wchREYgkHFURiBoRhMHIURGJJBxFEYgaE5ehyFERiio8ZRGIGhOlochREYsqPE8ebmZnFxcS6MwGAdPI6bMG5OjOv1ersBGJ6DxlEYgbE4WByFERiTg8RRGIGx2XschREYo73GURiBsdpbHIURGLO9xFEYgbHbSxzPzv4QRmDUdh7H5fJ8cX19vZ0AxmmncdyE8erqcjsBjNfO4iiMwJTsJI7CCEzNq+MojMAUvSqOwghM1YvjKIzAlL0ojsIITN2z4yiMwBw8K46Xl5+FEZiFJ8dxE8aLi+V2Api2J8VRGIG5+WkchRGYox/GURiBufpuHIURmLOMozACc/cojsII8L84CiPAg5O7bzYPq9Vq8e7db/dLgLm7Pzluwri5EAuAB6f/hPH29na7AuDk7dtf74QR4L9OhRHgse++BA4wZ+IIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQ/r2alel68+aX7RPHcH6+vP8wLk6OAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEEeCRxeIrjxBTG96F2hgAAAAASUVORK5CYII=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/138fd549-7cf6-4e35-9cd9-9de74525269d/photos?step=8e4981df-308e-407e-ad14-008caa6e94a1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"138fd549-7cf6-4e35-9cd9-9de74525269d",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "step",
+							"value": "8e4981df-308e-407e-ad14-008caa6e94a1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST: /orders/{order-id}/upload-photo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/SESA612288/Downloads/test.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/138fd549-7cf6-4e35-9cd9-9de74525269d/upload-photo?step=8e4981df-308e-407e-ad14-008caa6e94a1&filename=test.jpg",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"138fd549-7cf6-4e35-9cd9-9de74525269d",
+						"upload-photo"
+					],
+					"query": [
+						{
+							"key": "step",
+							"value": "8e4981df-308e-407e-ad14-008caa6e94a1"
+						},
+						{
+							"key": "filename",
+							"value": "test.jpg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /orders/{order-id}/sections/{section-serial-number}/complete",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/3c02bab9-b4d8-4c4b-8417-c42ca7a9fdf7/sections/1221374001KPV2D/complete?order_id=68cd84e8-8a2d-4b25-8b03-f33770d71a68&section_serial_number=12212840014AJNX",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"3c02bab9-b4d8-4c4b-8417-c42ca7a9fdf7",
+						"sections",
+						"1221374001KPV2D",
+						"complete"
+					],
+					"query": [
+						{
+							"key": "order_id",
+							"value": "68cd84e8-8a2d-4b25-8b03-f33770d71a68"
+						},
+						{
+							"key": "section_serial_number",
+							"value": "12212840014AJNX"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ​/orders​/{order-id}​/sections​/{section-key}​/label",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/41f82075-6d42-41fe-a5bf-b6cec1c00b90/sections/1221085001F48B7/label",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"41f82075-6d42-41fe-a5bf-b6cec1c00b90",
+						"sections",
+						"1221085001F48B7",
+						"label"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ​ /orders/{order-id}/sections/{section-serial-number}/issues",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/6fe3b140-1f2f-4fd6-9855-d00120db953b/sections/1221373001F56OQ/issues",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"6fe3b140-1f2f-4fd6-9855-d00120db953b",
+						"sections",
+						"1221373001F56OQ",
+						"issues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST: /orders/{order-id}/sections/{section-serial-number}/issues",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"chapter\": \"devices\",\n  \"step\": \"Frame Scan - 1\",\n  \"description\": \"test issue\",\n  \"reportedBy\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"files\": [\n    \"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4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEEeCRxeIrjxBTG96F2hgAAAAASUVORK5CYII=\"\n  ],\n  \"stepId\": \"305bc149-c0a0-406d-bb81-b092701472be\"\n}"
+				},
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/3c02bab9-b4d8-4c4b-8417-c42ca7a9fdf7/sections/1221374001KPV2D/issues",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"3c02bab9-b4d8-4c4b-8417-c42ca7a9fdf7",
+						"sections",
+						"1221374001KPV2D",
+						"issues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT  /orders/{order-id}/sections/{section-serial-number}/issues/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"resolutionCode\": \"\",\n  \"resolutionDetails\": \"test resolution\",\n  \"resolvedBy\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"files\": [\n    \"iVBORw0KGgoAAAANSUhEUgAAAUcAAAF9CAYAAACXqKqgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAZXSURBVHhe7d3ZbVtXFEBRSnUE/g7cSOD/wAUEcgGiCogLiRuwVEDcgRogC5EKkE2JCZBo29bA4Q1rAQTfOQVsXAIPvCd33yxm6ubmZvH+/e+L9Xq93QA8ON1+z44wAj8yyzgKI/Azs4ujMAJPMas4CiPwVLOJozACzzGLOAoj8FyziOPHj38KI/Ask4/jcnm+uLq63E4ATzPpOAoj8FKTjaMwAq8xyTgKI/Bak4ujMAK7MKk4CiOwK5OJozACuzSJOAojsGujj+OnT38JI7Bzo/6z28vLz4uLi+V2Atid0Z4chRHYp1HGURiBfRtdHIUROIRRxVEYgUMZTRyFETikUcRRGIFDG3wchRE4hkG/5/jly9+LDx/OthPA4Qw2jqvV6v7el9vb2+0G4HAG+bNaGIFjG1wchREYgkHFURiBoRhMHIURGJJBxFEYgaE5ehyFERiio8ZRGIGhOlochREYsqPE8ebmZnFxcS6MwGAdPI6bMG5OjOv1ersBGJ6DxlEYgbE4WByFERiTg8RRGIGx2XschREYo73GURiBsdpbHIURGLO9xFEYgbHbSxzPzv4QRmDUdh7H5fJ8cX19vZ0AxmmncdyE8erqcjsBjNfO4iiMwJTsJI7CCEzNq+MojMAUvSqOwghM1YvjKIzAlL0ojsIITN2z4yiMwBw8K46Xl5+FEZiFJ8dxE8aLi+V2Api2J8VRGIG5+WkchRGYox/GURiBufpuHIURmLOMozACc/cojsII8L84CiPAg5O7bzYPq9Vq8e7db/dLgLm7Pzluwri5EAuAB6f/hPH29na7AuDk7dtf74QR4L9OhRHgse++BA4wZ+IIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQ/r2alel68+aX7RPHcH6+vP8wLk6OAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEESCII0AQR4AgjgBBHAGCOAIEcQQI4ggQxBEgiCNAEEeAII4AQRwBgjgCBHEECOIIEMQRIIgjQBBHgCCOAEEcAYI4AgRxBAjiCBDEEeCRxeIrjxBTG96F2hgAAAAASUVORK5CYII=\"\n  ]\n}"
+				},
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/3c02bab9-b4d8-4c4b-8417-c42ca7a9fdf7/sections/1221374001KPV2D/issues/37f4a7c1-af05-4956-b629-f2bcd49b7692",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"3c02bab9-b4d8-4c4b-8417-c42ca7a9fdf7",
+						"sections",
+						"1221374001KPV2D",
+						"issues",
+						"37f4a7c1-af05-4956-b629-f2bcd49b7692"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /orders/{order-id}/sections/{section-serial-number}/steps/{steps-to-reset}/reset",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/e0475909-90d6-42f6-82ab-c7a84267df7f/sections/1221215001J94KM/steps/labelprinting/reset",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"e0475909-90d6-42f6-82ab-c7a84267df7f",
+						"sections",
+						"1221215001J94KM",
+						"steps",
+						"labelprinting",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /orders/{order-id}/sections/{section-serial-number}/users/{user-id}/reset",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/359ced96-41cd-4cd1-8c34-a3b755c495d5/sections/1221312001932DJ/users/523b1429-3a67-41aa-81cd-d4fe46008148/reset",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"359ced96-41cd-4cd1-8c34-a3b755c495d5",
+						"sections",
+						"1221312001932DJ",
+						"users",
+						"523b1429-3a67-41aa-81cd-d4fe46008148",
+						"reset"
+					],
+					"query": [
+						{
+							"key": "order_id",
+							"value": "359ced96-41cd-4cd1-8c34-a3b755c495d5",
+							"disabled": true
+						},
+						{
+							"key": "section_serial_number",
+							"value": "1221312001932DJ",
+							"disabled": true
+						},
+						{
+							"key": "user_id",
+							"value": "523b1429-3a67-41aa-81cd-d4fe46008148",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /orders/chapterimages",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/chapterimages",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"orders",
+						"chapterimages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /step-submissions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"order_id\": \"70b83633-6d07-44f8-bcb2-2047296f9ed0\",\r\n    \"step_id\": \"0473f1a3-05c9-4d22-a854-0959127c4f22\",\r\n    \"submitted_by\": \"f3d47f86-b4c1-41ae-b65c-166f59742ca8\",\r\n    \"submitted_response\": {},\r\n    \"chapter_title\": \"Test\",\r\n    \"section_serial_number\": \"12213630015I7D0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/step-submissions",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"step-submissions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT  ​/users​/{user-id}​/accept-terms-of-service",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"version\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/f475c012-d7b7-4cf8-aef0-46581efbbec4/accept-terms-of-service",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"users",
+						"f475c012-d7b7-4cf8-aef0-46581efbbec4",
+						"accept-terms-of-service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /user/profiles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/profiles",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"users",
+						"profiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /users/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx"
+					},
+					{
+						"key": "X-IDMS-Authorization",
+						"value": "{{idms-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"password\",\r\n    \"username\": \"username\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/login",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dev",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"system",
+						"flexset-assembly-compliance",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

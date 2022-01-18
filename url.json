@@ -1,0 +1,22 @@
+{
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/step-submissions":"POST",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders":"POST",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/06ecbb0a-c757-4bd8-9912-597b1b0d1337":"GET",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/70b83633-6d07-44f8-bcb2-2047296f9ed0/sections/12212840014AJNX/complete":"POST",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/41f82075-6d42-41fe-a5bf-b6cec1c00b90/sections/1221085001F48B7/label":"GET",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/a9906852-77f8-4b97-9427-4f8dcc6bf4c3/sections/1221191001QD91I/issues":"POST",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/a9906852-77f8-4b97-9427-4f8dcc6bf4c3/sections/1221191001QD91I/issues/ee066cb3-fa5a-46b2-bbfd-da2ed6ff1c39":"PUT",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/user":"GET",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/f475c012-d7b7-4cf8-aef0-46581efbbec4":"PUT",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/f475c012-d7b7-4cf8-aef0-46581efbbec4":"DELETE",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/login":"POST",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users":"GET",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users":"POST",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/f475c012-d7b7-4cf8-aef0-46581efbbec4/accept-terms-of-service":"PUT",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/12ae9d2c-38ee-4974-9477-a42ef62c8e19/roles/Assembler":"PUT",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/issues/6b04fafc-b7a0-412d-8260-4327ca4d6157":"PUT",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/70b83633-6d07-44f8-bcb2-2047296f9ed0":"PATCH",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/personas":"GET",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/orders/chapterimages":"GET",
+	"https://api.dev.se.com/v1/customer-order/system/flexset-assembly-compliance/users/profiles":"GET"	
+}

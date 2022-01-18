@@ -1,0 +1,363 @@
+{
+	"info": {
+		"_postman_id": "a7afbb0b-4f74-4f35-a0f8-8d67542d3d83",
+		"name": "UnifiedDataLayer-Product-V2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Operation to retrieve product general data from SE Unified Data layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.qa.se.com/v2/reference-data/unified-data-layer/product/products-generaldetails?publisher-code=BEU",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v2",
+						"reference-data",
+						"unified-data-layer",
+						"product",
+						"products-generaldetails"
+					],
+					"query": [
+						{
+							"key": "publisher-code",
+							"value": "BEU"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operation to retrieve product sales data from SE Data layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.qa.se.com/v2/reference-data/unified-data-layer/product/products-salesdetails?publisher-code=BEU",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v2",
+						"reference-data",
+						"unified-data-layer",
+						"product",
+						"products-salesdetails"
+					],
+					"query": [
+						{
+							"key": "publisher-code",
+							"value": "BEU"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operation to retrieve plant data for products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.qa.se.com/v2/reference-data/unified-data-layer/product/products-plantsdetails?plant-code=BEU",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v2",
+						"reference-data",
+						"unified-data-layer",
+						"product",
+						"products-plantsdetails"
+					],
+					"query": [
+						{
+							"key": "plant-code",
+							"value": "BEU"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operation to retrieve Unit of Measure data for products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.qa.se.com/v2/reference-data/unified-data-layer/product/products-locallistprices?publisher-code=BEU",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v2",
+						"reference-data",
+						"unified-data-layer",
+						"product",
+						"products-locallistprices"
+					],
+					"query": [
+						{
+							"key": "publisher-code",
+							"value": "BEU"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operation to retrieve product local list prices from SE Unified Data layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.qa.se.com/v2/reference-data/unified-data-layer/product/products-uomdetails?publisher-code=BEU",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v2",
+						"reference-data",
+						"unified-data-layer",
+						"product",
+						"products-uomdetails"
+					],
+					"query": [
+						{
+							"key": "publisher-code",
+							"value": "BEU"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operation to retrieve product cost data from SE Unified Data layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.qa.se.com/v2/reference-data/unified-data-layer/product/products-costdetails?sales-organization=2010",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v2",
+						"reference-data",
+						"unified-data-layer",
+						"product",
+						"products-costdetails"
+					],
+					"query": [
+						{
+							"key": "publisher-code",
+							"value": "BEU",
+							"disabled": true
+						},
+						{
+							"key": "sales-organization",
+							"value": "2010"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operation to retrieve product hierarchy details from SE Unified Data layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.qa.se.com/v2/reference-data/unified-data-layer/product/products-hierarchydetails?publisher-code=BEU",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v2",
+						"reference-data",
+						"unified-data-layer",
+						"product",
+						"products-hierarchydetails"
+					],
+					"query": [
+						{
+							"key": "publisher-code",
+							"value": "BEU"
+						},
+						{
+							"key": "sales-organization",
+							"value": "2010",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operation to retrieve product Pm0 hierarchy details from SE Unified Data layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.qa.se.com/v2/reference-data/unified-data-layer/product/products-pm0hierarchydetails?publisher-code=BEU",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v2",
+						"reference-data",
+						"unified-data-layer",
+						"product",
+						"products-pm0hierarchydetails"
+					],
+					"query": [
+						{
+							"key": "publisher-code",
+							"value": "BEU"
+						},
+						{
+							"key": "sales-organization",
+							"value": "2010",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Operation to retrieve product Lcos hierarchy details from SE Unified Data layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.qa.se.com/v2/reference-data/unified-data-layer/product/product-lcoshierarchydetails",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v2",
+						"reference-data",
+						"unified-data-layer",
+						"product",
+						"product-lcoshierarchydetails"
+					],
+					"query": [
+						{
+							"key": "publisher-code",
+							"value": "BEU",
+							"disabled": true
+						},
+						{
+							"key": "sales-organization",
+							"value": "2010",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

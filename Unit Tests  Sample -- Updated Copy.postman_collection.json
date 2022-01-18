@@ -1,0 +1,924 @@
+{
+	"info": {
+		"_postman_id": "61c293cc-dc51-4c79-8c9d-9ab0c37a9163",
+		"name": "Unit Tests  Sample -- Updated Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "200 - OK Positve Response Check",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesDocumentType\": \"ZCV\",\r\n    \"salesOrganization\": \"DS10\",\r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  },\r\n\r\n  \"lineItem\": {\r\n    \"item\": [{\r\n      \"itemNumber\": \"100\",\r\n      \"materialNumber\": \"CONTRACT\",\r\n      \"amountField\": \"20000\"\r\n      }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - Mandatory Field Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesDocumentType\": \"ZCV\",\r\n    \"salesOrganization\": \"DS10\", \r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Response time Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 55s\", function () { \r",
+							"    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+							"    // Default APIGEE timeout is 55 sec\r",
+							"    });\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesDocumentType\": \"ZCV\",\r\n    \"salesOrganization\": \"DS10\",\r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  },\r\n\r\n  \"lineItem\": {\r\n    \"item\": [{\r\n      \"itemNumber\": \"100\",\r\n      \"materialNumber\": \"CONTRACT\",\r\n      \"amountField\": \"20000\"\r\n      }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mandatory Header Check - Content-Type",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// pm.test(\"Content-Type header is present\", () => {\r",
+							"//   pm.response.to.have.header(\"Content-Type\");\r",
+							"// });\r",
+							"\r",
+							"// pm.test(\"Content-Type header is application/json\", () => {\r",
+							"//   pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+							"// });\r",
+							"\r",
+							"// pm.test(\"Content-Type is application/json\", () => {\r",
+							"//  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+							"// //  pm.response.should.be.json;\r",
+							"// //  pm.response.should.have.header(\"Content-Type’,‘application/json\");\r",
+							"// //  pm.response.type.should.equal(\"application/json\");\r",
+							"// });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Content-Type header is present in request\", () => {\r",
+							"  pm.request.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+							"  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is present in response\", () => {\r",
+							"  pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json in Response\", () => {\r",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql(\"application/json; charset=UTF-8\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesDocumentType\": \"ZCV\",\r\n    \"salesOrganization\": \"DS10\",\r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  },\r\n\r\n  \"lineItem\": {\r\n    \"item\": [{\r\n      \"itemNumber\": \"100\",\r\n      \"materialNumber\": \"CONTRACT\",\r\n      \"amountField\": \"20000\"\r\n      }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Schema Validation Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"var schema = {\r",
+							"      \"type\": \"object\",\r",
+							"      \"description\": \"Order Entry Validation response\",\r",
+							"      \"x-examples\": {},\r",
+							"      \"properties\": {\r",
+							"        \"accountNumber\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"poNumber\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"customerId\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"deliveryService\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"enum\": [\r",
+							"            \"Standard\",\r",
+							"            \"Express\",\r",
+							"            \"Special Instruction\"\r",
+							"          ]\r",
+							"        },\r",
+							"        \"releaseDate\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"requestedDeliveryDate\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"customerAddress\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"description\": \"Resource representing a phyiscal or postal address.\",\r",
+							"      \"properties\": {\r",
+							"        \"shipToName\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Optional business name.\"\r",
+							"        },\r",
+							"        \"shipToName2\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Optional business name.\"\r",
+							"        },\r",
+							"        \"address\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Street name or PO box with optional extra address lines separated by end of line characters.\"\r",
+							"        },\r",
+							"        \"address2\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Optional address line to describe a suite, unit, floor number or named district within a city.\"\r",
+							"        },\r",
+							"        \"city\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Optional city or town name.\"\r",
+							"        },\r",
+							"        \"zipcode\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Optional zip code or postal code. Required in some countries.\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"shipToName\",\r",
+							"        \"address\",\r",
+							"        \"city\",\r",
+							"        \"zipcode\"\r",
+							"      ]\r",
+							"    },\r",
+							"    \r",
+							"        \"alternativeDeliveryAddress\": {\r",
+							"          \"type\": \"boolean\"\r",
+							"        },\r",
+							"        \"deliveryAddress\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"description\": \"Resource representing a phyiscal or postal address.\",\r",
+							"      \"properties\": {\r",
+							"        \"shipToName\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Optional business name.\"\r",
+							"        },\r",
+							"        \"shipToName2\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Optional business name.\"\r",
+							"        },\r",
+							"        \"address\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Street name or PO box with optional extra address lines separated by end of line characters.\"\r",
+							"        },\r",
+							"        \"address2\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Optional address line to describe a suite, unit, floor number or named district within a city.\"\r",
+							"        },\r",
+							"        \"city\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Optional city or town name.\"\r",
+							"        },\r",
+							"        \"zipcode\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Optional zip code or postal code. Required in some countries.\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"shipToName\",\r",
+							"        \"address\",\r",
+							"        \"city\",\r",
+							"        \"zipcode\"\r",
+							"      ]\r",
+							"    },\r",
+							"    \r",
+							"        \"surchargePrice\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"description\": \"Resource representing a currency amount.\",\r",
+							"      \"properties\": {\r",
+							"        \"currency\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Three character currency code, as defined by ISO 4217.\"\r",
+							"        },\r",
+							"        \"value\": {\r",
+							"          \"type\": \"number\",\r",
+							"          \"description\": \"Currency amount as a decimal value.\",\r",
+							"          \"pattern\": \"^\\\\d*(.\\\\d+)?$\"\r",
+							"        },\r",
+							"        \"display\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"$45.21\",\r",
+							"          \"description\": \"Optional currency amount suitable for display, including the currency symbol.\"\r",
+							"        },\r",
+							"        \"amountType\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"Manufacturing Cost\",\r",
+							"          \"description\": \"Optional type describing the nature of the amount.\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"currency\",\r",
+							"        \"value\"\r",
+							"      ]\r",
+							"    },\r",
+							"    \r",
+							"        \"totalFreightPrice\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"description\": \"Resource representing a currency amount.\",\r",
+							"      \"properties\": {\r",
+							"        \"currency\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Three character currency code, as defined by ISO 4217.\"\r",
+							"        },\r",
+							"        \"value\": {\r",
+							"          \"type\": \"number\",\r",
+							"          \"description\": \"Currency amount as a decimal value.\",\r",
+							"          \"pattern\": \"^\\\\d*(.\\\\d+)?$\"\r",
+							"        },\r",
+							"        \"display\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"$45.21\",\r",
+							"          \"description\": \"Optional currency amount suitable for display, including the currency symbol.\"\r",
+							"        },\r",
+							"        \"amountType\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"Manufacturing Cost\",\r",
+							"          \"description\": \"Optional type describing the nature of the amount.\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"currency\",\r",
+							"        \"value\"\r",
+							"      ]\r",
+							"    },\r",
+							"    \r",
+							"        \"totalTax\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"description\": \"Resource representing a currency amount.\",\r",
+							"      \"properties\": {\r",
+							"        \"currency\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Three character currency code, as defined by ISO 4217.\"\r",
+							"        },\r",
+							"        \"value\": {\r",
+							"          \"type\": \"number\",\r",
+							"          \"description\": \"Currency amount as a decimal value.\",\r",
+							"          \"pattern\": \"^\\\\d*(.\\\\d+)?$\"\r",
+							"        },\r",
+							"        \"display\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"$45.21\",\r",
+							"          \"description\": \"Optional currency amount suitable for display, including the currency symbol.\"\r",
+							"        },\r",
+							"        \"amountType\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"Manufacturing Cost\",\r",
+							"          \"description\": \"Optional type describing the nature of the amount.\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"currency\",\r",
+							"        \"value\"\r",
+							"      ]\r",
+							"    },\r",
+							"    \r",
+							"        \"orderEntryItems\": {\r",
+							"          \"type\": \"array\",\r",
+							"          \"items\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"description\": \"Order Entry item Validation response\",\r",
+							"      \"properties\": {\r",
+							"        \"itemNumber\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"catalogNumber\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"quantity\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"requestedDeliveryDate\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"itemReference\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"listPrice\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"description\": \"Resource representing a currency amount.\",\r",
+							"      \"properties\": {\r",
+							"        \"currency\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Three character currency code, as defined by ISO 4217.\"\r",
+							"        },\r",
+							"        \"value\": {\r",
+							"          \"type\": \"number\",\r",
+							"          \"description\": \"Currency amount as a decimal value.\",\r",
+							"          \"pattern\": \"^\\\\d*(.\\\\d+)?$\"\r",
+							"        },\r",
+							"        \"display\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"$45.21\",\r",
+							"          \"description\": \"Optional currency amount suitable for display, including the currency symbol.\"\r",
+							"        },\r",
+							"        \"amountType\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"Manufacturing Cost\",\r",
+							"          \"description\": \"Optional type describing the nature of the amount.\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"currency\",\r",
+							"        \"value\"\r",
+							"      ]\r",
+							"    },\r",
+							"    \r",
+							"        \"discount\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"unitNetPrice\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"description\": \"Resource representing a currency amount.\",\r",
+							"      \"properties\": {\r",
+							"        \"currency\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Three character currency code, as defined by ISO 4217.\"\r",
+							"        },\r",
+							"        \"value\": {\r",
+							"          \"type\": \"number\",\r",
+							"          \"description\": \"Currency amount as a decimal value.\",\r",
+							"          \"pattern\": \"^\\\\d*(.\\\\d+)?$\"\r",
+							"        },\r",
+							"        \"display\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"$45.21\",\r",
+							"          \"description\": \"Optional currency amount suitable for display, including the currency symbol.\"\r",
+							"        },\r",
+							"        \"amountType\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"Manufacturing Cost\",\r",
+							"          \"description\": \"Optional type describing the nature of the amount.\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"currency\",\r",
+							"        \"value\"\r",
+							"      ]\r",
+							"    },\r",
+							"    \r",
+							"        \"advisedDeliveryDate\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"bomProduct\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"catalogNumber\",\r",
+							"        \"quantity\"\r",
+							"      ]\r",
+							"    }\r",
+							"        },\r",
+							"        \"comments\": {\r",
+							"          \"type\": [\"string\", \"null\"]\r",
+							"        },\r",
+							"        \"totalNetAmount\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"description\": \"Resource representing a currency amount.\",\r",
+							"      \"properties\": {\r",
+							"        \"currency\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"description\": \"Three character currency code, as defined by ISO 4217.\"\r",
+							"        },\r",
+							"        \"value\": {\r",
+							"          \"type\": \"number\",\r",
+							"          \"description\": \"Currency amount as a decimal value.\",\r",
+							"          \"pattern\": \"^\\\\d*(.\\\\d+)?$\"\r",
+							"        },\r",
+							"        \"display\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"$45.21\",\r",
+							"          \"description\": \"Optional currency amount suitable for display, including the currency symbol.\"\r",
+							"        },\r",
+							"        \"amountType\": {\r",
+							"          \"type\": [\"string\", \"null\"],\r",
+							"          \"example\": \"Manufacturing Cost\",\r",
+							"          \"description\": \"Optional type describing the nature of the amount.\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"currency\",\r",
+							"        \"value\"\r",
+							"      ]\r",
+							"    }\r",
+							"    \r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"accountNumber\",\r",
+							"        \"poNumber\",\r",
+							"        \"customerId\",\r",
+							"        \"deliveryService\",\r",
+							"        \"releaseDate\",\r",
+							"        \"customerAddress\",\r",
+							"        \"alternativeDeliveryAddress\",\r",
+							"        \"deliveryAddress\"\r",
+							"      ]\r",
+							"    }\r",
+							"    \r",
+							"    ;\r",
+							"   \r",
+							"   \r",
+							"pm.test('Schema is valid', function() {\r",
+							"  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+							"  pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"testcab@yopmail.com\",\r\n    \"poNumber\": \" {{poNumber}}\",\r\n    \"customerId\": \"1500081492\",\r\n    \"deliveryService\": \"Standard\",\r\n    \"requestedDeliveryDate\": \"2022-12-31\",\r\n    \"comments\": \"test comments\",\r\n    \"shipToAddress\": {\r\n        \"shipToName\": \"test shipToName\",\r\n        \"shipToName2\": \"test shipToName2\",\r\n        \"address\": \"test address\",\r\n        \"address2\": \"test address2\",\r\n        \"zipcode\": \"38000\",\r\n        \"city\": \"Grenoble\"\r\n    },\r\n    \"orderEntryItems\": [\r\n        {\r\n            \"catalogNumber\": \"LRD10\",\r\n            \"quantity\": 1,\r\n            \"requestedDeliveryDate\": \"2022-03-31\",\r\n            \"itemReference\": \"test REF\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v2/customer-order/system/myse-order-entry-fr/orders/validate",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v2",
+						"customer-order",
+						"system",
+						"myse-order-entry-fr",
+						"orders",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid Payload Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json;\r",
+							"     pm.response.to.not.have.jsonBody(\"error\");\r",
+							"     pm.response.to.have.jsonBody({\r",
+							"    \"lineHeader\": {\r",
+							"    \"salesDocumentType\": \"ZCV\",\r",
+							"    \"salesOrganization\": \"DS10\",\r",
+							"    \"distributionChannel\": \"01\",\r",
+							"    \"division\": \"01\",\r",
+							"    \"soldtoParty\": \"0130351653\",\r",
+							"    \"validfromDate\": \"20210331\",\r",
+							"    \"validtoDate\": \"20210531\",\r",
+							"    \"sdDocumentCurrency\": \"EUR\",\r",
+							"    \"orderReason\": \"210\",\r",
+							"    \"generalName\": \"C-156936\",\r",
+							"    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r",
+							"    \"projectPlace\": \"SAARBRUECKEN\",\r",
+							"    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r",
+							"    \"opportunityNumber\": \"OP-161209-5618995\",\r",
+							"    \"amountFieldForBatchInput\": \"20000\",\r",
+							"    \"externalReference\": \"C-156936\"\r",
+							"  },\r",
+							"  \"lineCond\": {\r",
+							"    \"item\": [{\r",
+							"      \"conditionType\": \"ZZS2\",\r",
+							"      \"conditionTable\": \"098\",\r",
+							"      \"variableKey\": \"E8\",\r",
+							"      \"amount\": \"14.66\",\r",
+							"      \"scaleQuantity\": \"1\"\r",
+							"    }]\r",
+							"  },\r",
+							"\r",
+							"  \"lineItem\": {\r",
+							"    \"item\": [{\r",
+							"      \"itemNumber\": \"100\",\r",
+							"      \"materialNumber\": \"CONTRACT\",\r",
+							"      \"amountField\": \"20000\"\r",
+							"      }]\r",
+							"  }\r",
+							"}\r",
+							");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response has a JSON body\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesDocumentType\": \"ZCV\",\r\n    \"salesOrganization\": \"DS10\",\r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  },\r\n\r\n  \"lineItem\": {\r\n    \"item\": [{\r\n      \"itemNumber\": \"100\",\r\n      \"materialNumber\": \"CONTRACT\",\r\n      \"amountField\": \"20000\"\r\n      }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enum value check",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"pm.test(\"Value is in valid list\", () => {\r",
+							"  pm.expect(pm.response.json().returnCode)\r",
+							"    .to.be.oneOf([0, 1, 2]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesDocumentType\": \"ZCV\",\r\n    \"salesOrganization\": \"DS10\",\r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  },\r\n\r\n  \"lineItem\": {\r\n    \"item\": [{\r\n      \"itemNumber\": \"100\",\r\n      \"materialNumber\": \"CONTRACT\",\r\n      \"amountField\": \"20000\"\r\n      }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incorrect backend behaviour  check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Not failing\", function () {\r",
+							"    pm.expect(true).to.eql(false);\r",
+							"});\r",
+							"//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+							"\r",
+							"// remove mandatory fields -- error should come but is not.\r",
+							"//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+							"// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{apigee-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"lineHeader\": {\r\n    \"salesOrganization\": \"DS10\",\r\n    \"distributionChannel\": \"01\",\r\n    \"division\": \"01\",\r\n    \"soldtoParty\": \"0130351653\",\r\n    \"validfromDate\": \"20210331\",\r\n    \"validtoDate\": \"20210531\",\r\n    \"sdDocumentCurrency\": \"EUR\",\r\n    \"orderReason\": \"210\",\r\n    \"generalName\": \"C-156936\",\r\n    \"projectName\": \"WOHNANLAGE BÜRGERPARK\",\r\n    \"projectPlace\": \"SAARBRUECKEN\",\r\n    \"nameRequester\": \"Reinke, Reinhold [SESA162531]\",\r\n    \"opportunityNumber\": \"OP-161209-5618995\",\r\n    \"amountFieldForBatchInput\": \"20000\",\r\n    \"externalReference\": \"C-156936\"\r\n  },\r\n  \"lineCond\": {\r\n    \"item\": [{\r\n      \"conditionType\": \"ZZS2\",\r\n      \"conditionTable\": \"098\",\r\n      \"variableKey\": \"E8\",\r\n      \"amount\": \"14.66\",\r\n      \"scaleQuantity\": \"1\"\r\n    }]\r\n  },\r\n\r\n  \"lineItem\": {\r\n    \"item\": [{\r\n      \"itemNumber\": \"100\",\r\n      \"materialNumber\": \"CONTRACT\",\r\n      \"amountField\": \"20000\"\r\n      }]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v1/customer-order/benedech/value-contract/contracts",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v1",
+						"customer-order",
+						"benedech",
+						"value-contract",
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expected Error Code Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Test - Expected Error code\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(400);\r",
+							"});\r",
+							"\r",
+							"//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+							"\r",
+							"//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"getNodeDetails\": {\r\n    \"scope\": {\r\n     \r\n      \"country\": \"WW\"\r\n    },\r\n    \"locale\": {\r\n      \"isoCountry\": \"GB\",\r\n      \"isoLanguage\": \"en\"\r\n    },\r\n    \"nodeId\": \"CAT_CRG_324300\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{endpoint}}/v3/reference-data/product/pim-product/nodes/search",
+					"protocol": "https",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"v3",
+						"reference-data",
+						"product",
+						"pim-product",
+						"nodes",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

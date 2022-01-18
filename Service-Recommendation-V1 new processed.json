@@ -1,0 +1,2958 @@
+{
+    "info": {
+        "_postman_id": "dfdd8564-4bad-4768-aa57-1462dcd7124e",
+        "name": "Service-Recommendation-V1 new processed",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "DT-A-01",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-PING-Authorization",
+                        "value": "000312MNEv4jcfpaiGgfqPxYlfd9",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"siteIds\":[\"a2LA0000000ABxHMAW\",\"a2L7b000004TGs9EAG\",\"a2L7b000004TGs7EAG\",\"a2L7b000004TGs4EAG\"]}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/search?reporting=false&page=1&sorting-order=DESC&sorting-by=assessmentDate&page-size=15",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "reporting",
+                            "value": "false"
+                        },
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "sorting-order",
+                            "value": "DESC"
+                        },
+                        {
+                            "key": "sorting-by",
+                            "value": "assessmentDate"
+                        },
+                        {
+                            "key": "page-size",
+                            "value": "15"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-A-02",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.have.status('OK');\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"oneOf\": [\n  {\n   \"type\": \"array\",\n   \"items\": {\n    \"title\": \"assessment\",\n    \"type\": \"object\",\n    \"description\": \"\",\n    \"x-examples\": {\n     \"example-1\": {\n      \"assessmentId\": \"aA67b0000005aSXCAY\",\n      \"assessmentType\": \"MPS Prime\",\n      \"site\": {\n       \"locationId\": \"a2L12000002RCeREAW\",\n       \"locationName\": \"Industex - Site\",\n       \"siteLocation\": true\n      },\n      \"assessmentDate\": \"2020-03-30\",\n      \"ongoingRecommendations\": 17,\n      \"totalRecommendations\": 25,\n      \"workOrderId\": \"a2H7b000000iL1vEAE\"\n     }\n    },\n    \"properties\": {\n     \"assessmentId\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Assessment BFO ID\",\n      \"example\": \"aA67b0000005aSXCAY\"\n     },\n     \"assessmentType\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"MPS Prime\",\n      \"description\": \"Assessment type - list of values\"\n     },\n     \"site\": {\n      \"title\": \"Field Services - Location - Details\",\n      \"type\": \"object\",\n      \"description\": \"\",\n      \"properties\": {\n       \"locationId\": {\n        \"type\":[\"string\",\"null\"],\n        \"description\": \"publisher ID of the location\"\n       },\n       \"locationName\": {\n        \"type\":[\"string\",\"null\"],\n        \"description\": \"name of the asset in latin caracters : Free text field\"\n       },\n       \"siteId\": {\n        \"type\":[\"string\",\"null\"],\n        \"description\": \"Publisher Id of the Ultimate parent of the Location\"\n       },\n       \"accountId\": {\n        \"type\":[\"string\",\"null\"],\n        \"description\": \"Publisher Id of the linked Account\"\n       },\n       \"siteLocation\": {\n        \"type\": \"boolean\",\n        \"description\": \"If true the location is a Site location\"\n       }\n      }\n     },\n     \"assessmentDate\": {\n      \"type\":[\"string\",\"null\"],\n      \"format\": \"date\",\n      \"example\": \"2020-03-30\",\n      \"description\": \"Date of the execution of the assessment\"\n     },\n     \"ongoingRecommendations\": {\n      \"type\":[\"integer\",\"null\"],\n      \"description\": \"count of recommendation related to the assessment with status = Open,In Progress, waiting for HSE Approval\",\n      \"example\": 17\n     },\n     \"totalRecommendations\": {\n      \"type\":[\"integer\",\"null\"],\n      \"description\": \"count of recommendation related to the assessment\",\n      \"example\": 25\n     },\n     \"workOrderId\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Work order BFO ID if the assessment was done as part of a work order.\",\n      \"example\": \"a2H7b000000iL1vEAE\"\n     },\n     \"hasDeliverables\": {\n      \"type\": \"boolean\",\n      \"description\": \"true if the assessment has deliverables\",\n      \"default\": true\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"object\",\n   \"properties\": {\n    \"count\": {\n     \"type\":[\"string\",\"null\"]\n    }\n   }\n  }\n ]\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in request\", () => {\r",
+                            "\r",
+                            "  pm.request.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+                            "\r",
+                            "  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-PING-Authorization",
+                        "value": "000312MNEv4jcfpaiGgfqPxYlfd9",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"siteIds\":[\"a2LA0000000ABxHMAW\",\"a2L7b000004TGs9EAG\",\"a2L7b000004TGs7EAG\",\"a2L7b000004TGs4EAG\"]}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/search?reporting=false&page=1&sorting-order=DESC&sorting-by=assessmentDate&page-size=15",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "reporting",
+                            "value": "false"
+                        },
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "sorting-order",
+                            "value": "DESC"
+                        },
+                        {
+                            "key": "sorting-by",
+                            "value": "assessmentDate"
+                        },
+                        {
+                            "key": "page-size",
+                            "value": "15"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-A-03",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-PING-Authorization",
+                        "value": "000312MNEv4jcfpaiGgfqPxYlfd9",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"siteIds\":[\"a2LA0000000ABxHMAW\",\"a2L7b000004TGs9EAG\",\"a2L7b000004TGs7EAG\",\"a2L7b000004TGs4EAG\"]}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/search?reporting=false&page=1&sorting-order=DESC&sorting-by=assessmentDate&page-size=15",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "reporting",
+                            "value": "false"
+                        },
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "sorting-order",
+                            "value": "DESC"
+                        },
+                        {
+                            "key": "sorting-by",
+                            "value": "assessmentDate"
+                        },
+                        {
+                            "key": "page-size",
+                            "value": "15"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-A-04",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-PING-Authorization",
+                        "value": "000312MNEv4jcfpaiGgfqPxYlfd9",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"siteIds\":[\"a2LA0000000ABxHMAW\",\"a2L7b000004TGs9EAG\",\"a2L7b000004TGs7EAG\",\"a2L7b000004TGs4EAG\"]}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/search?reporting=false&page=1&sorting-order=DESC&sorting-by=assessmentDate&page-size=15",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "reporting",
+                            "value": "false"
+                        },
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "sorting-order",
+                            "value": "DESC"
+                        },
+                        {
+                            "key": "sorting-by",
+                            "value": "assessmentDate"
+                        },
+                        {
+                            "key": "page-size",
+                            "value": "15"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-A-05",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-PING-Authorization",
+                        "value": "000312MNEv4jcfpaiGgfqPxYlfd9",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"siteIds\":[\"a2LA0000000ABxHMAW\",\"a2L7b000004TGs9EAG\",\"a2L7b000004TGs7EAG\",\"a2L7b000004TGs4EAG\"]}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/search?reporting=false&page=1&sorting-order=DESC&sorting-by=assessmentDate&page-size=15",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "reporting",
+                            "value": "false"
+                        },
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "sorting-order",
+                            "value": "DESC"
+                        },
+                        {
+                            "key": "sorting-by",
+                            "value": "assessmentDate"
+                        },
+                        {
+                            "key": "page-size",
+                            "value": "15"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-B-01",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations?recommendation-id=aAB7b000000CGAoGAO",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations"
+                    ],
+                    "query": [
+                        {
+                            "key": "recommendation-id",
+                            "value": "aAB7b000000CGAoGAO"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-B-02",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.have.status('OK');\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"type\": \"array\",\n \"items\": {\n  \"title\": \"recommendation-response\",\n  \"x-examples\": {},\n  \"type\": \"object\",\n  \"description\": \"\",\n  \"properties\": {\n   \"recommendationId\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"recommendation BFO ID\",\n    \"example\": \"aAB7b0000004eIzGAI\"\n   },\n   \"recommendationRef\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"Customer facing reference\",\n    \"example\": \"REC-00001\"\n   },\n   \"recommendationName\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"Recommendation description\",\n    \"example\": \"MV Power Cable earth faulty\"\n   },\n   \"riskCategory\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"level of risk - Lov (Critical-High-Medium-Low)\",\n    \"example\": \"High\"\n   },\n   \"findingCategory\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"Category of the finding\",\n    \"example\": \"Maintenance Issue\"\n   },\n   \"dueDate\": {\n    \"type\":[\"string\",\"null\"],\n    \"example\": \"2023-03-01\",\n    \"description\": \"Due Date to close the recommendation\"\n   },\n   \"avoidedRisk\": {\n    \"type\":[\"string\",\"null\"],\n    \"example\": \"Safety\"\n   },\n   \"recommendationStatus\": {\n    \"type\":[\"string\",\"null\"],\n    \"example\": \"In progress\"\n   },\n   \"concernedAssetsLocations\": {\n    \"type\":[\"string\",\"null\"],\n    \"example\": \"Asset number 1, Asset number 2 , Asset number 3, Location 1\"\n   },\n   \"healthSafetyStatus\": {\n    \"type\":[\"string\",\"null\"],\n    \"example\": \"In progress\"\n   },\n   \"healthSafetyComment\": {\n    \"type\":[\"string\",\"null\"],\n    \"example\": \"On going actions\"\n   },\n   \"facilityMaintenanceStatus\": {\n    \"type\":[\"string\",\"null\"],\n    \"example\": \"In progress\"\n   },\n   \"facilityMaintenanceComment\": {\n    \"type\":[\"string\",\"null\"],\n    \"example\": \"cable changed, waiting for security actions\"\n   },\n   \"correctiveAction\": {\n    \"type\": \"array\",\n    \"items\": {\n     \"title\": \"correctiveAction\",\n     \"type\": \"object\",\n     \"x-examples\": {},\n     \"properties\": {\n      \"correctiveActionId\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"2F0051H00000Bzi05QAB\"\n      },\n      \"correctiveActionName\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"Change cables\"\n      },\n      \"correctiveActionCode\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"CORR01\"\n      },\n      \"relatedFiles\": {\n       \"type\": \"array\",\n       \"items\": {\n        \"title\": \"downloadableFile\",\n        \"type\": \"object\",\n        \"description\": \"\",\n        \"properties\": {\n         \"parentId\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"Record Bfo ID  to which the file is attached\",\n          \"example\": \"a2H1H000006SJWIUA4\"\n         },\n         \"fileSize\": {\n          \"type\": \"number\",\n          \"description\": \"size of the file\",\n          \"example\": 500\n         },\n         \"fileName\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"File name entered by the consultant / customer\\n\",\n          \"example\": \"MPS Report\"\n         },\n         \"fileId\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"bFO File ID\",\n          \"example\": \"0687b00000140SMAAY\"\n         },\n         \"fileExtension\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"File Extension : .pdf .jpeg...\",\n          \"example\": \"pdf\"\n         },\n         \"createdDate\": {\n          \"type\":[\"string\",\"null\"],\n          \"format\": \"date\",\n          \"example\": \"2021-07-06\",\n          \"description\": \"creation date of the file - date when the file was attached\"\n         },\n         \"downloadLink\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"Link to download the file\",\n          \"example\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n         }\n        },\n        \"x-examples\": {\n         \"example-1\": {\n          \"value\": {\n           \"parentId\": \"a2H1H000006SJWIUA4\",\n           \"fileSize\": 500,\n           \"fileName\": \"MPS Report\",\n           \"fileId\": \"0687b00000140SMAAY\",\n           \"fileExtension\": \"pdf\",\n           \"createdDate\": \"2021-07-06\",\n           \"downloadLink\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n          }\n         }\n        }\n       }\n      },\n      \"translatedCorrectiveAction\": {\n       \"type\":[\"string\",\"null\"]\n      }\n     }\n    }\n   },\n   \"assessment\": {\n    \"title\": \"assessment\",\n    \"type\": \"object\",\n    \"description\": \"\",\n    \"x-examples\": {\n     \"example-1\": {\n      \"assessmentId\": \"aA67b0000005aSXCAY\",\n      \"assessmentType\": \"MPS Prime\",\n      \"site\": {\n       \"locationId\": \"a2L12000002RCeREAW\",\n       \"locationName\": \"Industex - Site\",\n       \"siteLocation\": true\n      },\n      \"assessmentDate\": \"2020-03-30\",\n      \"ongoingRecommendations\": 17,\n      \"totalRecommendations\": 25,\n      \"workOrderId\": \"a2H7b000000iL1vEAE\"\n     }\n    },\n    \"properties\": {\n     \"assessmentId\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Assessment BFO ID\",\n      \"example\": \"aA67b0000005aSXCAY\"\n     },\n     \"assessmentType\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"MPS Prime\",\n      \"description\": \"Assessment type - list of values\"\n     },\n     \"site\": {\n      \"title\": \"Field Services - Location - Details\",\n      \"type\": \"object\",\n      \"description\": \"\",\n      \"properties\": {\n       \"locationId\": {\n        \"type\":[\"string\",\"null\"],\n        \"description\": \"publisher ID of the location\"\n       },\n       \"locationName\": {\n        \"type\":[\"string\",\"null\"],\n        \"description\": \"name of the asset in latin caracters : Free text field\"\n       },\n       \"siteId\": {\n        \"type\":[\"string\",\"null\"],\n        \"description\": \"Publisher Id of the Ultimate parent of the Location\"\n       },\n       \"accountId\": {\n        \"type\":[\"string\",\"null\"],\n        \"description\": \"Publisher Id of the linked Account\"\n       },\n       \"siteLocation\": {\n        \"type\": \"boolean\",\n        \"description\": \"If true the location is a Site location\"\n       }\n      }\n     },\n     \"assessmentDate\": {\n      \"type\":[\"string\",\"null\"],\n      \"format\": \"date\",\n      \"example\": \"2020-03-30\",\n      \"description\": \"Date of the execution of the assessment\"\n     },\n     \"ongoingRecommendations\": {\n      \"type\":[\"integer\",\"null\"],\n      \"description\": \"count of recommendation related to the assessment with status = Open,In Progress, waiting for HSE Approval\",\n      \"example\": 17\n     },\n     \"totalRecommendations\": {\n      \"type\":[\"integer\",\"null\"],\n      \"description\": \"count of recommendation related to the assessment\",\n      \"example\": 25\n     },\n     \"workOrderId\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Work order BFO ID if the assessment was done as part of a work order.\",\n      \"example\": \"a2H7b000000iL1vEAE\"\n     },\n     \"hasDeliverables\": {\n      \"type\": \"boolean\",\n      \"description\": \"true if the assessment has deliverables\",\n      \"default\": true\n     }\n    }\n   },\n   \"technicalRisk\": {\n    \"type\": \"array\",\n    \"items\": {\n     \"title\": \"technicalRisk\",\n     \"type\": \"object\",\n     \"properties\": {\n      \"technicalRiskId\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"2F0051H00000Azi05QCF\"\n      },\n      \"technicalRiskName\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"Security risk\"\n      },\n      \"technicalRiskIdCode\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"TEC001\"\n      },\n      \"relatedFiles\": {\n       \"type\": \"array\",\n       \"items\": {\n        \"title\": \"downloadableFile\",\n        \"type\": \"object\",\n        \"description\": \"\",\n        \"properties\": {\n         \"parentId\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"Record Bfo ID  to which the file is attached\",\n          \"example\": \"a2H1H000006SJWIUA4\"\n         },\n         \"fileSize\": {\n          \"type\": \"number\",\n          \"description\": \"size of the file\",\n          \"example\": 500\n         },\n         \"fileName\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"File name entered by the consultant / customer\\n\",\n          \"example\": \"MPS Report\"\n         },\n         \"fileId\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"bFO File ID\",\n          \"example\": \"0687b00000140SMAAY\"\n         },\n         \"fileExtension\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"File Extension : .pdf .jpeg...\",\n          \"example\": \"pdf\"\n         },\n         \"createdDate\": {\n          \"type\":[\"string\",\"null\"],\n          \"format\": \"date\",\n          \"example\": \"2021-07-06\",\n          \"description\": \"creation date of the file - date when the file was attached\"\n         },\n         \"downloadLink\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"Link to download the file\",\n          \"example\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n         }\n        },\n        \"x-examples\": {\n         \"example-1\": {\n          \"value\": {\n           \"parentId\": \"a2H1H000006SJWIUA4\",\n           \"fileSize\": 500,\n           \"fileName\": \"MPS Report\",\n           \"fileId\": \"0687b00000140SMAAY\",\n           \"fileExtension\": \"pdf\",\n           \"createdDate\": \"2021-07-06\",\n           \"downloadLink\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n          }\n         }\n        }\n       }\n      },\n      \"translatedTechnicalRisk\": {\n       \"type\":[\"string\",\"null\"]\n      }\n     }\n    }\n   },\n   \"observation\": {\n    \"type\": \"array\",\n    \"items\": {\n     \"title\": \"observation\",\n     \"type\": \"object\",\n     \"properties\": {\n      \"observationId\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"2F0051H00000Azi05QAB\"\n      },\n      \"observationName\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"Observation 1 \"\n      },\n      \"observationCode\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"OB-001\"\n      },\n      \"relatedFiles\": {\n       \"type\": \"array\",\n       \"items\": {\n        \"title\": \"downloadableFile\",\n        \"type\": \"object\",\n        \"description\": \"\",\n        \"properties\": {\n         \"parentId\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"Record Bfo ID  to which the file is attached\",\n          \"example\": \"a2H1H000006SJWIUA4\"\n         },\n         \"fileSize\": {\n          \"type\": \"number\",\n          \"description\": \"size of the file\",\n          \"example\": 500\n         },\n         \"fileName\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"File name entered by the consultant / customer\\n\",\n          \"example\": \"MPS Report\"\n         },\n         \"fileId\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"bFO File ID\",\n          \"example\": \"0687b00000140SMAAY\"\n         },\n         \"fileExtension\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"File Extension : .pdf .jpeg...\",\n          \"example\": \"pdf\"\n         },\n         \"createdDate\": {\n          \"type\":[\"string\",\"null\"],\n          \"format\": \"date\",\n          \"example\": \"2021-07-06\",\n          \"description\": \"creation date of the file - date when the file was attached\"\n         },\n         \"downloadLink\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"Link to download the file\",\n          \"example\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n         }\n        },\n        \"x-examples\": {\n         \"example-1\": {\n          \"value\": {\n           \"parentId\": \"a2H1H000006SJWIUA4\",\n           \"fileSize\": 500,\n           \"fileName\": \"MPS Report\",\n           \"fileId\": \"0687b00000140SMAAY\",\n           \"fileExtension\": \"pdf\",\n           \"createdDate\": \"2021-07-06\",\n           \"downloadLink\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n          }\n         }\n        }\n       }\n      },\n      \"translatedTechnicalRisk\": {\n       \"type\":[\"string\",\"null\"]\n      }\n     }\n    }\n   },\n   \"relatedFiles\": {\n    \"type\": \"array\",\n    \"items\": {\n     \"title\": \"downloadableFile\",\n     \"type\": \"object\",\n     \"description\": \"\",\n     \"properties\": {\n      \"parentId\": {\n       \"type\":[\"string\",\"null\"],\n       \"description\": \"Record Bfo ID  to which the file is attached\",\n       \"example\": \"a2H1H000006SJWIUA4\"\n      },\n      \"fileSize\": {\n       \"type\": \"number\",\n       \"description\": \"size of the file\",\n       \"example\": 500\n      },\n      \"fileName\": {\n       \"type\":[\"string\",\"null\"],\n       \"description\": \"File name entered by the consultant / customer\\n\",\n       \"example\": \"MPS Report\"\n      },\n      \"fileId\": {\n       \"type\":[\"string\",\"null\"],\n       \"description\": \"bFO File ID\",\n       \"example\": \"0687b00000140SMAAY\"\n      },\n      \"fileExtension\": {\n       \"type\":[\"string\",\"null\"],\n       \"description\": \"File Extension : .pdf .jpeg...\",\n       \"example\": \"pdf\"\n      },\n      \"createdDate\": {\n       \"type\":[\"string\",\"null\"],\n       \"format\": \"date\",\n       \"example\": \"2021-07-06\",\n       \"description\": \"creation date of the file - date when the file was attached\"\n      },\n      \"downloadLink\": {\n       \"type\":[\"string\",\"null\"],\n       \"description\": \"Link to download the file\",\n       \"example\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n      }\n     },\n     \"x-examples\": {\n      \"example-1\": {\n       \"value\": {\n        \"parentId\": \"a2H1H000006SJWIUA4\",\n        \"fileSize\": 500,\n        \"fileName\": \"MPS Report\",\n        \"fileId\": \"0687b00000140SMAAY\",\n        \"fileExtension\": \"pdf\",\n        \"createdDate\": \"2021-07-06\",\n        \"downloadLink\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n       }\n      }\n     }\n    }\n   },\n   \"coveredLocations\": {\n    \"type\": \"array\",\n    \"items\": {\n     \"title\": \"recommendationcoveredLocation\",\n     \"type\": \"object\",\n     \"properties\": {\n      \"recoCoveredLocationId\": {\n       \"type\":[\"string\",\"null\"]\n      },\n      \"location\": {\n       \"title\": \"Field Services - Location - Details\",\n       \"type\": \"object\",\n       \"description\": \"\",\n       \"properties\": {\n        \"locationId\": {\n         \"type\":[\"string\",\"null\"],\n         \"description\": \"publisher ID of the location\"\n        },\n        \"locationName\": {\n         \"type\":[\"string\",\"null\"],\n         \"description\": \"name of the asset in latin caracters : Free text field\"\n        }\n       }\n      }\n     }\n    }\n   },\n   \"coveredAssets\": {\n    \"type\": \"array\",\n    \"items\": {\n     \"title\": \"recommendationCoveredProduct\",\n     \"type\": \"object\",\n     \"properties\": {\n      \"recoCoveredProductId\": {\n       \"type\":[\"string\",\"null\"]\n      },\n      \"asset\": {\n       \"title\": \"Field Services - Asset - Basic structure\",\n       \"type\": \"object\",\n       \"description\": \"\",\n       \"properties\": {\n        \"serialNumber\": {\n         \"description\": \"manufacturingacturing serial number of the asset. This attribute is used for Schneider manufacturingactured assets. This attribute is used to identify duplicate assets.Functional rule is to not push via automated connectors assets with no serial numbers if the source system is not enabling Schneider to consider the asset as tracked effectively (i.e. if the asset is a result of tracking assumption).\",\n         \"example\": \"ZA0735003884\",\n         \"type\":[\"string\",\"null\"]\n        },\n        \"name\": {\n         \"type\":[\"string\",\"null\"],\n         \"description\": \"name of the asset in latin caracters : Free text field\"\n        },\n        \"assetId\": {\n         \"type\":[\"string\",\"null\"],\n         \"description\": \"publisher ID of the installed product\"\n        }\n       }\n      }\n     }\n    }\n   },\n   \"history\": {\n    \"type\": \"array\",\n    \"items\": {\n     \"title\": \"History\",\n     \"type\": \"object\",\n     \"properties\": {\n      \"fieldName\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"RecommendationStatus\"\n      },\n      \"oldValue\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"In Progress\"\n      },\n      \"newValue\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"Closed\"\n      },\n      \"lastModifiedBy\": {\n       \"type\": \"object\",\n       \"properties\": {\n        \"userId\": {\n         \"type\":[\"string\",\"null\"],\n         \"example\": \"2F0051H00000Azi05QAB\"\n        },\n        \"fullName\": {\n         \"type\":[\"string\",\"null\"],\n         \"example\": \"Jack Jones\"\n        }\n       }\n      },\n      \"lastModifiedDate\": {\n       \"type\":[\"string\",\"null\"],\n       \"example\": \"2020-10-21\",\n       \"format\": \"date\",\n       \"description\": \"GMT Date Time  :   YYYY-MM-DD hh:mm:ss   \"\n      }\n     }\n    }\n   },\n   \"correctiveActionsConcat\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"concatenates the Corrective action names related to the recommendation\"\n   },\n   \"technicalRiskConcat\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"concatenates the Technical Risks names related to the recommendation\"\n   },\n   \"ObservationConcat\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"concatenates the Observation names related to the recommendation\"\n   },\n   \"isOverdue\": {\n    \"type\": \"boolean\"\n   }\n  }\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations?recommendation-id=aAB7b000000CGAoGAO",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations"
+                    ],
+                    "query": [
+                        {
+                            "key": "recommendation-id",
+                            "value": "aAB7b000000CGAoGAO"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-B-03",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations?recommendation-id=aAB7b000000CGAoGAO",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations"
+                    ],
+                    "query": [
+                        {
+                            "key": "recommendation-id",
+                            "value": "aAB7b000000CGAoGAO"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-B-04",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations?recommendation-id=aAB7b000000CGAoGAO",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations"
+                    ],
+                    "query": [
+                        {
+                            "key": "recommendation-id",
+                            "value": "aAB7b000000CGAoGAO"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-B-05",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations?recommendation-id=aAB7b000000CGAoGAO",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations"
+                    ],
+                    "query": [
+                        {
+                            "key": "recommendation-id",
+                            "value": "aAB7b000000CGAoGAO"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-C-01",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "protocolProfileBehavior": {
+                "disabledSystemHeaders": {}
+            },
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n   {\r\n      \"workOrderId\":\"a2H7b000001220kEAA\",\r\n      \"siteID\":\"a2L7b000004TGs7EAG\",\r\n      \"recommendationList\":[\r\n         {\r\n            \"technicalRiskList\":[\r\n               {\r\n                  \"technicalRiskNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"technicalRiskName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"reference\":\"hello world0\",\r\n                  \"language\":\"German\"\r\n               },\r\n               {\r\n                  \"technicalRiskNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"technicalRiskName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"reference\":\"hello world1\",\r\n                  \"language\":\"German\"\r\n               }\r\n            ],\r\n            \"solutionBudgetType\":\"Internal Action\",\r\n            \"solutionBudgetComment\":\"Lorem ipsum dolor sit amet\",\r\n            \"solutionBudgetAmount\":1000,\r\n            \"riskCategory\":\"High\",\r\n            \"repetitivefinding\":\"true\",\r\n            \"recommendationStatus\":\"Open\",\r\n            \"recommendationName\":\"TestRcm-2021-09-20-0\",\r\n            \"recommendationCoveredLocations\":[\r\n               {\r\n                  \"locationID\":\"a2L7b000004TKekEAG\"\r\n               },\r\n               {\r\n                  \"locationID\":\"a2L7b000004TKkxEAG\"\r\n               }\r\n            ],\r\n            \"recommendationCoveredAssets\":[\r\n               {\r\n                  \"assetId\":\"a1a7b000001VyDSAA0\"\r\n               },\r\n               {\r\n                  \"assetId\":\"a1a7b000001VxSCAA0\"\r\n               }\r\n            ],\r\n            \"observationList\":[\r\n               {\r\n                  \"reference\":\"hello world0\",\r\n                  \"observationNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"observationName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"language\":\"English\"\r\n               },\r\n               {\r\n                  \"reference\":\"hello world1\",\r\n                  \"observationNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"observationName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"language\":\"English\"\r\n               }\r\n            ],\r\n            \"findingCategory\":\"Electrical System Architecture upgrade\",\r\n            \"dueDate\":\"2021-08-27\",\r\n            \"currencyType\":null,\r\n            \"correctiveActionList\":[\r\n               {\r\n                  \"reference\":\"hello world0\",\r\n                  \"language\":\"french\",\r\n                  \"correctiveActionNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"correctiveActionName\":\"Lorem ipsum dolor sit amet\"\r\n               },\r\n               {\r\n                  \"reference\":\"hello world1\",\r\n                  \"language\":\"french\",\r\n                  \"correctiveActionNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"correctiveActionName\":\"Lorem ipsum dolor sit amet\"\r\n               }\r\n            ],\r\n            \"concernedAssetsAndLocations\":\"Lorem ipsum dolor sit amet\",\r\n            \"avoidedRiskType\":null,\r\n            \"avoidedRiskComment\":\"Lorem ipsum dolor sit amet\",\r\n            \"avoidedRiskAmount\":100\r\n         }\r\n      ],\r\n      \"assessmentType\":\"MPS Prime\",\r\n      \"assessmentDate\":\"2021-09-06\"\r\n   }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations"
+                    ],
+                    "query": [
+                        {
+                            "key": "sorting-by",
+                            "value": "locationName",
+                            "disabled": true
+                        },
+                        {
+                            "key": "sorting-order",
+                            "value": "ASC",
+                            "disabled": true
+                        },
+                        {
+                            "key": "reporting",
+                            "value": "True",
+                            "disabled": true
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-C-02",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.have.status('Created');\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"type\": \"array\",\n \"items\": {\n  \"type\": \"object\",\n  \"properties\": {\n   \"assessmentId\": {\n    \"type\":[\"string\",\"null\"]\n   },\n   \"localId\": {\n    \"type\":[\"string\",\"null\"]\n   },\n   \"recommendationList\": {\n    \"type\": \"array\",\n    \"items\": {\n     \"type\": \"object\",\n     \"properties\": {\n      \"recommendationName\": {\n       \"type\":[\"string\",\"null\"]\n      },\n      \"recommendationId\": {\n       \"type\":[\"string\",\"null\"]\n      },\n      \"localId\": {\n       \"type\":[\"string\",\"null\"]\n      },\n      \"technicalRiskList\": {\n       \"type\": \"array\",\n       \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n         \"technicalRiskId\": {\n          \"type\":[\"string\",\"null\"]\n         },\n         \"localId\": {\n          \"type\":[\"string\",\"null\"]\n         }\n        }\n       }\n      },\n      \"correctiveActionList\": {\n       \"type\": \"array\",\n       \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n         \"correctiveActionId\": {\n          \"type\":[\"string\",\"null\"]\n         },\n         \"localId\": {\n          \"type\":[\"string\",\"null\"]\n         }\n        }\n       }\n      },\n      \"observationList\": {\n       \"type\": \"array\",\n       \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n         \"observationId\": {\n          \"type\":[\"string\",\"null\"]\n         },\n         \"localId\": {\n          \"type\":[\"string\",\"null\"]\n         }\n        }\n       }\n      },\n      \"recommendationCoveredLocations\": {\n       \"type\": \"array\",\n       \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n         \"recommendationCoveredLocationId\": {\n          \"type\":[\"string\",\"null\"]\n         }\n        }\n       }\n      },\n      \"recommendationCoveredAssets\": {\n       \"type\": \"array\",\n       \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n         \"recommendationCoveredAssetId\": {\n          \"type\":[\"string\",\"null\"]\n         }\n        }\n       }\n      }\n     }\n    }\n   }\n  }\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in request\", () => {\r",
+                            "\r",
+                            "  pm.request.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+                            "\r",
+                            "  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "protocolProfileBehavior": {
+                "disabledSystemHeaders": {}
+            },
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n   {\r\n      \"workOrderId\":\"a2H7b000001220kEAA\",\r\n      \"siteID\":\"a2L7b000004TGs7EAG\",\r\n      \"recommendationList\":[\r\n         {\r\n            \"technicalRiskList\":[\r\n               {\r\n                  \"technicalRiskNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"technicalRiskName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"reference\":\"hello world0\",\r\n                  \"language\":\"German\"\r\n               },\r\n               {\r\n                  \"technicalRiskNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"technicalRiskName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"reference\":\"hello world1\",\r\n                  \"language\":\"German\"\r\n               }\r\n            ],\r\n            \"solutionBudgetType\":\"Internal Action\",\r\n            \"solutionBudgetComment\":\"Lorem ipsum dolor sit amet\",\r\n            \"solutionBudgetAmount\":1000,\r\n            \"riskCategory\":\"High\",\r\n            \"repetitivefinding\":\"true\",\r\n            \"recommendationStatus\":\"Open\",\r\n            \"recommendationName\":\"TestRcm-2021-09-20-0\",\r\n            \"recommendationCoveredLocations\":[\r\n               {\r\n                  \"locationID\":\"a2L7b000004TKekEAG\"\r\n               },\r\n               {\r\n                  \"locationID\":\"a2L7b000004TKkxEAG\"\r\n               }\r\n            ],\r\n            \"recommendationCoveredAssets\":[\r\n               {\r\n                  \"assetId\":\"a1a7b000001VyDSAA0\"\r\n               },\r\n               {\r\n                  \"assetId\":\"a1a7b000001VxSCAA0\"\r\n               }\r\n            ],\r\n            \"observationList\":[\r\n               {\r\n                  \"reference\":\"hello world0\",\r\n                  \"observationNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"observationName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"language\":\"English\"\r\n               },\r\n               {\r\n                  \"reference\":\"hello world1\",\r\n                  \"observationNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"observationName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"language\":\"English\"\r\n               }\r\n            ],\r\n            \"findingCategory\":\"Electrical System Architecture upgrade\",\r\n            \"dueDate\":\"2021-08-27\",\r\n            \"currencyType\":null,\r\n            \"correctiveActionList\":[\r\n               {\r\n                  \"reference\":\"hello world0\",\r\n                  \"language\":\"french\",\r\n                  \"correctiveActionNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"correctiveActionName\":\"Lorem ipsum dolor sit amet\"\r\n               },\r\n               {\r\n                  \"reference\":\"hello world1\",\r\n                  \"language\":\"french\",\r\n                  \"correctiveActionNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"correctiveActionName\":\"Lorem ipsum dolor sit amet\"\r\n               }\r\n            ],\r\n            \"concernedAssetsAndLocations\":\"Lorem ipsum dolor sit amet\",\r\n            \"avoidedRiskType\":null,\r\n            \"avoidedRiskComment\":\"Lorem ipsum dolor sit amet\",\r\n            \"avoidedRiskAmount\":100\r\n         }\r\n      ],\r\n      \"assessmentType\":\"MPS Prime\",\r\n      \"assessmentDate\":\"2021-09-06\"\r\n   }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations"
+                    ],
+                    "query": [
+                        {
+                            "key": "sorting-by",
+                            "value": "locationName",
+                            "disabled": true
+                        },
+                        {
+                            "key": "sorting-order",
+                            "value": "ASC",
+                            "disabled": true
+                        },
+                        {
+                            "key": "reporting",
+                            "value": "True",
+                            "disabled": true
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-C-03",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "protocolProfileBehavior": {
+                "disabledSystemHeaders": {}
+            },
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n   {\r\n      \"workOrderId\":\"a2H7b000001220kEAA\",\r\n      \"siteID\":\"a2L7b000004TGs7EAG\",\r\n      \"recommendationList\":[\r\n         {\r\n            \"technicalRiskList\":[\r\n               {\r\n                  \"technicalRiskNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"technicalRiskName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"reference\":\"hello world0\",\r\n                  \"language\":\"German\"\r\n               },\r\n               {\r\n                  \"technicalRiskNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"technicalRiskName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"reference\":\"hello world1\",\r\n                  \"language\":\"German\"\r\n               }\r\n            ],\r\n            \"solutionBudgetType\":\"Internal Action\",\r\n            \"solutionBudgetComment\":\"Lorem ipsum dolor sit amet\",\r\n            \"solutionBudgetAmount\":1000,\r\n            \"riskCategory\":\"High\",\r\n            \"repetitivefinding\":\"true\",\r\n            \"recommendationStatus\":\"Open\",\r\n            \"recommendationName\":\"TestRcm-2021-09-20-0\",\r\n            \"recommendationCoveredLocations\":[\r\n               {\r\n                  \"locationID\":\"a2L7b000004TKekEAG\"\r\n               },\r\n               {\r\n                  \"locationID\":\"a2L7b000004TKkxEAG\"\r\n               }\r\n            ],\r\n            \"recommendationCoveredAssets\":[\r\n               {\r\n                  \"assetId\":\"a1a7b000001VyDSAA0\"\r\n               },\r\n               {\r\n                  \"assetId\":\"a1a7b000001VxSCAA0\"\r\n               }\r\n            ],\r\n            \"observationList\":[\r\n               {\r\n                  \"reference\":\"hello world0\",\r\n                  \"observationNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"observationName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"language\":\"English\"\r\n               },\r\n               {\r\n                  \"reference\":\"hello world1\",\r\n                  \"observationNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"observationName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"language\":\"English\"\r\n               }\r\n            ],\r\n            \"findingCategory\":\"Electrical System Architecture upgrade\",\r\n            \"dueDate\":\"2021-08-27\",\r\n            \"currencyType\":null,\r\n            \"correctiveActionList\":[\r\n               {\r\n                  \"reference\":\"hello world0\",\r\n                  \"language\":\"french\",\r\n                  \"correctiveActionNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"correctiveActionName\":\"Lorem ipsum dolor sit amet\"\r\n               },\r\n               {\r\n                  \"reference\":\"hello world1\",\r\n                  \"language\":\"french\",\r\n                  \"correctiveActionNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"correctiveActionName\":\"Lorem ipsum dolor sit amet\"\r\n               }\r\n            ],\r\n            \"concernedAssetsAndLocations\":\"Lorem ipsum dolor sit amet\",\r\n            \"avoidedRiskType\":null,\r\n            \"avoidedRiskComment\":\"Lorem ipsum dolor sit amet\",\r\n            \"avoidedRiskAmount\":100\r\n         }\r\n      ],\r\n      \"assessmentType\":\"MPS Prime\",\r\n      \"assessmentDate\":\"2021-09-06\"\r\n   }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations"
+                    ],
+                    "query": [
+                        {
+                            "key": "sorting-by",
+                            "value": "locationName",
+                            "disabled": true
+                        },
+                        {
+                            "key": "sorting-order",
+                            "value": "ASC",
+                            "disabled": true
+                        },
+                        {
+                            "key": "reporting",
+                            "value": "True",
+                            "disabled": true
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-C-04",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "protocolProfileBehavior": {
+                "disabledSystemHeaders": {}
+            },
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n   {\r\n      \"workOrderId\":\"a2H7b000001220kEAA\",\r\n      \"siteID\":\"a2L7b000004TGs7EAG\",\r\n      \"recommendationList\":[\r\n         {\r\n            \"technicalRiskList\":[\r\n               {\r\n                  \"technicalRiskNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"technicalRiskName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"reference\":\"hello world0\",\r\n                  \"language\":\"German\"\r\n               },\r\n               {\r\n                  \"technicalRiskNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"technicalRiskName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"reference\":\"hello world1\",\r\n                  \"language\":\"German\"\r\n               }\r\n            ],\r\n            \"solutionBudgetType\":\"Internal Action\",\r\n            \"solutionBudgetComment\":\"Lorem ipsum dolor sit amet\",\r\n            \"solutionBudgetAmount\":1000,\r\n            \"riskCategory\":\"High\",\r\n            \"repetitivefinding\":\"true\",\r\n            \"recommendationStatus\":\"Open\",\r\n            \"recommendationName\":\"TestRcm-2021-09-20-0\",\r\n            \"recommendationCoveredLocations\":[\r\n               {\r\n                  \"locationID\":\"a2L7b000004TKekEAG\"\r\n               },\r\n               {\r\n                  \"locationID\":\"a2L7b000004TKkxEAG\"\r\n               }\r\n            ],\r\n            \"recommendationCoveredAssets\":[\r\n               {\r\n                  \"assetId\":\"a1a7b000001VyDSAA0\"\r\n               },\r\n               {\r\n                  \"assetId\":\"a1a7b000001VxSCAA0\"\r\n               }\r\n            ],\r\n            \"observationList\":[\r\n               {\r\n                  \"reference\":\"hello world0\",\r\n                  \"observationNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"observationName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"language\":\"English\"\r\n               },\r\n               {\r\n                  \"reference\":\"hello world1\",\r\n                  \"observationNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"observationName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"language\":\"English\"\r\n               }\r\n            ],\r\n            \"findingCategory\":\"Electrical System Architecture upgrade\",\r\n            \"dueDate\":\"2021-08-27\",\r\n            \"currencyType\":null,\r\n            \"correctiveActionList\":[\r\n               {\r\n                  \"reference\":\"hello world0\",\r\n                  \"language\":\"french\",\r\n                  \"correctiveActionNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"correctiveActionName\":\"Lorem ipsum dolor sit amet\"\r\n               },\r\n               {\r\n                  \"reference\":\"hello world1\",\r\n                  \"language\":\"french\",\r\n                  \"correctiveActionNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"correctiveActionName\":\"Lorem ipsum dolor sit amet\"\r\n               }\r\n            ],\r\n            \"concernedAssetsAndLocations\":\"Lorem ipsum dolor sit amet\",\r\n            \"avoidedRiskType\":null,\r\n            \"avoidedRiskComment\":\"Lorem ipsum dolor sit amet\",\r\n            \"avoidedRiskAmount\":100\r\n         }\r\n      ],\r\n      \"assessmentType\":\"MPS Prime\",\r\n      \"assessmentDate\":\"2021-09-06\"\r\n   }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations"
+                    ],
+                    "query": [
+                        {
+                            "key": "sorting-by",
+                            "value": "locationName",
+                            "disabled": true
+                        },
+                        {
+                            "key": "sorting-order",
+                            "value": "ASC",
+                            "disabled": true
+                        },
+                        {
+                            "key": "reporting",
+                            "value": "True",
+                            "disabled": true
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-C-05",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "protocolProfileBehavior": {
+                "disabledSystemHeaders": {}
+            },
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "[\r\n   {\r\n      \"workOrderId\":\"a2H7b000001220kEAA\",\r\n      \"siteID\":\"a2L7b000004TGs7EAG\",\r\n      \"recommendationList\":[\r\n         {\r\n            \"technicalRiskList\":[\r\n               {\r\n                  \"technicalRiskNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"technicalRiskName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"reference\":\"hello world0\",\r\n                  \"language\":\"German\"\r\n               },\r\n               {\r\n                  \"technicalRiskNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"technicalRiskName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"reference\":\"hello world1\",\r\n                  \"language\":\"German\"\r\n               }\r\n            ],\r\n            \"solutionBudgetType\":\"Internal Action\",\r\n            \"solutionBudgetComment\":\"Lorem ipsum dolor sit amet\",\r\n            \"solutionBudgetAmount\":1000,\r\n            \"riskCategory\":\"High\",\r\n            \"repetitivefinding\":\"true\",\r\n            \"recommendationStatus\":\"Open\",\r\n            \"recommendationName\":\"TestRcm-2021-09-20-0\",\r\n            \"recommendationCoveredLocations\":[\r\n               {\r\n                  \"locationID\":\"a2L7b000004TKekEAG\"\r\n               },\r\n               {\r\n                  \"locationID\":\"a2L7b000004TKkxEAG\"\r\n               }\r\n            ],\r\n            \"recommendationCoveredAssets\":[\r\n               {\r\n                  \"assetId\":\"a1a7b000001VyDSAA0\"\r\n               },\r\n               {\r\n                  \"assetId\":\"a1a7b000001VxSCAA0\"\r\n               }\r\n            ],\r\n            \"observationList\":[\r\n               {\r\n                  \"reference\":\"hello world0\",\r\n                  \"observationNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"observationName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"language\":\"English\"\r\n               },\r\n               {\r\n                  \"reference\":\"hello world1\",\r\n                  \"observationNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"observationName\":\"Lorem ipsum dolor sit amet\",\r\n                  \"language\":\"English\"\r\n               }\r\n            ],\r\n            \"findingCategory\":\"Electrical System Architecture upgrade\",\r\n            \"dueDate\":\"2021-08-27\",\r\n            \"currencyType\":null,\r\n            \"correctiveActionList\":[\r\n               {\r\n                  \"reference\":\"hello world0\",\r\n                  \"language\":\"french\",\r\n                  \"correctiveActionNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"correctiveActionName\":\"Lorem ipsum dolor sit amet\"\r\n               },\r\n               {\r\n                  \"reference\":\"hello world1\",\r\n                  \"language\":\"french\",\r\n                  \"correctiveActionNameTranslated\":\"Lorem ipsum dolor sit amet\",\r\n                  \"correctiveActionName\":\"Lorem ipsum dolor sit amet\"\r\n               }\r\n            ],\r\n            \"concernedAssetsAndLocations\":\"Lorem ipsum dolor sit amet\",\r\n            \"avoidedRiskType\":null,\r\n            \"avoidedRiskComment\":\"Lorem ipsum dolor sit amet\",\r\n            \"avoidedRiskAmount\":100\r\n         }\r\n      ],\r\n      \"assessmentType\":\"MPS Prime\",\r\n      \"assessmentDate\":\"2021-09-06\"\r\n   }\r\n]",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations"
+                    ],
+                    "query": [
+                        {
+                            "key": "sorting-by",
+                            "value": "locationName",
+                            "disabled": true
+                        },
+                        {
+                            "key": "sorting-order",
+                            "value": "ASC",
+                            "disabled": true
+                        },
+                        {
+                            "key": "reporting",
+                            "value": "True",
+                            "disabled": true
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-01",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"siteIds\":[\"a2LA0000000ABxHMAW\",\"a2L7b000004TGs9EAG\",\"a2L7b000004TGs7EAG\",\"a2L7b000004TGs4EAG\"]\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations/search?page=1&page-size=15&reporting=false",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "page-size",
+                            "value": "15"
+                        },
+                        {
+                            "key": "reporting",
+                            "value": "false"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-02",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.have.status('OK');\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"oneOf\": [\n  {\n   \"type\": \"array\",\n   \"items\": {\n    \"title\": \"recommendation-summary\",\n    \"type\": \"object\",\n    \"description\": \"recommendation data to be used with list of multiple recommendations\",\n    \"properties\": {\n     \"recommendationId\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"bFO recommendation ID\",\n      \"example\": \"aAB7b0000004eIzGAI\"\n     },\n     \"recommendationRef\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Customer facing ID\",\n      \"example\": \"REC-0001\"\n     },\n     \"riskCategory\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Picklist to define the level of risk of the finding, the due date will be set accordingly (Critical,High,Medium,Low)\",\n      \"enum\": [\n       \"Critical\",\n       \"High\",\n       \"Medium\",\n       \"Low\"\n      ],\n      \"example\": \"High\"\n     },\n     \"assessment\": {\n      \"type\": \"object\",\n      \"properties\": {\n       \"assessmentId\": {\n        \"type\":[\"string\",\"null\"],\n        \"description\": \"bFO Id of the assessment\",\n        \"example\": \"aA67b0000005aZYCAY\"\n       },\n       \"assessementType\": {\n        \"type\":[\"string\",\"null\"],\n        \"description\": \"Type of the assessment (MPS Prime, MPS Enterprise...)\",\n        \"enum\": [\n         \"MPS Prime\",\n         \"MPS Re-assessment\",\n         \"MPS Connect\",\n         \"MPS Enterprise\",\n         \"Other MPS Execution\"\n        ],\n        \"example\": \"MPS Prime\"\n       },\n       \"site\": {\n        \"title\": \"Field Services - Location - Details\",\n        \"type\": \"object\",\n        \"description\": \"\",\n        \"properties\": {\n         \"locationId\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"publisher ID of the location\"\n         },\n         \"locationName\": {\n          \"type\":[\"string\",\"null\"],\n          \"description\": \"name of the asset in latin caracters : Free text field\"\n         },\n         \"siteLocation\": {\n          \"type\": \"boolean\",\n          \"description\": \"If true the location is a Site location\"\n         }\n        }\n       }\n      }\n     },\n     \"dueDate\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Due date for the recommendation to be closed (depends on the risk category field)\",\n      \"format\": \"date\"\n     },\n     \"recommendationStatus\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"status of the recommendation (Open,In progress, awaiting HSE validation, closed) dependson the customer feedback\",\n      \"example\": \"Open\",\n      \"enum\": [\n       \"Open\",\n       \"In Progress\",\n       \"Pending Level 2 validation\",\n       \"Completed\",\n       \"Cancelled\"\n      ]\n     },\n     \"recommendationName\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"free text descibing the recommendation entered by the consultant\",\n      \"example\": \"Cable Change\"\n     },\n     \"isOverdue\": {\n      \"type\": \"boolean\",\n      \"default\": false,\n      \"description\": \"OVERDUE FLAG: Is a boolean field with the folowing logic:   IF DUE DATE is < TODAY and STATUS = (Completed or Canceled) THEN  FLAG = False\\nIF DUE DATE is < TODAY  and STATUS NOT equal to (Completed or Canceled)  THEN Flag = True\\nIF DUE DATE is > Today Flag  False\"\n     }\n    }\n   }\n  },\n  {\n   \"type\": \"object\",\n   \"properties\": {\n    \"count\": {\n     \"type\":[\"integer\",\"null\"],\n     \"description\": \"Count of returned recommendation records\",\n     \"example\": 30\n    },\n    \"countOverdue\": {\n     \"type\":[\"integer\",\"null\"],\n     \"description\": \"Count of returned recommendations where the due date is greater than today\",\n     \"example\": 3\n    },\n    \"countCritical\": {\n     \"type\":[\"integer\",\"null\"],\n     \"description\": \"Count of returned recommendations where status equal Critical\",\n     \"example\": 10\n    },\n    \"countHigh\": {\n     \"type\":[\"integer\",\"null\"],\n     \"description\": \"Count of returned recommendations where status equal High\",\n     \"example\": 5\n    },\n    \"countMedium\": {\n     \"type\":[\"integer\",\"null\"],\n     \"description\": \"Count of returned recommendations where status equal Medium\",\n     \"example\": 7\n    },\n    \"countLow\": {\n     \"type\":[\"integer\",\"null\"],\n     \"description\": \"Count of returned recommendations where status equal Low\",\n     \"example\": 13\n    }\n   }\n  },\n  {\n   \"type\": \"array\",\n   \"items\": {\n    \"title\": \"recommendation-download\",\n    \"x-examples\": {\n     \"Recommendation Download\": {\n      \"value\": {\n       \"assessmentType\": \"MPS prime\",\n       \"assessmentDate\": \"2020-03-15\",\n       \"siteName\": \"ABC Boston - Site\",\n       \"recommendationId\": \"aAB7b0000004eIzGAI\",\n       \"recommendationRef\": \"REC-00001\",\n       \"recommendationName\": \"MV Power Cable earth faulty\",\n       \"riskCategory\": \"High\",\n       \"findingCategory\": \"Maintenance Issue\",\n       \"dueDate\": \"2023-03-01\",\n       \"avoidedRisk\": \"Safety\",\n       \"recommendationStatus\": \"In progress\",\n       \"concernedAssetsLocations\": \"Asset number 1, Asset number 2 , Asset number 3, Location 1\",\n       \"level1Status\": \"In progress\",\n       \"level1Comment\": \"On going actions\",\n       \"level2Status\": \"In progress\",\n       \"level2Comment\": \"cable changed, waiting for security actions\",\n       \"correctiveAction\": [\n        {\n         \"correctiveActionName\": \"corrective Acr\"\n        }\n       ],\n       \"technicalRisk\": [\n        {\n         \"technicalRiskName\": \"Technical Risk 1\"\n        }\n       ],\n       \"observation\": [\n        {\n         \"ObservationName\": \"Observation 1\"\n        }\n       ]\n      }\n     }\n    },\n    \"type\": \"object\",\n    \"description\": \"\",\n    \"properties\": {\n     \"assessmentType\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"MPS prime\"\n     },\n     \"assessmentDate\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"2020-03-15\"\n     },\n     \"siteName\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"ABC Boston - Site\"\n     },\n     \"recommendationId\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"recommendation BFO ID\",\n      \"example\": \"aAB7b0000004eIzGAI\"\n     },\n     \"recommendationRef\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Customer facing reference\",\n      \"example\": \"REC-00001\"\n     },\n     \"recommendationName\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Recommendation description\",\n      \"example\": \"MV Power Cable earth faulty\"\n     },\n     \"riskCategory\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"level of risk - Lov (Critical-High-Medium-Low)\",\n      \"example\": \"High\"\n     },\n     \"findingCategory\": {\n      \"type\":[\"string\",\"null\"],\n      \"description\": \"Category of the finding\",\n      \"example\": \"Maintenance Issue\"\n     },\n     \"dueDate\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"2023-03-01\",\n      \"description\": \"Due Date to close the recommendation\"\n     },\n     \"avoidedRisk\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"Safety\"\n     },\n     \"recommendationStatus\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"In progress\"\n     },\n     \"concernedAssetsLocations\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"Asset number 1, Asset number 2 , Asset number 3, Location 1\"\n     },\n     \"level1Status\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"In progress\"\n     },\n     \"level1Comment\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"On going actions\"\n     },\n     \"level2Status\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"In progress\"\n     },\n     \"level2Comment\": {\n      \"type\":[\"string\",\"null\"],\n      \"example\": \"cable changed, waiting for security actions\"\n     },\n     \"correctiveAction\": {\n      \"type\": \"array\",\n      \"items\": {\n       \"type\":[\"string\",\"null\"]\n      }\n     },\n     \"technicalRisk\": {\n      \"type\": \"array\",\n      \"items\": {\n       \"type\":[\"string\",\"null\"]\n      }\n     },\n     \"observation\": {\n      \"type\": \"array\",\n      \"items\": {\n       \"type\":[\"string\",\"null\"]\n      }\n     }\n    }\n   }\n  }\n ]\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in request\", () => {\r",
+                            "\r",
+                            "  pm.request.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+                            "\r",
+                            "  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"siteIds\":[\"a2LA0000000ABxHMAW\",\"a2L7b000004TGs9EAG\",\"a2L7b000004TGs7EAG\",\"a2L7b000004TGs4EAG\"]\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations/search?page=1&page-size=15&reporting=false",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "page-size",
+                            "value": "15"
+                        },
+                        {
+                            "key": "reporting",
+                            "value": "false"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-03",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"siteIds\":[\"a2LA0000000ABxHMAW\",\"a2L7b000004TGs9EAG\",\"a2L7b000004TGs7EAG\",\"a2L7b000004TGs4EAG\"]\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations/search?page=1&page-size=15&reporting=false",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "page-size",
+                            "value": "15"
+                        },
+                        {
+                            "key": "reporting",
+                            "value": "false"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-04",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"siteIds\":[\"a2LA0000000ABxHMAW\",\"a2L7b000004TGs9EAG\",\"a2L7b000004TGs7EAG\",\"a2L7b000004TGs4EAG\"]\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations/search?page=1&page-size=15&reporting=false",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "page-size",
+                            "value": "15"
+                        },
+                        {
+                            "key": "reporting",
+                            "value": "false"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-D-05",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer jSNtXzscyMj5JBYV3xXrKrCO6WQx",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"siteIds\":[\"a2LA0000000ABxHMAW\",\"a2L7b000004TGs9EAG\",\"a2L7b000004TGs7EAG\",\"a2L7b000004TGs4EAG\"]\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/recommendations/search?page=1&page-size=15&reporting=false",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "recommendations",
+                        "search"
+                    ],
+                    "query": [
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "page-size",
+                            "value": "15"
+                        },
+                        {
+                            "key": "reporting",
+                            "value": "false"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-E-01",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "file",
+                    "file": {
+                        "src": "/C:/Users/SESA612288/Downloads/download.png"
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/uploadfile?fileName=Test.jpg&title=my title&firstPublishLocationId=aAB7b000000CGAjGAO",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "uploadfile"
+                    ],
+                    "query": [
+                        {
+                            "key": "fileName",
+                            "value": "Test.jpg"
+                        },
+                        {
+                            "key": "title",
+                            "value": "my title"
+                        },
+                        {
+                            "key": "firstPublishLocationId",
+                            "value": "aAB7b000000CGAjGAO"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-E-02",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(201); });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.have.status('Created');\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"type\": \"object\",\n \"properties\": {\n  \"fileId\": {\n   \"type\":[\"string\",\"null\"],\n   \"example\": \"0697b000001ZJQqAAO\"\n  }\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in request\", () => {\r",
+                            "\r",
+                            "  pm.request.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+                            "\r",
+                            "  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "file",
+                    "file": {
+                        "src": "/C:/Users/SESA612288/Downloads/download.png"
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/uploadfile?fileName=Test.jpg&title=my title&firstPublishLocationId=aAB7b000000CGAjGAO",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "uploadfile"
+                    ],
+                    "query": [
+                        {
+                            "key": "fileName",
+                            "value": "Test.jpg"
+                        },
+                        {
+                            "key": "title",
+                            "value": "my title"
+                        },
+                        {
+                            "key": "firstPublishLocationId",
+                            "value": "aAB7b000000CGAjGAO"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-E-03",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "file",
+                    "file": {
+                        "src": "/C:/Users/SESA612288/Downloads/download.png"
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/uploadfile?fileName=Test.jpg&title=my title&firstPublishLocationId=aAB7b000000CGAjGAO",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "uploadfile"
+                    ],
+                    "query": [
+                        {
+                            "key": "fileName",
+                            "value": "Test.jpg"
+                        },
+                        {
+                            "key": "title",
+                            "value": "my title"
+                        },
+                        {
+                            "key": "firstPublishLocationId",
+                            "value": "aAB7b000000CGAjGAO"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-E-04",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "file",
+                    "file": {
+                        "src": "/C:/Users/SESA612288/Downloads/download.png"
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/uploadfile?fileName=Test.jpg&title=my title&firstPublishLocationId=aAB7b000000CGAjGAO",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "uploadfile"
+                    ],
+                    "query": [
+                        {
+                            "key": "fileName",
+                            "value": "Test.jpg"
+                        },
+                        {
+                            "key": "title",
+                            "value": "my title"
+                        },
+                        {
+                            "key": "firstPublishLocationId",
+                            "value": "aAB7b000000CGAjGAO"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-E-05",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "file",
+                    "file": {
+                        "src": "/C:/Users/SESA612288/Downloads/download.png"
+                    }
+                },
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/uploadfile?fileName=Test.jpg&title=my title&firstPublishLocationId=aAB7b000000CGAjGAO",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "uploadfile"
+                    ],
+                    "query": [
+                        {
+                            "key": "fileName",
+                            "value": "Test.jpg"
+                        },
+                        {
+                            "key": "title",
+                            "value": "my title"
+                        },
+                        {
+                            "key": "firstPublishLocationId",
+                            "value": "aAB7b000000CGAjGAO"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-F-01",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/deliverables?assessment-id=aA67b000000LbmVCAS",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "deliverables"
+                    ],
+                    "query": [
+                        {
+                            "key": "assessment-id",
+                            "value": "aA67b000000LbmVCAS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-F-02",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.have.status('OK');\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"type\": \"array\",\n \"items\": {\n  \"title\": \"downloadableFile\",\n  \"type\": \"object\",\n  \"description\": \"\",\n  \"properties\": {\n   \"parentId\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"Record Bfo ID  to which the file is attached\",\n    \"example\": \"a2H1H000006SJWIUA4\"\n   },\n   \"fileSize\": {\n    \"type\": \"number\",\n    \"description\": \"size of the file\",\n    \"example\": 500\n   },\n   \"fileName\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"File name entered by the consultant / customer\\n\",\n    \"example\": \"MPS Report\"\n   },\n   \"fileId\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"bFO File ID\",\n    \"example\": \"0687b00000140SMAAY\"\n   },\n   \"fileExtension\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"File Extension : .pdf .jpeg...\",\n    \"example\": \"pdf\"\n   },\n   \"createdDate\": {\n    \"type\":[\"string\",\"null\"],\n    \"format\": \"date\",\n    \"example\": \"2021-07-06\",\n    \"description\": \"creation date of the file - date when the file was attached\"\n   },\n   \"downloadLink\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"Link to download the file\",\n    \"example\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n   }\n  },\n  \"x-examples\": {\n   \"example-1\": {\n    \"value\": {\n     \"parentId\": \"a2H1H000006SJWIUA4\",\n     \"fileSize\": 500,\n     \"fileName\": \"MPS Report\",\n     \"fileId\": \"0687b00000140SMAAY\",\n     \"fileExtension\": \"pdf\",\n     \"createdDate\": \"2021-07-06\",\n     \"downloadLink\": \"https://se--devfsseam2--c.documentforce.com/sfc/dist/version/download/?oid=00D010000008kyL&ids=06801000000ju5I&d=%2Fa%2F01000000H08q%2FL74SbjGTs0didL5hxUX_YeWwByg1xxRdcvIqfLCET_g&asPdf=false\"\n    }\n   }\n  }\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/deliverables?assessment-id=aA67b000000LbmVCAS",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "deliverables"
+                    ],
+                    "query": [
+                        {
+                            "key": "assessment-id",
+                            "value": "aA67b000000LbmVCAS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-F-03",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/deliverables?assessment-id=aA67b000000LbmVCAS",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "deliverables"
+                    ],
+                    "query": [
+                        {
+                            "key": "assessment-id",
+                            "value": "aA67b000000LbmVCAS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-F-04",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/deliverables?assessment-id=aA67b000000LbmVCAS",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "deliverables"
+                    ],
+                    "query": [
+                        {
+                            "key": "assessment-id",
+                            "value": "aA67b000000LbmVCAS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-F-05",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/deliverables?assessment-id=aA67b000000LbmVCAS",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "deliverables"
+                    ],
+                    "query": [
+                        {
+                            "key": "assessment-id",
+                            "value": "aA67b000000LbmVCAS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-G-01",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/deliverables?assessment-id=aA67b000000LbmVCAS",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "deliverables"
+                    ],
+                    "query": [
+                        {
+                            "key": "assessment-id",
+                            "value": "aA67b000000LbmVCAS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-G-02",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Positve Response Check\", function () { pm.response.to.have.status(200); });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Response time is less than 55s\", function () { \r",
+                            "\r",
+                            "    pm.expect(pm.response.responseTime).to.be.below(55000); \r",
+                            "\r",
+                            "    // Default APIGEE timeout is 55 sec\r",
+                            "\r",
+                            "    });\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"response must be valid and have a body\", function () {\r",
+                            "\r",
+                            "     pm.response.to.have.status('OK');\r",
+                            "\r",
+                            "     pm.response.to.be.withBody;\r",
+                            "\r",
+                            "     pm.response.to.be.json;\r",
+                            "\r",
+                            "     pm.response.to.not.have.jsonBody(\"error\");\r",
+                            "\r",
+                            "     \r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "var schema ={\n \"type\": \"array\",\n \"items\": {\n  \"type\": \"object\",\n  \"title\": \"Error Response - OAS3\",\n  \"description\": \"Error response returned to the consumer when an HTTP error status has occurred.\",\n  \"properties\": {\n   \"code\": {\n    \"type\":[\"string\",\"null\"],\n    \"example\": \"MISSING_FIELD or 12345\",\n    \"description\": \"Service-defined error code which may be numeric or a string.\\n\\nErrors detected by the APIM platform result in the following codes.\\n\\nBAD_REQUEST (for 400)\\nUNAUTHORIZED (for 401)\\nFORBIDDEN (for 403)\\nNOT_FOUND (for 404)\\nGONE (for 410)\\nPRECONDITION_FAILED (for 412)\\nTOO_MANY_REQUESTS (for 429)\\nINTERNAL_SERVER_ERROR (for 500)\\nNOT_IMPLEMENTED (for 501)\\n\\nAny specific service validation errors would replace BAD_REQUEST.\"\n   },\n   \"userMessage\": {\n    \"type\":[\"string\",\"null\"],\n    \"example\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n    \"description\": \"Human-readable general description of the error.\"\n   },\n   \"developerMessage\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"Optional human-readable description of the error details.\",\n    \"example\": \"Required field is missing: productSku\"\n   },\n   \"moreInfo\": {\n    \"type\":[\"string\",\"null\"],\n    \"description\": \"Optional error details or link to error documentation, which has more information about the error.\",\n    \"example\": \"https://example.com/product-master/v1/error/12345\"\n   }\n  },\n  \"required\": [\n   \"code\",\n   \"userMessage\"\n  ]\n }\n} ;\r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "   \r",
+                            "\r",
+                            "pm.test('Schema is valid', function() {\r",
+                            "\r",
+                            "  //pm.expect(tv4.validate(pm.response.json, schema)).to.be.true;\r",
+                            "\r",
+                            "  pm.response.to.have.jsonSchema(schema);\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in request\", () => {\r",
+                            "\r",
+                            "  pm.request.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is application/json in Request\", () => {\r",
+                            "\r",
+                            "  pm.expect(pm.request.headers.get('Content-Type')).to.eql(\"application/json\");\r",
+                            "\r",
+                            "});\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "pm.test(\"Content-Type header is present in response\", () => {\r",
+                            "\r",
+                            "  pm.response.to.have.header(\"Content-Type\");\r",
+                            "\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/deliverables?assessment-id=aA67b000000LbmVCAS",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "deliverables"
+                    ],
+                    "query": [
+                        {
+                            "key": "assessment-id",
+                            "value": "aA67b000000LbmVCAS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-G-03",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status test - Mandatory Field Check\", function () { pm.response.to.have.status(400); });\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/deliverables?assessment-id=aA67b000000LbmVCAS",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "deliverables"
+                    ],
+                    "query": [
+                        {
+                            "key": "assessment-id",
+                            "value": "aA67b000000LbmVCAS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-G-04",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Not failing\", function () {\r",
+                            "    pm.expect(true).to.eql(false);\r",
+                            "});\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y.\r",
+                            "\r",
+                            "// remove mandatory fields -- error should come but is not.\r",
+                            "//Backend should throw error when mandatory fields are not passed -- giving 200 OK\r",
+                            "// example -- \"salesDocumentType\": \"ZCV\" is mandatory field for the backend is not being passed , still the bakend is giving response."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/deliverables?assessment-id=aA67b000000LbmVCAS",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "deliverables"
+                    ],
+                    "query": [
+                        {
+                            "key": "assessment-id",
+                            "value": "aA67b000000LbmVCAS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "DT-G-05",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Status Test - Expected Error code\", function () {\r",
+                            "    pm.expect(pm.response.code).to.equal(400);\r",
+                            "});\r",
+                            "\r",
+                            "//BSL Service -- On removing mandatory fields backend returning 500 instead of 400 Bad Request.\r",
+                            "\r",
+                            "//difference between Not failing and unexpexted error code recieved -- Not failing means that on passing incorrect paramters still the backend is working fine but unexpected error code means that originally we expected X but instead from backend we got Y."
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "X-BFO-Authorization",
+                        "value": "{{sr_token}}",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "https://api.qa.se.com/v1/fulfillment/field-service/service-recommendation/assessments/deliverables?assessment-id=aA67b000000LbmVCAS",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "qa",
+                        "se",
+                        "com"
+                    ],
+                    "path": [
+                        "v1",
+                        "fulfillment",
+                        "field-service",
+                        "service-recommendation",
+                        "assessments",
+                        "deliverables"
+                    ],
+                    "query": [
+                        {
+                            "key": "assessment-id",
+                            "value": "aA67b000000LbmVCAS"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}

@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "2c43b0a1-7b5f-4907-8657-c146b7c6469e",
+		"name": "CTOP-452-Complaint_Request",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests a user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Complaint Requests Read",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-BFO-Authorization",
+						"value": "{{bfo_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.qa.se.com/v1/customer-support/complaint-request/complaint-requests?caseId=5007b00000CM0a6AAD&status=Open",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-support",
+						"complaint-request",
+						"complaint-requests"
+					],
+					"query": [
+						{
+							"key": "caseId",
+							"value": "5007b00000CM0a6AAD"
+						},
+						{
+							"key": "status",
+							"value": "Open"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complaint Requests Update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "X-BFO-Authorization",
+						"value": "{{bfo_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n {\r\n    \"crId\": \"a8s120000000xiDAAQ\",\r\n     \"answerComment\": \"update comment\",\r\n     \"status\": \"Closed\",\r\n    \"issueOwner\": \"SESA368797\",\r\n     \"nameOfTheForwarder\": \"TNTT-FTL\",\r\n    \"shippingLocationShippedFrom\": \"HA-S3\",\r\n    \"confirmationDate\": \"2021-01-01\",\r\n    \"physicalLocationOfParcel\": \"NEWLOG\",\r\n    \"orderlinePickedBy\": \"Hanwei ZHANG\",\r\n    \"storageBinLocation\": \"R04-16-A3D\",\r\n    \"pickArea\": \"(AWF - casual employee)\",\r\n    \"boxType\": \"CN\",\r\n    \"internalInformationNeededFrom\": \"02:12:44\",\r\n    \"weightStatistical\": \"15.180\",\r\n    \"weightActualNetWeight\": \"14.432\",\r\n\r\n    \"numberOfLinesOnPickOrder\": 10,\r\n    \"resultOfCheck\": \"AWF\"\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.qa.se.com/v1/customer-support/complaint-request/complaint-requests",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-support",
+						"complaint-request",
+						"complaint-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complaint Request creation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-BFO-Authorization",
+						"value": "{{bfo_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"category\": \"Troubleshooting*\",\r\n\"description\": \"description of the complaint request - from post\",\r\n\"reason\": \"Quality Issue*\",\r\n\"issueOwner\" : \"SESA530629\",\r\n\"orderedInformation\" :{\r\n    \"commercialReferenceId\" : \"01tA0000004OgpOIAS\"\r\n}\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.qa.se.com/v1/customer-support/complaint-request/complaint-requests",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-support",
+						"complaint-request",
+						"complaint-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CR Escalation history",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-BFO-Authorization",
+						"value": "{{bfo_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.qa.se.com/v1/customer-support/complaint-request/escalation-histories/a8s7b000000CqOVAA0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-support",
+						"complaint-request",
+						"escalation-histories",
+						"a8s7b000000CqOVAA0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET complaint request comments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-BFO-Authorization",
+						"value": "{{bfo_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.qa.se.com/v1/customer-support/complaint-request/comments/a8s7b000000CqOVAA0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-support",
+						"complaint-request",
+						"comments",
+						"a8s7b000000CqOVAA0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create complaint request comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-BFO-Authorization",
+						"value": "{{bfo_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"commentBody\": \"this is the text to be added to the comment\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.qa.se.com/v1/customer-support/complaint-request/comments/a8s7b000000CqOVAA0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-support",
+						"complaint-request",
+						"comments",
+						"a8s7b000000CqOVAA0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Your GET endpoint",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-BFO-Authorization",
+						"value": "{{bfo_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.qa.se.com/v1/customer-support/complaint-request/complaint-requests/a8s120000000xk9AAA?type=id",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qa",
+						"se",
+						"com"
+					],
+					"path": [
+						"v1",
+						"customer-support",
+						"complaint-request",
+						"complaint-requests",
+						"a8s120000000xk9AAA"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

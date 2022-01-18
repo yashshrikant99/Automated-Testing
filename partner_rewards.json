@@ -1,0 +1,1469 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Partner Rewards API",
+    "version": "1.2",
+    "contact": {
+      "name": "Renjith Jose",
+      "url": "http://se.com",
+      "email": "renjith.jose@se.com"
+    },
+    "description": "This api service is to get rewards related information. Information related to invoice, Transaction, Redemption points."
+  },
+  "servers": [
+    {
+      "url": "https://api.qa.se.com/v1/customer-journey/partner-rewards"
+    }
+  ],
+  "paths": {
+    "/records": {
+      "get": {
+        "summary": "Rewards-List Records",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/entity-list-response"
+                },
+                "examples": {
+                  "UAT Response": {
+                    "value": {
+                      "isSuccess": true,
+                      "filterMetrics": [
+                        {
+                          "rowMetrics": [
+                            {
+                              "rowCount": 1,
+                              "label": "pending"
+                            }
+                          ],
+                          "fieldName": "status"
+                        }
+                      ],
+                      "errorMessages": [],
+                      "entityData": {
+                        "recordData": [
+                          {
+                            "fieldData": {
+                              "transactionName": "TR-0128464",
+                              "transactionId": "aDF7b0000008RAEGA2",
+                              "firstApproved": "Yes",
+                              "rejectionReason": "REJRES01",
+                              "totalPoints": "0",
+                              "totalAmount": "0.00",
+                              "status": "Pending",
+                              "source": null,
+                              "invoiceUploadDate": "2021-06-23 00:00:00",
+                              "invoiceNumber": "65757",
+                              "invoiceDate": "2021-06-14 00:00:00"
+                            }
+                          }
+                        ],
+                        "pagination": {
+                          "pageNumber": 1,
+                          "endIndex": 1,
+                          "startIndex": 1,
+                          "totalRecords": 1
+                        },
+                        "EntityName": "rewards_invoices"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Common_Oas3_400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Common_Oas3_401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Common_Oas3_403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Common_Oas3_404"
+          },
+          "429": {
+            "$ref": "#/components/responses/Common_Oas3_429"
+          },
+          "500": {
+            "$ref": "#/components/responses/Common_Oas3_500"
+          }
+        },
+        "operationId": "get-entity-list",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-IDMS-Authorization",
+            "description": "User's IDMS Token",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "fileid",
+            "description": "Id of the File returned in Post Response",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "entity",
+            "description": "Name of the Entity Requested in Post Response",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "pagenum",
+            "description": "Number of page requested for pagination",
+            "required": true
+          }
+        ],
+        "description": "This get request is to be used as subsequent to post request, allowing consumer to paginate.\n"
+      },
+      "post": {
+        "summary": "Rewards Entity Request",
+        "operationId": "post-entity-list",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/entity-list-response"
+                },
+                "examples": {
+                  "UAT Response Sample": {
+                    "value": {
+                      "isSuccess": true,
+                      "filterMetrics": [
+                        {
+                          "rowMetrics": [
+                            {
+                              "rowCount": 1,
+                              "label": "pending"
+                            }
+                          ],
+                          "fieldName": "status"
+                        }
+                      ],
+                      "errorMessages": [],
+                      "entityData": {
+                        "recordData": [
+                          {
+                            "fieldData": {
+                              "transactionName": "TR-0128464",
+                              "transactionId": "aDF7b0000008RAEGA2",
+                              "firstApproved": "Yes",
+                              "rejectionReason": "REJRES01",
+                              "totalPoints": "0",
+                              "totalAmount": "0.00",
+                              "status": "Pending",
+                              "source": null,
+                              "invoiceUploadDate": "2021-06-23 00:00:00",
+                              "invoiceNumber": "65757",
+                              "invoiceDate": "2021-06-14 00:00:00"
+                            }
+                          }
+                        ],
+                        "pagination": {
+                          "pageNumber": 1,
+                          "endIndex": 1,
+                          "startIndex": 1,
+                          "totalRecords": 1
+                        },
+                        "EntityName": "rewards_invoices"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Common_Oas3_400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Common_Oas3_401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Common_Oas3_403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Common_Oas3_404"
+          },
+          "429": {
+            "$ref": "#/components/responses/Common_Oas3_429"
+          },
+          "500": {
+            "$ref": "#/components/responses/Common_Oas3_500"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "applicationName": "",
+                    "requestType": "",
+                    "entityName": "",
+                    "userFedId": "",
+                    "filterView": "",
+                    "rowLimit": "",
+                    "fromDate": "",
+                    "sortBy": "",
+                    "sortOrder": "ASC",
+                    "filters": [
+                      {
+                        "field": "status",
+                        "filtertype": "options",
+                        "values": [
+                          "Open",
+                          "Closed"
+                        ],
+                        "startDate": "2020-12-12T00:00:00Z",
+                        "endDate": "2020-12-14T00:00:00Z",
+                        "min": "",
+                        "max": "",
+                        "searchKey": "",
+                        "searchFields": [
+                          "name",
+                          "status",
+                          "SERefeence",
+                          "ORFID"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "properties": {
+                  "applicationName": {
+                    "type": "string"
+                  },
+                  "requestType": {
+                    "type": "string"
+                  },
+                  "entityName": {
+                    "type": "string",
+                    "description": "Mandatory when the requestType is \"Entity\"."
+                  },
+                  "userFedId": {
+                    "type": "string"
+                  },
+                  "filterView": {
+                    "type": "string"
+                  },
+                  "rowLimit": {
+                    "type": "string"
+                  },
+                  "fromDate": {
+                    "type": "string"
+                  },
+                  "sortBy": {
+                    "type": "string"
+                  },
+                  "sortOrder": {
+                    "type": "string"
+                  },
+                  "filters": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "field": {
+                          "type": "string"
+                        },
+                        "filtertype": {
+                          "type": "string"
+                        },
+                        "values": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "startDate": {
+                          "type": "string"
+                        },
+                        "endDate": {
+                          "type": "string"
+                        },
+                        "min": {
+                          "type": "string"
+                        },
+                        "max": {
+                          "type": "string"
+                        },
+                        "searchKey": {
+                          "type": "string"
+                        },
+                        "searchFields": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "filterMetricsFields": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "applicationName",
+                  "requestType"
+                ]
+              },
+              "examples": {
+                "UAT Sample": {
+                  "value": {
+                    "requestType": "Entity",
+                    "applicationName": "testApp",
+                    "entityName": "Rewards_Invoices",
+                    "rowLimit": "10",
+                    "filter": [
+                      {
+                        "field": "status",
+                        "filterType": "options",
+                        "values": [
+                          "Pending"
+                        ]
+                      }
+                    ],
+                    "sortBy": "invoiceUploadDate",
+                    "sortOrder": "ASC",
+                    "filterMetricsFields": [
+                      "status"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-IDMS-Authorization",
+            "description": "User's IDMS Token",
+            "required": true
+          }
+        ],
+        "description": "This post request should be the first request to get set of records from PRM BFO. The records are based on entityName. This request will deliver array of records with limited fields and can be used to develop list/table of respective entity.\nNote :\nConsumer have to request DCM- PRM team to onboard and access to respective entities has to be mentioned. "
+      },
+      "parameters": []
+    },
+    "/metrics": {
+      "post": {
+        "summary": "Rewards-Metrics",
+        "operationId": "post-entity-metrics",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/metrics-response"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "requestType": "Cockpit",
+                      "metricsData": [
+                        {
+                          "name": "REDEEM_POINTS",
+                          "data": [
+                            {
+                              "value": "",
+                              "label": "Points"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "POINT_BALANCE",
+                          "data": [
+                            {
+                              "value": "888.0",
+                              "label": "Total_Points"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "INVOICES_SUBMITTED",
+                          "data": [
+                            {
+                              "value": "2",
+                              "label": "Submitted_Invoice_Count"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "INVOICES_REJECTED",
+                          "data": [
+                            {
+                              "value": "0",
+                              "label": "Rejected_Invoice_Count"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "INVOICES_APPROVED",
+                          "data": [
+                            {
+                              "value": "1",
+                              "label": "Approved_Invoice_Count"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "TOTAL_POINTS",
+                          "data": [
+                            {
+                              "value": "888.0",
+                              "label": "Points"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "INVOICES_PENDING",
+                          "data": [
+                            {
+                              "value": "1",
+                              "label": "Pending_Invoice_Count"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "POINTS_EXPIRED",
+                          "data": [
+                            {
+                              "value": "",
+                              "label": "Points"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "NXT_EXPIRY",
+                          "data": [
+                            {
+                              "value": "2021-07-31",
+                              "label": "ExpirationDate"
+                            },
+                            {
+                              "value": "888",
+                              "label": "Points"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "PURCHASED_AMOUNT",
+                          "data": [
+                            {
+                              "value": "4.00",
+                              "label": "Amount"
+                            }
+                          ]
+                        }
+                      ],
+                      "isSuccess": true,
+                      "errorMessages": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Common_Oas3_400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Common_Oas3_401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Common_Oas3_403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Common_Oas3_404"
+          },
+          "429": {
+            "$ref": "#/components/responses/Common_Oas3_429"
+          },
+          "500": {
+            "$ref": "#/components/responses/Common_Oas3_500"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/metrics-request"
+              },
+              "examples": {
+                "UAT Request Sample": {
+                  "value": {
+                    "userFedId": "gb0059a5-bb6f-7c2f-2ca0-9c7a33269799",
+                    "requestType": "Cockpit",
+                    "applicationName": "testApp",
+                    "entityName": "rewards"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-IDMS-Authorization",
+            "required": true,
+            "description": "User's IDMS Token"
+          }
+        ],
+        "description": "This api operation is to be used to get partner rewards related metrics data. \nThe response will deliver aggregated data related to rewards."
+      },
+      "parameters": []
+    },
+    "/create-order": {
+      "post": {
+        "summary": "Create Order",
+        "operationId": "post-create-order",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "userFedId": "{{FEDID}}",
+                      "orderDetails": {
+                        "itemName": "ipad air",
+                        "unitPoint": 12000.45,
+                        "subCategory": "Item V2- 1",
+                        "quantity": 1
+                      },
+                      "shippingAddress": {
+                        "bFOId": "a1299129hsgeutg",
+                        "companyName": "Prestige Company",
+                        "firstName": "John",
+                        "lastName": "Doe",
+                        "street": "12",
+                        "additionalDetails": "3rd cross,",
+                        "city": "Bangalore",
+                        "stateProvince": "01",
+                        "country": "IN",
+                        "zipCode": "560100",
+                        "phoneNo": "881328232"
+                      }
+                    }
+                  },
+                  "properties": {
+                    "errorMessages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "errorMessage": {
+                            "type": "string"
+                          },
+                          "errorCode": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "isSuccess": {
+                      "type": "boolean"
+                    },
+                    "orderId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "UAT Response Sample": {
+                    "value": {
+                      "orderId": "a4I7b000000B2vYEAS",
+                      "isSuccess": true,
+                      "errorMessages": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Common_Oas3_400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Common_Oas3_401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Common_Oas3_403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Common_Oas3_404"
+          },
+          "429": {
+            "$ref": "#/components/responses/Common_Oas3_429"
+          },
+          "500": {
+            "$ref": "#/components/responses/Common_Oas3_500"
+          }
+        },
+        "description": "This service creates order in bfo.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-IDMS-Authorization",
+            "required": true,
+            "description": "User IDMS token"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "orderDetails": {
+                      "itemName": "string",
+                      "unitPoint": 1000.35,
+                      "subCategory": "string",
+                      "quantity": 1000
+                    },
+                    "shippingAddress": {
+                      "bFOId": "string",
+                      "companyName": "string",
+                      "firstName": "string",
+                      "lastName": "string",
+                      "street": "string",
+                      "additionalDetails": "string",
+                      "city": "string",
+                      "stateProvince": "string",
+                      "country": "string",
+                      "zipCode": "string",
+                      "phoneNo": "string"
+                    }
+                  }
+                },
+                "properties": {
+                  "orderDetails": {
+                    "type": "object",
+                    "required": [
+                      "itemName",
+                      "unitPoint",
+                      "quantity"
+                    ],
+                    "properties": {
+                      "itemName": {
+                        "type": "string"
+                      },
+                      "unitPoint": {
+                        "type": "number"
+                      },
+                      "subCategory": {
+                        "type": "string"
+                      },
+                      "quantity": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "shippingAddress": {
+                    "type": "object",
+                    "properties": {
+                      "bFOId": {
+                        "type": "string"
+                      },
+                      "companyName": {
+                        "type": "string"
+                      },
+                      "firstName": {
+                        "type": "string"
+                      },
+                      "lastName": {
+                        "type": "string"
+                      },
+                      "street": {
+                        "type": "string"
+                      },
+                      "additionalDetails": {
+                        "type": "string"
+                      },
+                      "city": {
+                        "type": "string"
+                      },
+                      "stateProvince": {
+                        "type": "string"
+                      },
+                      "country": {
+                        "type": "string"
+                      },
+                      "zipCode": {
+                        "type": "string"
+                      },
+                      "phoneNo": {
+                        "type": "string"
+                      },
+                      "active": {
+                        "type": "boolean"
+                      },
+                      "defaultAddress": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "orderDetails"
+                ]
+              },
+              "examples": {
+                "UAT / QA Sample": {
+                  "value": {
+                    "orderDetails": {
+                      "itemName": "ipad air",
+                      "unitPoint": 10,
+                      "subCategory": "Item V2- 1",
+                      "quantity": 1
+                    },
+                    "shippingAddress": {
+                      "bfoId": "aMT7b00000000Uw",
+                      "companyName": "Prestige Company",
+                      "firstName": "John",
+                      "lastName": "Doe",
+                      "street": "12",
+                      "additionalDetails": "3rd cross,",
+                      "city": "Bangalore",
+                      "stateProvince": "a0I1200000HIRKZEA5",
+                      "country": "a0HA0000002ztyiMAA",
+                      "zipCode": "560100",
+                      "phoneNo": "881328232"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions": {
+      "post": {
+        "summary": "create-transactions",
+        "operationId": "post-create-transactions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "isSuccess": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "examples": {
+                  "UAT Sample Respose": {
+                    "value": {
+                      "isSuccess": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Common_Oas3_400Multiple"
+          },
+          "401": {
+            "$ref": "#/components/responses/Common_Oas3_401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Common_Oas3_403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Common_Oas3_404"
+          },
+          "429": {
+            "$ref": "#/components/responses/Common_Oas3_429"
+          },
+          "500": {
+            "$ref": "#/components/responses/Common_Oas3_500"
+          }
+        },
+        "description": "Create reward transaction for partners. Assign or Deduct points for the partner user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "userFedId": {
+                      "type": "string",
+                      "example": "gb0059XX-bbXX-7cxX-2ca0-9c7a332697XX",
+                      "description": "User unique federated identifier"
+                    },
+                    "reasonType": {
+                      "type": "string",
+                      "example": "Adjustment",
+                      "description": "Type of reward transactions."
+                    },
+                    "points": {
+                      "type": "number",
+                      "example": 300,
+                      "description": "Reward points. Provide positive value. Do not provide ngative value for deduction."
+                    },
+                    "transactionDate": {
+                      "type": "string",
+                      "example": "2021-03-12T00:00:00Z",
+                      "description": "Date of transaction in UTC format."
+                    },
+                    "remarks": {
+                      "type": "string",
+                      "example": "Training completed",
+                      "description": "Extra comments for the points"
+                    },
+                    "expiryDate": {
+                      "type": "string",
+                      "example": "2021-03-12",
+                      "description": "Date of expiry for points."
+                    },
+                    "transType": {
+                      "type": "string",
+                      "example": "ASSIGN or DEDUCT",
+                      "description": "ASSIGN OR DEDUCT."
+                    }
+                  },
+                  "required": [
+                    "userFedId",
+                    "reasonType",
+                    "points",
+                    "transactionDate",
+                    "transType"
+                  ]
+                }
+              },
+              "examples": {
+                "UAT Sample": {
+                  "value": [
+                    {
+                      "userFedId": "gb0059XX-bbXX-7cxX-2ca0-9c7a332697XX",
+                      "reasonType": "Adjustment",
+                      "points": 300,
+                      "transactionDate": "2021-03-12T00:00:00Z",
+                      "remarks": "Training completed",
+                      "expiryDate": "2021-03-12",
+                      "transType": "ASSIGN"
+                    },
+                    {
+                      "userFedId": "gb0059XX-bbXX-7cxX-2ca0-9c7a332697XX",
+                      "reasonType": "Adjustment",
+                      "points": -300,
+                      "transactionDate": "2021-03-12T00:00:00Z",
+                      "remarks": "Training completed",
+                      "expiryDate": "2021-03-12",
+                      "transType": "DEDUCT"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "transaction-type",
+            "required": true
+          }
+        ]
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {
+      "entity-list-response": {
+        "title": "entity-list-response",
+        "type": "object",
+        "properties": {
+          "requestType": {
+            "type": "string"
+          },
+          "nextRecordUrl": {
+            "type": "string"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "fileId": {
+            "type": "string"
+          },
+          "errorMessages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "type": "string"
+                },
+                "errorCode": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "entityData": {
+            "type": "object",
+            "properties": {
+              "recordData": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "fieldData": {
+                      "$ref": "#/components/schemas/all-fields-resposne"
+                    }
+                  }
+                }
+              },
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "pageNumber": {
+                    "type": "number"
+                  },
+                  "endIndex": {
+                    "type": "number"
+                  },
+                  "startIndex": {
+                    "type": "number"
+                  },
+                  "totalRecords": {
+                    "type": "number"
+                  }
+                }
+              },
+              "EntityName": {
+                "type": "string"
+              }
+            }
+          },
+          "filterMetrics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "fieldName": {
+                  "type": "string"
+                },
+                "rowMetrics": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "rowCount": {
+                        "type": "number"
+                      },
+                      "label": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "all-fields-resposne": {
+        "title": "all-fields-resposne",
+        "type": "object",
+        "properties": {
+          "expirationDate": {
+            "type": "string"
+          },
+          "invoiceId": {
+            "type": "string"
+          },
+          "invoiceName": {
+            "type": "string"
+          },
+          "points": {
+            "type": "string"
+          },
+          "purchaseValue": {
+            "type": "string"
+          },
+          "recordTypeName": {
+            "type": "string"
+          },
+          "remarks": {
+            "type": "string"
+          },
+          "transactionDate": {
+            "type": "string"
+          },
+          "transactionId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "firstApproved": {
+            "type": "string"
+          },
+          "invoiceDate": {
+            "type": "string"
+          },
+          "invoiceNumber": {
+            "type": "string"
+          },
+          "invoiceUploadDate": {
+            "type": "string"
+          },
+          "rejectionReason": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "totalAmount": {
+            "type": "string"
+          },
+          "totalPoints": {
+            "type": "string"
+          },
+          "transactionName": {
+            "type": "string"
+          }
+        }
+      },
+      "metrics-request": {
+        "title": "entity-request",
+        "type": "object",
+        "properties": {
+          "applicationName": {
+            "type": "string"
+          },
+          "requestType": {
+            "type": "string"
+          },
+          "entityName": {
+            "type": "string"
+          },
+          "userFedId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "applicationName",
+          "requestType",
+          "userFedId"
+        ]
+      },
+      "metrics-response": {
+        "title": "metrics-response",
+        "type": "object",
+        "properties": {
+          "requestType": {
+            "type": "string"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "errorMessages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "errorMessage": {
+                  "type": "string"
+                },
+                "errorCode": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "metricsData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "title": "Error Response - OAS3",
+        "description": "Error response returned to the consumer when an HTTP error status has occurred.",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "MISSING_FIELD or 12345",
+            "description": "Service-defined error code which may be numeric or a string.\n\nErrors detected by the APIM platform result in the following codes.\n\nBAD_REQUEST (for 400)\nUNAUTHORIZED (for 401)\nFORBIDDEN (for 403)\nNOT_FOUND (for 404)\nGONE (for 410)\nPRECONDITION_FAILED (for 412)\nTOO_MANY_REQUESTS (for 429)\nINTERNAL_SERVER_ERROR (for 500)\nNOT_IMPLEMENTED (for 501)\n\nAny specific service validation errors would replace BAD_REQUEST."
+          },
+          "userMessage": {
+            "type": "string",
+            "example": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+            "description": "Human-readable general description of the error."
+          },
+          "developerMessage": {
+            "type": "string",
+            "description": "Optional human-readable description of the error details.",
+            "example": "Required field is missing: productSku"
+          },
+          "moreInfo": {
+            "type": "string",
+            "description": "Optional error details or link to error documentation, which has more information about the error.",
+            "example": "https://example.com/product-master/v1/error/12345"
+          }
+        },
+        "required": [
+          "code",
+          "userMessage"
+        ]
+      },
+      "ErrorResponses": {
+        "title": "Multiple Error Responses - OAS3",
+        "description": "Single error response or a list of error responses returned to the consumer when an HTTP error status has occurred.\n\nMultiple errors are possible when\n* an operation detects more than one error for a single resource\n* a bulk operation detects an error for a subset of resources",
+        "oneOf": [
+          {
+            "type": "object",
+            "description": "Single error or a list of errors",
+            "properties": {
+              "code": {
+                "type": "string",
+                "example": "MISSING_FIELD or 12345",
+                "description": "Service-defined error code which may be numeric or a string.\n\nErrors detected by the APIM platform result in the following codes.\n\nBAD_REQUEST (for 400)\nUNAUTHORIZED (for 401)\nFORBIDDEN (for 403)\nNOT_FOUND (for 404)\nGONE (for 410)\nPRECONDITION_FAILED (for 412)\nTOO_MANY_REQUESTS (for 429)\nINTERNAL_SERVER_ERROR (for 500)\nNOT_IMPLEMENTED (for 501)\n\nAny specific service validation errors would replace BAD_REQUEST."
+              },
+              "userMessage": {
+                "type": "string",
+                "example": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+                "description": "Human-readable general description of the error."
+              },
+              "developerMessage": {
+                "type": "string",
+                "description": "Optional human-readable description of the error details.",
+                "example": "Required field is missing: productSku"
+              },
+              "moreInfo": {
+                "type": "string",
+                "description": "Optional error details or link to error documentation, which has more information about the error.",
+                "example": "https://example.com/product-master/v1/error/12345"
+              }
+            },
+            "required": [
+              "code",
+              "userMessage"
+            ]
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Service-defined error code which may be numeric or a string.\n\nErrors detected by the APIM platform result in the following codes.\n\nBAD_REQUEST (for 400)\nUNAUTHORIZED (for 401)\nFORBIDDEN (for 403)\nNOT_FOUND (for 404)\nGONE (for 410)\nPRECONDITION_FAILED (for 412)\nTOO_MANY_REQUESTS (for 429)\nINTERNAL_SERVER_ERROR (for 500)\nNOT_IMPLEMENTED (for 501)\n\nAny specific service validation errors would replace BAD_REQUEST.",
+                  "example": "MISSING_FIELD or 12345"
+                },
+                "userMessage": {
+                  "type": "string",
+                  "description": "Human-readable general description of the error.",
+                  "example": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI."
+                },
+                "developerMessage": {
+                  "type": "string",
+                  "description": "Optional human-readable description of the error details.",
+                  "example": "Required field is missing: productSku"
+                },
+                "moreInfo": {
+                  "type": "string",
+                  "description": "Optional error details or link to error documentation, which has more information about the error.",
+                  "example": "https://example.com/product-master/v1/error/12345"
+                },
+                "failedResource": {
+                  "type": "object",
+                  "description": "Optional failed resource object, for use when the operation involves multiple resources.\n\nIt should be set to the element from the request list that caused the error."
+                }
+              },
+              "required": [
+                "code",
+                "userMessage"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "scopes": {
+              "scope_1": ""
+            },
+            "tokenUrl": "https://api.qa.se.com/token"
+          }
+        }
+      }
+    },
+    "responses": {
+      "Common_Oas3_400": {
+        "description": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "code": "BAD_REQUEST",
+                  "userMessage": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+                  "developerMessage": "Request content is malformed or exceeded structural limits",
+                  "moreInfo": "https://example.com/error/123"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Common_Oas3_400Multiple": {
+        "description": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponses"
+            },
+            "examples": {
+              "Single Error": {
+                "value": {
+                  "code": "MISSING_FIELD",
+                  "userMessage": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+                  "developerMessage": "Required field is missing: productSku",
+                  "moreInfo": "https://example.com/product-master/v1/error/12345"
+                }
+              },
+              "Validation Errors": {
+                "value": [
+                  {
+                    "code": "MISSING_FIELD",
+                    "userMessage": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+                    "developerMessage": "Request content does not match the OAS schema",
+                    "moreInfo": "Missing required field: contact.email"
+                  },
+                  {
+                    "code": "INVALID_TYPE",
+                    "userMessage": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+                    "developerMessage": "Request content does not match the OAS schema",
+                    "moreInfo": "Date value is expected for fields: orderedDate, shippedDate"
+                  }
+                ]
+              },
+              "Bulk Operation Errors": {
+                "value": [
+                  {
+                    "code": "NOT_FOUND",
+                    "userMessage": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+                    "developerMessage": "Employee record not found",
+                    "moreInfo": "",
+                    "failedResource": {
+                      "id": 123,
+                      "firstName": "Joe",
+                      "lastName": "Blogs"
+                    }
+                  },
+                  {
+                    "code": "NOT_FOUND",
+                    "userMessage": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+                    "developerMessage": "Employee record not found",
+                    "moreInfo": "",
+                    "failedResource": {
+                      "id": 456,
+                      "firstName": "Jane",
+                      "lastName": "Doe"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "Common_Oas3_401": {
+        "description": "The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "code": "UNAUTHORIZED",
+                  "userMessage": "The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.",
+                  "developerMessage": "Invalid Access Token",
+                  "moreInfo": "https://example.com/error/123"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Common_Oas3_403": {
+        "description": "The client does not have permission to perform the requested action e.g. POST or DELETE.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "code": "FORBIDDEN",
+                  "userMessage": "The client does not have permission to perform the requested action e.g. POST or DELETE.",
+                  "developerMessage": "Http verb DELETE is not supported for path suffix /installed-products/track",
+                  "moreInfo": "https://example.com/error/123"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Common_Oas3_404": {
+        "description": "Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "code": "NOT_FOUND",
+                  "userMessage": "Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.",
+                  "developerMessage": "Records not found",
+                  "moreInfo": "https://example.com/error/123"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Common_Oas3_429": {
+        "description": "Number of requests has exceeded the client's rate limits.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "code": "TOO_MANY_REQUESTS",
+                  "userMessage": "Number of requests has exceeded the client’s rate limits.",
+                  "developerMessage": "Spike arrest violation",
+                  "moreInfo": "https://example.com/error/123"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Common_Oas3_500": {
+        "description": "Requested operation encountered an unexpected server error.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "code": "INTERNAL_SERVER_ERROR",
+                  "userMessage": "Requested operation encountered an unexpected server error.",
+                  "developerMessage": "Target service is unavailable, please try again later.",
+                  "moreInfo": "https://example.com/error/123"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2": []
+    }
+  ]
+}
