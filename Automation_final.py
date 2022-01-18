@@ -158,7 +158,7 @@ def main():
     spec=read_json(spec)
 #     get_mandatory(spec)
     schema=get_schema(spec)
-    data=read_json("Commercial-References-V2.postman_collection.json")
+    data=read_json("postman_collection.json")
     mod=modify_json2(schema,data,spec)
     data['item']=mod
     data['info']['name']=data['info']['name']+' processed'
