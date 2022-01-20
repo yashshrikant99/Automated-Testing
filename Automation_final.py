@@ -31,14 +31,14 @@ def replace_schema(schema,name,verb,spec):
     code,desc=get_first_response(spec,name)
     test2[1]['script']['exec'][0]=test2[1]['script']['exec'][0].replace('200',code) #replace status code
     test2[1]['script']['exec'][16]=test2[1]['script']['exec'][16].replace('pm.response.to.be.ok',"pm.response.to.have.status('"+desc+"')")
-    test=test2[1]['script']['exec'][31]# this gets var schema
+    test=test2[1]['script']['exec'][19]# this gets var schema
     final_schema=schema[name]
     final_schema=final_schema.replace('"type": "string"','"type":["string","null"]')
     final_schema=final_schema.replace('"type": "integer"','"type":["integer","null"]')
     final=test[:12]+final_schema+test[12:] #populates var schema with schema
-    test2[1]['script']['exec'][31]=final
+    test2[1]['script']['exec'][19]=final
     if(verb=='GET'):
-        del test2[1]['script']['exec'][48:61] #removes request header check for GET methods
+        del test2[1]['script']['exec'][36:52] #removes request header check for GET methods
     return test2
 def replace_status_code(schema,method_name,method_verb,spec):
     test2=event(0)
@@ -53,7 +53,7 @@ def modify_json2(schema,data,spec):
         method_name=i['name']
         method_verb=i['request']['method']
         i['response']=[]
-        for j in range(0,5):
+        for j in range(0,6):
             dict2={}
             dict2=copy.deepcopy(i)
             dict2['name']='DT-'+chr(ch)+'-0'+str(j+1)
