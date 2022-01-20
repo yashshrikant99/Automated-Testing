@@ -1,4 +1,3 @@
-import requests
 import json
 from pprint import pprint
 import jsonref
@@ -7,11 +6,10 @@ import sys
 import copy
 import jsonpickle
 from json import JSONEncoder
-import yaml
 
 def event(n):
     file='Unit Tests Sample.postman_collection.json'
-    f = open(file)
+    f = open(file,encoding="utf8")
     data = json.load(f)
     return data['item'][n]['event']
 
@@ -72,7 +70,7 @@ def modify_json2(schema,data,spec):
             dict1.append(k)
     return dict1
 def read_json(path):
-    f = open(path,)
+    f = open(path,encoding="utf8")
     if(path.endswith(".yaml")):
         data=yaml.load(f,Loader=yaml.FullLoader)
     else:
@@ -112,7 +110,7 @@ def get_schema(data):
     final_schema={}
     schema_file={}
     open("schema.json", "w").close()
-    file = open("schema.json", "a")
+    file = open("schema.json", "a",encoding="utf8")
     for i in data['paths']:#this is for each method
         for j in data['paths'][i]: #this is for verbs in that method
             if j!='parameters':
@@ -140,7 +138,7 @@ def json_parser(schema):
     data = jsonref.loads(schema) #converts string to json object
     return data
 def first_collection(name):
-    f = open(name,)
+    f = open(name,encoding="utf8")
     data = json.load(f)
     data=json_parser(data)
     f.close()
@@ -149,7 +147,7 @@ def first_collection(name):
     return pprint(data)
 def output_txt(filename,s): #saves only json body as txt file
     jsonString = json.dumps(s)
-    jsonFile = open(filename+".txt", "w")
+    jsonFile = open(filename+".txt", "w",encoding="utf8")
     jsonFile.write(jsonString)
     jsonFile.close()
 def main():
@@ -164,7 +162,7 @@ def main():
     data['info']['name']=data['info']['name']+' processed'
     name=data['info']['name']
     try:
-        with open(name+".json", "w") as outfile:
+        with open(name+".json", "w",encoding="utf8") as outfile:
             json.dump(data, outfile,indent=4)
         print("success-output saved as",name+".json")
     except Exception as e:
