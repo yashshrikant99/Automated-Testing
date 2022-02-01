@@ -1,2220 +1,705 @@
 {
-  "openapi": "3.0.0",
+  "swagger": "2.0",
   "info": {
-    "title": "pim-incremental",
+    "version": "2.1",
+    "title": "mySE Temporary Account Access API",
     "contact": {
-      "url": "https://se.com",
-      "name": "Bérangère Odin",
-      "email": "berangere.odin@se.com"
+      "name": "Oscar Sanchez",
+      "url": "http://se.com",
+      "email": "oscar.sanchez-vilar@se.com"
     },
-    "version": "1.1",
-    "x-codegen-settings": {
-      "Nullify404": false,
-      "GenerateAsyncCode": true,
-      "UseMethodPrefix": false,
-      "UseModelPostfix": false,
-      "UseControllerPrefix": true,
-      "UseEnumPostfix": true,
-      "CollectParameters": false,
-      "UseConstructorsForConfig": false,
-      "UseCommonSDKLibrary": false,
-      "iOSUseAppInfoPlist": false,
-      "AndroidUseAppManifest": false,
-      "BodySerialization": 0,
-      "EnableAdditionalModelProperties": false,
-      "PreserveParameterOrder": true,
-      "AppendContentHeaders": true,
-      "iOSGenerateCoreData": false,
-      "GenerateInterfaces": false,
-      "NodeHttpClient": "NODE_REQUEST",
-      "ValidateRequiredParameters": false,
-      "JavaUsePropertiesConfig": false,
-      "Timeout": 0,
-      "StoreTimezoneInformation": false,
-      "EnablePHPComposerVersionString": false,
-      "EnableLogging": false,
-      "ArraySerialization": "Indexed",
-      "ModelSerializationScheme": "Json",
-      "UseExceptionPrefix": true,
-      "RunscopeEnabled": false,
-      "AndroidHttpClient": "ANDROID_OK",
-      "ObjCHttpClient": "UNIREST",
-      "CSharpHttpClient": "UNIREST",
-      "PHPHttpClient": "UNIREST",
-      "JavaHttpClient": "JAVA_OK",
-      "ParameterArrayFormat": "ParamArrayWithIndex",
-      "SecurityProtocols": [
-        "Ssl3",
-        "Tls"
-      ],
-      "GenerateTravisConfig": false,
-      "GenerateCircleConfig": false,
-      "GenerateAppveyorConfig": false,
-      "GenerateJenkinsConfig": false,
-      "EnableHttpCache": false,
-      "Retries": 0,
-      "RetryInterval": 1,
-      "GenerateAdvancedDocs": true,
-      "UnderscoreNumbers": true,
-      "UseSingletonPattern": true,
-      "DisableLinting": false,
-      "ApplyCustomizations": [],
-      "SortResources": false,
-      "AllowSkippingSSLCertVerification": false,
-      "DoNotSplitWords": [],
-      "EnableGlobalUserAgent": true,
-      "ReturnCompleteHttpResponse": false,
-      "GenerateModels": true,
-      "GenerateExceptions": true,
-      "IgnoreIfNullJson": false,
-      "DisableDocs": false,
-      "LiftParameterDescriptionFromCustomType": false,
-      "ThrowForHttpErrorStatusCodes": true,
-      "ResponseMapping": {
-        "Type": "Simple"
-      },
-      "ForceKeywordArgsInRuby": false,
-      "SymbolizeHashKeysInRuby": false,
-      "UsageExampleEndpoint": {
-        "Description": "",
-        "EndpointGroupName": "",
-        "EndpointName": ""
-      },
-      "IsLatestVersion": false,
-      "EnableImmutableModels": false,
-      "GenerateEnums": true,
-      "BackoffFactor": 2,
-      "StatusCodesToRetry": [
-        408,
-        413,
-        429,
-        500,
-        502,
-        503,
-        504,
-        521,
-        522,
-        524
-      ],
-      "RequestMethodsToRetry": [
-        "GET",
-        "PUT"
-      ],
-      "UserConfigurableRetries": true,
-      "UseEndpointMethodName": false,
-      "EncodeTemplateParameters": true,
-      "GenerateExamplesForOptionalFields": false,
-      "MultitargetDotnetVersions": false,
-      "BackoffMax": 0,
-      "RetryOnTimeout": true
-    },
-    "x-server-configuration": {
-      "default-environment": "production",
-      "default-server": "IncrementalServiceImplPort",
-      "environments": [
-        {
-          "name": "production",
-          "servers": [
-            {
-              "name": "IncrementalServiceImplPort",
-              "url": "http://bsl.schneider-electric.com/bsl-fo-service/IncrementalService"
-            }
-          ]
-        }
-      ],
-      "parameters": []
-    },
-    "x-image-uri": "",
-    "description": "This APIs allows to fetch updates and deletions of business objects within a requested time range. \nUpdates correspond either to the republication of a business object from the back-office system, or if a business object has been scoped to the requested target.\nDeletes correspond either to a physical deletion (not applicable for all business objets) or if a business object has been de-scoped from the requested target"
+    "description": "In mySE, users are registered to their home account. According to the permissions set in the application, they can use Order / Quotation management features on this account, and also on other accounts linked to their home account via the chain ID mechanism.\n\nInternal SE users can also access additional accounts completely unrelated to their home or chain accounts, using a specific access mode called *Temporary Account Access*. This requires the user to have the Temporary Account Access permission on these accounts.\n\nIn order to get access to an account in Temporary Account Access mode, a user must first raise a request for this account. Once the request is approved by an administrator, the user can then access this account in Temporary Account Access mode on all other mySE APIs.\n\nThis API provides methods to:\n  - search accounts on which the user already has the Temporary Account Access permission\n  - search accounts on which the user can request the Temporary Account Access permission, and send the actual permission request\n  - manage a list of favourite accounts that the user uses in Temporary Account Access mode"
   },
-  "servers": [
+  "basePath": "/v2/customer-order/myse-temporary-account-access",
+  "tags": [
     {
-      "url": "https://api.qa.se.com/v1/reference-data/product/pim-incremental",
-      "variables": {}
+      "name": "Temporary Account Access"
+    },
+    {
+      "name": "Temporary Account Access Request"
     }
   ],
   "paths": {
-    "/updated-characteristics/search": {
-      "post": {
-        "tags": [
-          "IncrementalServiceSoapBinding"
-        ],
-        "summary": "UpdatedCharacteristicsList",
-        "operationId": "UpdatedCharacteristicsList",
-        "parameters": [],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/getUpdatedCharacteristicsList1"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "getUpdatedCharacteristicsList": {
-                      "scope": {
-                        "brand": "Schneider Electric",
-                        "country": "WW"
-                      },
-                      "locale": {
-                        "isoCountry": "GB",
-                        "isoLanguage": "en"
-                      },
-                      "sinceDate": "2021-04-01T00:00:00.000Z",
-                      "firstResult": 1,
-                      "numberOfResults": 1
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successfully retrieved the response",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getUpdatedCharacteristicsListResponse1"
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "getUpdatedCharacteristicsListResponse": {
-                        "UpdatedCharacteristicsListBean": {
-                          "count": 39,
-                          "characteristics": [
-                            {
-                              "oid": 11688109246,
-                              "id": "ATS_0_CROSSING_VOLTAGE",
-                              "timeStamp": "2021-04-08T16:00:52.048Z"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/Common_Oas3_400"
-          },
-          "401": {
-            "$ref": "#/components/responses/Common_Oas3_401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Common_Oas3_403"
-          },
-          "404": {
-            "$ref": "#/components/responses/Common_Oas3_404"
-          },
-          "429": {
-            "$ref": "#/components/responses/Common_Oas3_429"
-          },
-          "500": {
-            "$ref": "#/components/responses/Common_Oas3_500"
-          }
-        },
-        "deprecated": false,
-        "x-operation-settings": {
-          "CollectParameters": false,
-          "AllowDynamicQueryParameters": false,
-          "AllowDynamicFormParameters": false,
-          "IsMultiContentStreaming": false
-        },
-        "x-unitTests": [],
-        "description": "Return the total count of updated characteristics and their Oid and Id that have been modified or added to the scope between since date and until date(if it is provided) otherwise until date take upto latest modified date."
-      },
-      "parameters": []
-    },
-    "/updated-nodes/search": {
-      "post": {
-        "tags": [
-          "IncrementalServiceSoapBinding"
-        ],
-        "summary": "UpdatedNodeList",
-        "operationId": "UpdatedNodeList",
-        "parameters": [],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/getUpdatedNodeList1"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "getUpdatedNodeList": {
-                      "scope": {
-                        "brand": "Schneider Electric",
-                        "country": "WW"
-                      },
-                      "locale": {
-                        "isoCountry": "GB",
-                        "isoLanguage": "en"
-                      },
-                      "sinceDate": "2021-04-01T00:00:00.000Z",
-                      "firstResult": 1,
-                      "numberOfResults": 1
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successfully retrieved the response",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getUpdatedNodeListResponse1"
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "getUpdatedNodeListResponse": {
-                        "UpdatedNodeListBean": {
-                          "nodes": [
-                            {
-                              "oid": 11717924447,
-                              "id": "CAT_CRG_152554",
-                              "timeStamp": "2021-04-14T06:40:01.036Z"
-                            }
-                          ],
-                          "count": 1030
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/Common_Oas3_400"
-          },
-          "401": {
-            "$ref": "#/components/responses/Common_Oas3_401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Common_Oas3_403"
-          },
-          "404": {
-            "$ref": "#/components/responses/Common_Oas3_404"
-          },
-          "429": {
-            "$ref": "#/components/responses/Common_Oas3_429"
-          },
-          "500": {
-            "$ref": "#/components/responses/Common_Oas3_500"
-          }
-        },
-        "deprecated": false,
-        "x-operation-settings": {
-          "CollectParameters": false,
-          "AllowDynamicQueryParameters": false,
-          "AllowDynamicFormParameters": false,
-          "IsMultiContentStreaming": false
-        },
-        "x-unitTests": [],
-        "description": "Return the total count of updated nodes and their Oid and Id that have been updated or descoped between since date and until date (if it is provided otherwise until date take upto latest deleted date)"
-      },
-      "parameters": []
-    },
-    "/snapshot": {
+    "/temporary-account-accesses/{business-unit}": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/businessUnit"
+        }
+      ],
       "get": {
+        "operationId": "search-TAA-accounts",
+        "summary": "Search list of accounts accessible to a user via Temporary Account Access",
         "tags": [
-          "IncrementalServiceSoapBinding"
+          "Temporary Account Access"
         ],
-        "summary": "Snapshot",
-        "operationId": "Snapshot",
+        "description": "The aim of the *Temporary Account Access Search* method is to retrieve the list of accounts for a given *Business Unit* on which the user has the Temporary Account Access permission.\n\nThis method returns:\n* The detailed list of accounts (account number, name and location) on which the user has the Temporary Account Access and matching the search criteria.\n* The total number of items in this list.\n\nIn order to refine the search, this method allows using filter criterias:\n* accountNumber\n* company name\n* order PO number\n* order reference number\n* invoice number\n* location\n\n***Note:** at least one of the query parameters must be filled. Multiple query parameters can be filled at once, the service will return the list of accounts that match all requested parameters.*\n\n### #1. Technical error code for http return code 400\n\nMissing mandatory parameter or invalid parameter value\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n400 | Empty_Authorization | Authorization token is not filled | No value provided in the mandatory X-IDMS-Authorization header parameter.\n400 | Empty_BusinessUnit | BusinessUnit is not Filled | No value provided in the mandatory businessUnit path parameter.\n400 | Invalid_BusinessUnit | Business Unit code does not exist in MySE | The requested Business Unit value does not exist in MySE.\n\n### #2. Technical error code for http return code 403\n\nInvalid authentication token or user not registered in mySE\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n403 | Invalid_Authorization | Invalid authorization token | Wrong token or invalid session on IDMS.\n403 | Expired_Authorization | Expired authorization token | The authorization token validity has expired, it must be renewed by the calling application\n403 | Invalid_User | User with federateID XXX not found for Business unit YYY | User not recognized on MySE for the given Business Unit. FederatedID is the unique identifier for the user in MySE database (UIMS and IDMS identifier)\n403 | Not_Authorized | User not authorized to access this functionality | User doesn’t have permission to access Returns information in mySE on the requested account.\n\n### #3. Technical error code for http return code 500\nUnexpected error\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n500 | NOK | An error has occured at <date> | Any other error or exception found. All technical errors are managed within this specific code.\n500 | Service_Unavailable | Unable to connect to MySE | Connection to MySE rejected or timeout.",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
+            "$ref": "#/parameters/UserAuthorization"
+          },
+          {
+            "name": "account-number",
+            "in": "query",
+            "description": "Purchaser Identifier : Account on which the request has to be done",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "company-name",
+            "in": "query",
+            "description": "Company Name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "po-number",
+            "in": "query",
+            "description": "Purchaser Order number : PO Number.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "se-order-ref-number",
+            "in": "query",
+            "description": "Schneider orderNumber",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "description": "Account location",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "invoice-number",
+            "in": "query",
+            "description": "Invoice number",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/TemporaryAccountAccessList"
+            },
+            "examples": {
+              "IDMS user login: USER_WS_ADMIN@yopmail.com, Business Unit: MySEES, purchaserId: 0003613400": {
+                "accountList": [
+                  {
+                    "purchaserId": "0003613400",
+                    "accountName": "GRUPO RIOJA-ASDRUBAL, S.L.",
+                    "location": "MADRID, ISA"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Common_Oas2_400"
+          },
+          "401": {
+            "$ref": "#/responses/Common_Oas2_401"
+          },
+          "403": {
+            "$ref": "#/responses/Common_Oas2_403"
+          },
+          "404": {
+            "$ref": "#/responses/Common_Oas2_404"
+          },
+          "429": {
+            "$ref": "#/responses/Common_Oas2_429"
+          },
+          "500": {
+            "$ref": "#/responses/Common_Oas2_500"
+          }
+        }
+      }
+    },
+    "/temporary-account-accesses/favourites/{business-unit}": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/businessUnit"
+        }
+      ],
+      "get": {
+        "operationId": "get-favorite-TAA-accounts",
+        "summary": "Get list of favourite accounts accessible to a user via Temporary Account Access",
+        "tags": [
+          "Temporary Account Access"
+        ],
+        "description": "The aim of the *Favourite Temporary Account Access List* method is to retrieve the list of favourite accounts for a given *Business Unit* on which the user has the Temporary Account Access permission.\n\nThis method returns:\n* The detailed list of accounts (account number, name and location) defined by the user as his favourites to be used in Temporary Account Access mode.\n* The total number items in this list.\n\n### #1. Technical error code for http return code 400\n\nMissing mandatory parameter or invalid parameter value\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n400 | Empty_Authorization | Authorization token is not filled | No value provided in the mandatory X-IDMS-Authorization header parameter.\n400 | Empty_BusinessUnit | BusinessUnit is not Filled | No value provided in the mandatory businessUnit path parameter.\n400 | Invalid_BusinessUnit | Business Unit code does not exist in MySE | The requested Business Unit value does not exist in MySE.\n\n### #2. Technical error code for http return code 403\n\nInvalid authentication token or user not registered in mySE\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n403 | Invalid_Authorization | Invalid authorization token | Wrong token or invalid session on IDMS.\n403 | Expired_Authorization | Expired authorization token | The authorization token validity has expired, it must be renewed by the calling application\n403 | Invalid_User | User with federateID XXX not found for Business unit YYY | User not recognized on MySE for the given Business Unit. FederatedID is the unique identifier for the user in MySE database (UIMS and IDMS identifier)\n403 | Not_Authorized | User not authorized to access this functionality | User doesn’t have permission to access Returns information in mySE on the requested account.\n\n### #3. Technical error code for http return code 500\nUnexpected error\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n500 | NOK | An error has occured at <date> | Any other error or exception found. All technical errors are managed within this specific code.\n500 | Service_Unavailable | Unable to connect to MySE | Connection to MySE rejected or timeout.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/UserAuthorization"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/TemporaryAccountAccessList"
+            },
+            "examples": {
+              "IDMS user login: USER_WS_ADMIN@yopmail.com, Business Unit: MySEES": {
+                "accountList": [
+                  {
+                    "purchaserId": "0003613400",
+                    "accountName": "GRUPO RIOJA-ASDRUBAL, S.L.",
+                    "location": "MADRID"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Common_Oas2_400"
+          },
+          "401": {
+            "$ref": "#/responses/Common_Oas2_401"
+          },
+          "403": {
+            "$ref": "#/responses/Common_Oas2_403"
+          },
+          "404": {
+            "$ref": "#/responses/Common_Oas2_404"
+          },
+          "429": {
+            "$ref": "#/responses/Common_Oas2_429"
+          },
+          "500": {
+            "$ref": "#/responses/Common_Oas2_500"
+          }
+        }
+      }
+    },
+    "/temporary-account-accesses/favourites/{business-unit}/{purchaser-id}": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/businessUnit"
+        },
+        {
+          "$ref": "#/parameters/purchaserId"
+        }
+      ],
+      "post": {
+        "operationId": "add-favority-TAA-account",
+        "summary": "Add a favourite account for a user",
+        "tags": [
+          "Temporary Account Access"
+        ],
+        "description": "The aim of the *Add Favourite Temporary Account Access* method is to add an account to the list of a user's favourite accounts to be used in Temporary Account Access mode for a given *Business Unit*.\n\n### #1. Technical error code for http return code 400\n\nMissing mandatory parameter or invalid parameter value\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n400 | Empty_Authorization | Authorization token is not filled | No value provided in the mandatory X-IDMS-Authorization header parameter.\n400 | Empty_BusinessUnit | BusinessUnit is not Filled | No value provided in the mandatory businessUnit path parameter.\n400 | Invalid_BusinessUnit | Business Unit code does not exist in MySE | The requested Business Unit value does not exist in MySE.\n400 | Empty_PurchaserId | Purchaser ID is not filled | No value provided in the mandatory purchaserId path parameter.\n400 | Invalid_PurchaserId | Purchaser ID does not exist | The provided purchaser ID does not exist in mySE for the requested Business Unit.\n400 | PurchaserId_AlreadyAsFavourite | Purchaser ID already favourite | Purchaser ID is already set as favourite.\n\n### #2. Technical error code for http return code 403\n\nInvalid authentication token or user not registered in mySE\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n403 | Invalid_Authorization | Invalid authorization token | Wrong token or invalid session on IDMS.\n403 | Expired_Authorization | Expired authorization token | The authorization token validity has expired, it must be renewed by the calling application\n403 | Invalid_User | User with federateID XXX not found for Business unit YYY | User not recognized on MySE for the given Business Unit. FederatedID is the unique identifier for the user in MySE database (UIMS and IDMS identifier)\n403 | Not_Authorized | User not authorized to access this functionality | User doesn’t have permission to access Returns information in mySE on the requested account.\n\n### #3. Technical error code for http return code 500\nUnexpected error\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n500 | NOK | An error has occured at <date> | Any other error or exception found. All technical errors are managed within this specific code.\n500 | Service_Unavailable | Unable to connect to MySE | Connection to MySE rejected or timeout.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/UserAuthorization"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
             "schema": {
               "type": "string"
             },
-            "in": "query",
-            "name": "snapshot-id",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            },
-            "in": "query",
-            "name": "first-result"
-          },
-          {
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            },
-            "in": "query",
-            "name": "number-of-results"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully retrieved the response",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getSnapshotResponse1"
-                },
-                "examples": {
-                  "snapshotId: 42809641, firstResult: 1, numberOfResults, 1": {
-                    "value": {
-                      "getSnapshotResponse": {
-                        "GenericCacheBean": {
-                          "count": 17,
-                          "elements": [
-                            {
-                              "oid": 11834373057,
-                              "timeStamp": "2021-04-14T06:15:26.807Z"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+            "examples": {
+              "IDMS user login: USER_WS_ADMIN@yopmail.com, Business Unit: MySEES, purchaserId: 0003613400": "OK"
             }
           },
           "400": {
-            "$ref": "#/components/responses/Common_Oas3_400"
+            "$ref": "#/responses/Common_Oas2_400"
           },
           "401": {
-            "$ref": "#/components/responses/Common_Oas3_401"
+            "$ref": "#/responses/Common_Oas2_401"
           },
           "403": {
-            "$ref": "#/components/responses/Common_Oas3_403"
+            "$ref": "#/responses/Common_Oas2_403"
           },
           "404": {
-            "$ref": "#/components/responses/Common_Oas3_404"
+            "$ref": "#/responses/Common_Oas2_404"
           },
           "429": {
-            "$ref": "#/components/responses/Common_Oas3_429"
+            "$ref": "#/responses/Common_Oas2_429"
           },
           "500": {
-            "$ref": "#/components/responses/Common_Oas3_500"
+            "$ref": "#/responses/Common_Oas2_500"
           }
-        },
-        "deprecated": false,
-        "x-operation-settings": {
-          "CollectParameters": false,
-          "AllowDynamicQueryParameters": false,
-          "AllowDynamicFormParameters": false,
-          "IsMultiContentStreaming": false
-        },
-        "x-unitTests": [],
-        "description": "Allow to retrieve a snapshot by its snapshotId"
+        }
       },
-      "parameters": []
-    },
-    "/updated-products/snapshot/search": {
-      "post": {
+      "delete": {
+        "operationId": "delete-favourite-TAA-account",
+        "summary": "Remove a favourite temporary account for a user",
         "tags": [
-          "IncrementalServiceSoapBinding"
+          "Temporary Account Access"
         ],
-        "summary": "updated-product-snapshot",
-        "operationId": "UpdatedProductSnapshot",
-        "parameters": [],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/createUpdatedProductSnapshot1"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "createUpdatedProductSnapshot": {
-                      "scope": {
-                        "brand": "Schneider Electric",
-                        "country": "WW"
-                      },
-                      "sinceDate": "2021-04-01T00:00:00.000Z"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successfully retrieved the response",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createUpdatedProductSnapshotResponse1"
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "createUpdatedProductSnapshotResponse": {
-                        "GenericCacheBean": {
-                          "snapshotId": "590117530",
-                          "count": 10
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/Common_Oas3_400"
-          },
-          "401": {
-            "$ref": "#/components/responses/Common_Oas3_401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Common_Oas3_403"
-          },
-          "404": {
-            "$ref": "#/components/responses/Common_Oas3_404"
-          },
-          "429": {
-            "$ref": "#/components/responses/Common_Oas3_429"
-          },
-          "500": {
-            "$ref": "#/components/responses/Common_Oas3_500"
-          }
-        },
-        "deprecated": false,
-        "x-operation-settings": {
-          "CollectParameters": false,
-          "AllowDynamicQueryParameters": false,
-          "AllowDynamicFormParameters": false,
-          "IsMultiContentStreaming": false
-        },
-        "x-unitTests": [],
-        "description": "This method creates a snapshot containing all products updated for the requested time range and/or added in the requested target scope"
-      },
-      "parameters": []
-    },
-    "/deleted-nodes": {
-      "get": {
-        "tags": [
-          "IncrementalServiceSoapBinding"
+        "description": "The aim of the *Delete Favourite Temporary Account Access* method is to remove an account from the list of a user's favourite accounts to be used in Temporary Account Access mode for a given *Business Unit*.\n\n### #1. Technical error code for http return code 400\n\nMissing mandatory parameter or invalid parameter value\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n400 | Empty_Authorization | Authorization token is not filled | No value provided in the mandatory X-IDMS-Authorization header parameter.\n400 | Empty_BusinessUnit | BusinessUnit is not Filled | No value provided in the mandatory businessUnit path parameter.\n400 | Invalid_BusinessUnit | Business Unit code does not exist in MySE | The requested Business Unit value does not exist in MySE.\n400 | Empty_PurchaserId | Purchaser ID is not filled | No value provided in the mandatory purchaserId path parameter.\n400 | Invalid_PurchaserId | Purchaser ID does not exist | The provided purchaser ID does not exist in mySE for the requested Business Unit.\n400 | PurchaserId_NotAFavourite | Purchaser ID not favourite | Purchaser ID is not as favourite.\n\n### #2. Technical error code for http return code 403\n\nInvalid authentication token or user not registered in mySE\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n403 | Invalid_Authorization | Invalid authorization token | Wrong token or invalid session on IDMS.\n403 | Expired_Authorization | Expired authorization token | The authorization token validity has expired, it must be renewed by the calling application\n403 | Invalid_User | User with federateID XXX not found for Business unit YYY | User not recognized on MySE for the given Business Unit. FederatedID is the unique identifier for the user in MySE database (UIMS and IDMS identifier)\n403 | Not_Authorized | User not authorized to access this functionality | User doesn’t have permission to access Returns information in mySE on the requested account.\n\n### #3. Technical error code for http return code 500\nUnexpected error\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n500 | NOK | An error has occured at <date> | Any other error or exception found. All technical errors are managed within this specific code.\n500 | Service_Unavailable | Unable to connect to MySE | Connection to MySE rejected or timeout.",
+        "produces": [
+          "application/json"
         ],
-        "summary": "DeletedNodeList",
-        "operationId": "DeletedNodeList",
         "parameters": [
           {
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "in": "query",
-            "name": "since-date",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "in": "query",
-            "name": "until-date"
-          },
-          {
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            },
-            "in": "query",
-            "name": "first-result"
-          },
-          {
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            },
-            "in": "query",
-            "name": "number-of-results"
+            "$ref": "#/parameters/UserAuthorization"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successfully retrieved the response",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getDeletedNodeListResponse1"
-                },
-                "examples": {
-                  "sinceDate: 2021-04-01T00:00:00.000Z, firstResult:1 , numberOfResults:1": {
-                    "value": {
-                      "getDeletedNodeListResponse": {
-                        "count": 48,
-                        "DeletedNodeListBean": {
-                          "nodes": [
-                            {
-                              "oid": 29400941202,
-                              "id": "DQ_AKL_DCSBCH",
-                              "timeStamp": "2021-04-13T10:52:55.555Z"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "IDMS user login: USER_WS_ADMIN@yopmail.com, Business Unit: MySEES, purchaserId: 0003613400": "OK"
             }
           },
           "400": {
-            "$ref": "#/components/responses/Common_Oas3_400"
+            "$ref": "#/responses/Common_Oas2_400"
           },
           "401": {
-            "$ref": "#/components/responses/Common_Oas3_401"
+            "$ref": "#/responses/Common_Oas2_401"
           },
           "403": {
-            "$ref": "#/components/responses/Common_Oas3_403"
+            "$ref": "#/responses/Common_Oas2_403"
           },
           "404": {
-            "$ref": "#/components/responses/Common_Oas3_404"
+            "$ref": "#/responses/Common_Oas2_404"
           },
           "429": {
-            "$ref": "#/components/responses/Common_Oas3_429"
+            "$ref": "#/responses/Common_Oas2_429"
           },
           "500": {
-            "$ref": "#/components/responses/Common_Oas3_500"
-          }
-        },
-        "deprecated": false,
-        "x-operation-settings": {
-          "CollectParameters": false,
-          "AllowDynamicQueryParameters": false,
-          "AllowDynamicFormParameters": false,
-          "IsMultiContentStreaming": false
-        },
-        "x-unitTests": [],
-        "description": "Return the total count of deletedNode and their Oid and Id that have been deleted or inactive between since date and until date(if it is provided) otherwise until date take upto latest deleted date."
-      },
-      "parameters": []
-    },
-    "/updated-categories/search": {
-      "post": {
-        "tags": [
-          "IncrementalServiceSoapBinding"
-        ],
-        "summary": "updated-categories",
-        "operationId": "UpdatedCategoryList",
-        "parameters": [],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/getUpdatedCategoryList1"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "getUpdatedCategoryList": {
-                      "scope": {
-                        "brand": "Schneider Electric",
-                        "country": "WW"
-                      },
-                      "locale": {
-                        "isoCountry": "GB",
-                        "isoLanguage": "en"
-                      },
-                      "sinceDate": "2021-04-01T00:00:00.000Z",
-                      "firstResult": 1,
-                      "numberOfResults": 1
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successfully retrieved the response",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getUpdatedCategoryListResponse1"
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "getUpdatedCategoryListResponse": {
-                        "UpdatedCategoryListBean": {
-                          "categories": [
-                            {
-                              "oid": 40993730880,
-                              "id": "080420212",
-                              "timeStamp": "2021-04-08T04:24:11.923Z"
-                            }
-                          ],
-                          "count": 131
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/Common_Oas3_400"
-          },
-          "401": {
-            "$ref": "#/components/responses/Common_Oas3_401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Common_Oas3_403"
-          },
-          "404": {
-            "$ref": "#/components/responses/Common_Oas3_404"
-          },
-          "429": {
-            "$ref": "#/components/responses/Common_Oas3_429"
-          },
-          "500": {
-            "$ref": "#/components/responses/Common_Oas3_500"
-          }
-        },
-        "deprecated": false,
-        "x-operation-settings": {
-          "CollectParameters": false,
-          "AllowDynamicQueryParameters": false,
-          "AllowDynamicFormParameters": false,
-          "IsMultiContentStreaming": false
-        },
-        "x-unitTests": [],
-        "description": "Return the total count of updated categories and their Oid and Id that have been modified or added to the scope between since date and until date(if it is provided) otherwise until date take upto latest modified date."
-      },
-      "parameters": []
-    },
-    "/updated-ranges/search": {
-      "post": {
-        "tags": [
-          "IncrementalServiceSoapBinding"
-        ],
-        "summary": "updated-ranges",
-        "operationId": "getUpdatedRangeList",
-        "parameters": [],
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/getUpdatedRangeList1"
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "getUpdatedRangeList": {
-                      "scope": {
-                        "brand": "Schneider Electric",
-                        "country": "WW"
-                      },
-                      "locale": {
-                        "isoCountry": "GB",
-                        "isoLanguage": "en"
-                      },
-                      "sinceDate": "2021-04-01T00:00:00.000Z",
-                      "firstResult": 1,
-                      "numberOfResults": 1
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successfully retrieved the response",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getUpdatedRangeListResponse1"
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "getUpdatedRangeListResponse": {
-                        "UpdatedRangeListBean": {
-                          "ranges": [
-                            {
-                              "oid": 8158687,
-                              "id": "1011",
-                              "timeStamp": "2021-04-05T12:26:47.089Z"
-                            }
-                          ],
-                          "count": 44
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/Common_Oas3_400"
-          },
-          "401": {
-            "$ref": "#/components/responses/Common_Oas3_401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Common_Oas3_403"
-          },
-          "404": {
-            "$ref": "#/components/responses/Common_Oas3_404"
-          },
-          "429": {
-            "$ref": "#/components/responses/Common_Oas3_429"
-          },
-          "500": {
-            "$ref": "#/components/responses/Common_Oas3_500"
-          }
-        },
-        "deprecated": false,
-        "x-operation-settings": {
-          "CollectParameters": false,
-          "AllowDynamicQueryParameters": false,
-          "AllowDynamicFormParameters": false,
-          "IsMultiContentStreaming": false
-        },
-        "x-unitTests": [],
-        "description": "This method returns all ranges updated for the requested time range and target"
-      },
-      "parameters": []
-    },
-    "/competitor-crs/search": {
-      "post": {
-        "tags": [
-          "IncrementalServiceRestBinding"
-        ],
-        "description": "'Returns all Competitor CRs that have been created or updated within a time range' \n",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/competitorRequestBean"
-              },
-              "examples": {
-                "Request sample": {
-                  "value": {
-                    "scope": {
-                      "brand": "Schneider Electric",
-                      "country": "WW"
-                    },
-                    "sinceDate": "2021-09-20T10:04:22.226Z",
-                    "untilDate": "2021-09-21T10:48:38.645Z",
-                    "firstResult": 0,
-                    "numberOfResults": 4,
-                    "operation": "update"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "parameters": [],
-        "x-operation-settings": {
-          "CollectParameters": false,
-          "AllowDynamicQueryParameters": false,
-          "AllowDynamicFormParameters": false,
-          "IsMultiContentStreaming": false
-        },
-        "x-unitTests": [],
-        "summary": "competitor-cr-search",
-        "operationId": "post-competitor-cr-search",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/updatedCompetitorCRsResponse"
-                    },
-                    {
-                      "$ref": "#/components/schemas/deletedCompetitorCRsResponse"
-                    }
-                  ]
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "count": 1,
-                      "updatedCompetitorCRs": [
-                        {
-                          "id": "A1",
-                          "timeStamp": "2021-09-15T11:28:47.018Z"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/Common_Oas3_400"
-          },
-          "401": {
-            "$ref": "#/components/responses/Common_Oas3_401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Common_Oas3_403"
-          },
-          "404": {
-            "$ref": "#/components/responses/Common_Oas3_404"
-          },
-          "429": {
-            "$ref": "#/components/responses/Common_Oas3_429"
-          },
-          "500": {
-            "$ref": "#/components/responses/Common_Oas3_500"
+            "$ref": "#/responses/Common_Oas2_500"
           }
         }
-      },
-      "parameters": []
+      }
     },
-    "/competitor-prels/search": {
-      "post": {
-        "tags": [
-          "IncrementalServiceRestBinding"
-        ],
-        "description": "'Return all the Competitor CRs for which competitor PRELs have been created or updated whithin a time range' \n",
-        "requestBody": {
-          "description": "",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/competitorRequestBean"
-              },
-              "examples": {
-                "Request sample": {
-                  "value": {
-                    "scope": {
-                      "brand": "Schneider Electric",
-                      "country": "WW"
-                    },
-                    "sinceDate": "2021-09-20T10:04:22.226Z",
-                    "untilDate": "2021-09-21T10:48:38.645Z",
-                    "firstResult": 0,
-                    "numberOfResults": 4,
-                    "operation": "delete"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "parameters": [],
-        "x-operation-settings": {
-          "CollectParameters": false,
-          "AllowDynamicQueryParameters": false,
-          "AllowDynamicFormParameters": false,
-          "IsMultiContentStreaming": false
-        },
-        "x-unitTests": [],
-        "summary": "competitor-prel-search",
-        "operationId": "post-competitor-prel-search",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/updatedCompetitorPRELsResponse"
-                    },
-                    {
-                      "$ref": "#/components/schemas/deletedCompetitorPRELsResponse"
-                    }
-                  ]
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "count": 0,
-                      "updatedCompetitorPRELs": [
-                        {
-                          "id": "string",
-                          "timeStamp": "2019-08-24T14:15:22Z"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/Common_Oas3_400"
-          },
-          "401": {
-            "$ref": "#/components/responses/Common_Oas3_401"
-          },
-          "403": {
-            "$ref": "#/components/responses/Common_Oas3_403"
-          },
-          "404": {
-            "$ref": "#/components/responses/Common_Oas3_404"
-          },
-          "429": {
-            "$ref": "#/components/responses/Common_Oas3_429"
-          },
-          "500": {
-            "$ref": "#/components/responses/Common_Oas3_500"
-          }
+    "/temporary-account-accesses/requestable-accounts/{business-unit}": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/businessUnit"
         }
-      },
-      "parameters": []
-    },
-    "/product-listings/search": {
+      ],
       "get": {
+        "operationId": "get-TAA-requestable-accounts",
+        "summary": "Get requestable Temporary Account Access accounts",
         "tags": [
-          "IncrementalServiceRestBinding"
+          "Temporary Account Access Request"
         ],
-        "description": "returns all product Listing nodes that have been created or updated within a given time range\n",
+        "description": "This method returns the list of accounts for which the user can request the Temporary Account Access permission.\nAccounts for which the user already have the permission or for which he has a pending request are not returned.\n\n### #1. Technical error code for http return code 400\n\nMissing mandatory parameter or invalid parameter value\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n400 | Empty_Authorization | Authorization token is not filled | No value provided in the mandatory X-IDMS-Authorization header parameter.\n400 | Empty_BusinessUnit | BusinessUnit is not Filled | No value provided in the mandatory businessUnit path parameter.\n400 | Invalid_BusinessUnit | Business Unit code does not exist in MySE | The requested Business Unit value does not exist in MySE.\n400 | Empty_PurchaserId | Purchaser ID is not filled | No value provided in the mandatory purchaserId path parameter.\n400 | User_NotInternal | User with userID is not internal | The provided user ID does not correspond to an internal User.\n\n### #2. Technical error code for http return code 403\n\nInvalid authentication token or user not registered in mySE\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n403 | Invalid_Authorization | Invalid authorization token | Wrong token or invalid session on IDMS.\n403 | Expired_Authorization | Expired authorization token | The authorization token validity has expired, it must be renewed by the calling application\n403 | Invalid_User | User with federateID XXX not found for Business unit YYY | User not recognized on MySE for the given Business Unit. FederatedID is the unique identifier for the user in MySE database (UIMS and IDMS identifier)\n403 | Not_Authorized | User not authorized to access this functionality | User doesn’t have permission to ask for TAA.\n\n### #3. Technical error code for http return code 500\nUnexpected error\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n500 | NOK | An error has occured at <date> | Any other error or exception found. All technical errors are managed within this specific code.\n500 | Service_Unavailable | Unable to connect to MySE | Connection to MySE rejected or timeout.",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
-            "schema": {
-              "type": "string",
-              "example": "2019-08-24T14:15:22Z"
-            },
-            "in": "query",
-            "name": "since-date",
-            "required": true,
-            "description": "The date format must be YYYY-MM-DDTHH:mm:ss.SSSZ"
+            "$ref": "#/parameters/UserAuthorization"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": "2019-08-24T14:15:22Z"
-            },
+            "type": "string",
             "in": "query",
-            "name": "until-date",
-            "required": true,
-            "description": "The date format must be YYYY-MM-DDTHH:mm:ss.SSSZ"
+            "name": "purchaser-id",
+            "description": "Purchaser Identifier: Accounts returned have this value as purchaser-id in their ID"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": "0"
-            },
+            "type": "string",
             "in": "query",
-            "name": "first-result",
-            "required": true,
-            "description": "Number of first result which will be shown first in response. Ex. 0,1,2"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "example": "10"
-            },
-            "in": "query",
-            "name": "number-of-results",
-            "required": true,
-            "description": "Number of results will be shown in response. Ex. 0,1,2,3"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "update",
-                "delete"
-              ],
-              "example": "update"
-            },
-            "in": "query",
-            "name": "operation",
-            "required": true,
-            "description": "type operation"
+            "name": "account-name",
+            "description": "Account name: Accounts returned have this value as their Account name"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/UpdatedProductListingNodeListBean"
-                    },
-                    {
-                      "$ref": "#/components/schemas/DeletedProductListingNodeListBean"
-                    }
-                  ]
-                },
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "count": 1,
-                      "updatedNodes": [
-                        {
-                          "nodeId": "A1",
-                          "timeStamp": "2019-08-24T14:15:22Z"
-                        }
-                      ]
-                    }
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TemporaryAccountAccessRequestList"
+            },
+            "examples": {
+              "IDMS user login: USER_WS_ADMIN@yopmail.com, Business Unit: MySEES, purchaserId: 0003619": {
+                "accountList": [
+                  {
+                    "purchaserId": "0003619500",
+                    "accountName": "TOLEDO PV AEIE"
+                  },
+                  {
+                    "purchaserId": "0003619600",
+                    "accountName": "MAIC TECNICOS, S.A."
+                  },
+                  {
+                    "purchaserId": "0003619800",
+                    "accountName": "ELECTROMAT BALEAR, S.L"
                   }
-                }
+                ]
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/Common_Oas3_400"
+            "$ref": "#/responses/Common_Oas2_400"
           },
           "401": {
-            "$ref": "#/components/responses/Common_Oas3_401"
+            "$ref": "#/responses/Common_Oas2_401"
           },
           "403": {
-            "$ref": "#/components/responses/Common_Oas3_403"
+            "$ref": "#/responses/Common_Oas2_403"
           },
           "404": {
-            "$ref": "#/components/responses/Common_Oas3_404"
+            "$ref": "#/responses/Common_Oas2_404"
           },
           "429": {
-            "$ref": "#/components/responses/Common_Oas3_429"
+            "$ref": "#/responses/Common_Oas2_429"
           },
           "500": {
-            "$ref": "#/components/responses/Common_Oas3_500"
+            "$ref": "#/responses/Common_Oas2_500"
           }
-        },
-        "summary": "product-listing-search",
-        "operationId": "get-product-listing-search"
+        }
       }
+    },
+    "/temporary-account-accesses/requests/{business-unit}": {
+      "post": {
+        "operationId": "request-TAA-permission",
+        "summary": "Request the Temporary Account Access permission on a given list of accounts",
+        "tags": [
+          "Temporary Account Access Request"
+        ],
+        "description": "This methods is used to send a request for the Temporary Account Access permission on a list of accounts for a user.\nFor each account, the user can specify if the \"Order Release\" permission is also requested.\n\n### #1. Technical error code for http return code 400\n\nMissing mandatory parameter or invalid parameter value\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n400 | Empty_Authorization | Authorization token is not filled | No value provided in the mandatory X-IDMS-Authorization header parameter.\n400 | Empty_BusinessUnit | BusinessUnit is not Filled | No value provided in the mandatory businessUnit path parameter.\n400 | Invalid_BusinessUnit | Business Unit code does not exist in MySE | The requested Business Unit value does not exist in MySE.\n400 | Empty_PurchaserId | Purchaser ID is not filled | No value provided in the mandatory purchaserId path parameter.\n400 | Invalid_PurchaserId | Purchaser ID does not exist | The provided purchaser ID does not exist in mySE for the requested Business Unit.\n400 | User_NotInternal | User with userID is not internal | The provided user ID does not correspond to an internal User.\n\n### #2. Technical error code for http return code 403\n\nInvalid authentication token or user not registered in mySE\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n403 | Invalid_Authorization | Invalid authorization token | Wrong token or invalid session on IDMS.\n403 | Expired_Authorization | Expired authorization token | The authorization token validity has expired, it must be renewed by the calling application\n403 | Invalid_User | User with federateID XXX not found for Business unit YYY | User not recognized on MySE for the given Business Unit. FederatedID is the unique identifier for the user in MySE database (UIMS and IDMS identifier)\n403 | Not_Authorized | User not authorized to access this functionality | User doesn’t have permission to ask for TAA.\n\n### #3. Technical error code for http return code 500\nUnexpected error\n\nHTTP status code | errorCode | errorMessage | comment\n-----------------|-----------|--------------|--------\n500 | NOK | An error has occured at <date> | Any other error or exception found. All technical errors are managed within this specific code.\n500 | Service_Unavailable | Unable to connect to MySE | Connection to MySE rejected or timeout.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/UserAuthorization"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/TemporaryAccountAccessRequestedList"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "IDMS user login: USER_WS_ADMIN@yopmail.com, Business Unit: MySEES, purchaserId: 0003613400": "OK"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Common_Oas2_400"
+          },
+          "401": {
+            "$ref": "#/responses/Common_Oas2_401"
+          },
+          "403": {
+            "$ref": "#/responses/Common_Oas2_403"
+          },
+          "404": {
+            "$ref": "#/responses/Common_Oas2_404"
+          },
+          "429": {
+            "$ref": "#/responses/Common_Oas2_429"
+          },
+          "500": {
+            "$ref": "#/responses/Common_Oas2_500"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/parameters/businessUnit"
+        }
+      ]
     }
   },
-  "components": {
-    "schemas": {
-      "deletedNodeListBean": {
-        "title": "deletedNodeListBean",
-        "allOf": [
-          {
-            "properties": {
-              "nodes": {
-                "type": "array",
-                "description": "",
-                "items": {
-                  "$ref": "#/components/schemas/deletedNodeLightBean"
-                }
-              },
-              "count": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "description": "",
-        "type": "object"
-      },
-      "deletedNodeLightBean": {
-        "title": "deletedNodeLightBean",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "oid": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "id": {
-            "type": "string"
-          },
-          "timeStamp": {
-            "type": "string",
-            "format": "date-time"
+  "definitions": {
+    "TemporaryAccountAccessList": {
+      "type": "object",
+      "description": "Temporary Account Access search information",
+      "properties": {
+        "accountList": {
+          "type": "array",
+          "description": "Account list",
+          "items": {
+            "$ref": "#/definitions/TemporaryAccountAccessItem"
           }
         }
       },
-      "getSnapshotResponse": {
-        "title": "getSnapshotResponse",
-        "type": "object",
-        "properties": {
-          "GenericCacheBean": {
-            "$ref": "#/components/schemas/genericCacheBean"
-          }
-        },
-        "description": ""
-      },
-      "getUpdatedNodeList": {
-        "title": "getUpdatedNodeList",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "scope": {
-            "$ref": "#/components/schemas/scopeBean"
-          },
-          "locale": {
-            "$ref": "#/components/schemas/localeBean"
-          },
-          "sinceDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "untilDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "firstResult": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "numberOfResults": {
-            "type": "integer",
-            "format": "int64"
-          }
-        },
-        "required": [
-          "sinceDate"
-        ]
-      },
-      "createUpdatedProductSnapshot1": {
-        "title": "createUpdatedProductSnapshot1",
-        "required": [
-          "createUpdatedProductSnapshot"
-        ],
-        "type": "object",
-        "properties": {
-          "createUpdatedProductSnapshot": {
-            "$ref": "#/components/schemas/createUpdatedProductSnapshot"
-          }
-        }
-      },
-      "updatedRangeLightBean": {
-        "title": "updatedRangeLightBean",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "oid": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "id": {
-            "type": "string"
-          },
-          "timeStamp": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "createUpdatedProductSnapshotResponse1": {
-        "title": "createUpdatedProductSnapshotResponse1",
-        "required": [
-          "createUpdatedProductSnapshotResponse"
-        ],
-        "type": "object",
-        "properties": {
-          "createUpdatedProductSnapshotResponse": {
-            "$ref": "#/components/schemas/createUpdatedProductSnapshotResponse"
-          }
-        }
-      },
-      "getUpdatedCategoryListResponse1": {
-        "title": "getUpdatedCategoryListResponse1",
-        "required": [
-          "getUpdatedCategoryListResponse"
-        ],
-        "type": "object",
-        "properties": {
-          "getUpdatedCategoryListResponse": {
-            "$ref": "#/components/schemas/getUpdatedCategoryListResponse"
-          }
-        }
-      },
-      "scopeBean": {
-        "title": "scopeBean",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "brand": {
-            "type": "string",
-            "example": "Schneider Electric"
-          },
-          "channel": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string",
-            "example": "WW"
-          },
-          "function": {
-            "type": "string"
-          },
-          "markets": {
-            "type": "string"
-          },
-          "privacy": {
-            "type": "string"
-          },
-          "program": {
-            "type": "string"
-          },
-          "project": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "brand",
-          "country"
-        ]
-      },
-      "getUpdatedNodeListResponse": {
-        "title": "getUpdatedNodeListResponse",
-        "type": "object",
-        "properties": {
-          "UpdatedNodeListBean": {
-            "$ref": "#/components/schemas/updatedNodeListBean"
-          }
-        },
-        "description": ""
-      },
-      "updatedCategoryListBean": {
-        "title": "updatedCategoryListBean",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/genericListBean"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "categories": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/updatedCategoryLightBean"
-                },
-                "description": ""
-              },
-              "count": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "description": ""
-      },
-      "getUpdatedNodeListResponse1": {
-        "title": "getUpdatedNodeListResponse1",
-        "required": [
-          "getUpdatedNodeListResponse"
-        ],
-        "type": "object",
-        "properties": {
-          "getUpdatedNodeListResponse": {
-            "$ref": "#/components/schemas/getUpdatedNodeListResponse"
-          }
-        }
-      },
-      "createUpdatedProductSnapshot": {
-        "title": "createUpdatedProductSnapshot",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "scope": {
-            "$ref": "#/components/schemas/scopeBean"
-          },
-          "sinceDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "untilDate": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "required": [
-          "sinceDate"
-        ]
-      },
-      "updatedRangeListBean": {
-        "title": "updatedRangeListBean",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/genericListBean"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "ranges": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/updatedRangeLightBean"
-                },
-                "description": ""
-              },
-              "count": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "description": ""
-      },
-      "localeBean": {
-        "title": "localeBean",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "isoCountry": {
-            "type": "string"
-          },
-          "isoLanguage": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "isoCountry",
-          "isoLanguage"
-        ]
-      },
-      "getUpdatedRangeListResponse1": {
-        "title": "getUpdatedRangeListResponse1",
-        "required": [
-          "getUpdatedRangeListResponse"
-        ],
-        "type": "object",
-        "properties": {
-          "getUpdatedRangeListResponse": {
-            "$ref": "#/components/schemas/getUpdatedRangeListResponse"
-          }
-        }
-      },
-      "getDeletedNodeListResponse1": {
-        "title": "getDeletedNodeListResponse1",
-        "type": "object",
-        "properties": {
-          "getDeletedNodeListResponse": {
-            "$ref": "#/components/schemas/getDeletedNodeListResponse"
-          }
-        }
-      },
-      "getSnapshotResponse1": {
-        "title": "getSnapshotResponse1",
-        "required": [
-          "getSnapshotResponse"
-        ],
-        "type": "object",
-        "properties": {
-          "getSnapshotResponse": {
-            "$ref": "#/components/schemas/getSnapshotResponse"
-          }
-        }
-      },
-      "getUpdatedCharacteristicsListResponse1": {
-        "title": "getUpdatedCharacteristicsListResponse1",
-        "required": [
-          "getUpdatedCharacteristicsListResponse"
-        ],
-        "type": "object",
-        "properties": {
-          "getUpdatedCharacteristicsListResponse": {
-            "$ref": "#/components/schemas/getUpdatedCharacteristicsListResponse"
-          }
-        }
-      },
-      "createUpdatedProductSnapshotResponse": {
-        "title": "createUpdatedProductSnapshotResponse",
-        "type": "object",
-        "properties": {
-          "GenericCacheBean": {
-            "$ref": "#/components/schemas/genericCacheBean"
-          }
-        },
-        "description": ""
-      },
-      "genericCacheElementBean": {
-        "title": "genericCacheElementBean",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "oid": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "id": {
-            "type": "string"
-          },
-          "timeStamp": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "getUpdatedCharacteristicsListResponse": {
-        "title": "getUpdatedCharacteristicsListResponse",
-        "type": "object",
-        "properties": {
-          "UpdatedCharacteristicsListBean": {
-            "$ref": "#/components/schemas/updatedCharacteristicListBean"
-          }
-        },
-        "description": ""
-      },
-      "getUpdatedRangeListResponse": {
-        "title": "getUpdatedRangeListResponse",
-        "type": "object",
-        "properties": {
-          "UpdatedRangeListBean": {
-            "$ref": "#/components/schemas/updatedRangeListBean"
-          }
-        },
-        "description": ""
-      },
-      "updatedCategoryLightBean": {
-        "title": "updatedCategoryLightBean",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "oid": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "id": {
-            "type": "string"
-          },
-          "timeStamp": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "getUpdatedNodeList1": {
-        "title": "getUpdatedNodeList1",
-        "required": [
-          "getUpdatedNodeList"
-        ],
-        "type": "object",
-        "properties": {
-          "getUpdatedNodeList": {
-            "$ref": "#/components/schemas/getUpdatedNodeList"
-          }
-        }
-      },
-      "getDeletedNodeListResponse": {
-        "title": "getDeletedNodeListResponse",
-        "type": "object",
-        "properties": {
-          "DeletedNodeListBean": {
-            "$ref": "#/components/schemas/deletedNodeListBean"
-          }
-        },
-        "description": ""
-      },
-      "getUpdatedCharacteristicsList": {
-        "title": "getUpdatedCharacteristicsList",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "scope": {
-            "$ref": "#/components/schemas/scopeBean"
-          },
-          "locale": {
-            "$ref": "#/components/schemas/localeBean"
-          },
-          "sinceDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "untilDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "firstResult": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "numberOfResults": {
-            "type": "integer",
-            "format": "int64"
-          }
-        },
-        "required": [
-          "sinceDate"
-        ]
-      },
-      "getUpdatedRangeList1": {
-        "title": "getUpdatedRangeList1",
-        "required": [
-          "getUpdatedRangeList"
-        ],
-        "type": "object",
-        "properties": {
-          "getUpdatedRangeList": {
-            "$ref": "#/components/schemas/getUpdatedRangeList"
-          }
-        }
-      },
-      "updatedCharacteristicLightBean": {
-        "title": "updatedCharacteristicLightBean",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "oid": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "id": {
-            "type": "string"
-          },
-          "timeStamp": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "getUpdatedCategoryListResponse": {
-        "title": "getUpdatedCategoryListResponse",
-        "type": "object",
-        "properties": {
-          "UpdatedCategoryListBean": {
-            "$ref": "#/components/schemas/updatedCategoryListBean"
-          }
-        },
-        "description": ""
-      },
-      "updatedCharacteristicListBean": {
-        "title": "updatedCharacteristicListBean",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/genericListBean"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "characteristics": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/updatedCharacteristicLightBean"
-                },
-                "description": ""
-              },
-              "count": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "description": ""
-      },
-      "updatedNodeListBean": {
-        "title": "updatedNodeListBean",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/genericListBean"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "nodes": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/updatedNodeLightBean"
-                },
-                "description": ""
-              },
-              "count": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "description": ""
-      },
-      "getUpdatedCharacteristicsList1": {
-        "title": "getUpdatedCharacteristicsList1",
-        "required": [
-          "getUpdatedCharacteristicsList"
-        ],
-        "type": "object",
-        "properties": {
-          "getUpdatedCharacteristicsList": {
-            "$ref": "#/components/schemas/getUpdatedCharacteristicsList"
-          }
-        }
-      },
-      "genericCacheLightBean": {
-        "title": "genericCacheLightBean",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "count": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "snapshotId": {
-            "type": "string"
-          },
-          "elements": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/genericCacheElementBean"
-            }
-          }
-        }
-      },
-      "getUpdatedCategoryList1": {
-        "title": "getUpdatedCategoryList1",
-        "required": [
-          "getUpdatedCategoryList"
-        ],
-        "type": "object",
-        "properties": {
-          "getUpdatedCategoryList": {
-            "$ref": "#/components/schemas/getUpdatedCategoryList"
-          }
-        }
-      },
-      "getUpdatedRangeList": {
-        "title": "getUpdatedRangeList",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "scope": {
-            "$ref": "#/components/schemas/scopeBean"
-          },
-          "locale": {
-            "$ref": "#/components/schemas/localeBean"
-          },
-          "sinceDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "untilDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "firstResult": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "numberOfResults": {
-            "type": "integer",
-            "format": "int64"
-          }
-        },
-        "required": [
-          "sinceDate"
-        ]
-      },
-      "genericListBean": {
-        "title": "genericListBean",
-        "type": "object",
-        "description": ""
-      },
-      "updatedNodeLightBean": {
-        "title": "updatedNodeLightBean",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "oid": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "id": {
-            "type": "string"
-          },
-          "timeStamp": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "genericCacheBean": {
-        "title": "genericCacheBean",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/genericCacheLightBean"
-          }
-        ],
-        "description": ""
-      },
-      "getUpdatedCategoryList": {
-        "title": "getUpdatedCategoryList",
-        "type": "object",
-        "description": "",
-        "properties": {
-          "scope": {
-            "$ref": "#/components/schemas/scopeBean"
-          },
-          "locale": {
-            "$ref": "#/components/schemas/localeBean"
-          },
-          "sinceDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "untilDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "firstResult": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "numberOfResults": {
-            "type": "integer",
-            "format": "int64"
-          }
-        },
-        "required": [
-          "sinceDate"
-        ]
-      },
-      "competitorRequestBean": {
-        "type": "object",
-        "properties": {
-          "scope": {
-            "$ref": "#/components/schemas/scopeBean"
-          },
-          "sinceDate": {
-            "type": "string",
-            "description": "The start date format must be YYYY-MM-DDTHH:mm:ss.SSSZ",
-            "example": "2021-09-10T20:48:38.645Z"
-          },
-          "untilDate": {
-            "type": "string",
-            "description": "The end date format must be YYYY-MM-DDTHH:mm:ss.SSSZ",
-            "example": "2021-09-22T20:48:38.645Z"
-          },
-          "firstResult": {
-            "type": "integer",
-            "format": "int64",
-            "description": "pagination start result",
-            "example": 0
-          },
-          "numberOfResults": {
-            "type": "integer",
-            "format": "int64",
-            "example": 10
-          },
-          "operation": {
-            "type": "string",
-            "description": "",
-            "enum": [
-              "update",
-              "delete"
-            ],
-            "example": "update"
-          }
-        },
-        "required": [
-          "scope",
-          "sinceDate",
-          "operation"
-        ]
-      },
-      "updatedCompetitorCRsResponse": {
-        "title": "updatedCompetitorCRsResponse",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/incrementalCompetitorCommonBean"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "updatedCompetitorCRs": {
-                "type": "array",
-                "description": "list of created or updated competitor CRs for the requested time range",
-                "items": {
-                  "$ref": "#/components/schemas/displayCompetitorBean"
-                }
-              }
-            }
-          }
-        ],
-        "x-examples": {
-          "example-1": {
-            "count": 1,
-            "updatedCompetitorCRs": [
-              {
-                "id": "A1",
-                "timeStamp": "2021-09-15T11:28:47.018Z"
-              }
-            ]
-          }
-        }
-      },
-      "deletedCompetitorCRsResponse": {
-        "title": "deletedCompetitorCRsResponse",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/incrementalCompetitorCommonBean"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "deletedCompetitorCRs": {
-                "type": "array",
-                "description": "list of deleted competitor CRs for the requested time range",
-                "items": {
-                  "$ref": "#/components/schemas/displayCompetitorBean"
-                }
-              }
-            }
-          }
-        ],
-        "x-examples": {
-          "example-1": {
-            "count": 1,
-            "deletedCompetitorCRs": [
-              {
-                "id": "D1",
-                "timeStamp": "2019-08-24T14:15:22Z"
-              }
-            ]
-          }
-        }
-      },
-      "updatedCompetitorPRELsResponse": {
-        "title": "updatedCompetitorPRELsResponse",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/incrementalCompetitorCommonBean"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "updatedCompetitorPRELs": {
-                "type": "array",
-                "description": "list of created or updated competitor CRs for the requested time range",
-                "items": {
-                  "$ref": "#/components/schemas/displayCompetitorBean"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "deletedCompetitorPRELsResponse": {
-        "title": "deletedCompetitorPRELsResponse",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/incrementalCompetitorCommonBean"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "deletedCompetitorPRELs": {
-                "type": "array",
-                "description": "list of deleted competitor CRs for the requested time range",
-                "items": {
-                  "$ref": "#/components/schemas/displayCompetitorBean"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "displayCompetitorBean": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Competitor CR id"
-          },
-          "timeStamp": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The date format must be YYYY-MM-DDTHH:mm:ss.SSSZ"
-          }
-        }
-      },
-      "incrementalCompetitorCommonBean": {
-        "type": "object",
-        "properties": {
-          "count": {
-            "type": "integer",
-            "description": "Count of all the Competitor that got updated or deleted in the mentioned time range",
-            "example": 0
-          }
-        }
-      },
-      "AbstractProductListingNodeListBean": {
-        "type": "object",
-        "properties": {
-          "count": {
-            "type": "integer",
-            "description": "the count for the updated or created product listing nodes within given time range",
-            "example": 0
-          }
-        }
-      },
-      "UpdatedProductListingNodeListBean": {
-        "title": "UpdatedProductListingNodeListBean",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AbstractProductListingNodeListBean"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "updatedNodes": {
-                "type": "array",
-                "description": "nodeId and timestamp for the updated or created product listing nodes within given time range",
-                "items": {
-                  "$ref": "#/components/schemas/UpdatedOrDeletedProductListingNodeLightBean"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "DeletedProductListingNodeListBean": {
-        "title": "DeletedProductListingNodeListBean",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AbstractProductListingNodeListBean"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "deletedNodes": {
-                "type": "array",
-                "description": "nodeId and timestamp for the deleted product listing nodes within given time range",
-                "items": {
-                  "$ref": "#/components/schemas/UpdatedOrDeletedProductListingNodeLightBean"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "UpdatedOrDeletedProductListingNodeLightBean": {
-        "type": "object",
-        "properties": {
-          "nodeId": {
-            "type": "string",
-            "description": "the product listing node id"
-          },
-          "timeStamp": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The date format must be YYYY-MM-DDTHH:mm:ss.SSSZ"
-          }
-        }
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "title": "Error Response - OAS3",
-        "description": "Error response returned to the consumer when an HTTP error status has occurred.",
-        "properties": {
-          "code": {
-            "type": "string",
-            "example": "MISSING_FIELD or 12345",
-            "description": "Service-defined error code which may be numeric or a string.\n\nErrors detected by the APIM platform result in the following codes.\n\nBAD_REQUEST (for 400)\nUNAUTHORIZED (for 401)\nFORBIDDEN (for 403)\nNOT_FOUND (for 404)\nGONE (for 410)\nPRECONDITION_FAILED (for 412)\nTOO_MANY_REQUESTS (for 429)\nINTERNAL_SERVER_ERROR (for 500)\nNOT_IMPLEMENTED (for 501)\n\nAny specific service validation errors would replace BAD_REQUEST."
-          },
-          "userMessage": {
-            "type": "string",
-            "example": "Required field is missing: productSku",
-            "description": "Human-readable general description of the error."
-          },
-          "developerMessage": {
-            "type": "string",
-            "description": "Optional human-readable description of the error details.",
-            "example": "Product master API ParseException: required tag  expected"
-          },
-          "moreInfo": {
-            "type": "string",
-            "description": "Optional link to error documentation, which has more information about the error.",
-            "format": "uri",
-            "example": "https://example.com/product-master/v1/error/12345"
-          }
-        },
-        "required": [
-          "code",
-          "userMessage"
-        ]
-      }
+      "required": [
+        "accountList"
+      ]
     },
-    "securitySchemes": {
-      "auth2": {
-        "type": "oauth2",
-        "description": "",
-        "flows": {
-          "clientCredentials": {
-            "tokenUrl": "https://api.qa.se.com/token",
-            "refreshUrl": "",
-            "scopes": {}
+    "TemporaryAccountAccessRequestedList": {
+      "type": "object",
+      "description": "Temporary Account Access asking list",
+      "properties": {
+        "accountList": {
+          "type": "array",
+          "description": "Account list",
+          "items": {
+            "$ref": "#/definitions/TemporaryAccountAccessAskingItem"
+          }
+        }
+      },
+      "required": [
+        "accountList"
+      ]
+    },
+    "TemporaryAccountAccessRequestList": {
+      "type": "object",
+      "description": "Temporary Account Access askable list",
+      "properties": {
+        "accountList": {
+          "type": "array",
+          "description": "Account list",
+          "items": {
+            "$ref": "#/definitions/TemporaryAccountAccessAskableItem"
           }
         }
       }
     },
-    "responses": {
-      "Common_Oas3_400": {
-        "description": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "code": "BAD_REQUEST",
-                  "userMessage": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
-                  "developerMessage": "Request content is malformed or exceeded structural limits",
-                  "moreInfo": "https://example.com/error/123"
-                }
-              }
-            }
-          }
+    "TemporaryAccountAccessItem": {
+      "type": "object",
+      "description": "account information",
+      "properties": {
+        "purchaserId": {
+          "type": "string",
+          "description": "Account number"
+        },
+        "accountName": {
+          "type": "string",
+          "description": "Account name"
+        },
+        "location": {
+          "type": "string",
+          "description": "Account location"
+        },
+        "releaseRight": {
+          "type": "boolean",
+          "description": "Indicate if the user has the permission to release an order on this account in Temporary Account Access mode"
         }
       },
-      "Common_Oas3_401": {
-        "description": "The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "code": "UNAUTHORIZED",
-                  "userMessage": "The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.",
-                  "developerMessage": "Invalid Access Token",
-                  "moreInfo": "https://example.com/error/123"
-                }
-              }
-            }
-          }
+      "required": [
+        "purchaserId",
+        "accountName"
+      ]
+    },
+    "TemporaryAccountAccessAskingItem": {
+      "type": "object",
+      "description": "account information",
+      "properties": {
+        "purchaserId": {
+          "type": "string",
+          "description": "Account number"
+        },
+        "releaseRight": {
+          "type": "boolean",
+          "description": "Indicate if the user also asks for the permission to release an order on this account in Temporary Account Access mode"
         }
       },
-      "Common_Oas3_403": {
-        "description": "The client does not have permission to perform the requested action e.g. POST or DELETE.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "code": "FORBIDDEN",
-                  "userMessage": "The client does not have permission to perform the requested action e.g. POST or DELETE.",
-                  "developerMessage": "Http verb DELETE is not supported for path suffix /installed-products/track",
-                  "moreInfo": "https://example.com/error/123"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Common_Oas3_404": {
-        "description": "Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "code": "NOT_FOUND",
-                  "userMessage": "Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.",
-                  "developerMessage": "Records not found",
-                  "moreInfo": "https://example.com/error/123"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Common_Oas3_429": {
-        "description": "Number of requests has exceeded the client's rate limits.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "code": "TOO_MANY_REQUESTS",
-                  "userMessage": "Number of requests has exceeded the client’s rate limits.",
-                  "developerMessage": "Spike arrest violation",
-                  "moreInfo": "https://example.com/error/123"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Common_Oas3_500": {
-        "description": "Requested operation encountered an unexpected server error.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "code": "INTERNAL_SERVER_ERROR",
-                  "userMessage": "Requested operation encountered an unexpected server error.",
-                  "developerMessage": "Target service is unavailable, please try again later.",
-                  "moreInfo": "https://example.com/error/123"
-                }
-              }
-            }
-          }
+      "required": [
+        "purchaserId"
+      ]
+    },
+    "TemporaryAccountAccessAskableItem": {
+      "type": "object",
+      "description": "account information",
+      "properties": {
+        "purchaserId": {
+          "type": "string",
+          "description": "Account number"
+        },
+        "accountName": {
+          "type": "string",
+          "description": "Company name"
         }
       }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "title": "Error Response - OAS2",
+      "description": "Error response returned to the consumer when an HTTP error status has occurred.",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "MISSING_FIELD or 12345",
+          "description": "Service-defined error code which may be numeric or a string.\n\nErrors detected by the APIM platform result in the following codes.\n\nBAD_REQUEST (for 400)\nUNAUTHORIZED (for 401)\nFORBIDDEN (for 403)\nNOT_FOUND (for 404)\nGONE (for 410)\nPRECONDITION_FAILED (for 412)\nTOO_MANY_REQUESTS (for 429)\nINTERNAL_SERVER_ERROR (for 500)\nNOT_IMPLEMENTED (for 501)\n\nAny specific service validation errors would replace BAD_REQUEST."
+        },
+        "userMessage": {
+          "type": "string",
+          "example": "Required field is missing: productSku",
+          "description": "Human-readable general description of the error."
+        },
+        "developerMessage": {
+          "type": "string",
+          "description": "Optional human-readable description of the error details.",
+          "example": "Product master API ParseException: required tag <sku> expected"
+        },
+        "moreInfo": {
+          "type": "string",
+          "description": "Optional link to error documentation, which has more information about the error.",
+          "format": "uri",
+          "example": "https://example.com/product-master/v1/error/12345"
+        }
+      },
+      "required": [
+        "code",
+        "userMessage"
+      ]
     }
   },
-  "tags": [
-    {
-      "name": "IncrementalServiceSoapBinding",
-      "description": ""
+  "parameters": {
+    "UserAuthorization": {
+      "name": "X-IDMS-Authorization",
+      "in": "header",
+      "type": "string",
+      "description": "Authorization token for user identification in IDMS.\n\nExample:\nFor an IDMS OAuth token\n* X-IDMS-Authorization: 00D11000000Doh7!AR8AQI6cigc8axgaooyUti5MxTW4jOR_f5yO8ihmUo8RcM6aIwibBPv6yZ5trZBSXHPQq3nesns5l6.splDzUWttm8wteHpP",
+      "required": true
     },
-    {
-      "name": "IncrementalServiceRestBinding"
+    "businessUnit": {
+      "name": "business-unit",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "description": "MySE Business Unit: MySE identifier on which the request has to be done.\n\nCould be the actual MySE business unit name or the corresponding ACL name (e.g. MySEUS / myseMySEUS).\n\nExamples\n* MySEFR2\n* myseMySEGB\n* ITB"
+    },
+    "purchaserId": {
+      "name": "purchaser-id",
+      "in": "path",
+      "type": "string",
+      "required": true
     }
+  },
+  "schemes": [
+    "https"
   ],
+  "host": "api.qa.se.com",
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "apikey": {
+      "type": "apiKey",
+      "name": "apikey",
+      "in": "header",
+      "description": "For uses cases where the API service needs a user context to execute, please populate these headers when calling an API operation.\n\napi_key and X-IDMS-Authorization."
+    },
+    "oauth2": {
+      "type": "oauth2",
+      "flow": "application",
+      "scopes": {},
+      "tokenUrl": "https://api.qa.se.com/token",
+      "description": "For system to system uses cases where the API service does not need a user context to execute, please use the provided APIM developer credentials to request a token, then submit the token via the Authorization Bearer header when calling an API operation.\n\nAfter one hour, a fresh APIM token needs to be requested."
+    }
+  },
   "security": [
     {
-      "auth2": []
+      "apikey": []
+    },
+    {
+      "oauth2": []
     }
-  ]
+  ],
+  "consumes": [],
+  "responses": {
+    "Common_Oas2_400": {
+      "description": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+      "schema": {
+        "$ref": "#/definitions/ErrorResponse"
+      },
+      "examples": {
+        "Example": {
+          "code": "BAD_REQUEST",
+          "userMessage": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+          "developerMessage": "Request content is malformed or exceeded structural limits",
+          "moreInfo": "https://example.com/error/123"
+        }
+      }
+    },
+    "Common_Oas2_401": {
+      "description": "The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.",
+      "schema": {
+        "$ref": "#/definitions/ErrorResponse"
+      },
+      "examples": {
+        "Example": {
+          "code": "UNAUTHORIZED",
+          "userMessage": "The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.",
+          "developerMessage": "Invalid Access Token",
+          "moreInfo": "https://example.com/error/123"
+        }
+      }
+    },
+    "Common_Oas2_403": {
+      "description": "The client does not have permission to perform the requested action e.g. POST or DELETE.",
+      "schema": {
+        "$ref": "#/definitions/ErrorResponse"
+      },
+      "examples": {
+        "Example": {
+          "code": "FORBIDDEN",
+          "userMessage": "The client does not have permission to perform the requested action e.g. POST or DELETE.",
+          "developerMessage": "Http verb DELETE is not supported for path suffix /installed-products/track",
+          "moreInfo": "https://example.com/error/123"
+        }
+      }
+    },
+    "Common_Oas2_404": {
+      "description": "Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.",
+      "schema": {
+        "$ref": "#/definitions/ErrorResponse"
+      },
+      "examples": {
+        "Example": {
+          "code": "NOT_FOUND",
+          "userMessage": "Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.",
+          "developerMessage": "Records not found",
+          "moreInfo": "https://example.com/error/123"
+        }
+      }
+    },
+    "Common_Oas2_429": {
+      "description": "Number of requests has exceeded the client's rate limits.",
+      "schema": {
+        "$ref": "#/definitions/ErrorResponse"
+      },
+      "examples": {
+        "Example": {
+          "code": "TOO_MANY_REQUESTS",
+          "userMessage": "Number of requests has exceeded the client’s rate limits.",
+          "developerMessage": "Spike arrest violation",
+          "moreInfo": "https://example.com/error/123"
+        }
+      }
+    },
+    "Common_Oas2_500": {
+      "description": "Requested operation encountered an unexpected server error.",
+      "schema": {
+        "$ref": "#/definitions/ErrorResponse"
+      },
+      "examples": {
+        "Example": {
+          "code": "INTERNAL_SERVER_ERROR",
+          "userMessage": "Requested operation encountered an unexpected server error.",
+          "developerMessage": "Target service is unavailable, please try again later.",
+          "moreInfo": "https://example.com/error/123"
+        }
+      }
+    }
+  }
 }
