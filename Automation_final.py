@@ -2,13 +2,10 @@ import json
 from pprint import pprint
 import jsonref
 import yaml
-import sys 
 import copy
-import jsonpickle
-from json import JSONEncoder
 
 def event(n):
-    file='Unit Tests Sample.postman_collection.json'
+    file='files/Unit Tests Sample.postman_collection.json'
     f = open(file,encoding="utf8")
     data = json.load(f)
     return data['item'][n]['event']
@@ -117,6 +114,7 @@ def get_schema(data):
                 for k in data['paths'][i][j]['responses']: #this gives the status code
                     method_name=data['paths'][i][j]['summary']
                     if str(k).startswith('2'):
+                        print(j,i,k)
                         if('swagger' in data):
                             version='swagger'
                         elif('openapi' in data):
@@ -126,6 +124,7 @@ def get_schema(data):
                         elif data[version].startswith("2"):
                             schema=data['paths'][i][j]['responses'][k]['schema']
                         print("-->>>the schema for method",j,i,k,"response is-->>>",file=file)
+                        print('no errors found')
                         print(json.dumps(schema,indent=1),file=file)
                         print("\n",file=file)
                         final_schema[method_name]=json.dumps(schema,indent=1)
@@ -151,8 +150,9 @@ def output_txt(filename,s): #saves only json body as txt file
     jsonFile.write(jsonString)
     jsonFile.close()
 def main():
-    spec=input('Enter the full spec file name with extension:')
+    spec=int(input('Enter spec format 1. spec.json , 2.spec.yaml:\n'))
     # spec='spec.json'
+    spec='spec.json' if spec==1 else 'spec.yaml'
     spec=read_json(spec)
 #     get_mandatory(spec)
     schema=get_schema(spec)
