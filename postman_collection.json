@@ -1,243 +1,342 @@
 {
 	"info": {
-		"_postman_id": "82dc5a9d-db4e-4859-b832-97e13255e406",
-		"name": "Commercial-References-V2",
-		"description": "Commercial references upload\n\nContact Support:\n Name: Jose Maria Cerdeira\n Email: jose-maria.cerdeira@se.com",
+		"_postman_id": "7446db6a-1eab-4985-8b99-53b5a182269a",
+		"name": "Track Shipment",
+		"description": "An API to fetch the parcel services url using the tracking number to track shipments \n\nContact Support:\n Name: Sumbul Chishty\n Email: sumbul.chishty@se.com",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Update Mappings",
-			"event": [
+			"name": "track shipments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"backOfficeId\": \"BBO_EU\",\n  \"carrier\": \"UPS\",\n  \"trackingNumber\": \"Ship Doc 8939275416\",\n  \"partOrderLineBfoId\": \"a1p1H000004BYSHQA4\",\n  \"shipToCountry\": \"FR\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/shipments",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"shipments"
+					]
+				},
+				"description": "Shipment tracking url by shipment tracking number"
+			},
+			"response": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
 						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"type": "text"
-					},
-					{
-						"key": "SESAUSER",
-						"value": "SESA612288",
-						"type": "text"
-					},
-					{
-						"key": "APPID",
-						"value": "959e6b619afb4cdb89495d9a3f125500",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"commercialRef\": \"1603\",\r\n    \"mapAction\": \"N\"\r\n  },\r\n  {\r\n    \"line\": 2,\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"170ADM35010C\",\r\n    \"commercialRef\": \"170ADM35010C\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
-					"options": {
-						"raw": {
-							"language": "json"
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"backOfficeId\": \"BBO_EU\",\n    \"carrier\": \"UPS\",\n    \"trackingNumber\": \"Ship Doc 8939275416\",\n    \"partOrderLineBfoId\": \"a1p1H000004BYSHQA4\",\n    \"shipToCountry\": \"FR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/shipments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"shipments"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/mappings",
-					"protocol": "https",
-					"host": [
-						"api",
-						"qa",
-						"se",
-						"com"
-					],
-					"path": [
-						"v2",
-						"finance-legal",
-						"finance",
-						"commercial-references",
-						"mappings"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Manual Prices",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"type": "text"
 					},
-					{
-						"key": "SESAUSER",
-						"value": "SESA612288",
-						"type": "text"
-					},
-					{
-						"key": "APPID",
-						"value": "959e6b619afb4cdb89495d9a3f125500",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "[\r\n  {\r\n    \"line\": \"3\",\r\n    \"commercialRef\": \"1603\",\r\n    \"erpSystem\": \"BUS_SEA\",\r\n    \"materialRef\": \"1603\",\r\n    \"reportingEntityBO\": \"DE3202\",\r\n    \"reportingEntityFO\": \"\",\r\n    \"cscPrice\": \"12\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": \"1\",\r\n    \"uom\": \"ST\",\r\n    \"validFrom\": \"20210209\",\r\n    \"cscOverwrite\": \"X\"\r\n  }\r\n]",
-					"options": {
-						"raw": {
-							"language": "json"
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
 						}
-					}
-				},
-				"url": {
-					"raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/prices",
-					"protocol": "https",
-					"host": [
-						"api",
-						"qa",
-						"se",
-						"com"
 					],
-					"path": [
-						"v2",
-						"finance-legal",
-						"finance",
-						"commercial-references",
-						"prices"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Assign Preferred Origin Entity",
-			"event": [
+					"cookie": [],
+					"body": "{\n \"trackUrl\": \"https://wwwapps.ups.com/tracking/tracking.cgi?tracknum=abcdefgh\",\n \"code\": \"S\"\n}"
+				},
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
+					"name": "Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
 						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"type": "text"
-					},
-					{
-						"key": "SESAUSER",
-						"value": "SESA612288",
-						"type": "text"
-					},
-					{
-						"key": "APPID",
-						"value": "959e6b619afb4cdb89495d9a3f125500",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"MY0100\",\r\n    \"prefOriReportingEntity\": \"FR0277\",\r\n    \"validFrom\": \"20210101\",\r\n    \"mapAction\": \"N\"\r\n  }\r\n]",
-					"options": {
-						"raw": {
-							"language": "json"
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"backOfficeId\": \"BBO_EU\",\n    \"carrier\": \"UPS\",\n    \"trackingNumber\": \"Ship Doc 8939275416\",\n    \"partOrderLineBfoId\": \"a1p1H000004BYSHQA4\",\n    \"shipToCountry\": \"FR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/shipments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"shipments"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/pref-origin-entities",
-					"protocol": "https",
-					"host": [
-						"api",
-						"qa",
-						"se",
-						"com"
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
 					],
-					"path": [
-						"v2",
-						"finance-legal",
-						"finance",
-						"commercial-references",
-						"pref-origin-entities"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Prices Derogations",
-			"event": [
+					"cookie": [],
+					"body": "{\n \"code\": \"BAD_REQUEST\",\n \"userMessage\": \"Request is invalid and cannot be processed due one or more issues such as syntax errors, missing required fields, out of range values, conflicting query parameters, or unknown URI.\",\n \"developerMessage\": \"Request content is malformed or exceeded structural limits\",\n \"moreInfo\": \"https://example.com/error/123\"\n}"
+				},
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
+					"name": "The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
 						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"type": "text"
-					},
-					{
-						"key": "SESAUSER",
-						"value": "SESA612288",
-						"type": "text"
-					},
-					{
-						"key": "APPID",
-						"value": "959e6b619afb4cdb89495d9a3f125500",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "[\r\n  {\r\n    \"line\": 1,\r\n    \"commercialRef\": \"170PNT11020\",\r\n    \"reportingEntity\": \"FR0277\",\r\n    \"cscPrice\": \"52.72\",\r\n    \"cscCurrency\": \"EUR\",\r\n    \"baseQty\": 1,\r\n    \"uom\": \"PC\",\r\n    \"validFrom\": \"20210101\",\r\n    \"cscAction\": \"N\"\r\n  }\r\n]",
-					"options": {
-						"raw": {
-							"language": "json"
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"backOfficeId\": \"BBO_EU\",\n    \"carrier\": \"UPS\",\n    \"trackingNumber\": \"Ship Doc 8939275416\",\n    \"partOrderLineBfoId\": \"a1p1H000004BYSHQA4\",\n    \"shipToCountry\": \"FR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/shipments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"shipments"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references/derogations",
-					"protocol": "https",
-					"host": [
-						"api",
-						"qa",
-						"se",
-						"com"
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
 					],
-					"path": [
-						"v2",
-						"finance-legal",
-						"finance",
-						"commercial-references",
-						"derogations"
-					]
+					"cookie": [],
+					"body": "{\n \"code\": \"UNAUTHORIZED\",\n \"userMessage\": \"The client is not authorized to perform this request because its identity has not yet been established, or the token is invalid or has expired.\",\n \"developerMessage\": \"Invalid Access Token\",\n \"moreInfo\": \"https://example.com/error/123\"\n}"
+				},
+				{
+					"name": "The client does not have permission to perform the requested action e.g. POST or DELETE.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"backOfficeId\": \"BBO_EU\",\n    \"carrier\": \"UPS\",\n    \"trackingNumber\": \"Ship Doc 8939275416\",\n    \"partOrderLineBfoId\": \"a1p1H000004BYSHQA4\",\n    \"shipToCountry\": \"FR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/shipments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"shipments"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"FORBIDDEN\",\n \"userMessage\": \"The client does not have permission to perform the requested action e.g. POST or DELETE.\",\n \"developerMessage\": \"Http verb DELETE is not supported for path suffix /installed-products/track\",\n \"moreInfo\": \"https://example.com/error/123\"\n}"
+				},
+				{
+					"name": "Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"backOfficeId\": \"BBO_EU\",\n    \"carrier\": \"UPS\",\n    \"trackingNumber\": \"Ship Doc 8939275416\",\n    \"partOrderLineBfoId\": \"a1p1H000004BYSHQA4\",\n    \"shipToCountry\": \"FR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/shipments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"shipments"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"NOT_FOUND\",\n \"userMessage\": \"Requested resource does not exist on the server. It is assumed that the URI is valid for this type of resource.\",\n \"developerMessage\": \"Records not found\",\n \"moreInfo\": \"https://example.com/error/123\"\n}"
+				},
+				{
+					"name": "Number of requests has exceeded the client's rate limits.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"backOfficeId\": \"BBO_EU\",\n    \"carrier\": \"UPS\",\n    \"trackingNumber\": \"Ship Doc 8939275416\",\n    \"partOrderLineBfoId\": \"a1p1H000004BYSHQA4\",\n    \"shipToCountry\": \"FR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/shipments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"shipments"
+							]
+						}
+					},
+					"status": "Too Many Requests",
+					"code": 429,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"TOO_MANY_REQUESTS\",\n \"userMessage\": \"Number of requests has exceeded the client’s rate limits.\",\n \"developerMessage\": \"Spike arrest violation\",\n \"moreInfo\": \"https://example.com/error/123\"\n}"
+				},
+				{
+					"name": "Requested operation encountered an unexpected server error.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"backOfficeId\": \"BBO_EU\",\n    \"carrier\": \"UPS\",\n    \"trackingNumber\": \"Ship Doc 8939275416\",\n    \"partOrderLineBfoId\": \"a1p1H000004BYSHQA4\",\n    \"shipToCountry\": \"FR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/shipments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"shipments"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"code\": \"INTERNAL_SERVER_ERROR\",\n \"userMessage\": \"Requested operation encountered an unexpected server error.\",\n \"developerMessage\": \"Target service is unavailable, please try again later.\",\n \"moreInfo\": \"https://example.com/error/123\"\n}"
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"auth": {
@@ -246,7 +345,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "https://api.qa.se.com/v2/finance-legal/finance/commercial-references",
+			"value": "https://api.qa.se.com/v1/reference-data/supply-chain/track-shipment",
 			"type": "string"
 		}
 	]
