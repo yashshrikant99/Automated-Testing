@@ -120,7 +120,13 @@ def get_schema(data):
                         elif('openapi' in data):
                             version='openapi'
                         if data[version].startswith("3"):
-                            schema=data['paths'][i][j]['responses'][k]['content']['application/json']['schema']
+                            content_types=['application/vnd.kafka.v2+json','application/vnd.kafka.v2+xml','application/vnd.kafka.binary.v2+json','application/vnd.kafka.avro.v2+json','application/vnd.kafka.json.v2+json','application/json','application/xml']
+                            for m in content_types:
+                              try:
+                                schema=data['paths'][i][j]['responses'][k]['content'][m]['schema']
+                                break
+                              except:
+                                continue
                         elif data[version].startswith("2"):
                             schema=data['paths'][i][j]['responses'][k]['schema']
                         print("-->>>the schema for method",j,i,k,"response is-->>>",file=file)
