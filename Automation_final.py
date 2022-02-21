@@ -5,7 +5,7 @@ import yaml
 import copy
 
 def event(n):
-    file='files/Unit Tests Sample.postman_collection.json'
+    file='Unit Tests Sample.postman_collection.json'
     f = open(file,encoding="utf8")
     data = json.load(f)
     return data['item'][n]['event']
@@ -24,6 +24,7 @@ def get_first_response(data,method_name): #to get the first response code and de
             
                 
 def replace_schema(schema,name,verb,spec):
+  try:
     test2=event(1)
     code,desc=get_first_response(spec,name)
     test2[1]['script']['exec'][0]=test2[1]['script']['exec'][0].replace('200',code) #replace status code
@@ -37,11 +38,16 @@ def replace_schema(schema,name,verb,spec):
     if(verb=='GET'):
         del test2[1]['script']['exec'][36:52] #removes request header check for GET methods
     return test2
+  except Exception as e:
+    print(f'for {verb} {name} error detected:--{e}\n')
 def replace_status_code(schema,method_name,method_verb,spec):
+  try:
     test2=event(0)
     code,desc=get_first_response(spec,method_name)
     test2[1]['script']['exec'][0]=test2[1]['script']['exec'][0].replace('200',code)
     return test2
+  except:
+    pass
 def modify_json2(schema,data,spec):
     dict1=[]
     ch=65
@@ -156,6 +162,7 @@ def output_txt(filename,s): #saves only json body as txt file
     jsonFile.write(jsonString)
     jsonFile.close()
 def main():
+  # try:
     spec=int(input('Enter spec format 1. spec.json , 2.spec.yaml:\n'))
     # spec='spec.json'
     spec='spec.json' if spec==1 else 'spec.yaml'
@@ -174,5 +181,7 @@ def main():
     except Exception as e:
         print(e)
         print("failed")
+  # except Exception as e:
+  #   print('\npostman collection creation failed due to:',e)
 if __name__=='__main__':
     main()
