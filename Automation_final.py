@@ -5,7 +5,7 @@ import yaml
 import copy
 
 def event(n):
-    file='files/Unit Tests Sample.postman_collection.json'
+    file='Unit Tests Sample.postman_collection.json'
     f = open(file,encoding="utf8")
     data = json.load(f)
     return data['item'][n]['event']
