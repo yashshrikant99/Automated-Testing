@@ -17,10 +17,10 @@ def get_first_response(data,method_name): #to get the first response code and de
                 continue
             if data['paths'][i][j]['summary']==method_name:
                 for k in data['paths'][i][j]['responses']:
-                    lst=list(data['paths'][i][j]['responses'][k].keys())[0]
-                    if lst=='description':
-                        lst1=list(data['paths'][i][j]['responses'][k].values())[0]
-                        return k,lst1
+                    # lst=list(data['paths'][i][j]['responses'][k].keys())[0]
+                    # if lst=='description':
+                    lst1=list(data['paths'][i][j]['responses'][k].values())[0]
+                    return k,lst1
             
                 
 def replace_schema(schema,name,verb,spec):
