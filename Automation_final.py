@@ -125,15 +125,15 @@ def get_schema(data):
                             version='swagger'
                         elif('openapi' in data):
                             version='openapi'
-                        if data[version].startswith("3"):
-                            content_types=['application/vnd.kafka.v2+json','application/vnd.kafka.v2+xml','application/vnd.kafka.binary.v2+json','application/vnd.kafka.avro.v2+json','application/vnd.kafka.json.v2+json','application/json','application/xml']
-                            for m in content_types:
-                              try:
-                                schema=data['paths'][i][j]['responses'][k]['content'][m]['schema']
-                              except:
-                                continue
-                        elif data[version].startswith("2"):
-                            schema=data['paths'][i][j]['responses'][k]['schema']
+                        try:
+                            if data[version].startswith("3"):
+                                content_types=['application/vnd.kafka.v2+json','application/vnd.kafka.v2+xml','application/vnd.kafka.binary.v2+json','application/vnd.kafka.avro.v2+json','application/vnd.kafka.json.v2+json','application/json','application/xml']
+                                for m in content_types:
+                                    schema=data['paths'][i][j]['responses'][k]['content'][m]['schema']
+                            elif data[version].startswith("2"):
+                                schema=data['paths'][i][j]['responses'][k]['schema']
+                        except:
+                            continue
                         print("-->>>the schema for method",j,i,k,"response is-->>>",file=file)
                         print('no errors found')
                         print(json.dumps(schema,indent=1),file=file)
