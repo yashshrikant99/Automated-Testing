@@ -130,7 +130,6 @@ def get_schema(data):
                             for m in content_types:
                               try:
                                 schema=data['paths'][i][j]['responses'][k]['content'][m]['schema']
-                                break
                               except:
                                 continue
                         elif data[version].startswith("2"):
