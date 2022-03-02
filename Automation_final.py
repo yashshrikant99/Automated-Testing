@@ -132,7 +132,8 @@ def get_schema(data):
                                     schema=data['paths'][i][j]['responses'][k]['content'][m]['schema']
                             elif data[version].startswith("2"):
                                 schema=data['paths'][i][j]['responses'][k]['schema']
-                        except:
+                        except Exception as e:
+                            print(f'error {e} occured for',j,i,k)
                             continue
                         print("-->>>the schema for method",j,i,k,"response is-->>>",file=file)
                         print('no errors found')
@@ -180,7 +181,7 @@ def main():
     except Exception as e:
         print(e)
         print("failed")
-  # except Exception as e:
-  #   print('\npostman collection creation failed due to:',e)
+  except Exception as e:
+    print('\npostman collection creation failed due to:',e)
 if __name__=='__main__':
     main()
