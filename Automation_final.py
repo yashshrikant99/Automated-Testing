@@ -129,7 +129,10 @@ def get_schema(data):
                             if data[version].startswith("3"):
                                 content_types=['application/vnd.kafka.v2+json','application/vnd.kafka.v2+xml','application/vnd.kafka.binary.v2+json','application/vnd.kafka.avro.v2+json','application/vnd.kafka.json.v2+json','application/json','application/xml']
                                 for m in content_types:
+                                  try:
                                     schema=data['paths'][i][j]['responses'][k]['content'][m]['schema']
+                                  except:
+                                    continue
                             elif data[version].startswith("2"):
                                 schema=data['paths'][i][j]['responses'][k]['schema']
                         except Exception as e:
