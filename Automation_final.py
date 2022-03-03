@@ -5,7 +5,7 @@ import yaml
 import copy
 
 def event(n):
-    file='Unit Tests Sample.postman_collection.json'
+    file='./files/Unit Tests Sample.postman_collection.json'
     f = open(file,encoding="utf8")
     data = json.load(f)
     return data['item'][n]['event']
@@ -184,7 +184,6 @@ def main():
     except Exception as e:
         print(e)
         print("failed")
-  except Exception as e:
-    print('\npostman collection creation failed due to:',e)
+        print('\npostman collection creation failed due to:',e)
 if __name__=='__main__':
     main()
